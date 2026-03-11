@@ -7,10 +7,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Define all paths relative to the current file
-const entryPointsPath = resolve(__dirname, "./webpack/types.d.ts");
-const tsconfigPath = resolve(__dirname, "./tsconfig.json");
-const dockitTheme = resolve(__dirname, "./plugins/theme/index.mjs");
-const consolidationPlugin = resolve(__dirname, "./plugins/consolidation.mjs");
+const entryPointsPath = resolve(__dirname, "./webpack/types.d.ts").replace(/\\/g, '/');
+const tsconfigPath = resolve(__dirname, "./tsconfig.json").replace(/\\/g, '/');
+const dockitTheme = resolve(__dirname, "./plugins/theme/index.mjs").replace(/\\/g, '/');
+const consolidationPlugin = resolve(__dirname, "./plugins/consolidation.mjs").replace(/\\/g, '/');
 
 Application.bootstrapWithPlugins({
   entryPoints: [entryPointsPath],
