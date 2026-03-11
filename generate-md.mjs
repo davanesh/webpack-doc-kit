@@ -7,14 +7,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Define all paths relative to the current file
-const entryPointsPath = resolve(__dirname, "../webpack/types.d.ts");
+const entryPointsPath = resolve(__dirname, "./webpack/types.d.ts");
 const tsconfigPath = resolve(__dirname, "./tsconfig.json");
 const dockitTheme = resolve(__dirname, "./plugins/theme/index.mjs");
 const consolidationPlugin = resolve(__dirname, "./plugins/consolidation.mjs");
 
 Application.bootstrapWithPlugins({
   entryPoints: [entryPointsPath],
-  out: "api",
+  out: "generated-api",
 
   // Plugins
   plugin: ["typedoc-plugin-markdown", consolidationPlugin, dockitTheme],

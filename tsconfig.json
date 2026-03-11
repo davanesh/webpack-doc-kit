@@ -1,8 +1,8 @@
 {
   "include": [
-    "../webpack/lib/**/*",
-    "../webpack/declarations/lib/**/*",
-    "../webpack/types.d.ts"
+    "./webpack/lib/**/*",
+    "./webpack/declarations/lib/**/*",
+    "./webpack/types.d.ts"
   ],
   "compilerOptions": {
     "allowJs": true,
