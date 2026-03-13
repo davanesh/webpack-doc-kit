@@ -1,11 +1,27 @@
 {
   "scripts": {
-    "build": "node generate-md.mjs && doc-kit generate -t web -i generated-api/webpack/namespaces/*.md --type-map ./generated-type-map.json -o out"
+    "generate-docs": "node generate-md.mjs",
+    "build-html": "doc-kit generate -t web -i ./pages/v5.x/**/*.md --type-map ./pages/v5.x/type-map.json -o out",
+    "build": "npm run generate-docs && npm run build-html",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
   },
-  "devDependencies": {
+  "dependencies": {
     "@node-core/doc-kit": "^1.0.1",
+    "semver": "^7.7.4",
     "typedoc": "^0.28.17",
     "typedoc-plugin-markdown": "^4.10.0",
     "webpack": "^5.105.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.0.3",
+    "globals": "^17.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.3.3",
+    "prettier": "^3.8.1"
   }
 }

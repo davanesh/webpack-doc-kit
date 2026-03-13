@@ -1,25 +1,26 @@
-import { ReflectionKind } from 'typedoc';
-import * as typePartials from './types.mjs';
+import { ReflectionKind } from "typedoc";
+import * as typePartials from "./types.mjs";
 
 const KIND_PREFIX = {
-  [ReflectionKind.Class]: 'Class',
-  [ReflectionKind.Interface]: 'Interface',
-  [ReflectionKind.Enum]: 'Enum',
-  [ReflectionKind.TypeAlias]: 'Type',
-  [ReflectionKind.Namespace]: 'Namespace',
-  [ReflectionKind.Constructor]: 'Constructor',
-  [ReflectionKind.Accessor]: 'Accessor',
+  [ReflectionKind.Class]: "Class",
+  [ReflectionKind.Interface]: "Interface",
+  [ReflectionKind.Enum]: "Enum",
+  [ReflectionKind.TypeAlias]: "Type",
+  [ReflectionKind.Namespace]: "Namespace",
+  [ReflectionKind.Constructor]: "Constructor",
+  [ReflectionKind.Accessor]: "Accessor",
 };
 
 const STATIC_PREFIX = {
-  [ReflectionKind.Method]: 'Static method',
+  [ReflectionKind.Method]: "Static method",
 };
 
 export const getMemberPrefix = (model) => {
   const prefix = model.flags?.isStatic
     ? STATIC_PREFIX[model.kind]
     : KIND_PREFIX[model.kind];
-  return prefix ? `${prefix}: ` : '';
+
+  return prefix ? `${prefix}: ` : "";
 };
 
 /**
@@ -75,9 +76,10 @@ export default (ctx) => ({
         comment: model.comment?.getTag("@returns"),
       }),
       "",
-      comment && ctx.partials.comment(comment, {
-        headingLevel: options.headingLevel,
-      }),
+      comment &&
+        ctx.partials.comment(comment, {
+          headingLevel: options.headingLevel,
+        }),
     ]
       .filter((x) => (typeof x === "string" ? x : Boolean(x)))
       .join("\n");
@@ -111,7 +113,8 @@ export default (ctx) => ({
           return index === 0 ? paramName : `, ${paramName}`;
         }
       })
-      .join('');
+      .join("");
+
     return `${prefix}\`${model.name}(${paramsString})\``;
   },
 

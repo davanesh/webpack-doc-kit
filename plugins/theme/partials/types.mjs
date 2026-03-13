@@ -49,7 +49,7 @@ const resolve = (type) => {
     default:
       return type.name ?? "unknown";
   }
-}
+};
 
 export const someType = (model) => `{${resolve(model)}}`;
 

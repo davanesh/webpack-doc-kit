@@ -1,16 +1,18 @@
-import { Application } from 'typedoc';
+import { Application } from "typedoc";
+import webpack from "./webpack/package.json" with { type: "json" };
+import { major } from "semver";
 
 const app = await Application.bootstrapWithPlugins({
-  entryPoints: ['./webpack/types.d.ts'],
-  out: 'generated-api',
+  entryPoints: ["./webpack/types.d.ts"],
+  out: `pages/v${major(webpack.version)}.x`,
 
   // Plugins
   plugin: [
-    'typedoc-plugin-markdown',
-    './plugins/processor.mjs',
-    './plugins/theme/index.mjs',
+    "typedoc-plugin-markdown",
+    "./plugins/processor.mjs",
+    "./plugins/theme/index.mjs",
   ],
-  theme: 'doc-kit',
+  theme: "doc-kit",
 
   // Formatting
   hideGroupHeadings: true,
@@ -18,10 +20,10 @@ const app = await Application.bootstrapWithPlugins({
   hidePageHeader: true,
   disableSources: true,
 
-  router: 'module',
-  entryFileName: 'index',
+  router: "module",
+  entryFileName: "index",
 
-  tsconfig: 'tsconfig.json',
+  tsconfig: "tsconfig.json",
 });
 
 const project = await app.convert();

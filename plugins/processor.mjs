@@ -1,5 +1,6 @@
-import { Converter, ReflectionKind, Renderer } from 'typedoc';
-import { writeFileSync } from 'node:fs';
+import { Converter, ReflectionKind, Renderer } from "typedoc";
+import { writeFileSync } from "node:fs";
+import { join } from "node:path";
 /**
  * @param {import('typedoc-plugin-markdown').MarkdownApplication} app
  */
@@ -8,7 +9,7 @@ export function load(app) {
   app.converter.on(Converter.EVENT_RESOLVE_BEGIN, (context) => {
     context.project
       .getReflectionsByKind(ReflectionKind.Namespace)
-      .filter((ref) => ref.name === 'export=')
+      .filter((ref) => ref.name === "export=")
       .forEach((namespace) =>
         context.project.mergeReflections(namespace, namespace.parent),
       );
@@ -21,13 +22,13 @@ export function load(app) {
         .filter((ref) => app.renderer.router.hasUrl(ref))
         .map((reference) => [
           reference.name,
-          app.renderer.router
-            .getFullUrl(reference)
-            .replace('.md', '.html')
-            .replace('webpack/namespaces/', ''),
+          app.renderer.router.getFullUrl(reference).replace(".md", ".html"),
         ]),
     );
 
-    writeFileSync('generated-type-map.json', JSON.stringify(typeMap, null, 2));
+    writeFileSync(
+      join(app.options.getValue("out"), "type-map.json"),
+      JSON.stringify(typeMap, null, 2),
+    );
   });
 }

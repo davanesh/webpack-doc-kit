@@ -4,9 +4,12 @@
     "./webpack/declarations/lib/**/*",
     "./webpack/types.d.ts"
   ],
+  "exclude": ["node_modules"],
   "compilerOptions": {
     "allowJs": true,
     "esModuleInterop": true,
+    "noEmit": true,
+    "skipLibCheck": true,
     "paths": {
       "webpack": ["./node_modules/webpack"]
     }
