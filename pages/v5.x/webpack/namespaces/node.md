@@ -4,7 +4,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new NodeEnvironmentPlugin(options)`
 
 * `options` {NodeEnvironmentPluginOptions}
 * Returns: {NodeEnvironmentPlugin}
@@ -28,7 +28,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new NodeSourcePlugin()`
 
 * Returns: {NodeSourcePlugin}
 
@@ -47,7 +47,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new NodeTargetPlugin([type])`
 
 * `type` {ExternalsType}
 * Returns: {NodeTargetPlugin}
@@ -71,7 +71,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new NodeTemplatePlugin([options])`
 
 * `options` {NodeTemplatePluginOptions}
 * Returns: {NodeTemplatePlugin}
@@ -91,7 +91,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new ReadFileCompileAsyncWasmPlugin([__namedParameters])`
 
 * `__namedParameters` {ReadFileCompileAsyncWasmPluginOptions}
 * Returns: {ReadFileCompileAsyncWasmPlugin}
@@ -111,7 +111,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new ReadFileCompileWasmPlugin([options])`
 
 * `options` {ReadFileCompileWasmPluginOptions}
 * Returns: {ReadFileCompileWasmPlugin}

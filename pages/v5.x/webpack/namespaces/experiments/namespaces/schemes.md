@@ -4,7 +4,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new HttpUriPlugin(options)`
 
 * `options` {HttpUriOptions}
 * Returns: {HttpUriPlugin}
@@ -28,7 +28,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new VirtualUrlPlugin(modules[, schemeOrOptions])`
 
 * `modules` {VirtualModules}
 * `schemeOrOptions` {string|Omit}

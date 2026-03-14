@@ -4,7 +4,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new WebWorkerTemplatePlugin()`
 
 * Returns: {WebWorkerTemplatePlugin}
 

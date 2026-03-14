@@ -8,7 +8,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new CssLoadingRuntimeModule(runtimeRequirements)`
 
 * `runtimeRequirements` {ReadonlySet}
 * Returns: {CssLoadingRuntimeModule}
@@ -396,7 +396,7 @@ In webpack 6, call getSourceBasicTypes() directly on the module instance instead
 
 ### Constructors
 
-#### Constructor
+#### `new FetchCompileAsyncWasmPlugin()`
 
 * Returns: {FetchCompileAsyncWasmPlugin}
 
@@ -415,7 +415,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new FetchCompileWasmPlugin([options])`
 
 * `options` {FetchCompileWasmPluginOptions}
 * Returns: {FetchCompileWasmPlugin}
@@ -443,7 +443,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new JsonpChunkLoadingRuntimeModule(runtimeRequirements)`
 
 * `runtimeRequirements` {ReadonlySet}
 * Returns: {JsonpChunkLoadingRuntimeModule}
@@ -831,7 +831,7 @@ In webpack 6, call getSourceBasicTypes() directly on the module instance instead
 
 ### Constructors
 
-#### Constructor
+#### `new JsonpTemplatePlugin()`
 
 * Returns: {JsonpTemplatePlugin}
 

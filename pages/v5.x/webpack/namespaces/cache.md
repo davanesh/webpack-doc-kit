@@ -4,7 +4,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new MemoryCachePlugin()`
 
 * Returns: {MemoryCachePlugin}
 

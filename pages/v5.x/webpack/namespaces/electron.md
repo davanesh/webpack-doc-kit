@@ -4,7 +4,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new ElectronTargetPlugin([context])`
 
 * `context` {"main"|"preload"|"renderer"}
 * Returns: {ElectronTargetPlugin}

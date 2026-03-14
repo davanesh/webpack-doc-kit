@@ -37,7 +37,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new AsyncDependenciesBlock(groupOptions[, loc][, request])`
 
 * `groupOptions` {string|GroupOptionsAsyncDependenciesBlock}
 * `loc` {SyntheticDependencyLocation|RealDependencyLocation}
@@ -108,7 +108,7 @@ Removes all dependencies and blocks
 
 ### Constructors
 
-#### Constructor
+#### `new AutomaticPrefetchPlugin()`
 
 * Returns: {AutomaticPrefetchPlugin}
 
@@ -127,7 +127,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new BannerPlugin(options)`
 
 * `options` {BannerPluginArgument}
 * Returns: {BannerPlugin}
@@ -152,7 +152,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new Cache()`
 
 * Returns: {CacheClass}
 
@@ -219,7 +219,7 @@ After this method has succeeded the cache can only be restored when build depend
 
 ### Constructors
 
-#### Constructor
+#### `new Chunk([name][, backCompat])`
 
 * `name` {string}
 * `backCompat` {boolean}
@@ -442,7 +442,7 @@ After this method has succeeded the cache can only be restored when build depend
 
 ### Constructors
 
-#### Constructor
+#### `new ChunkGraph(moduleGraph[, hashFunction])`
 
 * `moduleGraph` {ModuleGraph}
 * `hashFunction` {HashFunction}
@@ -971,7 +971,7 @@ After this method has succeeded the cache can only be restored when build depend
 
 ### Constructors
 
-#### Constructor
+#### `new ChunkGroup()`
 
 * Returns: {ChunkGroup}
 
@@ -1177,7 +1177,7 @@ Performs an unshift of a specific chunk
 
 ### Constructors
 
-#### Constructor
+#### `new CleanPlugin([options])`
 
 * `options` {CleanOptions}
 * Returns: {CleanPlugin}
@@ -1206,7 +1206,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new CodeGenerationResults()`
 
 * Returns: {CodeGenerationResults}
 
@@ -1267,7 +1267,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new Compilation(compiler, params)`
 
 * `compiler` {Compiler}
 * `params` {CompilationParams}
@@ -1725,7 +1725,7 @@ Fetches a module from a compilation by its identifier
 
 ### Constructors
 
-#### Constructor
+#### `new Compiler(context[, options])`
 
 * `context` {string}
 * `options` {WebpackOptionsNormalized}
@@ -1880,7 +1880,7 @@ Schema validation function with optional pre-compiled check
 
 ### Constructors
 
-#### Constructor
+#### `new ConcatenationScope(modulesMap, currentModule, usedNames)`
 
 * `modulesMap` {ModuleInfo[]|Map}
 * `currentModule` {ConcatenatedModuleInfo}
@@ -1950,7 +1950,7 @@ Schema validation function with optional pre-compiled check
 
 ### Constructors
 
-#### Constructor
+#### `new ContextExclusionPlugin(negativeMatcher)`
 
 * `negativeMatcher` {RegExp}
 * Returns: {ContextExclusionPlugin}
@@ -1974,7 +1974,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new ContextReplacementPlugin(resourceRegExp[, newContentResource][, newContentRecursive][, newContentRegExp])`
 
 * `resourceRegExp` {RegExp}
 * `newContentResource` {string|boolean|RegExp|object}
@@ -2006,7 +2006,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new DefinePlugin(definitions)`
 
 * `definitions` {Definitions}
 * Returns: {DefinePlugin}
@@ -2043,7 +2043,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new DelegatedPlugin(options)`
 
 * `options` {Options}
 * Returns: {DelegatedPlugin}
@@ -2072,7 +2072,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new Dependency()`
 
 * Returns: {Dependency}
 
@@ -2199,7 +2199,7 @@ Update the hash
 
 ### Constructors
 
-#### Constructor
+#### `new DllPlugin(options)`
 
 * `options` {DllPluginOptions}
 * Returns: {DllPlugin}
@@ -2223,7 +2223,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new DllReferencePlugin(options)`
 
 * `options` {DllReferencePluginOptions}
 * Returns: {DllReferencePlugin}
@@ -2247,7 +2247,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new DotenvPlugin([options])`
 
 * `options` {DotenvPluginOptions}
 * Returns: {DotenvPlugin}
@@ -2269,7 +2269,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new DynamicEntryPlugin(context, entry)`
 
 * `context` {string}
 * `entry` {object}
@@ -2295,7 +2295,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new EntryOptionPlugin()`
 
 * Returns: {EntryOptionPlugin}
 
@@ -2326,7 +2326,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new EntryPlugin(context, entry[, options])`
 
 * `context` {string}
 * `entry` {string}
@@ -2366,7 +2366,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new Entrypoint()`
 
 * Returns: {Entrypoint}
 
@@ -2609,7 +2609,7 @@ Performs an unshift of a specific chunk
 
 ### Constructors
 
-#### Constructor
+#### `new EnvironmentPlugin(keys)`
 
 * `keys` {string|string[]|Record[]}
 * Returns: {EnvironmentPlugin}
@@ -2634,7 +2634,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new EvalDevToolModulePlugin([options])`
 
 * `options` {EvalDevToolModulePluginOptions}
 * Returns: {EvalDevToolModulePlugin}
@@ -2660,7 +2660,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new EvalSourceMapDevToolPlugin([inputOptions])`
 
 * `inputOptions` {string|SourceMapDevToolPluginOptions}
 * Returns: {EvalSourceMapDevToolPlugin}
@@ -2691,7 +2691,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new ExternalModule(request, type, userRequest[, dependencyMeta])`
 
 * `request` {ExternalModuleRequest}
 * `type` {ExternalsType}
@@ -3061,7 +3061,7 @@ In webpack 6, call getSourceBasicTypes() directly on the module instance instead
 
 ### Constructors
 
-#### Constructor
+#### `new ExternalsPlugin(type, externals)`
 
 * `type` {"asset"|"module"|"css-import"|"css-url"|"global"|"import"|"commonjs"|"jsonp"|"promise"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|object}
 * `externals` {Externals}
@@ -3087,7 +3087,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new Generator()`
 
 * Returns: {Generator}
 
@@ -3133,7 +3133,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new HotModuleReplacementPlugin()`
 
 * Returns: {HotModuleReplacementPlugin}
 
@@ -3161,7 +3161,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new HotUpdateChunk()`
 
 * Returns: {HotUpdateChunk}
 
@@ -3382,7 +3382,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new IgnorePlugin(options)`
 
 * `options` {IgnorePluginOptions}
 * Returns: {IgnorePlugin}
@@ -3419,7 +3419,7 @@ Note that if "contextRegExp" is given, both the "resourceRegExp" and "contextReg
 
 ### Constructors
 
-#### Constructor
+#### `new InitFragment(content, stage, position[, key][, endContent])`
 
 ###### GenerateContext
 
@@ -3484,7 +3484,7 @@ Note that if "contextRegExp" is given, both the "resourceRegExp" and "contextReg
 
 ### Constructors
 
-#### Constructor
+#### `new JavascriptModulesPlugin([options])`
 
 * `options` {object}
 * Returns: {JavascriptModulesPlugin}
@@ -3559,7 +3559,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new LibManifestPlugin(options)`
 
 * `options` {LibManifestPluginOptions}
 * Returns: {LibManifestPlugin}
@@ -3583,7 +3583,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new LibraryTemplatePlugin(name, target, umdNamedDefine, auxiliaryComment, exportProperty)`
 
 * `name` {LibraryName}
 * `target` {string}
@@ -3611,7 +3611,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new LoaderOptionsPlugin([options])`
 
 * `options` {LoaderOptionsPluginOptions|MatchObject}
 * Returns: {LoaderOptionsPlugin}
@@ -3635,7 +3635,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new LoaderTargetPlugin(target)`
 
 * `target` {string}
 * Returns: {LoaderTargetPlugin}
@@ -3659,7 +3659,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new ManifestPlugin([options])`
 
 * `options` {ManifestPluginOptions}
 * Returns: {ManifestPlugin}
@@ -3693,7 +3693,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new Module(type[, context][, layer])`
 
 * `type` {string}
 * `context` {string}
@@ -4048,7 +4048,7 @@ In webpack 6, call getSourceBasicTypes() directly on the module instance instead
 
 ### Constructors
 
-#### Constructor
+#### `new ModuleFactory()`
 
 * Returns: {ModuleFactory}
 
@@ -4066,7 +4066,7 @@ In webpack 6, call getSourceBasicTypes() directly on the module instance instead
 
 ### Constructors
 
-#### Constructor
+#### `new ModuleGraph()`
 
 * Returns: {ModuleGraph}
 
@@ -4437,7 +4437,7 @@ In webpack 6, call getSourceBasicTypes() directly on the module instance instead
 
 ### Constructors
 
-#### Constructor
+#### `new ModuleGraphConnection(originModule, dependency, module[, explanation][, weak][, condition])`
 
 * `originModule` {Module}
 * `dependency` {Dependency}
@@ -4505,7 +4505,7 @@ In webpack 6, call getSourceBasicTypes() directly on the module instance instead
 
 ### Constructors
 
-#### Constructor
+#### `new MultiCompiler(compilers, options)`
 
 * `compilers` {Compiler[]|Record}
 * `options` {MultiCompilerOptions}
@@ -4579,7 +4579,7 @@ This method should have been private
 
 ### Constructors
 
-#### Constructor
+#### `new MultiStats()`
 
 * Returns: {MultiStats}
 
@@ -4614,7 +4614,7 @@ This method should have been private
 
 ### Constructors
 
-#### Constructor
+#### `new NoEmitOnErrorsPlugin()`
 
 * Returns: {NoEmitOnErrorsPlugin}
 
@@ -4637,7 +4637,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new NormalModule(__namedParameters)`
 
 * `__namedParameters` {NormalModuleCreateData}
 * Returns: {NormalModule}
@@ -5066,7 +5066,7 @@ In webpack 6, call getSourceBasicTypes() directly on the module instance instead
 
 ### Constructors
 
-#### Constructor
+#### `new NormalModuleReplacementPlugin(resourceRegExp, newResource)`
 
 * `resourceRegExp` {RegExp}
 * `newResource` {string|object}
@@ -5098,7 +5098,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new Parser()`
 
 * Returns: {ParserClass}
 
@@ -5116,7 +5116,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new PlatformPlugin(platform)`
 
 * `platform` {Partial}
 * Returns: {PlatformPlugin}
@@ -5140,7 +5140,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new PrefetchPlugin(context[, request])`
 
 * `context` {string}
 * `request` {string}
@@ -5166,7 +5166,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new ProgressPlugin([options])`
 
 * `options` {ProgressPluginArgument}
 * Returns: {ProgressPlugin}
@@ -5204,7 +5204,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new ProvidePlugin(definitions)`
 
 * `definitions` {Record}
 * Returns: {ProvidePlugin}
@@ -5228,7 +5228,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new Resolver()`
 
 * Returns: {Resolver}
 
@@ -5323,7 +5323,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new RuntimeModule(name[, stage])`
 
 * `name` {string}
 * `stage` {number}
@@ -5707,7 +5707,7 @@ In webpack 6, call getSourceBasicTypes() directly on the module instance instead
 
 ### Constructors
 
-#### Constructor
+#### `new SourceMapDevToolPlugin([options])`
 
 * `options` {SourceMapDevToolPluginOptions}
 * Returns: {SourceMapDevToolPlugin}
@@ -5736,7 +5736,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new Stats(compilation)`
 
 * `compilation` {Compilation}
 * Returns: {Stats}
@@ -5774,7 +5774,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new Template()`
 
 * Returns: {Template}
 
@@ -5867,7 +5867,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new WatchIgnorePlugin(options)`
 
 * `options` {WatchIgnorePluginOptions}
 * Returns: {WatchIgnorePlugin}
@@ -5891,7 +5891,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new Watching()`
 
 * Returns: {Watching}
 
@@ -5952,7 +5952,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new WebpackError([message][, options])`
 
 * `message` {string}
 * `options` {object}
@@ -6048,7 +6048,7 @@ a();
 
 ### Constructors
 
-#### Constructor
+#### `new WebpackOptionsApply()`
 
 * Returns: {WebpackOptionsApply}
 
@@ -6067,7 +6067,7 @@ a();
 
 ### Constructors
 
-#### Constructor
+#### `new WebpackOptionsDefaulter()`
 
 * Returns: {WebpackOptionsDefaulter}
 
@@ -6088,7 +6088,7 @@ a();
 
 ### Constructors
 
-#### Constructor
+#### `new WebpackOptionsValidationError(errors, schema[, configuration])`
 
 * `errors` {SchemaUtilErrorObject[]} array of error objects
 * `schema` {Schema} schema

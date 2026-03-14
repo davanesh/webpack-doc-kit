@@ -4,7 +4,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new TopLevelSymbol(name)`
 
 * `name` {string}
 * Returns: {TopLevelSymbol}

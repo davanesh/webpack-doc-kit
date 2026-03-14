@@ -4,7 +4,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new SyncModuleIdsPlugin(options)`
 
 * `options` {SyncModuleIdsPluginOptions}
 * Returns: {SyncModuleIdsPlugin}

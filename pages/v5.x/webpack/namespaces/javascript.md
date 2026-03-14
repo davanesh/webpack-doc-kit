@@ -4,7 +4,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new EnableChunkLoadingPlugin(type)`
 
 * `type` {string}
 * Returns: {EnableChunkLoadingPlugin}
@@ -44,7 +44,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new JavascriptParser([sourceType][, options])`
 
 * `sourceType` {"module"|"auto"|"script"}
 * `options` {object}

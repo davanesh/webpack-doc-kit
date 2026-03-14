@@ -4,7 +4,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new ProfilingPlugin([options])`
 
 * `options` {ProfilingPluginOptions}
 * Returns: {ProfilingPlugin}

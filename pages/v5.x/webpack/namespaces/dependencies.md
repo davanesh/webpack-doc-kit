@@ -8,7 +8,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new ConstDependency(expression, range[, runtimeRequirements])`
 
 * `expression` {string}
 * `range` {number|number|number}
@@ -146,7 +146,7 @@ Update the hash
 
 ### Constructors
 
-#### Constructor
+#### `new HarmonyImportDependency(request, sourceOrder[, phase][, attributes])`
 
 * `request` {string}
 * `sourceOrder` {number}
@@ -317,7 +317,7 @@ Update the hash
 
 ### Constructors
 
-#### Constructor
+#### `new ModuleDependency(request[, sourceOrder])`
 
 * `request` {string}
 * `sourceOrder` {number}
@@ -459,7 +459,7 @@ Update the hash
 
 ### Constructors
 
-#### Constructor
+#### `new NullDependency()`
 
 * Returns: {NullDependency}
 

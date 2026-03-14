@@ -4,7 +4,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new ChunkModuleIdRangePlugin(options)`
 
 * `options` {ChunkModuleIdRangePluginOptions}
 * Returns: {ChunkModuleIdRangePlugin}
@@ -28,7 +28,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new DeterministicChunkIdsPlugin([options])`
 
 * `options` {DeterministicChunkIdsPluginOptions}
 * Returns: {DeterministicChunkIdsPlugin}
@@ -52,7 +52,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new DeterministicModuleIdsPlugin([options])`
 
 * `options` {DeterministicModuleIdsPluginOptions}
 * Returns: {DeterministicModuleIdsPlugin}
@@ -76,7 +76,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new HashedModuleIdsPlugin([options])`
 
 * `options` {HashedModuleIdsPluginOptions}
 * Returns: {HashedModuleIdsPlugin}
@@ -100,7 +100,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new NamedChunkIdsPlugin([options])`
 
 * `options` {NamedChunkIdsPluginOptions}
 * Returns: {NamedChunkIdsPlugin}
@@ -124,7 +124,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new NamedModuleIdsPlugin([options])`
 
 * `options` {NamedModuleIdsPluginOptions}
 * Returns: {NamedModuleIdsPlugin}
@@ -148,7 +148,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new NaturalModuleIdsPlugin()`
 
 * Returns: {NaturalModuleIdsPlugin}
 
@@ -167,7 +167,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new OccurrenceChunkIdsPlugin([options])`
 
 * `options` {OccurrenceChunkIdsPluginOptions}
 * Returns: {OccurrenceChunkIdsPlugin}
@@ -191,7 +191,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new OccurrenceModuleIdsPlugin([options])`
 
 * `options` {OccurrenceModuleIdsPluginOptions}
 * Returns: {OccurrenceModuleIdsPlugin}

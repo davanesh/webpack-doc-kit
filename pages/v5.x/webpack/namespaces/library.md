@@ -10,7 +10,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new AbstractLibraryPlugin(__namedParameters)`
 
 ###### T
 
@@ -100,7 +100,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new EnableLibraryPlugin(type[, options])`
 
 * `type` {string}
 * `options` {EnableLibraryPluginOptions}

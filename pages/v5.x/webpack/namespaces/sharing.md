@@ -4,7 +4,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new ConsumeSharedPlugin(options)`
 
 * `options` {ConsumeSharedPluginOptions}
 * Returns: {ConsumeSharedPlugin}
@@ -28,7 +28,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new ProvideSharedPlugin(options)`
 
 * `options` {ProvideSharedPluginOptions}
 * Returns: {ProvideSharedPlugin}
@@ -52,7 +52,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new SharePlugin(options)`
 
 * `options` {SharePluginOptions}
 * Returns: {SharePlugin}

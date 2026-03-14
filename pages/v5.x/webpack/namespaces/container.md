@@ -4,7 +4,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new ContainerPlugin(options)`
 
 * `options` {ContainerPluginOptions}
 * Returns: {ContainerPlugin}
@@ -28,7 +28,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new ContainerReferencePlugin(options)`
 
 * `options` {ContainerReferencePluginOptions}
 * Returns: {ContainerReferencePlugin}
@@ -52,7 +52,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new ModuleFederationPlugin(options)`
 
 * `options` {ModuleFederationPluginOptions}
 * Returns: {ModuleFederationPlugin}

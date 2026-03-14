@@ -4,7 +4,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new CssModulesPlugin()`
 
 * Returns: {CssModulesPlugin}
 

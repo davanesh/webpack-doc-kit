@@ -8,7 +8,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new CachedSource(source[, cachedData])`
 
 * `source` {Source|object}
 * `cachedData` {CachedData}
@@ -73,7 +73,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new CompatSource(sourceLike)`
 
 * `sourceLike` {SourceLike}
 * Returns: {CompatSource}
@@ -122,7 +122,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new ConcatSource(args)`
 
 * `args` {ConcatSourceChild[]}
 * Returns: {ConcatSource}
@@ -188,7 +188,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new OriginalSource(value, name)`
 
 * `value` {string|Buffer}
 * `name` {string}
@@ -245,7 +245,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new PrefixSource(prefix, source)`
 
 * `prefix` {string}
 * `source` {string|Buffer|Source}
@@ -306,7 +306,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new RawSource(value[, convertToString])`
 
 * `value` {string|Buffer}
 * `convertToString` {boolean}
@@ -363,7 +363,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new ReplaceSource(source[, name])`
 
 * `source` {Source}
 * `name` {string}
@@ -447,7 +447,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new SizeOnlySource(size)`
 
 * `size` {number}
 * Returns: {SizeOnlySource}
@@ -499,7 +499,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new Source()`
 
 * Returns: {Source}
 
@@ -542,7 +542,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new SourceMapSource(value, name[, sourceMap][, originalSource][, innerSourceMap][, removeOriginalSource])`
 
 * `value` {string|Buffer}
 * `name` {string}

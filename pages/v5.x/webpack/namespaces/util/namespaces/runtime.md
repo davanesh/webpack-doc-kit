@@ -14,7 +14,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new RuntimeSpecMap([clone])`
 
 ###### T
 
@@ -79,7 +79,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new RuntimeSpecSet([iterable])`
 
 * `iterable` {Iterable}
 * Returns: {RuntimeSpecSet}

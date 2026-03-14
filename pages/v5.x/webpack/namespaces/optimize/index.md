@@ -8,7 +8,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new AggressiveMergingPlugin([options])`
 
 * `options` {AggressiveMergingPluginOptions}
 * Returns: {AggressiveMergingPlugin}
@@ -32,7 +32,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new AggressiveSplittingPlugin([options])`
 
 * `options` {AggressiveSplittingPluginOptions}
 * Returns: {AggressiveSplittingPlugin}
@@ -61,7 +61,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new LimitChunkCountPlugin([options])`
 
 * `options` {LimitChunkCountPluginOptions}
 * Returns: {LimitChunkCountPlugin}
@@ -83,7 +83,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new MergeDuplicateChunksPlugin([options])`
 
 * `options` {MergeDuplicateChunksPluginOptions}
 * Returns: {MergeDuplicateChunksPlugin}
@@ -105,7 +105,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new MinChunkSizePlugin(options)`
 
 * `options` {MinChunkSizePluginOptions}
 * Returns: {MinChunkSizePlugin}
@@ -129,7 +129,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new ModuleConcatenationPlugin()`
 
 * Returns: {ModuleConcatenationPlugin}
 
@@ -148,7 +148,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new RealContentHashPlugin(__namedParameters)`
 
 * `__namedParameters` {RealContentHashPluginOptions}
 * Returns: {RealContentHashPlugin}
@@ -173,7 +173,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new RuntimeChunkPlugin([options])`
 
 * `options` {object}
 * Returns: {RuntimeChunkPlugin}
@@ -197,7 +197,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new SideEffectsFlagPlugin([analyseSource])`
 
 * `analyseSource` {boolean}
 * Returns: {SideEffectsFlagPlugin}
@@ -224,7 +224,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new SplitChunksPlugin([options])`
 
 * `options` {OptimizationSplitChunksOptions}
 * Returns: {SplitChunksPlugin}

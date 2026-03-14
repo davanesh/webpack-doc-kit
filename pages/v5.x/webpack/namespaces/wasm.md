@@ -4,7 +4,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new AsyncWebAssemblyModulesPlugin(options)`
 
 * `options` {AsyncWebAssemblyModulesPluginOptions}
 * Returns: {AsyncWebAssemblyModulesPlugin}
@@ -40,7 +40,7 @@ Apply the plugin
 
 ### Constructors
 
-#### Constructor
+#### `new EnableWasmLoadingPlugin(type)`
 
 * `type` {string}
 * Returns: {EnableWasmLoadingPlugin}

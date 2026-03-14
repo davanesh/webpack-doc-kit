@@ -8,7 +8,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new ModuleChunkLoadingRuntimeModule(runtimeRequirements)`
 
 * `runtimeRequirements` {ReadonlySet}
 * Returns: {ModuleChunkLoadingRuntimeModule}

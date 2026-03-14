@@ -7,13 +7,23 @@ const KIND_PREFIX = {
   [ReflectionKind.Enum]: "Enum",
   [ReflectionKind.TypeAlias]: "Type",
   [ReflectionKind.Namespace]: "Namespace",
-  [ReflectionKind.Constructor]: "Constructor",
   [ReflectionKind.Accessor]: "Accessor",
 };
 
 const STATIC_PREFIX = {
   [ReflectionKind.Method]: "Static method",
 };
+
+const formatParams = (params = []) =>
+  params
+    .map((param, index) => {
+      if (param.flags?.isOptional) {
+        return index === 0 ? `[${param.name}]` : `[, ${param.name}]`;
+      }
+
+      return index === 0 ? param.name : `, ${param.name}`;
+    })
+    .join("");
 
 export const getMemberPrefix = (model) => {
   const prefix = model.flags?.isStatic
@@ -56,20 +66,50 @@ export default (ctx) => ({
           headingLevel: options.headingLevel,
           showTags: false,
         }),
+      ctx.helpers.renderExamples(comment, options.headingLevel),
     ]
       .filter((x) => typeof x === "string" || Boolean(x))
       .join("\n");
   },
 
   memberTitle(model) {
-    const params = model.signatures?.[0]?.parameters ?? [];
-    if (model.kind === ReflectionKind.Constructor) {
-      const className = model.parent?.name ?? model.name;
-      return ctx.helpers.signatureTitle(`new ${className}`, params);
-    }
     const prefix = getMemberPrefix(model);
-    if (!params.length) return `${prefix}\`${model.name}\``;
-    return `${prefix}${ctx.helpers.signatureTitle(model.name, params)}`;
+    const params = model.signatures?.[0]?.parameters;
+
+    if (!params) {
+      return `${prefix}\`${model.name}\``;
+    }
+
+    const paramsString = params
+      .map((param, index) => {
+        const paramName = param.name;
+        if (param.flags?.isOptional) {
+          // For optional params, wrap comma + name in brackets (except for first param)
+          return index === 0 ? `[${paramName}]` : `[, ${paramName}]`;
+        } else {
+          // For required params, add comma separator (except for first param)
+          return index === 0 ? paramName : `, ${paramName}`;
+        }
+      })
+      .join("");
+
+    return `${prefix}\`${model.name}(${paramsString})\``;
+  },
+
+  constructor(model, options) {
+    const md = [];
+    model.signatures?.forEach((signature) => {
+      const paramsString = formatParams(signature.parameters ?? []);
+
+      const heading = "#".repeat(options.headingLevel);
+      md.push(`${heading} \`new ${model.parent.name}(${paramsString})\``);
+      md.push(
+        ctx.partials.signature(signature, {
+          headingLevel: options.headingLevel + 1,
+        }),
+      );
+    });
+    return md.join("\n\n");
   },
 
   parametersList: ctx.helpers.typedList,

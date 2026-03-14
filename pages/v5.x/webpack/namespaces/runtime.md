@@ -8,7 +8,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new GetChunkFilenameRuntimeModule(contentType, name, global, getFilenameForChunk, allChunks)`
 
 * `contentType` {string}
 * `name` {string}
@@ -403,7 +403,7 @@ In webpack 6, call getSourceBasicTypes() directly on the module instance instead
 
 ### Constructors
 
-#### Constructor
+#### `new LoadScriptRuntimeModule([withCreateScriptUrl][, withFetchPriority])`
 
 * `withCreateScriptUrl` {boolean}
 * `withFetchPriority` {boolean}

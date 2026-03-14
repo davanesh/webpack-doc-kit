@@ -17,7 +17,7 @@
 
 ### Constructors
 
-#### Constructor
+#### `new LazySet([iterable])`
 
 ###### T
 
