@@ -30,15 +30,27 @@ export function load(app) {
   });
 
   app.renderer.on(Renderer.EVENT_END, (context) => {
-    const typeMap = Object.fromEntries(
-      context.project
-        .getReflectionsByKind(ReflectionKind.All)
-        .filter((ref) => app.renderer.router.hasUrl(ref))
-        .map((reference) => [
-          reference.name,
-          app.renderer.router.getFullUrl(reference).replace(".md", ".html"),
-        ]),
-    );
+    const typeMap = {};
+
+    context.project
+      .getReflectionsByKind(ReflectionKind.All)
+      .filter((ref) => app.renderer.router.hasUrl(ref))
+      .forEach((ref) => {
+        const url = app.renderer.router
+          .getFullUrl(ref)
+          .replace(".md", ".html");
+
+        // Simple name — only set if not already taken
+        if (!typeMap[ref.name]) {
+          typeMap[ref.name] = url;
+        }
+
+        // Qualified name — always set (ClassName.methodName)
+        if (ref.parent && ref.parent.name && ref.parent.name !== ref.name) {
+          const qualifiedKey = `${ref.parent.name}.${ref.name}`;
+          typeMap[qualifiedKey] = url;
+        }
+      });
 
     writeFileSync(
       join(app.options.getValue("out"), "type-map.json"),
