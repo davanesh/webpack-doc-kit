@@ -1175,6 +1175,7 @@
   "contentHashWithLength": "globals.html#pathdata#contenthashwithlength",
   "noChunkHash": "globals.html#pathdata#nochunkhash",
   "url": "globals.html#pathdata#url",
+  "local": "globals.html#pathdata#local",
   "prepareId": "globals.html#pathdata#prepareid",
   "CodeGenerationResults": "globals.html#codegenerationresults-2",
   "map": "webpack/namespaces/sources.html#compatsource#map-1",
