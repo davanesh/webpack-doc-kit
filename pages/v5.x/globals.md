@@ -3426,7 +3426,7 @@ Adds the provided dependency to the dependencies block.
 
 #### `addError(error)`
 
-* `error` {WebpackError}
+* `error` {Error}
 * Returns: {void}
 
 Adds the provided error to the module.
@@ -3440,7 +3440,7 @@ Adds presentational dependency.
 
 #### `addWarning(warning)`
 
-* `warning` {WebpackError}
+* `warning` {Error}
 * Returns: {void}
 
 Adds the provided warning to the module.
@@ -3511,7 +3511,7 @@ Returns the reason this module cannot be concatenated, when one exists.
 
 #### `getErrors()`
 
-* Returns: {Iterable}
+* Returns: {Error[]}
 
 Returns list of errors if any.
 
@@ -3577,7 +3577,7 @@ This data will be passed to restoreFromUnsafeCache later.
 
 #### `getWarnings()`
 
-* Returns: {Iterable}
+* Returns: {Error[]}
 
 Returns list of warnings if any.
 
@@ -4691,7 +4691,7 @@ Adds the provided dependency to the dependencies block.
 
 #### `addError(error)`
 
-* `error` {WebpackError}
+* `error` {Error}
 * Returns: {void}
 
 Adds the provided error to the module.
@@ -4705,7 +4705,7 @@ Adds presentational dependency.
 
 #### `addWarning(warning)`
 
-* `warning` {WebpackError}
+* `warning` {Error}
 * Returns: {void}
 
 Adds the provided warning to the module.
@@ -4776,7 +4776,7 @@ Returns the reason this module cannot be concatenated, when one exists.
 
 #### `getErrors()`
 
-* Returns: {Iterable}
+* Returns: {Error[]}
 
 Returns list of errors if any.
 
@@ -4842,7 +4842,7 @@ This data will be passed to restoreFromUnsafeCache later.
 
 #### `getWarnings()`
 
-* Returns: {Iterable}
+* Returns: {Error[]}
 
 Returns list of warnings if any.
 
@@ -5808,7 +5808,7 @@ Applies the plugin by registering its hooks on the compiler.
 * `dependencies` {Dependency[]}
 * `depth` {number} Returns the depth.
 Updates the depth using the provided value.
-* `error` {WebpackError}
+* `error` {Error}
 * `errors` {any}
 * `exportsArgument` {string} Gets exports argument.
 * `extractSourceMap` {boolean}
@@ -5898,7 +5898,7 @@ Adds the provided dependency to the dependencies block.
 
 #### `addError(error)`
 
-* `error` {WebpackError}
+* `error` {Error}
 * Returns: {void}
 
 Adds the provided error to the module.
@@ -5912,7 +5912,7 @@ Adds presentational dependency.
 
 #### `addWarning(warning)`
 
-* `warning` {WebpackError}
+* `warning` {Error}
 * Returns: {void}
 
 Adds the provided warning to the module.
@@ -6012,7 +6012,7 @@ Returns the reason this module cannot be concatenated, when one exists.
 
 #### `getErrors()`
 
-* Returns: {Iterable}
+* Returns: {Error[]}
 
 Returns list of errors if any.
 
@@ -6082,7 +6082,7 @@ This data will be passed to restoreFromUnsafeCache later.
 
 #### `getWarnings()`
 
-* Returns: {Iterable}
+* Returns: {Error[]}
 
 Returns list of warnings if any.
 
@@ -6177,7 +6177,7 @@ Gets the library identifier.
 
 #### `markModuleAsErrored(error)`
 
-* `error` {WebpackError}
+* `error` {Error}
 * Returns: {void}
 
 #### `nameForCondition()`
@@ -6693,7 +6693,7 @@ Adds the provided dependency to the dependencies block.
 
 #### `addError(error)`
 
-* `error` {WebpackError}
+* `error` {Error}
 * Returns: {void}
 
 Adds the provided error to the module.
@@ -6707,7 +6707,7 @@ Adds presentational dependency.
 
 #### `addWarning(warning)`
 
-* `warning` {WebpackError}
+* `warning` {Error}
 * Returns: {void}
 
 Adds the provided warning to the module.
@@ -6793,7 +6793,7 @@ Returns the reason this module cannot be concatenated, when one exists.
 
 #### `getErrors()`
 
-* Returns: {Iterable}
+* Returns: {Error[]}
 
 Returns list of errors if any.
 
@@ -6865,7 +6865,7 @@ This data will be passed to restoreFromUnsafeCache later.
 
 #### `getWarnings()`
 
-* Returns: {Iterable}
+* Returns: {Error[]}
 
 Returns list of warnings if any.
 
