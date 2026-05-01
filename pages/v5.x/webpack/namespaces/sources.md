@@ -20,6 +20,10 @@
 
 * Returns: {Buffer}
 
+#### `buffers()`
+
+* Returns: {Buffer[]}
+
 #### `getCachedData()`
 
 * Returns: {CachedData}
@@ -84,6 +88,10 @@
 
 * Returns: {Buffer}
 
+#### `buffers()`
+
+* Returns: {Buffer[]}
+
 #### `map([options])`
 
 * `options` {MapOptions}
@@ -143,6 +151,10 @@
 
 * Returns: {Buffer}
 
+#### `buffers()`
+
+* Returns: {Buffer[]}
+
 #### `getChildren()`
 
 * Returns: {Source[]}
@@ -200,6 +212,10 @@
 
 * Returns: {Buffer}
 
+#### `buffers()`
+
+* Returns: {Buffer[]}
+
 #### `getName()`
 
 * Returns: {string}
@@ -256,6 +272,10 @@
 #### `buffer()`
 
 * Returns: {Buffer}
+
+#### `buffers()`
+
+* Returns: {Buffer[]}
 
 #### `getPrefix()`
 
@@ -318,6 +338,10 @@
 
 * Returns: {Buffer}
 
+#### `buffers()`
+
+* Returns: {Buffer[]}
+
 #### `isBuffer()`
 
 * Returns: {boolean}
@@ -378,6 +402,10 @@
 #### `buffer()`
 
 * Returns: {Buffer}
+
+#### `buffers()`
+
+* Returns: {Buffer[]}
 
 #### `getName()`
 
@@ -458,6 +486,10 @@
 
 * Returns: {Buffer}
 
+#### `buffers()`
+
+* Returns: {Buffer[]}
+
 #### `map([options])`
 
 * `options` {MapOptions}
@@ -509,6 +541,10 @@
 
 * Returns: {Buffer}
 
+#### `buffers()`
+
+* Returns: {Buffer[]}
+
 #### `map([options])`
 
 * `options` {MapOptions}
@@ -557,6 +593,10 @@
 #### `buffer()`
 
 * Returns: {Buffer}
+
+#### `buffers()`
+
+* Returns: {Buffer[]}
 
 #### `getArgsAsBuffers()`
 
