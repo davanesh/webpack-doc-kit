@@ -880,6 +880,7 @@
   "showDependencies": "globals.html#progressplugin#showdependencies",
   "showActiveModules": "globals.html#progressplugin#showactivemodules",
   "percentBy": "globals.html#progressplugin#percentby",
+  "progressBar": "globals.html#progressplugin#progressbar",
   "ProvidePlugin": "globals.html#provideplugin-1",
   "RuntimeModule": "globals.html#runtimemodule-1",
   "STAGE_NORMAL": "webpack/namespaces/esm.html#modulechunkloadingruntimemodule#stage_normal",
