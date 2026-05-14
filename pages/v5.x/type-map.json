@@ -64,7 +64,6 @@
   "createScript": "webpack/namespaces/RuntimeGlobals.html#createscript",
   "createScriptUrl": "webpack/namespaces/RuntimeGlobals.html#createscripturl",
   "cssInjectStyle": "webpack/namespaces/RuntimeGlobals.html#cssinjectstyle",
-  "cssMergeStyleSheets": "webpack/namespaces/RuntimeGlobals.html#cssmergestylesheets",
   "currentRemoteGetScope": "webpack/namespaces/RuntimeGlobals.html#currentremotegetscope",
   "deferredModuleAsyncTransitiveDependencies": "webpack/namespaces/RuntimeGlobals.html#deferredmoduleasynctransitivedependencies",
   "deferredModuleAsyncTransitiveDependenciesSymbol": "webpack/namespaces/RuntimeGlobals.html#deferredmoduleasynctransitivedependenciessymbol",
