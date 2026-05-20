@@ -969,6 +969,7 @@
   "css/auto": "globals.html#parseroptionsbymoduletypeknown#cssauto-1",
   "css/global": "globals.html#parseroptionsbymoduletypeknown#cssglobal-1",
   "css/module": "globals.html#parseroptionsbymoduletypeknown#cssmodule-1",
+  "html": "globals.html#generatoroptionsbymoduletypeknown#html",
   "javascript/auto": "globals.html#parseroptionsbymoduletypeknown#javascriptauto-1",
   "javascript/dynamic": "globals.html#parseroptionsbymoduletypeknown#javascriptdynamic-1",
   "javascript/esm": "globals.html#parseroptionsbymoduletypeknown#javascriptesm-1",
