@@ -1613,6 +1613,7 @@
   "buffer": "webpack/namespaces/sources.html#compatsource#buffer-1",
   "buffers": "webpack/namespaces/sources.html#compatsource#buffers-1",
   "sourceAndMap": "webpack/namespaces/sources.html#compatsource#sourceandmap-1",
+  "clearCache": "webpack/namespaces/sources.html#compatsource#clearcache-1",
   "RawSource": "webpack/namespaces/sources.html#rawsource#constructorrawsource",
   "isBuffer": "webpack/namespaces/sources.html#rawsource#isbuffer",
   "streamChunks": "webpack/namespaces/sources.html#cachedsource#streamchunks",
