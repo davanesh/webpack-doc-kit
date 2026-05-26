@@ -4,56 +4,34 @@
 
 ### Constructors
 
-#### `new TopLevelSymbol(name)`
+#### `new TopLevelSymbol(name[, pure])`
 
 * `name` {string}
+* `pure` {boolean|object}
 * Returns: {TopLevelSymbol}
 
 Creates an instance of TopLevelSymbol.
 
 ### Properties
 
+* `conditional` {boolean}
 * `name` {string}
+* `pureFn` {object}
 
-***
+### Methods
 
-## `addUsage`
+#### `isPure(compilation, module)`
 
-> **addUsage**: {object}
+* `compilation` {Compilation}
+* `module` {Module}
+* Returns: {boolean}
 
-* `state` {ParserState}
-* `symbol` {null|TopLevelSymbol}
-* `usage` {Usage}
+#### `setPure(pure)`
+
+* `pure` {PureCondition}
 * Returns: {void}
 
-***
-
-## `addVariableUsage`
-
-> **addVariableUsage**: {object}
-
-* `parser` {JavascriptParser}
-* `name` {string}
-* `usage` {Usage}
-* Returns: {void}
-
-***
-
-## `bailout`
-
-> **bailout**: {object}
-
-* `parserState` {ParserState}
-* Returns: {void}
-
-***
-
-## `enable`
-
-> **enable**: {object}
-
-* `parserState` {ParserState}
-* Returns: {void}
+Sets the pure condition
 
 ***
 
@@ -62,78 +40,17 @@ Creates an instance of TopLevelSymbol.
 > **getDependencyUsedByExportsCondition**: {object}
 
 * `dependency` {Dependency}
-* `usedByExports` {undefined|boolean|Set}
 * `moduleGraph` {ModuleGraph}
 * Returns: {null|false|object}
 
 ***
 
-## `getTopLevelSymbol`
+## `getInnerGraphUtils`
 
-> **getTopLevelSymbol**: {object}
+> **getInnerGraphUtils**: {object}
 
-* `state` {ParserState}
-* Returns: {void|TopLevelSymbol}
-
-***
-
-## `inferDependencyUsage`
-
-> **inferDependencyUsage**: {object}
-
-* `state` {ParserState}
-* Returns: {void}
-
-***
-
-## `isDependencyUsedByExports`
-
-> **isDependencyUsedByExports**: {object}
-
-* `dependency` {Dependency}
-* `usedByExports` {undefined|boolean|Set}
-* `moduleGraph` {ModuleGraph}
-* `runtime` {RuntimeSpec}
-* Returns: {boolean}
-
-***
-
-## `isEnabled`
-
-> **isEnabled**: {object}
-
-* `parserState` {ParserState}
-* Returns: {boolean}
-
-***
-
-## `onUsage`
-
-> **onUsage**: {object}
-
-* `state` {ParserState}
-* `onUsageCallback` {object}
-* Returns: {void}
-
-***
-
-## `setTopLevelSymbol`
-
-> **setTopLevelSymbol**: {object}
-
-* `state` {ParserState}
-* `symbol` {TopLevelSymbol}
-* Returns: {void}
-
-***
-
-## `tagTopLevelSymbol`
-
-> **tagTopLevelSymbol**: {object}
-
-* `parser` {JavascriptParser}
-* `name` {string}
-* Returns: {undefined|TopLevelSymbol}
+* `compilation` {Compilation}
+* Returns: {InnerGraphUtils}
 
 ***
 
