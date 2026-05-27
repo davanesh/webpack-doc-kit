@@ -37,7 +37,6 @@ Updates the depth using the provided value.
 * `fullHash` {boolean}
 * `hasEqualsChunks` {any}
 * `hash` {string} Returns the hash of the module.
-* `hot` {boolean}
 * `id` {string|number} Returns the module id assigned by the chunk graph.
 Updates the module id using the provided value.
 * `index` {number} Returns the pre-order index.
