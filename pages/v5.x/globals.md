@@ -117,6 +117,9 @@ Updates the hash with the data contributed by this instance.
 
 ## Class: `AutomaticPrefetchPlugin`
 
+Records modules from one compilation and adds them back as prefetch
+dependencies in the next compilation.
+
 ### Constructors
 
 #### `new AutomaticPrefetchPlugin()`
@@ -136,6 +139,9 @@ them as `PrefetchDependency` requests during the next make phase.
 ***
 
 ## Class: `BannerPlugin`
+
+Prepends or appends banner text to emitted assets that match the configured
+file filters.
 
 ### Constructors
 
@@ -165,6 +171,9 @@ matching compilation assets at the configured process-assets stage.
 ***
 
 ## Class: `Cache`
+
+Abstract cache interface backed by tapable hooks for reading, writing, idle
+transitions, and shutdown across webpack cache implementations.
 
 ### Constructors
 
@@ -245,6 +254,9 @@ cache can be restored in a future compilation.
 ***
 
 ## Class: `Chunk`
+
+A Chunk is a unit of encapsulation for Modules.
+Chunks are "rendered" into bundles that get emitted when the build completes.
 
 ### Extended by
 
@@ -1284,6 +1296,9 @@ Sets chunk graph for module.
 
 ## Class: `ChunkGroup`
 
+Represents a connected group of chunks along with the parent/child
+relationships, async blocks, and traversal metadata webpack tracks for it.
+
 ### Extended by
 
 - {Entrypoint}
@@ -1585,6 +1600,9 @@ Returns the attached hooks.
 ***
 
 ## Class: `CodeGenerationResults`
+
+Stores code generation results keyed by module and runtime so later stages
+can retrieve emitted sources, metadata, and derived hashes.
 
 ### Constructors
 
@@ -2402,6 +2420,9 @@ Returns a compiler watcher.
 
 ## Class: `ConcatenationScope`
 
+Tracks the symbols and cross-module references needed while rendering a
+concatenated module.
+
 ### Constructors
 
 #### `new ConcatenationScope(modulesMap, currentModule, usedNames)`
@@ -2971,6 +2992,11 @@ Creates a dependency.
 ***
 
 ## Class: `Entrypoint`
+
+Entrypoint serves as an encapsulation primitive for chunks that are
+a part of a single ChunkGroup. They represent all bundles that need to be loaded for a
+single instance of a page. Multi-page application architectures will typically yield multiple Entrypoint objects
+inside of the compilation, whereas a Single Page App may only contain one with many lazy-loaded chunks.
 
 ### Extends
 
@@ -3589,6 +3615,12 @@ Gets number of errors.
 
 Gets number of warnings.
 
+#### `getReferencedSourceTypes()`
+
+* Returns: {ReadonlySet}
+
+Freshly recomputed source types when they depend on incoming connections, for chunk-graph cache invalidation; undefined otherwise. #20800
+
 #### `getRootBlock()`
 
 * Returns: {DependenciesBlock}
@@ -3908,6 +3940,10 @@ Returns the estimated size for the requested source type.
 
 Returns the source types available for this module.
 
+#### `getTypesDependOnIncomingConnections()`
+
+* Returns: {boolean}
+
 #### `updateHash(hash, __namedParameters)`
 
 * `hash` {Hash}
@@ -3952,6 +3988,9 @@ Returns the attached hooks.
 ***
 
 ## Class: `HotUpdateChunk`
+
+A Chunk is a unit of encapsulation for Modules.
+Chunks are "rendered" into bundles that get emitted when the build completes.
 
 ### Extends
 
@@ -4320,6 +4359,8 @@ Note that if "contextRegExp" is given, both the "resourceRegExp" and "contextReg
 ***
 
 ## Class: `InitFragment`
+
+Represents InitFragment.
 
 ### Type Parameters
 
@@ -4852,6 +4893,12 @@ Gets number of errors.
 * Returns: {number}
 
 Gets number of warnings.
+
+#### `getReferencedSourceTypes()`
+
+* Returns: {ReadonlySet}
+
+Freshly recomputed source types when they depend on incoming connections, for chunk-graph cache invalidation; undefined otherwise. #20800
 
 #### `getRootBlock()`
 
@@ -6089,6 +6136,12 @@ Gets number of errors.
 
 Gets number of warnings.
 
+#### `getReferencedSourceTypes()`
+
+* Returns: {ReadonlySet}
+
+Freshly recomputed source types when they depend on incoming connections, for chunk-graph cache invalidation; undefined otherwise. #20800
+
 #### `getResource()`
 
 * Returns: {string}
@@ -6410,6 +6463,9 @@ Parses the provided source and updates the parser state.
 ***
 
 ## Class: `PlatformPlugin`
+
+Should be used only for "target === false" or
+when you want to overwrite platform target properties
 
 ### Constructors
 
@@ -6939,6 +6995,12 @@ Gets number of errors.
 * Returns: {number}
 
 Gets number of warnings.
+
+#### `getReferencedSourceTypes()`
+
+* Returns: {ReadonlySet}
+
+Freshly recomputed source types when they depend on incoming connections, for chunk-graph cache invalidation; undefined otherwise. #20800
 
 #### `getRootBlock()`
 

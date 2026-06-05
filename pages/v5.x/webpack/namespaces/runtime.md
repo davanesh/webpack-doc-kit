@@ -256,6 +256,12 @@ Gets number of errors.
 
 Gets number of warnings.
 
+#### `getReferencedSourceTypes()`
+
+* Returns: {ReadonlySet}
+
+Freshly recomputed source types when they depend on incoming connections, for chunk-graph cache invalidation; undefined otherwise. #20800
+
 #### `getRootBlock()`
 
 * Returns: {DependenciesBlock}
@@ -745,6 +751,12 @@ Gets number of errors.
 * Returns: {number}
 
 Gets number of warnings.
+
+#### `getReferencedSourceTypes()`
+
+* Returns: {ReadonlySet}
+
+Freshly recomputed source types when they depend on incoming connections, for chunk-graph cache invalidation; undefined otherwise. #20800
 
 #### `getRootBlock()`
 

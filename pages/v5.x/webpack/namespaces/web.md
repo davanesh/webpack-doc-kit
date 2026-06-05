@@ -248,6 +248,12 @@ Gets number of errors.
 
 Gets number of warnings.
 
+#### `getReferencedSourceTypes()`
+
+* Returns: {ReadonlySet}
+
+Freshly recomputed source types when they depend on incoming connections, for chunk-graph cache invalidation; undefined otherwise. #20800
+
 #### `getRootBlock()`
 
 * Returns: {DependenciesBlock}
@@ -496,6 +502,9 @@ Gets source basic types.
 
 ## Class: `FetchCompileAsyncWasmPlugin`
 
+Enables asynchronous WebAssembly loading through `fetch` for environments
+that can instantiate fetched binaries at runtime.
+
 ### Constructors
 
 #### `new FetchCompileAsyncWasmPlugin()`
@@ -515,6 +524,9 @@ to chunks containing async WebAssembly modules.
 ***
 
 ## Class: `FetchCompileWasmPlugin`
+
+Enables synchronous WebAssembly chunk loading that fetches `.wasm` files and
+compiles them in browser-like environments.
 
 ### Constructors
 
@@ -788,6 +800,12 @@ Gets number of errors.
 * Returns: {number}
 
 Gets number of warnings.
+
+#### `getReferencedSourceTypes()`
+
+* Returns: {ReadonlySet}
+
+Freshly recomputed source types when they depend on incoming connections, for chunk-graph cache invalidation; undefined otherwise. #20800
 
 #### `getRootBlock()`
 

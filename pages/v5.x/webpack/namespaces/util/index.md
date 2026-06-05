@@ -9,6 +9,10 @@
 
 ## Class: `LazySet`
 
+Like Set but with an addAll method to eventually add items from another iterable.
+Access methods make sure that all delayed operations are executed.
+Iteration methods deopts to normal Set performance until clear is called again (because of the chance of modifications during iteration).
+
 ### Type Parameters
 
 #### T

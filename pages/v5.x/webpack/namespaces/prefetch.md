@@ -2,6 +2,9 @@
 
 ## Class: `ChunkPrefetchPreloadPlugin`
 
+Adds runtime support for chunk prefetch and preload relationships discovered
+in the chunk graph.
+
 ### Constructors
 
 #### `new ChunkPrefetchPreloadPlugin()`

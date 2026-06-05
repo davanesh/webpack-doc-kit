@@ -2,6 +2,8 @@
 
 ## Class: `AbstractLibraryPlugin`
 
+Represents AbstractLibraryPlugin.
+
 ### Type Parameters
 
 #### T

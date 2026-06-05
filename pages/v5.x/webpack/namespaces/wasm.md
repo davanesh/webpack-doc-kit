@@ -44,6 +44,9 @@ Returns the attached hooks.
 
 ## Class: `EnableWasmLoadingPlugin`
 
+Validates and enables named wasm loading backends by applying the plugin
+implementations that provide their runtime support.
+
 ### Constructors
 
 #### `new EnableWasmLoadingPlugin(type)`

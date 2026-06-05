@@ -2,6 +2,8 @@
 
 ## Class: `RuntimeSpecMap`
 
+Represents RuntimeSpecMap.
+
 ### Type Parameters
 
 #### T
