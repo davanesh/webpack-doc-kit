@@ -2666,7 +2666,6 @@ Applies the plugin by registering its hooks on the compiler.
 * `module` {any}
 * `optional` {boolean}
 * `type` {string} Returns a display name for the type of dependency.
-* `weak` {boolean}
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `NO_EXPORTS_REFERENCED` {string[][]}
 * `TRANSITIVE` {symbol}

@@ -28,7 +28,6 @@ Creates an instance of ConstDependency.
 * `range` {number|number|number}
 * `runtimeRequirements` {Set}
 * `type` {string} Returns a display name for the type of dependency.
-* `weak` {boolean}
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `NO_EXPORTS_REFERENCED` {string[][]}
 * `Template` {ConstDependencyTemplate}
@@ -584,7 +583,6 @@ Returns true if the dependency is a low priority dependency.
 * `module` {any}
 * `optional` {boolean}
 * `type` {string} Returns a display name for the type of dependency.
-* `weak` {boolean}
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `NO_EXPORTS_REFERENCED` {string[][]}
 * `Template` {NullDependencyTemplate}
