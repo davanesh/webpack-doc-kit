@@ -1523,6 +1523,7 @@
   "setVariable": "webpack/namespaces/javascript.html#javascriptparser#setvariable",
   "evaluatedVariable": "webpack/namespaces/javascript.html#javascriptparser#evaluatedvariable",
   "parseCommentOptions": "webpack/namespaces/javascript.html#javascriptparser#parsecommentoptions",
+  "getMemberExpressionRoot": "webpack/namespaces/javascript.html#javascriptparser#getmemberexpressionroot",
   "extractMemberExpressionChain": "webpack/namespaces/javascript.html#javascriptparser#extractmemberexpressionchain",
   "getFreeInfoFromVariable": "webpack/namespaces/javascript.html#javascriptparser#getfreeinfofromvariable",
   "getNameInfoFromVariable": "webpack/namespaces/javascript.html#javascriptparser#getnameinfofromvariable",

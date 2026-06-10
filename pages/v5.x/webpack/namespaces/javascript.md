@@ -375,6 +375,16 @@ Gets free info from variable.
 
 Gets member expression info.
 
+#### `getMemberExpressionRoot(expression)`
+
+* `expression` {ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|Super}
+* Returns: {ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|Super}
+
+Finds the root object of a member expression chain without allocating the
+member arrays. The traversal/break logic must stay in sync with
+`extractMemberExpressionChain`; it lets `getMemberExpressionInfo` reject
+unrecognized roots (~77% of calls) before paying for the arrays.
+
 #### `getNameForExpression(expression)`
 
 * `expression` {Expression}
