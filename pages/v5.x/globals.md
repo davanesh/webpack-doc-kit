@@ -8261,6 +8261,7 @@ Specify options for each parser.
 * `prepareId` {object}
 * `query` {string}
 * `runtime` {RuntimeSpec}
+* `uniqueName` {string}
 * `url` {string}
 
 ***
