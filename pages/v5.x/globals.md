@@ -8589,6 +8589,48 @@ Plugin instance.
 
 ***
 
+## Type: `AssetModuleBuildInfo`
+
+> **AssetModuleBuildInfo** = {KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownAssetModuleBuildInfo}
+
+***
+
+## Type: `BuildInfo`
+
+> **BuildInfo** = {KnownBuildInfo|Record}
+
+***
+
+## Type: `BuildMeta`
+
+> **BuildMeta** = {KnownBuildMeta|Record}
+
+***
+
+## Type: `ConcatenatedModuleBuildInfo`
+
+> **ConcatenatedModuleBuildInfo** = {KnownBuildInfo|Record|KnownConcatenatedModuleBuildInfo}
+
+***
+
+## Type: `ContextModuleBuildInfo`
+
+> **ContextModuleBuildInfo** = {KnownBuildInfo|Record|KnownContextModuleBuildInfo}
+
+***
+
+## Type: `CssModuleBuildInfo`
+
+> **CssModuleBuildInfo** = {KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownCssModuleBuildInfo}
+
+***
+
+## Type: `CssModuleBuildMeta`
+
+> **CssModuleBuildMeta** = {KnownBuildMeta|Record|KnownCssModuleBuildMeta}
+
+***
+
 ## Type: `Entry`
 
 > **Entry** = {string|object|EntryObject|string[]}
@@ -8678,9 +8720,39 @@ Plugin instance.
 
 ***
 
+## Type: `ExternalModuleBuildInfo`
+
+> **ExternalModuleBuildInfo** = {KnownBuildInfo|Record|KnownExternalModuleBuildInfo}
+
+***
+
 ## Type: `Externals`
 
 > **Externals** = {string|RegExp|ExternalItemObjectKnown|ExternalItemObjectUnknown|object|object|ExternalItem[]}
+
+***
+
+## Type: `HtmlModuleBuildInfo`
+
+> **HtmlModuleBuildInfo** = {KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownHtmlModuleBuildInfo}
+
+***
+
+## Type: `JavascriptModuleBuildInfo`
+
+> **JavascriptModuleBuildInfo** = {KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownJavascriptModuleBuildInfo}
+
+***
+
+## Type: `JavascriptModuleBuildMeta`
+
+> **JavascriptModuleBuildMeta** = {KnownBuildMeta|Record|KnownJavascriptModuleBuildMeta}
+
+***
+
+## Type: `JsonModuleBuildInfo`
+
+> **JsonModuleBuildInfo** = {KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownJsonModuleBuildInfo}
 
 ***
 
@@ -8720,6 +8792,12 @@ Plugin instance.
 ## Type: `MultiConfiguration`
 
 > **MultiConfiguration** = {ReadonlyArray|MultiCompilerOptions}
+
+***
+
+## Type: `NormalModuleBuildInfo`
+
+> **NormalModuleBuildInfo** = {KnownBuildInfo|Record|KnownNormalModuleBuildInfo}
 
 ***
 
@@ -8942,6 +9020,12 @@ Plugin instance.
 
 ***
 
+## Type: `SyncWasmModuleBuildMeta`
+
+> **SyncWasmModuleBuildMeta** = {KnownBuildMeta|Record|KnownSyncWasmModuleBuildMeta}
+
+***
+
 ## Type: `TemplatePath`
 
 > **TemplatePath** = {string|TemplatePathFn}
@@ -9046,6 +9130,12 @@ Re-exports [AssetInfo](#assetinfo-1)
 
 ***
 
+## `AssetModuleBuildInfo`
+
+Re-exports [AssetModuleBuildInfo](#assetmodulebuildinfo)
+
+***
+
 ## `AsyncDependenciesBlock`
 
 Re-exports [AsyncDependenciesBlock](#asyncdependenciesblock)
@@ -9061,6 +9151,18 @@ Re-exports [AutomaticPrefetchPlugin](#automaticprefetchplugin)
 ## `BannerPlugin`
 
 Re-exports [BannerPlugin](#bannerplugin)
+
+***
+
+## `BuildInfo`
+
+Re-exports [BuildInfo](#buildinfo-4)
+
+***
+
+## `BuildMeta`
+
+Re-exports [BuildMeta](#buildmeta-4)
 
 ***
 
@@ -9124,6 +9226,12 @@ Re-exports [Compiler](#compiler-1)
 
 ***
 
+## `ConcatenatedModuleBuildInfo`
+
+Re-exports [ConcatenatedModuleBuildInfo](#concatenatedmodulebuildinfo)
+
+***
+
 ## `ConcatenationScope`
 
 Re-exports [ConcatenationScope](#concatenationscope)
@@ -9142,9 +9250,27 @@ Re-exports [ContextExclusionPlugin](#contextexclusionplugin)
 
 ***
 
+## `ContextModuleBuildInfo`
+
+Re-exports [ContextModuleBuildInfo](#contextmodulebuildinfo)
+
+***
+
 ## `ContextReplacementPlugin`
 
 Re-exports [ContextReplacementPlugin](#contextreplacementplugin)
+
+***
+
+## `CssModuleBuildInfo`
+
+Re-exports [CssModuleBuildInfo](#cssmodulebuildinfo)
+
+***
+
+## `CssModuleBuildMeta`
+
+Re-exports [CssModuleBuildMeta](#cssmodulebuildmeta)
 
 ***
 
@@ -9322,6 +9448,12 @@ Re-exports [ExternalModule](#externalmodule)
 
 ***
 
+## `ExternalModuleBuildInfo`
+
+Re-exports [ExternalModuleBuildInfo](#externalmodulebuildinfo-1)
+
+***
+
 ## `Externals`
 
 Re-exports [Externals](#externals-3)
@@ -9364,6 +9496,12 @@ Re-exports [HotUpdateChunk](#hotupdatechunk)
 
 ***
 
+## `HtmlModuleBuildInfo`
+
+Re-exports [HtmlModuleBuildInfo](#htmlmodulebuildinfo)
+
+***
+
 ## `IgnorePlugin`
 
 Re-exports [IgnorePlugin](#ignoreplugin)
@@ -9382,9 +9520,27 @@ Re-exports [InputFileSystem](#inputfilesystem-3)
 
 ***
 
+## `JavascriptModuleBuildInfo`
+
+Re-exports [JavascriptModuleBuildInfo](#javascriptmodulebuildinfo)
+
+***
+
+## `JavascriptModuleBuildMeta`
+
+Re-exports [JavascriptModuleBuildMeta](#javascriptmodulebuildmeta)
+
+***
+
 ## `JavascriptModulesPlugin`
 
 Re-exports [JavascriptModulesPlugin](#javascriptmodulesplugin)
+
+***
+
+## `JsonModuleBuildInfo`
+
+Re-exports [JsonModuleBuildInfo](#jsonmodulebuildinfo)
 
 ***
 
@@ -9529,6 +9685,12 @@ Re-exports [NoEmitOnErrorsPlugin](#noemitonerrorsplugin)
 ## `NormalModule`
 
 Re-exports [NormalModule](#normalmodule)
+
+***
+
+## `NormalModuleBuildInfo`
+
+Re-exports [NormalModuleBuildInfo](#normalmodulebuildinfo-1)
 
 ***
 
@@ -9829,6 +9991,12 @@ Re-exports [StatsOptions](#statsoptions)
 ## `StatsProfile`
 
 Re-exports [StatsProfile](#statsprofile)
+
+***
+
+## `SyncWasmModuleBuildMeta`
+
+Re-exports [SyncWasmModuleBuildMeta](#syncwasmmodulebuildmeta)
 
 ***
 
