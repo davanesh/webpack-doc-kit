@@ -4,12 +4,17 @@
 
 ### Constructors
 
-#### `new ElectronTargetPlugin([context])`
+#### `new ElectronTargetPlugin([context][, type])`
 
 * `context` {"main"|"preload"|"renderer"}
+* `type` {"asset"|"module"|"asset-url"|"css-import"|"global"|"import"|"commonjs"|"jsonp"|"promise"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"}
 * Returns: {ElectronTargetPlugin}
 
 Creates an instance of ElectronTargetPlugin.
+
+### Properties
+
+* `type` {ExternalsType}
 
 ### Methods
 
