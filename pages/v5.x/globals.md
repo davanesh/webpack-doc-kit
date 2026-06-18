@@ -82,7 +82,7 @@ Clear dependencies and blocks.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContext}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -100,7 +100,7 @@ Removes dependency.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContext}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -2667,6 +2667,8 @@ Applies the plugin by registering its hooks on the compiler.
 * `optional` {boolean}
 * `type` {string} Returns a display name for the type of dependency.
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
+* `LAZY_UNTIL_FALLBACK` {"*"}
+* `LAZY_UNTIL_REQUEST` {"@"}
 * `NO_EXPORTS_REFERENCED` {string[][]}
 * `TRANSITIVE` {symbol}
 
@@ -2693,7 +2695,7 @@ Creates an ignored module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContext}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -2724,6 +2726,18 @@ Returns errors.
 * Returns: {ExportsSpec}
 
 Returns the exported names
+
+#### `getForwardId()`
+
+* Returns: {string|true}
+
+Returns the export name this dependency requests from its target module (lazy barrel optimization).
+
+#### `getLazyUntil()`
+
+* Returns: {"*"|"@"|object|object}
+
+Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 
 #### `getModuleEvaluationSideEffectsState(moduleGraph)`
 
@@ -2768,12 +2782,25 @@ Returns an identifier to merge equal requests.
 
 Returns warnings.
 
+#### `isLazy()`
+
+* Returns: {boolean}
+
+Whether the lazy barrel currently defers creating this dependency's target module (lazy barrel optimization).
+
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContext}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
+
+#### `setLazy(value)`
+
+* `value` {boolean}
+* Returns: {void}
+
+Sets whether the lazy barrel defers creating this dependency's target module (lazy barrel optimization).
 
 #### `setLoc(startLine, startColumn, endLine, endColumn)`
 
@@ -3564,7 +3591,7 @@ Generates code and runtime requirements for this module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContext}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -3812,7 +3839,7 @@ restore unsafe cache data
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContext}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -4402,7 +4429,7 @@ Creates an instance of InitFragment.
 
 #### `deserialize(context)`
 
-* `context` {ObjectDeserializerContext}
+* `context` {ObjectDeserializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -4423,7 +4450,7 @@ Returns the source code that will be included at the end of the module.
 
 #### `serialize(context)`
 
-* `context` {ObjectSerializerContext}
+* `context` {ObjectSerializerContextObjectMiddlewareObject_5}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -4843,7 +4870,7 @@ Generates code and runtime requirements for this module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContext}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -5083,7 +5110,7 @@ Removes dependency.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContext}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -6079,7 +6106,7 @@ Generates code and runtime requirements for this module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContext}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -6342,7 +6369,7 @@ restore unsafe cache data
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContext}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -6390,7 +6417,7 @@ Updates the hash with the data contributed by this instance.
 
 #### Static method: `deserialize(context)`
 
-* `context` {ObjectDeserializerContext}
+* `context` {ObjectDeserializerContextObjectMiddlewareObject_4}
 * Returns: {NormalModule}
 
 #### Static method: `getCompilationHooks(compilation)`
@@ -6933,7 +6960,7 @@ Generates code and runtime requirements for this module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContext}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -7185,7 +7212,7 @@ Removes dependency.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContext}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -7570,14 +7597,14 @@ not capture any frames.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContext}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContext}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -8171,32 +8198,6 @@ Options affecting the normal modules (`NormalModuleFactory`).
 
 ***
 
-## Interface: `ObjectDeserializerContext`
-
-Updates set size using the provided set.
-
-### Properties
-
-* `read` {object}
-* `setCircularReference` {object}
-
-***
-
-## Interface: `ObjectSerializerContext`
-
-Updates set size using the provided set.
-
-### Properties
-
-* `rollback` {object}
-* `setCircularReference` {object}
-* `snapshot` {object}
-* `write` {object}
-* `writeLazy` {object}
-* `writeSeparate` {object}
-
-***
-
 ## Interface: `OutputFileSystem`
 
 Returns location of targetPath relative to rootPath.
@@ -8613,6 +8614,16 @@ Plugin instance.
 
 ***
 
+## Type: `ConfigurationFactory`
+
+> **ConfigurationFactory** = {object}
+
+* `env` {Record}
+* `argv` {Record}
+* Returns: {MaybePromise}
+
+***
+
 ## Type: `ContextModuleBuildInfo`
 
 > **ContextModuleBuildInfo** = {KnownBuildInfo|Record|KnownContextModuleBuildInfo}
@@ -8628,6 +8639,12 @@ Plugin instance.
 ## Type: `CssModuleBuildMeta`
 
 > **CssModuleBuildMeta** = {KnownBuildMeta|Record|KnownCssModuleBuildMeta}
+
+***
+
+## Type: `DefineConfigInput`
+
+> **DefineConfigInput** = {Configuration|MultiConfiguration|object|object[]|Promise}
 
 ***
 
@@ -8798,6 +8815,18 @@ Plugin instance.
 ## Type: `NormalModuleBuildInfo`
 
 > **NormalModuleBuildInfo** = {KnownBuildInfo|Record|KnownNormalModuleBuildInfo}
+
+***
+
+## Type: `ObjectDeserializerContext`
+
+> **ObjectDeserializerContext** = {ObjectDeserializerContextObjectMiddlewareObject_2}
+
+***
+
+## Type: `ObjectSerializerContext`
+
+> **ObjectSerializerContext** = {ObjectSerializerContextObjectMiddlewareObject_3}
 
 ***
 
@@ -9042,6 +9071,18 @@ Plugin instance.
 
 ***
 
+## `defineConfig`
+
+> `const` **defineConfig**: {object}
+
+#### T
+
+`T` *extends* {DefineConfigInput}
+* `config` {T}
+* Returns: {T}
+
+***
+
 ## `UsageState`
 
 > `const` **UsageState**: {Readonly}
@@ -9244,6 +9285,12 @@ Re-exports [Configuration](#configuration)
 
 ***
 
+## `ConfigurationFactory`
+
+Re-exports [ConfigurationFactory](#configurationfactory)
+
+***
+
 ## `ContextExclusionPlugin`
 
 Re-exports [ContextExclusionPlugin](#contextexclusionplugin)
@@ -9271,6 +9318,12 @@ Re-exports [CssModuleBuildInfo](#cssmodulebuildinfo)
 ## `CssModuleBuildMeta`
 
 Re-exports [CssModuleBuildMeta](#cssmodulebuildmeta)
+
+***
+
+## `DefineConfigInput`
+
+Re-exports [DefineConfigInput](#defineconfiginput)
 
 ***
 

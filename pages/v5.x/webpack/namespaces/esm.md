@@ -188,7 +188,7 @@ Generates code and runtime requirements for this module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContext}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -440,7 +440,7 @@ Removes dependency.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContext}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.

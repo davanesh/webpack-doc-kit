@@ -29,6 +29,8 @@ Creates an instance of ConstDependency.
 * `runtimeRequirements` {Set}
 * `type` {string} Returns a display name for the type of dependency.
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
+* `LAZY_UNTIL_FALLBACK` {"*"}
+* `LAZY_UNTIL_REQUEST` {"@"}
 * `NO_EXPORTS_REFERENCED` {string[][]}
 * `Template` {ConstDependencyTemplate}
 * `TRANSITIVE` {symbol}
@@ -56,7 +58,7 @@ Creates an ignored module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContext}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -87,6 +89,18 @@ Returns errors.
 * Returns: {ExportsSpec}
 
 Returns the exported names
+
+#### `getForwardId()`
+
+* Returns: {string|true}
+
+Returns the export name this dependency requests from its target module (lazy barrel optimization).
+
+#### `getLazyUntil()`
+
+* Returns: {"*"|"@"|object|object}
+
+Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 
 #### `getModuleEvaluationSideEffectsState(moduleGraph)`
 
@@ -131,12 +145,25 @@ Returns an identifier to merge equal requests.
 
 Returns warnings.
 
+#### `isLazy()`
+
+* Returns: {boolean}
+
+Whether the lazy barrel currently defers creating this dependency's target module (lazy barrel optimization).
+
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContext}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
+
+#### `setLazy(value)`
+
+* `value` {boolean}
+* Returns: {void}
+
+Sets whether the lazy barrel defers creating this dependency's target module (lazy barrel optimization).
 
 #### `setLoc(startLine, startColumn, endLine, endColumn)`
 
@@ -208,6 +235,8 @@ Creates an instance of HarmonyImportDependency.
 * `ExportPresenceModes` {object}
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `getNonOptionalPart` {object}
+* `LAZY_UNTIL_FALLBACK` {"*"}
+* `LAZY_UNTIL_REQUEST` {"@"}
 * `NO_EXPORTS_REFERENCED` {string[][]}
 * `Template` {HarmonyImportDependencyTemplate}
 * `TRANSITIVE` {symbol}
@@ -235,7 +264,7 @@ Creates an ignored module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContext}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -267,6 +296,12 @@ Returns errors.
 
 Returns the exported names
 
+#### `getForwardId()`
+
+* Returns: {string|true}
+
+Returns the export name this dependency requests from its target module (lazy barrel optimization).
+
 #### `getImportStatement(update, __namedParameters)`
 
 * `update` {boolean}
@@ -281,6 +316,12 @@ Gets import statement.
 * Returns: {string}
 
 Returns name of the variable for the import.
+
+#### `getLazyUntil()`
+
+* Returns: {"*"|"@"|object|object}
+
+Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 
 #### `getLinkingErrors(moduleGraph, ids, additionalMessage)`
 
@@ -341,12 +382,25 @@ Returns an identifier to merge equal requests.
 
 Returns warnings.
 
+#### `isLazy()`
+
+* Returns: {boolean}
+
+Whether the lazy barrel currently defers creating this dependency's target module (lazy barrel optimization).
+
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContext}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
+
+#### `setLazy(value)`
+
+* `value` {boolean}
+* Returns: {void}
+
+Sets whether the lazy barrel defers creating this dependency's target module (lazy barrel optimization).
 
 #### `setLoc(startLine, startColumn, endLine, endColumn)`
 
@@ -416,6 +470,8 @@ Creates an instance of ModuleDependency.
 * `userRequest` {string}
 * `weak` {boolean}
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
+* `LAZY_UNTIL_FALLBACK` {"*"}
+* `LAZY_UNTIL_REQUEST` {"@"}
 * `NO_EXPORTS_REFERENCED` {string[][]}
 * `Template` {DependencyTemplate}
 * `TRANSITIVE` {symbol}
@@ -443,7 +499,7 @@ Creates an ignored module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContext}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -474,6 +530,18 @@ Returns errors.
 * Returns: {ExportsSpec}
 
 Returns the exported names
+
+#### `getForwardId()`
+
+* Returns: {string|true}
+
+Returns the export name this dependency requests from its target module (lazy barrel optimization).
+
+#### `getLazyUntil()`
+
+* Returns: {"*"|"@"|object|object}
+
+Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 
 #### `getModuleEvaluationSideEffectsState(moduleGraph)`
 
@@ -518,12 +586,25 @@ Returns an identifier to merge equal requests.
 
 Returns warnings.
 
+#### `isLazy()`
+
+* Returns: {boolean}
+
+Whether the lazy barrel currently defers creating this dependency's target module (lazy barrel optimization).
+
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContext}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
+
+#### `setLazy(value)`
+
+* `value` {boolean}
+* Returns: {void}
+
+Sets whether the lazy barrel defers creating this dependency's target module (lazy barrel optimization).
 
 #### `setLoc(startLine, startColumn, endLine, endColumn)`
 
@@ -584,6 +665,8 @@ Returns true if the dependency is a low priority dependency.
 * `optional` {boolean}
 * `type` {string} Returns a display name for the type of dependency.
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
+* `LAZY_UNTIL_FALLBACK` {"*"}
+* `LAZY_UNTIL_REQUEST` {"@"}
 * `NO_EXPORTS_REFERENCED` {string[][]}
 * `Template` {NullDependencyTemplate}
 * `TRANSITIVE` {symbol}
@@ -611,7 +694,7 @@ Creates an ignored module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContext}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -642,6 +725,18 @@ Returns errors.
 * Returns: {ExportsSpec}
 
 Returns the exported names
+
+#### `getForwardId()`
+
+* Returns: {string|true}
+
+Returns the export name this dependency requests from its target module (lazy barrel optimization).
+
+#### `getLazyUntil()`
+
+* Returns: {"*"|"@"|object|object}
+
+Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 
 #### `getModuleEvaluationSideEffectsState(moduleGraph)`
 
@@ -686,12 +781,25 @@ Returns an identifier to merge equal requests.
 
 Returns warnings.
 
+#### `isLazy()`
+
+* Returns: {boolean}
+
+Whether the lazy barrel currently defers creating this dependency's target module (lazy barrel optimization).
+
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContext}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
+
+#### `setLazy(value)`
+
+* `value` {boolean}
+* Returns: {void}
+
+Sets whether the lazy barrel defers creating this dependency's target module (lazy barrel optimization).
 
 #### `setLoc(startLine, startColumn, endLine, endColumn)`
 

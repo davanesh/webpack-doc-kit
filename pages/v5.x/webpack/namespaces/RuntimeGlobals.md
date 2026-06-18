@@ -501,3 +501,9 @@
 ## `wasmInstances`
 
 > **wasmInstances**: {"__webpack_require__.w"}
+
+***
+
+## `worker`
+
+> **worker**: {"__webpack_require__.wc"}
