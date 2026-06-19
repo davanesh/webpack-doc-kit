@@ -2668,6 +2668,8 @@ Applies the plugin by registering its hooks on the compiler.
 * `type` {string} Returns a display name for the type of dependency.
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `LAZY_UNTIL_FALLBACK` {"*"}
+* `LAZY_UNTIL_ID` {"id"}
+* `LAZY_UNTIL_LOCAL` {"local"}
 * `LAZY_UNTIL_REQUEST` {"@"}
 * `NO_EXPORTS_REFERENCED` {string[][]}
 * `TRANSITIVE` {symbol}
@@ -2733,9 +2735,15 @@ Returns the exported names
 
 Returns the export name this dependency requests from its target module (lazy barrel optimization).
 
+#### `getLazyName()`
+
+* Returns: {string}
+
+Returns the export name for a `LAZY_UNTIL_LOCAL`/`LAZY_UNTIL_ID` classification (lazy barrel optimization).
+
 #### `getLazyUntil()`
 
-* Returns: {"*"|"@"|object|object}
+* Returns: {"*"|"local"|"id"|"@"}
 
 Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 
@@ -2976,6 +2984,11 @@ Apply entry option.
 * Returns: {EntryOptions}
 
 Entry description to options.
+
+#### Static method: `getHooks(compiler)`
+
+* `compiler` {Compiler}
+* Returns: {EntryOptionPluginHooks}
 
 ***
 

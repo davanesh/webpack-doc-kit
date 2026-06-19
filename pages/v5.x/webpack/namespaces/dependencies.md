@@ -30,6 +30,8 @@ Creates an instance of ConstDependency.
 * `type` {string} Returns a display name for the type of dependency.
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `LAZY_UNTIL_FALLBACK` {"*"}
+* `LAZY_UNTIL_ID` {"id"}
+* `LAZY_UNTIL_LOCAL` {"local"}
 * `LAZY_UNTIL_REQUEST` {"@"}
 * `NO_EXPORTS_REFERENCED` {string[][]}
 * `Template` {ConstDependencyTemplate}
@@ -96,9 +98,15 @@ Returns the exported names
 
 Returns the export name this dependency requests from its target module (lazy barrel optimization).
 
+#### `getLazyName()`
+
+* Returns: {string}
+
+Returns the export name for a `LAZY_UNTIL_LOCAL`/`LAZY_UNTIL_ID` classification (lazy barrel optimization).
+
 #### `getLazyUntil()`
 
-* Returns: {"*"|"@"|object|object}
+* Returns: {"*"|"local"|"id"|"@"}
 
 Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 
@@ -236,6 +244,8 @@ Creates an instance of HarmonyImportDependency.
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `getNonOptionalPart` {object}
 * `LAZY_UNTIL_FALLBACK` {"*"}
+* `LAZY_UNTIL_ID` {"id"}
+* `LAZY_UNTIL_LOCAL` {"local"}
 * `LAZY_UNTIL_REQUEST` {"@"}
 * `NO_EXPORTS_REFERENCED` {string[][]}
 * `Template` {HarmonyImportDependencyTemplate}
@@ -317,9 +327,15 @@ Gets import statement.
 
 Returns name of the variable for the import.
 
+#### `getLazyName()`
+
+* Returns: {string}
+
+Returns the export name for a `LAZY_UNTIL_LOCAL`/`LAZY_UNTIL_ID` classification (lazy barrel optimization).
+
 #### `getLazyUntil()`
 
-* Returns: {"*"|"@"|object|object}
+* Returns: {"*"|"local"|"id"|"@"}
 
 Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 
@@ -471,6 +487,8 @@ Creates an instance of ModuleDependency.
 * `weak` {boolean}
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `LAZY_UNTIL_FALLBACK` {"*"}
+* `LAZY_UNTIL_ID` {"id"}
+* `LAZY_UNTIL_LOCAL` {"local"}
 * `LAZY_UNTIL_REQUEST` {"@"}
 * `NO_EXPORTS_REFERENCED` {string[][]}
 * `Template` {DependencyTemplate}
@@ -537,9 +555,15 @@ Returns the exported names
 
 Returns the export name this dependency requests from its target module (lazy barrel optimization).
 
+#### `getLazyName()`
+
+* Returns: {string}
+
+Returns the export name for a `LAZY_UNTIL_LOCAL`/`LAZY_UNTIL_ID` classification (lazy barrel optimization).
+
 #### `getLazyUntil()`
 
-* Returns: {"*"|"@"|object|object}
+* Returns: {"*"|"local"|"id"|"@"}
 
 Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 
@@ -666,6 +690,8 @@ Returns true if the dependency is a low priority dependency.
 * `type` {string} Returns a display name for the type of dependency.
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `LAZY_UNTIL_FALLBACK` {"*"}
+* `LAZY_UNTIL_ID` {"id"}
+* `LAZY_UNTIL_LOCAL` {"local"}
 * `LAZY_UNTIL_REQUEST` {"@"}
 * `NO_EXPORTS_REFERENCED` {string[][]}
 * `Template` {NullDependencyTemplate}
@@ -732,9 +758,15 @@ Returns the exported names
 
 Returns the export name this dependency requests from its target module (lazy barrel optimization).
 
+#### `getLazyName()`
+
+* Returns: {string}
+
+Returns the export name for a `LAZY_UNTIL_LOCAL`/`LAZY_UNTIL_ID` classification (lazy barrel optimization).
+
 #### `getLazyUntil()`
 
-* Returns: {"*"|"@"|object|object}
+* Returns: {"*"|"local"|"id"|"@"}
 
 Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 
