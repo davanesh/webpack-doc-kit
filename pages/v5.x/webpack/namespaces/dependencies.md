@@ -183,6 +183,17 @@ Sets whether the lazy barrel defers creating this dependency's target module (la
 
 Updates loc using the provided start line.
 
+#### `setLocWithIndex(loc, index)`
+
+* `loc` {DependencyLocation}
+* `index` {number}
+* Returns: {void}
+
+Updates loc from a source location plus an explicit index, without
+materializing the `loc` object (keeps `get loc` lazy). Replaces the
+`dep.loc = Object.create(loc); dep.loc.index = i` pattern, which both
+allocated a copy and stored the index outside the serialized fields.
+
 #### `updateHash(hash, context)`
 
 * `hash` {Hash}
@@ -197,6 +208,20 @@ Updates the hash with the data contributed by this instance.
 * Returns: {boolean}
 
 Returns true if the dependency can be concatenated (scope hoisting).
+
+#### Static method: `compareLocations(a, b)`
+
+* `a` {Dependency}
+* `b` {Dependency}
+* Returns: {-1|0|1}
+
+Compares two dependencies by source location for sorting a module's
+`dependencies`, without materializing the `loc` objects (`get loc` caches
+its result, so comparing through it would retain a location object on every
+sorted dependency). These dependencies always carry a real source position,
+so only start (line, column) and the within-statement index are compared; a
+dependency without an index sorts after one that has an index at the same
+position.
 
 #### Static method: `isLowPriorityDependency(dependency)`
 
@@ -428,6 +453,17 @@ Sets whether the lazy barrel defers creating this dependency's target module (la
 
 Updates loc using the provided start line.
 
+#### `setLocWithIndex(loc, index)`
+
+* `loc` {DependencyLocation}
+* `index` {number}
+* Returns: {void}
+
+Updates loc from a source location plus an explicit index, without
+materializing the `loc` object (keeps `get loc` lazy). Replaces the
+`dep.loc = Object.create(loc); dep.loc.index = i` pattern, which both
+allocated a copy and stored the index outside the serialized fields.
+
 #### `updateHash(hash, context)`
 
 * `hash` {Hash}
@@ -442,6 +478,20 @@ Updates the hash with the data contributed by this instance.
 * Returns: {boolean}
 
 Returns true if the dependency can be concatenated (scope hoisting).
+
+#### Static method: `compareLocations(a, b)`
+
+* `a` {Dependency}
+* `b` {Dependency}
+* Returns: {-1|0|1}
+
+Compares two dependencies by source location for sorting a module's
+`dependencies`, without materializing the `loc` objects (`get loc` caches
+its result, so comparing through it would retain a location object on every
+sorted dependency). These dependencies always carry a real source position,
+so only start (line, column) and the within-statement index are compared; a
+dependency without an index sorts after one that has an index at the same
+position.
 
 #### Static method: `isLowPriorityDependency(dependency)`
 
@@ -640,6 +690,17 @@ Sets whether the lazy barrel defers creating this dependency's target module (la
 
 Updates loc using the provided start line.
 
+#### `setLocWithIndex(loc, index)`
+
+* `loc` {DependencyLocation}
+* `index` {number}
+* Returns: {void}
+
+Updates loc from a source location plus an explicit index, without
+materializing the `loc` object (keeps `get loc` lazy). Replaces the
+`dep.loc = Object.create(loc); dep.loc.index = i` pattern, which both
+allocated a copy and stored the index outside the serialized fields.
+
 #### `updateHash(hash, context)`
 
 * `hash` {Hash}
@@ -654,6 +715,20 @@ Updates the hash with the data contributed by this instance.
 * Returns: {boolean}
 
 Returns true if the dependency can be concatenated (scope hoisting).
+
+#### Static method: `compareLocations(a, b)`
+
+* `a` {Dependency}
+* `b` {Dependency}
+* Returns: {-1|0|1}
+
+Compares two dependencies by source location for sorting a module's
+`dependencies`, without materializing the `loc` objects (`get loc` caches
+its result, so comparing through it would retain a location object on every
+sorted dependency). These dependencies always carry a real source position,
+so only start (line, column) and the within-statement index are compared; a
+dependency without an index sorts after one that has an index at the same
+position.
 
 #### Static method: `isLowPriorityDependency(dependency)`
 
@@ -843,6 +918,17 @@ Sets whether the lazy barrel defers creating this dependency's target module (la
 
 Updates loc using the provided start line.
 
+#### `setLocWithIndex(loc, index)`
+
+* `loc` {DependencyLocation}
+* `index` {number}
+* Returns: {void}
+
+Updates loc from a source location plus an explicit index, without
+materializing the `loc` object (keeps `get loc` lazy). Replaces the
+`dep.loc = Object.create(loc); dep.loc.index = i` pattern, which both
+allocated a copy and stored the index outside the serialized fields.
+
 #### `updateHash(hash, context)`
 
 * `hash` {Hash}
@@ -857,6 +943,20 @@ Updates the hash with the data contributed by this instance.
 * Returns: {boolean}
 
 Returns true if the dependency can be concatenated (scope hoisting).
+
+#### Static method: `compareLocations(a, b)`
+
+* `a` {Dependency}
+* `b` {Dependency}
+* Returns: {-1|0|1}
+
+Compares two dependencies by source location for sorting a module's
+`dependencies`, without materializing the `loc` objects (`get loc` caches
+its result, so comparing through it would retain a location object on every
+sorted dependency). These dependencies always carry a real source position,
+so only start (line, column) and the within-statement index are compared; a
+dependency without an index sorts after one that has an index at the same
+position.
 
 #### Static method: `isLowPriorityDependency(dependency)`
 
