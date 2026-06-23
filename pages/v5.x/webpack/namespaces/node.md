@@ -59,6 +59,7 @@ Creates an instance of NodeTargetPlugin.
 ### Properties
 
 * `type` {ExternalsType}
+* `builtins` {string|RegExp[]}
 
 ### Methods
 

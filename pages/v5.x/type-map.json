@@ -1586,6 +1586,7 @@
   "NodeEnvironmentPlugin": "webpack/namespaces/node.html#nodeenvironmentplugin#constructornodeenvironmentplugin",
   "NodeSourcePlugin": "webpack/namespaces/node.html#nodesourceplugin#constructornodesourceplugin",
   "NodeTargetPlugin": "webpack/namespaces/node.html#nodetargetplugin#constructornodetargetplugin",
+  "builtins": "webpack/namespaces/node.html#nodetargetplugin#builtins",
   "NodeTemplatePlugin": "webpack/namespaces/node.html#nodetemplateplugin#constructornodetemplateplugin",
   "ReadFileCompileWasmPlugin": "webpack/namespaces/node.html#readfilecompilewasmplugin#constructorreadfilecompilewasmplugin",
   "ReadFileCompileAsyncWasmPlugin": "webpack/namespaces/node.html#readfilecompileasyncwasmplugin#constructorreadfilecompileasyncwasmplugin",
