@@ -6732,19 +6732,19 @@ Applies the plugin by registering its hooks on the compiler.
 * `identifier` {string}
 * Returns: {ParsedIdentifier}
 
-#### `resolve(path, request, callback)`
+#### `resolve(parent, specifier, callback)`
 
 ##### Call Signature
 
-* `path` {string}
-* `request` {string}
+* `parent` {string|URL_url}
+* `specifier` {string|URL_url}
 * `callback` {object}
 * Returns: {void}
 
 ##### Call Signature
 
-* `path` {string}
-* `request` {string}
+* `parent` {string|URL_url}
+* `specifier` {string|URL_url}
 * `resolveContext` {ResolveContext}
 * `callback` {object}
 * Returns: {void}
@@ -6752,51 +6752,51 @@ Applies the plugin by registering its hooks on the compiler.
 ##### Call Signature
 
 * `context` {ContextTypes}
-* `path` {string}
-* `request` {string}
+* `parent` {string|URL_url}
+* `specifier` {string|URL_url}
 * `callback` {object}
 * Returns: {void}
 
 ##### Call Signature
 
 * `context` {ContextTypes}
-* `path` {string}
-* `request` {string}
+* `parent` {string|URL_url}
+* `specifier` {string|URL_url}
 * `resolveContext` {ResolveContext}
 * `callback` {object}
 * Returns: {void}
 
-#### `resolvePromise(path, request[, resolveContext])`
+#### `resolvePromise(parent, specifier[, resolveContext])`
 
 ##### Call Signature
 
-* `path` {string}
-* `request` {string}
+* `parent` {string|URL_url}
+* `specifier` {string|URL_url}
 * `resolveContext` {ResolveContext}
 * Returns: {Promise}
 
 ##### Call Signature
 
 * `context` {ContextTypes}
-* `path` {string}
-* `request` {string}
+* `parent` {string|URL_url}
+* `specifier` {string|URL_url}
 * `resolveContext` {ResolveContext}
 * Returns: {Promise}
 
-#### `resolveSync(path, request[, resolveContext])`
+#### `resolveSync(parent, specifier[, resolveContext])`
 
 ##### Call Signature
 
-* `path` {string}
-* `request` {string}
+* `parent` {string|URL_url}
+* `specifier` {string|URL_url}
 * `resolveContext` {ResolveContext}
 * Returns: {string|false}
 
 ##### Call Signature
 
 * `context` {ContextTypes}
-* `path` {string}
-* `request` {string}
+* `parent` {string|URL_url}
+* `specifier` {string|URL_url}
 * `resolveContext` {ResolveContext}
 * Returns: {string|false}
 
@@ -8292,13 +8292,18 @@ Specify options for each parser.
 * `contentHashType` {string}
 * `contentHashWithLength` {object}
 * `filename` {string}
+* `fullHash` {string} untruncated compilation hash, for re-encoding `[fullhash:<digest>]`
+* `fullHashDigest` {string} digest `fullHash` is encoded in (defaults to `hashDigest`)
 * `hash` {string}
+* `hashAsFullHash` {boolean} treat `[hash]` as `[fullhash]` rather than the module hash (CSS local idents)
+* `hashDigest` {string} digest the stored hashes are encoded in (for `[hash:<digest>]`)
 * `hashWithLength` {object}
 * `local` {string}
 * `module` {Module|ModulePathData}
 * `noChunkHash` {boolean}
 * `prepareId` {object}
 * `query` {string}
+* `realContentHash` {boolean} whether `optimization.realContentHash` recomputes content hashes (rejects an inline digest on `[contenthash]`)
 * `runtime` {RuntimeSpec}
 * `uniqueName` {string}
 * `url` {string}
