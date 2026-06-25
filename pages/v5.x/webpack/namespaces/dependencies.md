@@ -29,6 +29,7 @@ Creates an instance of ConstDependency.
 * `runtimeRequirements` {Set}
 * `type` {string} Returns a display name for the type of dependency.
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
+* `EXPORTS_OBJECT_REFERENCED_MANGLEABLE` {string[][]}
 * `LAZY_UNTIL_FALLBACK` {"*"}
 * `LAZY_UNTIL_ID` {"id"}
 * `LAZY_UNTIL_LOCAL` {"local"}
@@ -267,6 +268,7 @@ Creates an instance of HarmonyImportDependency.
 * `weak` {boolean}
 * `ExportPresenceModes` {object}
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
+* `EXPORTS_OBJECT_REFERENCED_MANGLEABLE` {string[][]}
 * `getNonOptionalPart` {object}
 * `LAZY_UNTIL_FALLBACK` {"*"}
 * `LAZY_UNTIL_ID` {"id"}
@@ -536,6 +538,7 @@ Creates an instance of ModuleDependency.
 * `userRequest` {string}
 * `weak` {boolean}
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
+* `EXPORTS_OBJECT_REFERENCED_MANGLEABLE` {string[][]}
 * `LAZY_UNTIL_FALLBACK` {"*"}
 * `LAZY_UNTIL_ID` {"id"}
 * `LAZY_UNTIL_LOCAL` {"local"}
@@ -764,6 +767,7 @@ Returns true if the dependency is a low priority dependency.
 * `optional` {boolean}
 * `type` {string} Returns a display name for the type of dependency.
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
+* `EXPORTS_OBJECT_REFERENCED_MANGLEABLE` {string[][]}
 * `LAZY_UNTIL_FALLBACK` {"*"}
 * `LAZY_UNTIL_ID` {"id"}
 * `LAZY_UNTIL_LOCAL` {"local"}

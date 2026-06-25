@@ -277,6 +277,7 @@ Creates an instance of Chunk.
 * `auxiliaryFiles` {Set}
 * `chunkReason` {string}
 * `contentHash` {Record}
+* `contentHashFull` {Record}
 * `cssFilenameTemplate` {string|object}
 * `debugId` {number}
 * `entryModule` {Module} Returns entry module.
@@ -2667,6 +2668,7 @@ Applies the plugin by registering its hooks on the compiler.
 * `optional` {boolean}
 * `type` {string} Returns a display name for the type of dependency.
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
+* `EXPORTS_OBJECT_REFERENCED_MANGLEABLE` {string[][]}
 * `LAZY_UNTIL_FALLBACK` {"*"}
 * `LAZY_UNTIL_ID` {"id"}
 * `LAZY_UNTIL_LOCAL` {"local"}
@@ -4071,6 +4073,7 @@ Chunks are "rendered" into bundles that get emitted when the build completes.
 * `auxiliaryFiles` {Set}
 * `chunkReason` {string}
 * `contentHash` {Record}
+* `contentHashFull` {Record}
 * `cssFilenameTemplate` {string|object}
 * `debugId` {number}
 * `entryModule` {Module} Returns entry module.
@@ -8289,6 +8292,7 @@ Specify options for each parser.
 * `chunk` {Chunk|ChunkPathData}
 * `chunkGraph` {ChunkGraph}
 * `contentHash` {string}
+* `contentHashFull` {string} untruncated module/asset content hash, for re-encoding `[contenthash:<digest>]` from full entropy
 * `contentHashType` {string}
 * `contentHashWithLength` {object}
 * `filename` {string}
@@ -8297,13 +8301,14 @@ Specify options for each parser.
 * `hash` {string}
 * `hashAsFullHash` {boolean} treat `[hash]` as `[fullhash]` rather than the module hash (CSS local idents)
 * `hashDigest` {string} digest the stored hashes are encoded in (for `[hash:<digest>]`)
+* `hashWithDigest` {object} builds `[fullhash:<digest>]`/`[hash:<digest>]` in the runtime chunk-filename context, where it throws because a runtime `getFullHash()` expression cannot be re-encoded
 * `hashWithLength` {object}
 * `local` {string}
 * `module` {Module|ModulePathData}
 * `noChunkHash` {boolean}
 * `prepareId` {object}
 * `query` {string}
-* `realContentHash` {boolean} whether `optimization.realContentHash` recomputes content hashes (rejects an inline digest on `[contenthash]`)
+* `realContentHash` {boolean} whether `optimization.realContentHash` recomputes content hashes (records an inline `[contenthash:<digest>]` so it re-encodes in that digest)
 * `runtime` {RuntimeSpec}
 * `uniqueName` {string}
 * `url` {string}

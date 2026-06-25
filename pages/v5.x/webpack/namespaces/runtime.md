@@ -8,13 +8,14 @@
 
 ### Constructors
 
-#### `new GetChunkFilenameRuntimeModule(contentType, name, global, getFilenameForChunk, allChunks)`
+#### `new GetChunkFilenameRuntimeModule(contentType, name, global, getFilenameForChunk, allChunks[, usesFullHashDigest])`
 
 * `contentType` {string}
 * `name` {string}
 * `global` {string}
 * `getFilenameForChunk` {object}
 * `allChunks` {boolean}
+* `usesFullHashDigest` {boolean}
 * Returns: {GetChunkFilenameRuntimeModule}
 
 ### Properties
