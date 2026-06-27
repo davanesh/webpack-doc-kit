@@ -64,6 +64,7 @@ Updates the issuer using the provided value.
 * `useSimpleSourceMap` {boolean}
 * `useSourceMap` {boolean}
 * `warnings` {any}
+* `getCompilationHooks` {object}
 * `STAGE_ATTACH` {number} Runtime modules which attach to handlers of other runtime modules
 * `STAGE_BASIC` {number} Runtime modules with simple dependencies on other runtime modules
 * `STAGE_NORMAL` {number} Runtime modules without any dependencies to other runtime modules
@@ -485,13 +486,6 @@ and properties.
 * Returns: {void}
 
 Updates the hash with the data contributed by this instance.
-
-#### Static method: `getCompilationHooks(compilation)`
-
-* `compilation` {Compilation}
-* Returns: {JsonpCompilationPluginHooks}
-
-Returns hooks.
 
 #### Static method: `getSourceBasicTypes(module)`
 

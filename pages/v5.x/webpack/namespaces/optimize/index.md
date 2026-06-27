@@ -171,6 +171,10 @@ Applies the plugin by registering its hooks on the compiler.
 
 Creates an instance of RealContentHashPlugin.
 
+### Properties
+
+* `getCompilationHooks` {object}
+
 ### Methods
 
 #### `apply(compiler)`
@@ -179,13 +183,6 @@ Creates an instance of RealContentHashPlugin.
 * Returns: {void}
 
 Applies the plugin by registering its hooks on the compiler.
-
-#### Static method: `getCompilationHooks(compilation)`
-
-* `compilation` {Compilation}
-* Returns: {CompilationHooksRealContentHashPlugin}
-
-Returns the attached hooks.
 
 ***
 

@@ -66,6 +66,7 @@ Creates an instance of ModuleFederationPlugin.
 ### Properties
 
 * `options` {ModuleFederationPluginOptions}
+* `getCompilationHooks` {object}
 
 ### Methods
 
@@ -75,13 +76,6 @@ Creates an instance of ModuleFederationPlugin.
 * Returns: {void}
 
 Applies the plugin by registering its hooks on the compiler.
-
-#### Static method: `getCompilationHooks(compilation)`
-
-* `compilation` {Compilation}
-* Returns: {CompilationHooksModuleFederationPlugin}
-
-Get the compilation hooks associated with this plugin.
 
 ***
 

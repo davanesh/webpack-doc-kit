@@ -8,6 +8,10 @@
 
 * Returns: {CssModulesPlugin}
 
+### Properties
+
+* `getCompilationHooks` {object}
+
 ### Methods
 
 #### `apply(compiler)`
@@ -58,13 +62,6 @@ Returns true, when the chunk has css.
 * Returns: {ChunkFilenameTemplate}
 
 Gets chunk filename template.
-
-#### Static method: `getCompilationHooks(compilation)`
-
-* `compilation` {Compilation}
-* Returns: {CompilationHooksCssModulesPlugin}
-
-Returns the attached hooks.
 
 #### Static method: `renderModule(module, renderContext, hooks)`
 

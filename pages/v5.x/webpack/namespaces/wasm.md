@@ -14,6 +14,7 @@ Creates an instance of AsyncWebAssemblyModulesPlugin.
 ### Properties
 
 * `options` {AsyncWebAssemblyModulesPluginOptions}
+* `getCompilationHooks` {object}
 
 ### Methods
 
@@ -32,13 +33,6 @@ Applies the plugin by registering its hooks on the compiler.
 * Returns: {Source}
 
 Renders the newly generated source from rendering.
-
-#### Static method: `getCompilationHooks(compilation)`
-
-* `compilation` {Compilation}
-* Returns: {CompilationHooksAsyncWebAssemblyModulesPlugin}
-
-Returns the attached hooks.
 
 ***
 
