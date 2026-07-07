@@ -3925,7 +3925,7 @@ Gets source basic types.
 
 #### `new ExternalsPlugin(type, externals)`
 
-* `type` {"asset"|"module"|"asset-url"|"css-import"|"global"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"|object}
+* `type` {"asset"|"module"|"asset-url"|"css-import"|"global"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"|object}
 * `externals` {Externals}
 * Returns: {ExternalsPlugin}
 
@@ -3934,7 +3934,7 @@ Creates an instance of ExternalsPlugin.
 ### Properties
 
 * `externals` {Externals}
-* `type` {"asset"|"module"|"asset-url"|"css-import"|"global"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"|object}
+* `type` {"asset"|"module"|"asset-url"|"css-import"|"global"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"|object}
 
 ### Methods
 
@@ -7962,7 +7962,7 @@ Options object as provided by the user.
 * `extends` {string|string[]} Extend configuration from another configuration (only works when using webpack-cli).
 * `externals` {string|RegExp|ExternalItemObjectKnown|ExternalItemObjectUnknown|object|object|ExternalItem[]} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 * `externalsPresets` {ExternalsPresets} Enable presets of externals for specific targets.
-* `externalsType` {"asset"|"module"|"asset-url"|"css-import"|"global"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+* `externalsType` {"asset"|"module"|"asset-url"|"css-import"|"global"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 * `ignoreWarnings` {RegExp|object|object[]} Ignore specific warnings.
 * `infrastructureLogging` {InfrastructureLogging} Options for infrastructure level logging.
 * `loader` {Loader} Custom values available in the loader context.
@@ -8567,7 +8567,7 @@ Normalized webpack options object.
 * `experiments` {ExperimentsNormalized} Enables/Disables experiments (experimental features with relax SemVer compatibility).
 * `externals` {Externals} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 * `externalsPresets` {ExternalsPresets} Enable presets of externals for specific targets.
-* `externalsType` {"asset"|"module"|"asset-url"|"css-import"|"global"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+* `externalsType` {"asset"|"module"|"asset-url"|"css-import"|"global"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 * `ignoreWarnings` {object[]} Ignore specific warnings.
 * `infrastructureLogging` {InfrastructureLogging} Options for infrastructure level logging.
 * `loader` {Loader} Custom values available in the loader context.
