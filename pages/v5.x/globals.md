@@ -6576,12 +6576,14 @@ Creates an instance of ProgressPlugin.
 ### Properties
 
 * `dependenciesCount` {number}
+* `estimatedTime` {boolean}
 * `handler` {object}
 * `modulesCount` {number}
 * `options` {ProgressPluginOptions}
 * `percentBy` {"entries"|"dependencies"|"modules"}
+* `phaseTimings` {boolean}
 * `profile` {boolean}
-* `progressBar` {false|Required}
+* `progressBar` {false|"auto"|Required}
 * `showActiveModules` {boolean}
 * `showDependencies` {boolean}
 * `showEntries` {boolean}
