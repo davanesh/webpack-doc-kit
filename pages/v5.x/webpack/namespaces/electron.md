@@ -6,8 +6,8 @@
 
 #### `new ElectronTargetPlugin([context][, type])`
 
-* `context` {"main"|"preload"|"renderer"}
-* `type` {"asset"|"module"|"asset-url"|"css-import"|"global"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"}
+* `context` {"preload"|"main"|"renderer"}
+* `type` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"global"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"}
 * Returns: {ElectronTargetPlugin}
 
 Creates an instance of ElectronTargetPlugin.
