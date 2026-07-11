@@ -3450,12 +3450,13 @@ Applies the plugin by registering its hooks on the compiler.
 
 ### Constructors
 
-#### `new ExternalModule(request, type, userRequest[, dependencyMeta])`
+#### `new ExternalModule(request, type, userRequest[, dependencyMeta][, interop])`
 
 * `request` {ExternalModuleRequest}
 * `type` {ExternalsType}
 * `userRequest` {string}
 * `dependencyMeta` {ImportDependencyMeta|CssImportDependencyMeta|AssetDependencyMeta}
+* `interop` {"default"|"esModule"}
 * Returns: {ExternalModule}
 
 Creates an instance of ExternalModule.
@@ -3485,6 +3486,7 @@ Updates the module id using the provided value.
 Updates the pre-order index using the provided value.
 * `index2` {number} Returns the post-order index.
 Updates the post-order index using the provided value.
+* `interop` {"default"|"esModule"}
 * `issuer` {Module} Returns the issuer.
 Updates the issuer using the provided value.
 * `isUsed` {any}
@@ -8759,7 +8761,7 @@ Plugin instance.
 
 ## Type: `ExternalItemValue`
 
-> **ExternalItemValue** = {string|boolean|string[]|object}
+> **ExternalItemValue** = {string|boolean|string[]|ExternalItemValueObjectKnown|ExternalItemValueObjectUnknown}
 
 ***
 

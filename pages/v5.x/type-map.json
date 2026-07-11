@@ -658,6 +658,7 @@
   "externalType": "globals.html#externalmodule#externaltype",
   "userRequest": "webpack/namespaces/dependencies.html#harmonyimportdependency#userrequest",
   "dependencyMeta": "globals.html#externalmodule#dependencymeta",
+  "interop": "globals.html#externalmodule#interop",
   "restoreFromUnsafeCache": "globals.html#normalmodule#restorefromunsafecache-1",
   "layer": "webpack/namespaces/esm.html#modulechunkloadingruntimemodule#layer",
   "needId": "webpack/namespaces/esm.html#modulechunkloadingruntimemodule#needid",
