@@ -210,6 +210,12 @@
 
 ***
 
+## `getWorkletBootstrap`
+
+> **getWorkletBootstrap**: {"__webpack_require__.wb"}
+
+***
+
 ## `global`
 
 > **global**: {"__webpack_require__.g"}

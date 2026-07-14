@@ -89,6 +89,7 @@
   "getFullHash": "webpack/namespaces/RuntimeGlobals.html#getfullhash",
   "getTrustedTypesPolicy": "webpack/namespaces/RuntimeGlobals.html#gettrustedtypespolicy",
   "getUpdateManifestFilename": "webpack/namespaces/RuntimeGlobals.html#getupdatemanifestfilename",
+  "getWorkletBootstrap": "webpack/namespaces/RuntimeGlobals.html#getworkletbootstrap",
   "global": "webpack/namespaces/runtime.html#getchunkfilenameruntimemodule#global",
   "harmonyModuleDecorator": "webpack/namespaces/RuntimeGlobals.html#harmonymoduledecorator",
   "hasCssModules": "webpack/namespaces/RuntimeGlobals.html#hascssmodules",

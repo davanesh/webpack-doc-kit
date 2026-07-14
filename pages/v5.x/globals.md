@@ -8695,6 +8695,7 @@ Plugin instance.
 ### Type Declaration
 
 * `name` {string}
+* `worklet` {boolean}
 
 ***
 
