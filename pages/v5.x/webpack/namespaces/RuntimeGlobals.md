@@ -30,6 +30,12 @@
 
 ***
 
+## `asyncModuleGenerator`
+
+> **asyncModuleGenerator**: {"__webpack_require__.aG"}
+
+***
+
 ## `baseURI`
 
 > **baseURI**: {"__webpack_require__.b"}
