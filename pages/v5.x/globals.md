@@ -13,6 +13,7 @@
 - [electron](webpack/namespaces/electron.md)
 - [esm](webpack/namespaces/esm.md)
 - [experiments](webpack/namespaces/experiments/index.md)
+- [html](webpack/namespaces/html.md)
 - [ids](webpack/namespaces/ids.md)
 - [javascript](webpack/namespaces/javascript.md)
 - [library](webpack/namespaces/library.md)

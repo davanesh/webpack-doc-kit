@@ -68,7 +68,7 @@ Creates an instance of JavascriptParser.
 * `options` {object}
 * `prevStatement` {ClassDeclaration|MaybeNamedClassDeclaration|ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|FunctionDeclaration|MaybeNamedFunctionDeclaration|ImportDeclaration|ExportNamedDeclaration|ExportDefaultDeclaration|ExportAllDeclaration|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|VariableDeclaration}
 * `scope` {ScopeInfo}
-* `semicolons` {Set}
+* `semicolons` {Map}
 * `sourceType` {"module"|"auto"|"script"}
 * `state` {JavascriptParserState}
 * `statementPath` {StatementPathItem[]}
@@ -366,6 +366,17 @@ Returns comments in the range.
 * Returns: {object}
 
 Gets free info from variable.
+
+#### `getLocation(node)`
+
+* `node` {object}
+* Returns: {DependencyLocation}
+
+Returns the location of a node or comment, computed from its offsets so
+ASTs from parsers without location support work too. Falls back to the
+node's own `loc` only when no source text is available (preparsed ASTs).
+Offsets can only be mapped while parsing — callbacks deferred past the
+`parse()` call must take the location upfront.
 
 #### `getMemberExpressionInfo(expression, allowedTypes)`
 
