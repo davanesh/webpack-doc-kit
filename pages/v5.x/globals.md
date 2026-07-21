@@ -8490,6 +8490,7 @@ Stats options object.
 * `chunkGroupAuxiliary` {boolean} Display auxiliary assets in chunk groups.
 * `chunkGroupChildren` {boolean} Display children of chunk groups.
 * `chunkGroupMaxAssets` {number} Limit of assets displayed in chunk groups.
+* `chunkGroupResourceHints` {boolean} Include the resolved `<link>` resource-hint descriptors for each entrypoint (`entrypoints[name].resourceHints`). Combines `output.resourceHints.chunks` (initial-graph modulepreload/preload/prefetch) with `output.resourceHints.assets` (URL-referenced fonts / images / …). Lets SSR frameworks inject the hints server-side without walking the chunk graph themselves; the analogue of Vite's `build.ssrManifest`.
 * `chunkGroups` {boolean} Display all chunk groups with the corresponding bundles.
 * `chunkModules` {boolean} Add built modules information to chunk information.
 * `chunkModulesSpace` {number} Space to display chunk modules (groups will be collapsed to fit this space, value is in number of modules/group).

@@ -372,6 +372,12 @@
 
 ***
 
+## `prefetchAsset`
+
+> **prefetchAsset**: {"__webpack_require__.PA"}
+
+***
+
 ## `prefetchChunk`
 
 > **prefetchChunk**: {"__webpack_require__.E"}
@@ -381,6 +387,12 @@
 ## `prefetchChunkHandlers`
 
 > **prefetchChunkHandlers**: {"__webpack_require__.F"}
+
+***
+
+## `preloadAsset`
+
+> **preloadAsset**: {"__webpack_require__.LA"}
 
 ***
 
@@ -453,6 +465,12 @@
 ## `startup`
 
 > **startup**: {"__webpack_require__.x"}
+
+***
+
+## `startupAssetHints`
+
+> **startupAssetHints**: {"__webpack_require__.SAH"}
 
 ***
 
