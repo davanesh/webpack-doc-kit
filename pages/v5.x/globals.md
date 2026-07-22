@@ -5802,6 +5802,7 @@ Creates an instance of MultiCompiler.
 * `outputPath` {string}
 * `running` {boolean}
 * `watchFileSystem` {WatchFileSystem} Sets watch file system.
+* `watching` {MultiWatching}
 
 ### Methods
 
@@ -8053,7 +8054,7 @@ Options object for persistent file-based caching.
 * `buildDependencies` {object} Dependencies the build depends on (in multiple categories, default categories: 'defaultWebpack').
 * `cacheDirectory` {string} Base directory for the cache (defaults to node_modules/.cache/webpack).
 * `cacheLocation` {string} Locations for the cache (defaults to cacheDirectory / name).
-* `compression` {false|"gzip"|"brotli"} Compression type used for the cache files.
+* `compression` {false|"gzip"|"brotli"|"zstd"} Compression type used for the cache files.
 * `hashAlgorithm` {string} Algorithm used for generation the hash (see node.js crypto package).
 * `idleTimeout` {number} Time in ms after which idle period the cache storing should happen.
 * `idleTimeoutAfterLargeChanges` {number} Time in ms after which idle period the cache storing should happen when larger changes has been detected (cumulative build time > 2 x avg cache store time).

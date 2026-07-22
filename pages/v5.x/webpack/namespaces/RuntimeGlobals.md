@@ -12,6 +12,12 @@
 
 ***
 
+## `analyzableChunkImport`
+
+> **analyzableChunkImport**: {"__webpack_require__.ei"}
+
+***
+
 ## `asyncModule`
 
 > **asyncModule**: {"__webpack_require__.a"}
@@ -51,6 +57,12 @@
 ## `chunkName`
 
 > **chunkName**: {"__webpack_require__.cn"}
+
+***
+
+## `commonJsWrap`
+
+> **commonJsWrap**: {"__webpack_require__.cjs"}
 
 ***
 
