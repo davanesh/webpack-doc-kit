@@ -29,7 +29,7 @@ Applies the plugin by registering its hooks on the compiler.
 
 * `module` {Module}
 * `renderContext` {WebAssemblyRenderContext}
-* `hooks` {CompilationHooksAsyncWebAssemblyModulesPlugin}
+* `hooks` {CompilationHooks}
 * Returns: {Source}
 
 Renders the newly generated source from rendering.

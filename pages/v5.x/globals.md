@@ -4528,7 +4528,7 @@ Applies the plugin by registering its hooks on the compiler.
 #### `renderBootstrap(renderContext, hooks)`
 
 * `renderContext` {RenderBootstrapContext}
-* `hooks` {CompilationHooksJavascriptModulesPlugin}
+* `hooks` {object}
 * Returns: {Bootstrap}
 
 Renders the generated source of the bootstrap code.
@@ -4536,7 +4536,7 @@ Renders the generated source of the bootstrap code.
 #### `renderChunk(renderContext, hooks)`
 
 * `renderContext` {RenderContextJavascriptModulesPlugin}
-* `hooks` {CompilationHooksJavascriptModulesPlugin}
+* `hooks` {object}
 * Returns: {Source}
 
 Renders the rendered source.
@@ -4544,7 +4544,7 @@ Renders the rendered source.
 #### `renderMain(renderContext, hooks, compilation)`
 
 * `renderContext` {MainRenderContext}
-* `hooks` {CompilationHooksJavascriptModulesPlugin}
+* `hooks` {object}
 * `compilation` {Compilation}
 * Returns: {Source}
 
@@ -4554,7 +4554,7 @@ Renders the newly generated source from rendering.
 
 * `module` {Module}
 * `renderContext` {ModuleRenderContext}
-* `hooks` {CompilationHooksJavascriptModulesPlugin}
+* `hooks` {object}
 * Returns: {Source}
 
 Renders the newly generated source from rendering.
@@ -4562,7 +4562,7 @@ Renders the newly generated source from rendering.
 #### `renderRequire(renderContext, hooks)`
 
 * `renderContext` {RenderBootstrapContext}
-* `hooks` {CompilationHooksJavascriptModulesPlugin}
+* `hooks` {object}
 * Returns: {string}
 
 Renders the generated source of the require function.
@@ -4571,7 +4571,7 @@ Renders the generated source of the require function.
 
 * `hash` {Hash}
 * `renderContext` {RenderBootstrapContext}
-* `hooks` {CompilationHooksJavascriptModulesPlugin}
+* `hooks` {object}
 * Returns: {void}
 
 Updates hash with bootstrap.
@@ -6450,7 +6450,7 @@ Updates the hash with the data contributed by this instance.
 #### Static method: `getCompilationHooks(compilation)`
 
 * `compilation` {Compilation}
-* Returns: {NormalModuleCompilationHooks}
+* Returns: {object}
 
 #### Static method: `getSourceBasicTypes(module)`
 

@@ -42,7 +42,7 @@ Gets ordered chunk css modules.
 #### `renderChunk(__namedParameters, hooks)`
 
 * `__namedParameters` {RenderContextCssModulesPlugin}
-* `hooks` {CompilationHooksCssModulesPlugin}
+* `hooks` {object}
 * Returns: {Source}
 
 Renders generated source.
@@ -67,7 +67,7 @@ Gets chunk filename template.
 
 * `module` {CssModule}
 * `renderContext` {ChunkRenderContextCssModulesPlugin}
-* `hooks` {CompilationHooksCssModulesPlugin}
+* `hooks` {object}
 * Returns: {Source}
 
 Renders css module source.
