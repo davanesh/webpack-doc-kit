@@ -1,5 +1,9 @@
 # css
 
+## Namespaces
+
+- [syntax](namespaces/syntax/index.md)
+
 ## Class: `CssModulesPlugin`
 
 ### Constructors

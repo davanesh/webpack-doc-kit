@@ -1,5 +1,9 @@
 # html
 
+## Namespaces
+
+- [syntax](namespaces/syntax/index.md)
+
 ## Class: `HtmlModulesPlugin`
 
 ### Constructors

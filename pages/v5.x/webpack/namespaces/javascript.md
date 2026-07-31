@@ -271,7 +271,7 @@ Enter assignment pattern.
 
 #### `enterDeclaration(declaration, onIdent)`
 
-* `declaration` {Declaration}
+* `declaration` {DeclarationEstreeIndex}
 * `onIdent` {object}
 * Returns: {void}
 
@@ -701,6 +701,18 @@ Updates asi position using the provided po.
 * Returns: {void}
 
 Updates variable using the provided name.
+
+#### `sourceMayContainIdentifier(range, identifier)`
+
+* `range` {number|number}
+* `identifier` {string}
+* Returns: {boolean}
+
+Reports whether `identifier` may occur as a word in the source text of
+`range`. A conservative pre-filter for expensive AST scans: `false` means
+it certainly does not occur, while a match inside a comment or a string
+yields `true`. Also `true` when no source text is available (preparsed
+AST), so callers must stay correct without the filter.
 
 #### `tagVariable(name, tag[, data][, flags])`
 
