@@ -108,6 +108,12 @@
 
 ***
 
+## `Raw`
+
+> **Raw**: {number}
+
+***
+
 ## `RightCurlyBracket`
 
 > **RightCurlyBracket**: {number}

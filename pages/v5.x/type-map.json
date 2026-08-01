@@ -230,6 +230,7 @@
   "QualifiedRule": "webpack/namespaces/css/namespaces/syntax/namespaces/NodeType.html#qualifiedrule",
   "Stylesheet": "webpack/namespaces/css/namespaces/syntax/namespaces/NodeType.html#stylesheet",
   "Comment": "webpack/namespaces/html/namespaces/syntax/namespaces/NodeType.html#comment",
+  "Raw": "webpack/namespaces/css/namespaces/syntax/namespaces/NodeType.html#raw",
   "TT_AT_KEYWORD": "webpack/namespaces/css/namespaces/syntax/index.html#tt_at_keyword",
   "TT_BAD_STRING_TOKEN": "webpack/namespaces/css/namespaces/syntax/index.html#tt_bad_string_token",
   "TT_BAD_URL_TOKEN": "webpack/namespaces/css/namespaces/syntax/index.html#tt_bad_url_token",
