@@ -210,6 +210,12 @@
 
 ***
 
+## `getCssServerStyles`
+
+> **getCssServerStyles**: {"__webpack_require__.cs"}
+
+***
+
 ## `getFullHash`
 
 > **getFullHash**: {"__webpack_require__.h"}

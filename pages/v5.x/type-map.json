@@ -91,6 +91,7 @@
   "getChunkScriptFilename": "webpack/namespaces/RuntimeGlobals.html#getchunkscriptfilename",
   "getChunkUpdateCssFilename": "webpack/namespaces/RuntimeGlobals.html#getchunkupdatecssfilename",
   "getChunkUpdateScriptFilename": "webpack/namespaces/RuntimeGlobals.html#getchunkupdatescriptfilename",
+  "getCssServerStyles": "webpack/namespaces/RuntimeGlobals.html#getcssserverstyles",
   "getFullHash": "webpack/namespaces/RuntimeGlobals.html#getfullhash",
   "getTrustedTypesPolicy": "webpack/namespaces/RuntimeGlobals.html#gettrustedtypespolicy",
   "getUpdateManifestFilename": "webpack/namespaces/RuntimeGlobals.html#getupdatemanifestfilename",
