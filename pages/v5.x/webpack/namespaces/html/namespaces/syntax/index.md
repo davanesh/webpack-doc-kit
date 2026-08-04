@@ -260,7 +260,7 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 
 ## `SVG_TAG_ADJUST`
 
-> **SVG\_TAG\_ADJUST**: {any}
+> **SVG\_TAG\_ADJUST**: {Record}
 
 ***
 

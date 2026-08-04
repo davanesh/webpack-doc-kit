@@ -60,12 +60,6 @@
 
 ***
 
-## `commonJsWrap`
-
-> **commonJsWrap**: {"__webpack_require__.cjs"}
-
-***
-
 ## `compatGetDefaultExport`
 
 > **compatGetDefaultExport**: {"__webpack_require__.n"}
@@ -75,6 +69,18 @@
 ## `compileWasm`
 
 > **compileWasm**: {"__webpack_require__.vs"}
+
+***
+
+## `concatenationWrap`
+
+> **concatenationWrap**: {"__webpack_require__.cw"}
+
+***
+
+## `constructRequire`
+
+> **constructRequire**: {"__webpack_require__.cr"}
 
 ***
 

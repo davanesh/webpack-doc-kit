@@ -40,8 +40,9 @@ Creates an instance of ConstDependency.
 
 ### Methods
 
-#### `canConcatenate()`
+#### `canConcatenate(concatenateCommonJsModules)`
 
+* `concatenateCommonJsModules` {boolean}
 * Returns: {boolean}
 
 Returns true if this dependency can be concatenated
@@ -203,9 +204,10 @@ allocated a copy and stored the index outside the serialized fields.
 
 Updates the hash with the data contributed by this instance.
 
-#### Static method: `canConcatenate(dependency)`
+#### Static method: `canConcatenate(dependency, concatenateCommonJsModules)`
 
 * `dependency` {Dependency}
+* `concatenateCommonJsModules` {boolean}
 * Returns: {boolean}
 
 Returns true if the dependency can be concatenated (scope hoisting).
@@ -280,8 +282,9 @@ Creates an instance of HarmonyImportDependency.
 
 ### Methods
 
-#### `canConcatenate()`
+#### `canConcatenate(concatenateCommonJsModules)`
 
+* `concatenateCommonJsModules` {boolean}
 * Returns: {boolean}
 
 Returns true if this dependency can be concatenated
@@ -474,9 +477,10 @@ allocated a copy and stored the index outside the serialized fields.
 
 Updates the hash with the data contributed by this instance.
 
-#### Static method: `canConcatenate(dependency)`
+#### Static method: `canConcatenate(dependency, concatenateCommonJsModules)`
 
 * `dependency` {Dependency}
+* `concatenateCommonJsModules` {boolean}
 * Returns: {boolean}
 
 Returns true if the dependency can be concatenated (scope hoisting).
@@ -549,8 +553,9 @@ Creates an instance of ModuleDependency.
 
 ### Methods
 
-#### `canConcatenate()`
+#### `canConcatenate(concatenateCommonJsModules)`
 
+* `concatenateCommonJsModules` {boolean}
 * Returns: {boolean}
 
 Returns true if this dependency can be concatenated
@@ -712,9 +717,10 @@ allocated a copy and stored the index outside the serialized fields.
 
 Updates the hash with the data contributed by this instance.
 
-#### Static method: `canConcatenate(dependency)`
+#### Static method: `canConcatenate(dependency, concatenateCommonJsModules)`
 
 * `dependency` {Dependency}
+* `concatenateCommonJsModules` {boolean}
 * Returns: {boolean}
 
 Returns true if the dependency can be concatenated (scope hoisting).
@@ -778,8 +784,9 @@ Returns true if the dependency is a low priority dependency.
 
 ### Methods
 
-#### `canConcatenate()`
+#### `canConcatenate(concatenateCommonJsModules)`
 
+* `concatenateCommonJsModules` {boolean}
 * Returns: {boolean}
 
 Returns true if this dependency can be concatenated
@@ -941,9 +948,10 @@ allocated a copy and stored the index outside the serialized fields.
 
 Updates the hash with the data contributed by this instance.
 
-#### Static method: `canConcatenate(dependency)`
+#### Static method: `canConcatenate(dependency, concatenateCommonJsModules)`
 
 * `dependency` {Dependency}
+* `concatenateCommonJsModules` {boolean}
 * Returns: {boolean}
 
 Returns true if the dependency can be concatenated (scope hoisting).
