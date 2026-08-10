@@ -451,6 +451,8 @@ Serializes this instance into the provided serializer context.
 * Returns: {boolean}
 
 Returns true, if the runtime module should get it's own scope.
+When false, `generate()` must emit complete statements ending with `;`
+so a following runtime IIFE is not parsed as a call (ASI).
 
 #### `size([type])`
 

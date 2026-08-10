@@ -1834,6 +1834,20 @@ Adds the provided string to the compilation.
 
 Adds the provided string to the compilation.
 
+#### `addLazyRuntimeModule(chunk, load, create[, chunkGraph])`
+
+* `chunk` {Chunk}
+* `load` {object}
+* `create` {object}
+* `chunkGraph` {ChunkGraph}
+* Returns: {void}
+
+Queues a runtime module whose implementation is loaded on demand, for
+`_attachPendingRuntimeModules` to await and build once the requirement pass
+is over. `runtimeRequirementInTree` is a sync hook, so a tap cannot await
+the load itself; anything the tap reads off the requirement set must be
+captured before queueing, since `create` runs later.
+
 #### `addModule(module, callback)`
 
 * `module` {Module}
@@ -3986,7 +4000,7 @@ Gets source basic types.
 
 #### `new ExternalsPlugin(type, externals)`
 
-* `type` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"global"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"|object}
+* `type` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"global"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"|object}
 * `externals` {Externals}
 * Returns: {ExternalsPlugin}
 
@@ -3995,7 +4009,7 @@ Creates an instance of ExternalsPlugin.
 ### Properties
 
 * `externals` {Externals}
-* `type` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"global"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"|object}
+* `type` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"global"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"|object}
 
 ### Methods
 
@@ -7303,6 +7317,8 @@ Serializes this instance into the provided serializer context.
 * Returns: {boolean}
 
 Returns true, if the runtime module should get it's own scope.
+When false, `generate()` must emit complete statements ending with `;`
+so a following runtime IIFE is not parsed as a call (ASI).
 
 #### `size([type])`
 
@@ -8026,7 +8042,7 @@ Options object as provided by the user.
 * `extends` {string|string[]} Extend configuration from another configuration (only works when using webpack-cli).
 * `externals` {string|RegExp|ExternalItemObjectKnown|ExternalItemObjectUnknown|object|object|ExternalItem[]} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 * `externalsPresets` {ExternalsPresets} Enable presets of externals for specific targets.
-* `externalsType` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"global"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+* `externalsType` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"global"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 * `ignoreWarnings` {RegExp|object|object[]} Ignore specific warnings.
 * `infrastructureLogging` {InfrastructureLogging} Options for infrastructure level logging.
 * `loader` {Loader} Custom values available in the loader context.
@@ -8581,7 +8597,7 @@ Stats options object.
 * `groupReasonsByOrigin` {boolean} Group reasons by their origin module.
 * `hash` {boolean} Add the hash of the compilation.
 * `ids` {boolean} Add ids.
-* `logging` {boolean|"error"|"warn"|"info"|"log"|"verbose"|"none"} Add logging output.
+* `logging` {boolean|"verbose"|"info"|"error"|"log"|"none"|"warn"} Add logging output.
 * `loggingDebug` {string|boolean|RegExp|FilterItemTypes[]|object} Include debug logging of specified loggers (i. e. for plugins or loaders). Filters can be Strings, RegExps or Functions.
 * `loggingTrace` {boolean} Add stack traces to logging output.
 * `moduleAssets` {boolean} Add information about assets inside modules.
@@ -8632,7 +8648,7 @@ Normalized webpack options object.
 * `experiments` {ExperimentsNormalized} Enables/Disables experiments (experimental features with relax SemVer compatibility).
 * `externals` {Externals} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 * `externalsPresets` {ExternalsPresets} Enable presets of externals for specific targets.
-* `externalsType` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"global"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+* `externalsType` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"global"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 * `ignoreWarnings` {object[]} Ignore specific warnings.
 * `infrastructureLogging` {InfrastructureLogging} Options for infrastructure level logging.
 * `loader` {Loader} Custom values available in the loader context.

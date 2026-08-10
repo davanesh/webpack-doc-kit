@@ -132,6 +132,24 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 
 ***
 
+## `baseTag`
+
+> **baseTag**: {object}
+
+* `base` {string|object}
+* Returns: {string}
+
+***
+
+## `buildHeadTags`
+
+> **buildHeadTags**: {object}
+
+* `opts` {OutputHtmlOptions}
+* Returns: {string}
+
+***
+
 ## `decodeEntities`
 
 > **decodeEntities**: {_functionSyntax}
@@ -162,6 +180,16 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 
 * `cc` {number}
 * Returns: {boolean}
+
+***
+
+## `metaTag`
+
+> **metaTag**: {object}
+
+* `name` {string}
+* `content` {string}
+* Returns: {string}
 
 ***
 
