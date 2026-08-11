@@ -487,6 +487,7 @@
   "setChunkGraphForChunk": "globals.html#chunkgraph#setchunkgraphforchunk",
   "clearChunkGraphForChunk": "globals.html#chunkgraph#clearchunkgraphforchunk",
   "moduleGraph": "globals.html#rendermanifestoptions#modulegraph-3",
+  "buildTimeExecution": "globals.html#chunkgraph#buildtimeexecution",
   "connectChunkAndModule": "globals.html#chunkgraph#connectchunkandmodule",
   "disconnectChunkAndModule": "globals.html#chunkgraph#disconnectchunkandmodule",
   "disconnectChunk": "globals.html#chunkgraph#disconnectchunk",

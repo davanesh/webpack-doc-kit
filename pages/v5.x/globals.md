@@ -611,6 +611,7 @@ Creates an instance of ChunkGraph.
 
 ### Properties
 
+* `buildTimeExecution` {boolean}
 * `moduleGraph` {ModuleGraph}
 
 ### Methods
