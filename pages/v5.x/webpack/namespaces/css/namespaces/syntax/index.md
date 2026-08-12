@@ -45,18 +45,38 @@ new SourceProcessor().use({ [NodeType.AtRule]: (path) => {} }).process(source, {
 > Stability: 1 - Experimental
 
 * `input` {string}
-* `options` {CssProcessOptions|object|object|CssProcessOptions|object|object}
+* `options` {CssProcessOptions|object|object}
 * Returns: {object}
 
 **`Experimental`**
 
 Parse `input` once and fire the visitors in source order. Asking for output
-— `mode`, or `minimize: true` for the `"minify"` it is shorthand for — makes
-the same walk print, given a printer supplied at construction: a
+— `mode`, the one thing that names it — makes the same walk print, given a
+printer supplied at construction: a
 [PrintContext](#printcontext) is created, each node's printer fires into it as the node
 finishes, and the result is returned as `{ code, map }`: the serialized output
-and its input->output source map, always, independent of the pipeline's own
-source-map setting (`source` / `content` name the map's input). Asking for
+and, for a caller that named its input with `source` / `content`, the
+input->output source map — `map` is `undefined` without one. Asking for
+none of it only walks and returns `undefined`. A single parse — printing
+never re-parses; all configuration is per-call.
+
+##### Call Signature
+
+> Stability: 1 - Experimental
+
+* `input` {string}
+* `options` {CssProcessOptions|object}
+* Returns: {object}
+
+**`Experimental`**
+
+Parse `input` once and fire the visitors in source order. Asking for output
+— `mode`, the one thing that names it — makes the same walk print, given a
+printer supplied at construction: a
+[PrintContext](#printcontext) is created, each node's printer fires into it as the node
+finishes, and the result is returned as `{ code, map }`: the serialized output
+and, for a caller that named its input with `source` / `content`, the
+input->output source map — `map` is `undefined` without one. Asking for
 none of it only walks and returns `undefined`. A single parse — printing
 never re-parses; all configuration is per-call.
 
@@ -71,12 +91,12 @@ never re-parses; all configuration is per-call.
 **`Experimental`**
 
 Parse `input` once and fire the visitors in source order. Asking for output
-— `mode`, or `minimize: true` for the `"minify"` it is shorthand for — makes
-the same walk print, given a printer supplied at construction: a
+— `mode`, the one thing that names it — makes the same walk print, given a
+printer supplied at construction: a
 [PrintContext](#printcontext) is created, each node's printer fires into it as the node
 finishes, and the result is returned as `{ code, map }`: the serialized output
-and its input->output source map, always, independent of the pipeline's own
-source-map setting (`source` / `content` name the map's input). Asking for
+and, for a caller that named its input with `source` / `content`, the
+input->output source map — `map` is `undefined` without one. Asking for
 none of it only walks and returns `undefined`. A single parse — printing
 never re-parses; all configuration is per-call.
 
@@ -417,6 +437,16 @@ already-fired comments are not re-fired (`_commentHigh`).
 * `pos` {number}
 * `out` {MutableToken}
 * Returns: {undefined|MutableToken}
+
+***
+
+## `skipEscape`
+
+> **skipEscape**: {object}
+
+* `input` {string}
+* `pos` {number}
+* Returns: {number}
 
 ***
 

@@ -277,6 +277,7 @@
   "rangeEquals": "webpack/namespaces/css/namespaces/syntax/index.html#rangeequals",
   "rangeEqualsLowerCase": "webpack/namespaces/css/namespaces/syntax/index.html#rangeequalslowercase",
   "readToken": "webpack/namespaces/css/namespaces/syntax/index.html#readtoken",
+  "skipEscape": "webpack/namespaces/css/namespaces/syntax/index.html#skipescape",
   "toLowerCaseIfNeeded": "webpack/namespaces/css/namespaces/syntax/index.html#tolowercaseifneeded",
   "unescapeIdentifier": "webpack/namespaces/css/namespaces/syntax/index.html#unescapeidentifier",
   "html": "globals.html#parseroptionsbymoduletypeknown#html-1",
