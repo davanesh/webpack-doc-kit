@@ -143,6 +143,7 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 * `nextSibling`
 * `openTag`
 * `parentOf`
+* `piTarget`
 * `selfClosing`
 * `skipChildren`
 * `source`

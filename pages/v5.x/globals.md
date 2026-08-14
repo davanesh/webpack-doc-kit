@@ -3520,13 +3520,14 @@ Applies the plugin by registering its hooks on the compiler.
 
 ### Constructors
 
-#### `new ExternalModule(request, type, userRequest[, dependencyMeta][, interop])`
+#### `new ExternalModule(request, type, userRequest[, dependencyMeta][, interop][, sideEffects])`
 
 * `request` {ExternalModuleRequest}
 * `type` {ExternalsType}
 * `userRequest` {string}
 * `dependencyMeta` {ImportDependencyMeta|CssImportDependencyMeta|AssetDependencyMeta}
 * `interop` {"default"|"esModule"}
+* `sideEffects` {boolean}
 * Returns: {ExternalModule}
 
 Creates an instance of ExternalModule.
@@ -3571,6 +3572,7 @@ Updates the issuer using the provided value.
 * `renderedHash` {string} Returns the rendered hash of the module.
 * `request` {ExternalModuleRequest}
 * `resolveOptions` {ResolveOptions}
+* `sideEffects` {boolean}
 * `type` {string}
 * `used` {any}
 * `usedExports` {boolean|SortableSet} 
@@ -8513,6 +8515,7 @@ A rule description with conditions and effects for modules.
 * `compiler` {string|RegExp|RuleSetLogicalConditions|object|RuleSetCondition[]} Match the child compiler name.
 * `dependency` {string|RegExp|RuleSetLogicalConditions|RuleSetCondition[]|object} Match dependency type.
 * `descriptionData` {object} Match values of properties in the description file (usually package.json).
+* `descriptionRelativePath` {string|RegExp|RuleSetLogicalConditions|RuleSetCondition[]|object} Match the path of the module relative to the directory of the description file (usually package.json), i.e. './lib/button.js'. Always uses forward slashes.
 * `enforce` {"pre"|"post"} Enforce this rule as pre or post step.
 * `exclude` {string|RegExp|RuleSetLogicalConditionsAbsolute|object|RuleSetConditionAbsolute[]} Shortcut for resource.exclude.
 * `extractSourceMap` {boolean} Enable/Disable extracting source map.
@@ -8840,7 +8843,7 @@ Plugin instance.
 
 ## Type: `ExternalItemValue`
 
-> **ExternalItemValue** = {string|boolean|string[]|ExternalItemValueObjectKnown|ExternalItemValueObjectUnknown}
+> **ExternalItemValue** = {string|boolean|string[]|ExternalItemValueObject|ExternalItemValueWithOptions}
 
 ***
 
