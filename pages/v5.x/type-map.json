@@ -796,6 +796,7 @@
   "LAZY_UNTIL_REQUEST": "webpack/namespaces/dependencies.html#nulldependency#lazy_until_request-3",
   "optional": "webpack/namespaces/esm.html#modulechunkloadingruntimemodule#optionaloptional",
   "category": "webpack/namespaces/dependencies.html#nulldependency#categorycategory-3",
+  "referencedSourceType": "webpack/namespaces/dependencies.html#nulldependency#referencedsourcetypereferencedsourcetype-3",
   "setLoc": "webpack/namespaces/dependencies.html#nulldependency#setloc-3",
   "setLocWithIndex": "webpack/namespaces/dependencies.html#nulldependency#setlocwithindex-3",
   "getContext": "webpack/namespaces/dependencies.html#nulldependency#getcontext-3",

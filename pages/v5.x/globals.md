@@ -2722,6 +2722,9 @@ Applies the plugin by registering its hooks on the compiler.
 * `loc` {DependencyLocation} Returns location.
 * `module` {any}
 * `optional` {boolean}
+* `referencedSourceType` {string} Returns the source type this dependency reads from the module it references:
+`javascript` for anything going through the module wrapper, `asset-url` for a
+bare url embedded into non-javascript output (css, html, a manifest).
 * `type` {string} Returns a display name for the type of dependency.
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `EXPORTS_OBJECT_REFERENCED_MANGLEABLE` {string[][]}

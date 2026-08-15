@@ -184,6 +184,8 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 > **escapeAttribute**: {object}
 
 * `s` {string}
+* `delimiter` {number}
+* `minimal` {boolean}
 * Returns: {string}
 
 ***
