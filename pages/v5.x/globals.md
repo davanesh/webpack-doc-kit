@@ -1733,6 +1733,7 @@ Needed to detect build cycles.
 * `fullHash` {string}
 * `globalEntry` {EntryData}
 * `hash` {string}
+* `hints` {Error[]}
 * `hooks` {Readonly}
 * `inputFileSystem` {InputFileSystem}
 * `logger` {WebpackLogger}
@@ -8603,6 +8604,8 @@ Stats options object.
 * `groupModulesByType` {boolean} Group modules by their type.
 * `groupReasonsByOrigin` {boolean} Group reasons by their origin module.
 * `hash` {boolean} Add the hash of the compilation.
+* `hints` {boolean} Add performance hints reported with 'performance.hints: "stats"'.
+* `hintsCount` {boolean} Add the number of performance hints.
 * `ids` {boolean} Add ids.
 * `logging` {boolean|"verbose"|"info"|"error"|"log"|"none"|"warn"} Add logging output.
 * `loggingDebug` {string|boolean|RegExp|FilterItemTypes[]|object} Include debug logging of specified loggers (i. e. for plugins or loaders). Filters can be Strings, RegExps or Functions.

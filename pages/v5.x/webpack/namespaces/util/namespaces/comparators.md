@@ -35,6 +35,12 @@
 
 ***
 
+## `compareErrors`
+
+> **compareErrors**: {Comparator}
+
+***
+
 ## `compareIds`
 
 > **compareIds**: {object}
