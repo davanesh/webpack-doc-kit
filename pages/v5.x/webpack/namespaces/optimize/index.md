@@ -149,6 +149,11 @@ Applies the plugin by registering its hooks on the compiler.
 
 * Returns: {ModuleConcatenationPlugin}
 
+### Properties
+
+* `BAILOUT_PREFIX` {"ModuleConcatenation bailout: "}
+* `REJECTED_PREFIX` {"Cannot concat with "}
+
 ### Methods
 
 #### `apply(compiler)`

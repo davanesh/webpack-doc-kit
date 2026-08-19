@@ -8211,6 +8211,7 @@ Options for library.
 * `name` {string|string[]|LibraryCustomUmdObject} The name of the library (some types allow unnamed libraries too).
 * `type` {string} Type of library (types included by default are 'var', 'module', 'assign', 'assign-properties', 'this', 'window', 'self', 'global', 'commonjs', 'commonjs2', 'commonjs-module', 'commonjs-static', 'amd', 'amd-require', 'umd', 'umd2', 'jsonp', 'system', but others might be added by plugins).
 * `umdNamedDefine` {boolean} If `output.libraryTarget` is set to umd and `output.library` is set, setting this to true will name the AMD module.
+* `umdSapUiDefine` {boolean} If `output.libraryTarget` is set to umd, setting this to true will add a branch for the SAPUI5/OpenUI5 module loader (`sap.ui.define`) to the UMD wrapper.
 
 ***
 
