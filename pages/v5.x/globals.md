@@ -2651,8 +2651,10 @@ Create a new define plugin
 
 * `definitions` {Definitions}
 * `getCompilationHooks` {object}
+* `getDeclaredKeys` {object}
 * `getMergedDefinitionNode` {object}
 * `getRuntimeRequirements` {object}
+* `markInternal` {object}
 * `stringifyMergedDefinition` {object}
 * `toPropertyKey` {object}
 * `VALUE_DEP_MAIN` {"webpack/DefinePlugin_hash"}
