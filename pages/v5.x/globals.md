@@ -8527,6 +8527,7 @@ A rule description with conditions and effects for modules.
 * `exclude` {string|RegExp|RuleSetLogicalConditionsAbsolute|object|RuleSetConditionAbsolute[]} Shortcut for resource.exclude.
 * `extractSourceMap` {boolean} Enable/Disable extracting source map.
 * `generator` {object} The options for the module generator.
+* `glob` {string|string[]} Match the module resource against glob patterns, `!` in front of a pattern excludes it. Combines with `test`, `include` and `exclude`.
 * `include` {string|RegExp|RuleSetLogicalConditionsAbsolute|RuleSetConditionAbsolute[]|object} Shortcut for resource.include.
 * `issuer` {string|RegExp|RuleSetLogicalConditionsAbsolute|RuleSetConditionAbsolute[]|object} Match the issuer of the module (The module pointing to this module).
 * `issuerLayer` {string|RegExp|RuleSetLogicalConditions|RuleSetCondition[]|object} Match layer of the issuer of this module (The module pointing to this module).

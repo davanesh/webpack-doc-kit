@@ -262,6 +262,7 @@ Creates an instance of SplitChunksPlugin.
 ### Properties
 
 * `options` {SplitChunksOptions}
+* `getCappedSplits` {object}
 
 ### Methods
 
