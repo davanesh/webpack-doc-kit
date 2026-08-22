@@ -83,7 +83,7 @@ Clear dependencies and blocks.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -101,7 +101,7 @@ Removes dependency.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -2762,7 +2762,7 @@ Creates an ignored module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -2863,7 +2863,7 @@ Whether the lazy barrel currently defers creating this dependency's target modul
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -3704,7 +3704,7 @@ Generates code and runtime requirements for this module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -3952,7 +3952,7 @@ restore unsafe cache data
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -4009,7 +4009,7 @@ Gets source basic types.
 
 #### `new ExternalsPlugin(type, externals)`
 
-* `type` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"global"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"|object}
+* `type` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"global"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"|object}
 * `externals` {Externals}
 * Returns: {ExternalsPlugin}
 
@@ -4018,7 +4018,7 @@ Creates an instance of ExternalsPlugin.
 ### Properties
 
 * `externals` {Externals}
-* `type` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"global"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"|object}
+* `type` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"global"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"|object}
 
 ### Methods
 
@@ -4536,7 +4536,7 @@ Creates an instance of InitFragment.
 
 #### `deserialize(context)`
 
-* `context` {ObjectDeserializerContextObjectMiddlewareObject_4}
+* `context` {ObjectDeserializerContextObjectMiddlewareObject_2}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -4557,7 +4557,7 @@ Returns the source code that will be included at the end of the module.
 
 #### `serialize(context)`
 
-* `context` {ObjectSerializerContextObjectMiddlewareObject_5}
+* `context` {ObjectSerializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -4971,7 +4971,7 @@ Generates code and runtime requirements for this module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -5211,7 +5211,7 @@ Removes dependency.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -6014,7 +6014,7 @@ Applies the plugin by registering its hooks on the compiler.
 
 #### `new NormalModule(__namedParameters)`
 
-* `__namedParameters` {NormalModuleCreateDataNormalModuleObject_1}
+* `__namedParameters` {NormalModuleCreateData}
 * Returns: {NormalModule}
 
 ### Properties
@@ -6208,7 +6208,7 @@ Generates code and runtime requirements for this module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -6471,7 +6471,7 @@ restore unsafe cache data
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -6519,7 +6519,7 @@ Updates the hash with the data contributed by this instance.
 
 #### Static method: `deserialize(context)`
 
-* `context` {ObjectDeserializerContextObjectMiddlewareObject_4}
+* `context` {ObjectDeserializerContextObjectMiddlewareObject_2}
 * Returns: {NormalModule}
 
 #### Static method: `getCompilationHooks(compilation)`
@@ -7064,7 +7064,7 @@ Generates code and runtime requirements for this module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -7316,7 +7316,7 @@ Removes dependency.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -7703,14 +7703,14 @@ not capture any frames.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -8051,7 +8051,7 @@ Options object as provided by the user.
 * `extends` {string|string[]} Extend configuration from another configuration (only works when using webpack-cli).
 * `externals` {string|RegExp|ExternalItemObjectKnown|ExternalItemObjectUnknown|object|object|ExternalItem[]} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 * `externalsPresets` {ExternalsPresets} Enable presets of externals for specific targets.
-* `externalsType` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"global"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+* `externalsType` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"global"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 * `ignoreWarnings` {RegExp|object|object[]} Ignore specific warnings.
 * `infrastructureLogging` {InfrastructureLogging} Options for infrastructure level logging.
 * `loader` {Loader} Custom values available in the loader context.
@@ -8097,6 +8097,7 @@ Multiple entry bundles are created. The key is the entry name. The value can be 
 * `contextInfo` {ModuleFactoryCreateDataContextInfo} contextual information
 * `dependencyType` {string} the category of the referencing dependency
 * `getResolve` {object} get a resolve function with the current resolver options
+* `originalRequest` {string} same as `request`, except for an element of a context module (a request containing an expression), where it is the request as written by the user instead of the one relative to the resolved context directory
 * `request` {string} the request as written by the user in the require/import expression/statement
 
 ***
@@ -8212,8 +8213,8 @@ Options for library.
 * `export` {string|string[]} Specify which export should be exposed as library.
 * `name` {string|string[]|LibraryCustomUmdObject} The name of the library (some types allow unnamed libraries too).
 * `type` {string} Type of library (types included by default are 'var', 'module', 'assign', 'assign-properties', 'this', 'window', 'self', 'global', 'commonjs', 'commonjs2', 'commonjs-module', 'commonjs-static', 'amd', 'amd-require', 'umd', 'umd2', 'jsonp', 'system', but others might be added by plugins).
+* `umdAmdContainer` {string} Add a branch to the UMD wrapper for an AMD-style loader exposing `define` on a container object, given as a dot-separated path, after the `define.amd` branch.
 * `umdNamedDefine` {boolean} If `output.libraryTarget` is set to umd and `output.library` is set, setting this to true will name the AMD module.
-* `umdSapUiDefine` {boolean} If `output.libraryTarget` is set to umd, setting this to true will add a branch for the SAPUI5/OpenUI5 module loader (`sap.ui.define`) to the UMD wrapper.
 
 ***
 
@@ -8611,7 +8612,7 @@ Stats options object.
 * `hints` {boolean} Add performance hints reported with 'performance.hints: "stats"'.
 * `hintsCount` {boolean} Add the number of performance hints.
 * `ids` {boolean} Add ids.
-* `logging` {boolean|"verbose"|"info"|"error"|"log"|"none"|"warn"} Add logging output.
+* `logging` {boolean|"verbose"|"none"|"info"|"error"|"warn"|"log"} Add logging output.
 * `loggingDebug` {string|boolean|RegExp|FilterItemTypes[]|object} Include debug logging of specified loggers (i. e. for plugins or loaders). Filters can be Strings, RegExps or Functions.
 * `loggingTrace` {boolean} Add stack traces to logging output.
 * `moduleAssets` {boolean} Add information about assets inside modules.
@@ -8662,7 +8663,7 @@ Normalized webpack options object.
 * `experiments` {ExperimentsNormalized} Enables/Disables experiments (experimental features with relax SemVer compatibility).
 * `externals` {Externals} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 * `externalsPresets` {ExternalsPresets} Enable presets of externals for specific targets.
-* `externalsType` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"assign"|"window"|"self"|"global"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+* `externalsType` {"asset"|"module"|"asset-url"|"css-import"|"promise"|"import"|"commonjs"|"jsonp"|"this"|"var"|"global"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 * `ignoreWarnings` {object[]} Ignore specific warnings.
 * `infrastructureLogging` {InfrastructureLogging} Options for infrastructure level logging.
 * `loader` {Loader} Custom values available in the loader context.
@@ -8940,13 +8941,13 @@ Plugin instance.
 
 ## Type: `ObjectDeserializerContext`
 
-> **ObjectDeserializerContext** = {ObjectDeserializerContextObjectMiddlewareObject_2}
+> **ObjectDeserializerContext** = {ObjectDeserializerContextObjectMiddlewareObject_1}
 
 ***
 
 ## Type: `ObjectSerializerContext`
 
-> **ObjectSerializerContext** = {ObjectSerializerContextObjectMiddlewareObject_3}
+> **ObjectSerializerContext** = {ObjectSerializerContextObjectMiddlewareObject_2}
 
 ***
 

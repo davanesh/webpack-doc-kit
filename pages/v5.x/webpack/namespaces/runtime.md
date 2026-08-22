@@ -195,7 +195,7 @@ Generates code and runtime requirements for this module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -447,7 +447,7 @@ Removes dependency.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -694,7 +694,7 @@ Generates code and runtime requirements for this module.
 
 #### `deserialize(__namedParameters)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_4}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -946,7 +946,7 @@ Removes dependency.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_5}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
