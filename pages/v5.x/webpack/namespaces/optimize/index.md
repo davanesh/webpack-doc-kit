@@ -151,8 +151,8 @@ Applies the plugin by registering its hooks on the compiler.
 
 ### Properties
 
-* `BAILOUT_PREFIX` {"ModuleConcatenation bailout: "}
-* `REJECTED_PREFIX` {"Cannot concat with "}
+* `BAILOUT_PREFIX` {string}
+* `REJECTED_PREFIX` {string}
 
 ### Methods
 

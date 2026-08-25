@@ -132,6 +132,12 @@
 
 ***
 
+## `definePropertyGettersFromArray`
+
+> **definePropertyGettersFromArray**: {"__webpack_require__.d (array)"}
+
+***
+
 ## `ensureChunk`
 
 > **ensureChunk**: {"__webpack_require__.e"}

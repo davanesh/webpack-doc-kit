@@ -2657,8 +2657,8 @@ Create a new define plugin
 * `markInternal` {object}
 * `stringifyMergedDefinition` {object}
 * `toPropertyKey` {object}
-* `VALUE_DEP_MAIN` {"webpack/DefinePlugin_hash"}
-* `VALUE_DEP_PREFIX` {"webpack/DefinePlugin "}
+* `VALUE_DEP_MAIN` {string}
+* `VALUE_DEP_PREFIX` {string}
 
 ### Methods
 

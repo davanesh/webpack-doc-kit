@@ -72,9 +72,9 @@ Creates an instance of JavascriptParser.
 * `sourceType` {"module"|"auto"|"script"}
 * `state` {JavascriptParserState}
 * `statementPath` {StatementPathItem[]}
-* `ALLOWED_MEMBER_TYPES_ALL` {3}
-* `ALLOWED_MEMBER_TYPES_CALL_EXPRESSION` {1}
-* `ALLOWED_MEMBER_TYPES_EXPRESSION` {2}
+* `ALLOWED_MEMBER_TYPES_ALL` {number}
+* `ALLOWED_MEMBER_TYPES_CALL_EXPRESSION` {number}
+* `ALLOWED_MEMBER_TYPES_EXPRESSION` {number}
 * `getImportAttributes` {object}
 * `VariableInfo` {VariableInfo}
 * `VariableInfoFlags` {Readonly}

@@ -78,6 +78,7 @@
   "deferredModuleAsyncTransitiveDependencies": "webpack/namespaces/RuntimeGlobals.html#deferredmoduleasynctransitivedependencies",
   "deferredModuleAsyncTransitiveDependenciesSymbol": "webpack/namespaces/RuntimeGlobals.html#deferredmoduleasynctransitivedependenciessymbol",
   "definePropertyGetters": "webpack/namespaces/RuntimeGlobals.html#definepropertygetters",
+  "definePropertyGettersFromArray": "webpack/namespaces/RuntimeGlobals.html#definepropertygettersfromarray",
   "ensureChunk": "webpack/namespaces/RuntimeGlobals.html#ensurechunk",
   "ensureChunkHandlers": "webpack/namespaces/RuntimeGlobals.html#ensurechunkhandlers",
   "ensureChunkIncludeEntries": "webpack/namespaces/RuntimeGlobals.html#ensurechunkincludeentries",
