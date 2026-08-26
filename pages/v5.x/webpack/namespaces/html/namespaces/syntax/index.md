@@ -147,6 +147,8 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 * `selfClosing`
 * `skipChildren`
 * `source`
+* `sourceClosed`
+* `sourceSpanAt`
 * `start`
 * `tagEnd`
 * `tagName`
