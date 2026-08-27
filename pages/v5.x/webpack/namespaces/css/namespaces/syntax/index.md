@@ -34,6 +34,7 @@ new SourceProcessor().use({ [NodeType.AtRule]: (path) => {} }).process(source, {
 
 ### Properties
 
+* `deferredWrite` {object} 
 * `PrintContext` {PrintContext} 
 
 ### Methods
@@ -99,6 +100,25 @@ and, for a caller that named its input with `source` / `content`, the
 input->output source map — `map` is `undefined` without one. Asking for
 none of it only walks and returns `undefined`. A single parse — printing
 never re-parses; all configuration is per-call.
+
+#### `processAsync(input, options)`
+
+> Stability: 1 - Experimental
+
+* `input` {string}
+* `options` {Omit|object|object}
+* Returns: {Promise}
+
+**`Experimental`**
+
+[process](#process), for a caller whose renderer answers asynchronously. Code
+generation is synchronous — a printer returns its node's text, it cannot
+await one — so the walk leaves a marker where each answer goes, they are
+asked for together, and PrintContext.substitute stands each in its
+place before the output and its map are built. One parse either way, and
+the async boundary stays at the top rather than on every node.
+This is the shape `process` itself takes once it is async: how the answers
+are waited for is this method's business, so nothing above it changes.
 
 #### `use(map)`
 
@@ -250,12 +270,47 @@ already-fired comments are not re-fired (`_commentHigh`).
 
 ***
 
+## `askEmbeddedRenderer`
+
+> **askEmbeddedRenderer**: {object}
+
+* `render` {object}
+* `hole` {object}
+* `reported` {EmbeddedSourceResult[]}
+* Returns: {Promise}
+
+***
+
 ## `buildSkipSet`
 
 > **buildSkipSet**: {object}
 
 * `nodeTypes` {number[]}
 * Returns: {Uint8Array}
+
+***
+
+## `collectEmbeddedDiagnostics`
+
+> **collectEmbeddedDiagnostics**: {object}
+
+* `reported` {object[]}
+* Returns: {object}
+
+***
+
+## `EMBEDDED_LANGUAGES`
+
+> **EMBEDDED\_LANGUAGES**: {string[]}
+
+***
+
+## `embeddedText`
+
+> **embeddedText**: {object}
+
+* `answer` {string|object}
+* Returns: {undefined|string}
 
 ***
 
@@ -392,6 +447,15 @@ already-fired comments are not re-fired (`_commentHigh`).
 * `pos` {number}
 * `options` {ParseOptionsSyntax}
 * Returns: {RuleSyntax[]}
+
+***
+
+## `pickTransforms`
+
+> **pickTransforms**: {object}
+
+* `options` {object}
+* Returns: {undefined|CssTransformOptions}
 
 ***
 

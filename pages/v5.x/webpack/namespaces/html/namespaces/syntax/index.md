@@ -31,6 +31,7 @@ new SourceProcessor().use({ [NodeType.Element]: (path) => {}, [NodeType.Comment]
 
 ### Properties
 
+* `deferredWrite` {object} 
 * `PrintContext` {PrintContext} 
 
 ### Methods
@@ -97,6 +98,25 @@ input->output source map — `map` is `undefined` without one. Asking for
 none of it only walks and returns `undefined`. A single parse — printing
 never re-parses; all configuration is per-call.
 
+#### `processAsync(input, options)`
+
+> Stability: 1 - Experimental
+
+* `input` {string}
+* `options` {Omit|object|object}
+* Returns: {Promise}
+
+**`Experimental`**
+
+[process](#process), for a caller whose renderer answers asynchronously. Code
+generation is synchronous — a printer returns its node's text, it cannot
+await one — so the walk leaves a marker where each answer goes, they are
+asked for together, and PrintContext.substitute stands each in its
+place before the output and its map are built. One parse either way, and
+the async boundary stays at the top rather than on every node.
+This is the shape `process` itself takes once it is async: how the answers
+are waited for is this method's business, so nothing above it changes.
+
 #### `use(map)`
 
 > Stability: 1 - Experimental
@@ -157,6 +177,17 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 
 ***
 
+## `askEmbeddedRenderer`
+
+> **askEmbeddedRenderer**: {object}
+
+* `render` {object}
+* `hole` {object}
+* `reported` {EmbeddedSourceResult[]}
+* Returns: {Promise}
+
+***
+
 ## `baseTag`
 
 > **baseTag**: {object}
@@ -175,9 +206,33 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 
 ***
 
+## `collectEmbeddedDiagnostics`
+
+> **collectEmbeddedDiagnostics**: {object}
+
+* `reported` {object[]}
+* Returns: {object}
+
+***
+
 ## `decodeEntities`
 
 > **decodeEntities**: {_functionSyntax}
+
+***
+
+## `EMBEDDED_LANGUAGES`
+
+> **EMBEDDED\_LANGUAGES**: {string[]}
+
+***
+
+## `embeddedText`
+
+> **embeddedText**: {object}
+
+* `answer` {string|object}
+* Returns: {undefined|string}
 
 ***
 
@@ -282,6 +337,15 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 
 * `input` {string}
 * Returns: {string|number|number[]}
+
+***
+
+## `pickTransforms`
+
+> **pickTransforms**: {object}
+
+* `options` {object}
+* Returns: {undefined|HtmlTransformOptions}
 
 ***
 
