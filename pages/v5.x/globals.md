@@ -4091,6 +4091,14 @@ Updates the hash with the data contributed by this instance.
 
 Returns generator by type.
 
+#### Static method: `throwBuildErrorCode(error[, parseErrorConstructor])`
+
+* `error` {Error}
+* `parseErrorConstructor` {string}
+* Returns: {string}
+
+Returns the statement a module that failed to build throws when executed.
+
 ***
 
 ## Class: `HotModuleReplacementPlugin`

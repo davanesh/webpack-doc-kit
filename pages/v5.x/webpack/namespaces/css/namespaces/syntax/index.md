@@ -34,6 +34,7 @@ new SourceProcessor().use({ [NodeType.AtRule]: (path) => {} }).process(source, {
 
 ### Properties
 
+* `declineDeferredWrites` {object} 
 * `deferredWrite` {object} 
 * `PrintContext` {PrintContext} 
 
