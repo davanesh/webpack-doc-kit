@@ -2471,14 +2471,6 @@ identifier that can be parsed later during code generation.
 
 Returns the raw expression registered for an export, if one exists.
 
-#### `isInsideReplacedRequire(start)`
-
-* `start` {number}
-* Returns: {boolean}
-
-Checks whether an offset sits inside an already-replaced `require(...)` call.
-Containment, not exact match: `new require(...)` is replaced from `new`.
-
 #### `isModuleInScope(module)`
 
 * `module` {Module}
@@ -2534,14 +2526,6 @@ Records the symbol that should be used for the synthetic namespace export.
 Records a raw expression that can be used to reference an export without
 going through the normal symbol map.
 
-#### `registerReplacedRequire(range)`
-
-* `range` {number|number}
-* Returns: {void}
-
-Records a `require(...)` call that was replaced as a whole by a
-concatenation reference, so nothing else rewrites a range inside it.
-
 #### `setRawExportMap(exportName, expression)`
 
 * `exportName` {string}
@@ -2556,7 +2540,17 @@ has an entry in the raw export map.
 * `source` {Source}
 * Returns: {ModuleReferenceMatch[]}
 
-Finds all encoded module references in a generated source.
+Finds all encoded module references in a generated source. A match that
+continues an identifier is reported as `leaked`: it is a token a wider
+replacement swallowed, so substituting it would rewrite the middle of a name.
+
+#### Static method: `isLeakedModuleReference(name)`
+
+* `name` {string}
+* Returns: {boolean}
+
+Checks whether an identifier buries a reference token without being one,
+which nothing can resolve: it would reach the output as an undeclared global.
 
 #### Static method: `isModuleReference(name)`
 
