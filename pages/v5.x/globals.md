@@ -243,9 +243,10 @@ Shuts down every registered cache backend and waits for cleanup to finish.
 Stores a cache entry for the identifier and etag through the registered
 cache backend hooks.
 
-#### `storeBuildDependencies(dependencies, callback)`
+#### `storeBuildDependencies(dependencies, optionalDependencies, callback)`
 
 * `dependencies` {Iterable}
+* `optionalDependencies` {Iterable}
 * `callback` {CallbackCacheCache}
 * Returns: {void}
 
@@ -1749,6 +1750,7 @@ Needed to detect build cycles.
 * `namedChunkGroups` {Map}
 * `namedChunks` {Map}
 * `needAdditionalPass` {boolean}
+* `optionalBuildDependencies` {LazySet}
 * `options` {WebpackOptionsNormalizedWithDefaults}
 * `outputOptions` {OutputNormalizedWithDefaults}
 * `params` {CompilationParams}

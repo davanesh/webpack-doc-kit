@@ -2,6 +2,7 @@
 
 ## Namespaces
 
+- [cssMinify](namespaces/cssMinify.md)
 - [NodeType](namespaces/NodeType.md)
 
 ## Class: `SourceProcessor`
@@ -687,3 +688,12 @@ already-fired comments are not re-fired (`_commentHigh`).
 ### Type Declaration
 
 * `bindCache` {BindCache}
+
+***
+
+## `cssMinify(input[, sourceMap][, minimizerOptions])`
+
+* `input` {object}
+* `sourceMap` {object}
+* `minimizerOptions` {object|CssTransformOptions}
+* Returns: {Promise}

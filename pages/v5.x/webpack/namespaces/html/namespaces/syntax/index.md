@@ -2,6 +2,7 @@
 
 ## Namespaces
 
+- [htmlMinify](namespaces/htmlMinify.md)
 - [NodeType](namespaces/NodeType.md)
 
 ## Class: `SourceProcessor`
@@ -392,3 +393,12 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 * `pos` {number}
 * `callbacks` {HtmlTokenCallbacks}
 * Returns: {number}
+
+***
+
+## `htmlMinify(input[, sourceMap][, minimizerOptions])`
+
+* `input` {object}
+* `sourceMap` {RawSourceMap}
+* `minimizerOptions` {Omit|object}
+* Returns: {Promise}

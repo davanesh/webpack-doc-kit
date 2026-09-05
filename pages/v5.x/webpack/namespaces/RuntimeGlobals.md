@@ -276,6 +276,18 @@
 
 ***
 
+## `hasSealedDeferredNamespace`
+
+> **hasSealedDeferredNamespace**: {"has sealed deferred namespace"}
+
+***
+
+## `hasSynthesizedDeferredNamespace`
+
+> **hasSynthesizedDeferredNamespace**: {"has synthesized deferred namespace"}
+
+***
+
 ## `hmrDownloadManifest`
 
 > **hmrDownloadManifest**: {"__webpack_require__.hmrM"}
