@@ -221,9 +221,10 @@ Applies the plugin by registering its hooks on the compiler.
 
 ### Constructors
 
-#### `new SideEffectsFlagPlugin([analyseSource])`
+#### `new SideEffectsFlagPlugin([analyseSource][, recordStatement])`
 
 * `analyseSource` {boolean}
+* `recordStatement` {boolean}
 * Returns: {SideEffectsFlagPlugin}
 
 Creates an instance of SideEffectsFlagPlugin.

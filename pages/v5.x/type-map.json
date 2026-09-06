@@ -321,6 +321,7 @@
   "firstChild": "webpack/namespaces/html/namespaces/syntax/index.html#a#firstchild",
   "nextSibling": "webpack/namespaces/html/namespaces/syntax/index.html#a#nextsibling",
   "parentOf": "webpack/namespaces/html/namespaces/syntax/index.html#a#parentof",
+  "EVENT_HANDLER": "webpack/namespaces/html/namespaces/syntax/index.html#event_handler",
   "NS_HTML": "webpack/namespaces/html/namespaces/syntax/index.html#ns_html",
   "NS_MATHML": "webpack/namespaces/html/namespaces/syntax/index.html#ns_mathml",
   "NS_SVG": "webpack/namespaces/html/namespaces/syntax/index.html#ns_svg",

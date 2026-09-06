@@ -258,6 +258,12 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 
 ***
 
+## `EVENT_HANDLER`
+
+> **EVENT\_HANDLER**: {"event-handler"}
+
+***
+
 ## `isAsciiWhitespace`
 
 > **isAsciiWhitespace**: {object}
