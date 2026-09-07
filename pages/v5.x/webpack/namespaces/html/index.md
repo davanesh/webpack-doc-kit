@@ -25,6 +25,14 @@
 
 Applies the plugin by registering its hooks on the compiler.
 
+#### Static method: `chunkHasHtml(chunk, chunkGraph)`
+
+* `chunk` {Chunk}
+* `chunkGraph` {ChunkGraph}
+* Returns: {boolean}
+
+Returns true, when the chunk has html.
+
 #### Static method: `computeContentHash(content, outputOptions)`
 
 * `content` {string|Buffer}

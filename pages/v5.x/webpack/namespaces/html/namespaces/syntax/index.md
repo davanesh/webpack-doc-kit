@@ -199,12 +199,33 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 
 ***
 
+## `BLOCK_CONTENTS`
+
+> **BLOCK\_CONTENTS**: {"block-contents"}
+
+***
+
 ## `buildHeadTags`
 
 > **buildHeadTags**: {object}
 
 * `opts` {OutputHtmlOptions}
 * Returns: {string}
+
+***
+
+## `builtinEmbeddedRenderer`
+
+> **builtinEmbeddedRenderer**: {object}
+
+* `options` {BuiltinEmbeddedRendererOptions}
+* Returns: {object}
+
+***
+
+## `CLASSIC_SCRIPT`
+
+> **CLASSIC\_SCRIPT**: {"script"}
 
 ***
 
@@ -273,6 +294,12 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 
 ***
 
+## `JSON_TYPE`
+
+> **JSON\_TYPE**: {"json"}
+
+***
+
 ## `metaTag`
 
 > **metaTag**: {object}
@@ -280,6 +307,12 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 * `name` {string}
 * `content` {string}
 * Returns: {string}
+
+***
+
+## `MODULE_SCRIPT`
+
+> **MODULE\_SCRIPT**: {"module"}
 
 ***
 
@@ -382,6 +415,15 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 ## `QUOTE_SINGLE`
 
 > **QUOTE\_SINGLE**: {2}
+
+***
+
+## `stripJsonWhitespace`
+
+> **stripJsonWhitespace**: {object}
+
+* `json` {string}
+* Returns: {string}
 
 ***
 
