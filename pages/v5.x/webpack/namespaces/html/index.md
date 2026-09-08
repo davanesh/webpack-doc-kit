@@ -36,7 +36,7 @@ Returns true, when the chunk has html.
 #### Static method: `computeContentHash(content, outputOptions)`
 
 * `content` {string|Buffer}
-* `outputOptions` {Output}
+* `outputOptions` {OutputNormalizedWithDefaults}
 * Returns: {string}
 
 `output.hashFunction`/`hashSalt`/`hashDigest`/`hashDigestLength`
@@ -46,7 +46,7 @@ standard `[contenthash]` recipe.
 #### Static method: `getChunkFilenameTemplate(chunk, outputOptions)`
 
 * `chunk` {Chunk}
-* `outputOptions` {Output}
+* `outputOptions` {OutputNormalizedWithDefaults}
 * Returns: {ChunkFilenameTemplate}
 
 Filename template for an extracted HTML page: `output.htmlFilename` for

@@ -229,6 +229,13 @@ Restore a mark (CSS Syntax §3 "restore a mark") — pop the last mark and
 rewind the cursor to it. The rewound span is re-tokenized on the next read;
 already-fired comments are not re-fired (`_commentHigh`).
 
+#### `skipWhitespace()`
+
+* Returns: {void}
+
+Step over the whitespace the next token would be, without tokenizing it —
+for the sites that discard whitespace tokens. No-op while a token is cached.
+
 ***
 
 ## `A`

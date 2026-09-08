@@ -2632,6 +2632,32 @@ Applies the plugin by registering its hooks on the compiler.
 
 ***
 
+## Class: `CopyPlugin`
+
+### Constructors
+
+#### `new CopyPlugin(options)`
+
+* `options` {CopyOptions}
+* Returns: {CopyPlugin}
+
+### Properties
+
+* `concurrency` {number}
+* `patterns` {CopyPattern[]}
+* `stage` {number}
+
+### Methods
+
+#### `apply(compiler)`
+
+* `compiler` {Compiler}
+* Returns: {void}
+
+Apply the plugin
+
+***
+
 ## Class: `DefinePlugin`
 
 ### Constructors
@@ -8316,6 +8342,7 @@ Returns location of targetPath relative to rootPath.
 
 ### Properties
 
+* `chmod` {object}
 * `createReadStream` {object}
 * `dirname` {object}
 * `join` {object}
@@ -8323,10 +8350,13 @@ Returns location of targetPath relative to rootPath.
 * `mkdir` {Mkdir}
 * `readdir` {ReaddirFs}
 * `readFile` {ReadFileFs}
+* `readlink` {ReadlinkFs}
 * `relative` {object}
 * `rmdir` {object}
 * `stat` {StatFs}
+* `symlink` {object}
 * `unlink` {object}
+* `utimes` {object}
 * `writeFile` {WriteFile}
 
 ***
@@ -9431,6 +9461,12 @@ Re-exports [ContextModuleBuildInfo](#contextmodulebuildinfo)
 ## `ContextReplacementPlugin`
 
 Re-exports [ContextReplacementPlugin](#contextreplacementplugin)
+
+***
+
+## `CopyPlugin`
+
+Re-exports [CopyPlugin](#copyplugin)
 
 ***
 
