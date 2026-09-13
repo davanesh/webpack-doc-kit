@@ -139,6 +139,7 @@
   "scriptNonce": "webpack/namespaces/RuntimeGlobals.html#scriptnonce",
   "setAnonymousDefaultName": "webpack/namespaces/RuntimeGlobals.html#setanonymousdefaultname",
   "shareScopeMap": "webpack/namespaces/RuntimeGlobals.html#sharescopemap",
+  "specNamespaceObject": "webpack/namespaces/RuntimeGlobals.html#specnamespaceobject",
   "startup": "webpack/namespaces/RuntimeGlobals.html#startup",
   "startupAssetHints": "webpack/namespaces/RuntimeGlobals.html#startupassethints",
   "startupEntrypoint": "webpack/namespaces/RuntimeGlobals.html#startupentrypoint",

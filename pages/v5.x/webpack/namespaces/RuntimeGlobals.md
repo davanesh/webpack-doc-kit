@@ -498,6 +498,12 @@
 
 ***
 
+## `specNamespaceObject`
+
+> **specNamespaceObject**: {"__webpack_require__.ns"}
+
+***
+
 ## `startup`
 
 > **startup**: {"__webpack_require__.x"}
