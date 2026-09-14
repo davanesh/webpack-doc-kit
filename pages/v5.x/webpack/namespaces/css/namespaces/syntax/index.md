@@ -400,7 +400,7 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 * `input` {string|TokenStream}
 * `pos` {number}
 * `options` {ParseOptionsSyntax}
-* Returns: {undefined|Token|FunctionNode|SimpleBlock}
+* Returns: {undefined|TokenSyntax|FunctionNode|SimpleBlock}
 
 ***
 

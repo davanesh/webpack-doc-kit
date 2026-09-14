@@ -63,6 +63,7 @@ Updates the issuer using the provided value.
 * `useSourceMap` {boolean}
 * `warnings` {any}
 * `getCompilationHooks` {object}
+* `NO_CHUNK_HANDLERS` {string|string[]} The answer a runtime module gives when it installs no chunk handler at all
 * `STAGE_ATTACH` {number} Runtime modules which attach to handlers of other runtime modules
 * `STAGE_BASIC` {number} Runtime modules with simple dependencies on other runtime modules
 * `STAGE_NORMAL` {number} Runtime modules without any dependencies to other runtime modules
@@ -230,6 +231,13 @@ Returns export type.
 * Returns: {string}
 
 Gets generated code.
+
+#### `getInstalledChunkHandlers()`
+
+* Returns: {string|string[]}
+
+The `[handlerMap, key]` pairs this module installs onto a chunk handler map
+such as `__webpack_require__.f`, or `null` where it cannot name them.
 
 #### `getNumberOfChunks()`
 
@@ -614,6 +622,7 @@ Updates the issuer using the provided value.
 * `useSourceMap` {boolean}
 * `warnings` {any}
 * `getCompilationHooks` {object}
+* `NO_CHUNK_HANDLERS` {string|string[]} The answer a runtime module gives when it installs no chunk handler at all
 * `STAGE_ATTACH` {number} Runtime modules which attach to handlers of other runtime modules
 * `STAGE_BASIC` {number} Runtime modules with simple dependencies on other runtime modules
 * `STAGE_NORMAL` {number} Runtime modules without any dependencies to other runtime modules
@@ -781,6 +790,13 @@ Returns export type.
 * Returns: {string}
 
 Gets generated code.
+
+#### `getInstalledChunkHandlers()`
+
+* Returns: {string|string[]}
+
+The `[handlerMap, key]` pairs this module installs onto a chunk handler map
+such as `__webpack_require__.f`, or `null` where it cannot name them.
 
 #### `getNumberOfChunks()`
 

@@ -2707,14 +2707,14 @@ Returns runtime value.
 
 #### `new DelegatedPlugin(options)`
 
-* `options` {Options}
+* `options` {OptionsDelegatedModuleFactoryPlugin}
 * Returns: {DelegatedPlugin}
 
 Creates an instance of DelegatedPlugin.
 
 ### Properties
 
-* `options` {Options}
+* `options` {OptionsDelegatedModuleFactoryPlugin}
 
 ### Methods
 
@@ -3781,6 +3781,13 @@ Gets number of warnings.
 * Returns: {ReadonlySet}
 
 Freshly recomputed source types when they depend on incoming connections, for chunk-graph cache invalidation; undefined otherwise. #20800
+
+#### `getResolvedRequest()`
+
+* Returns: {string|string[]}
+
+The request this external resolves to for its own type, with the record form
+narrowed to its entry. An array is a module specifier plus a property path.
 
 #### `getRootBlock()`
 
@@ -6970,6 +6977,7 @@ Updates the issuer using the provided value.
 * `useSimpleSourceMap` {boolean}
 * `useSourceMap` {boolean}
 * `warnings` {any}
+* `NO_CHUNK_HANDLERS` {string|string[]} The answer a runtime module gives when it installs no chunk handler at all
 * `STAGE_ATTACH` {number} Runtime modules which attach to handlers of other runtime modules
 * `STAGE_BASIC` {number} Runtime modules with simple dependencies on other runtime modules
 * `STAGE_NORMAL` {number} Runtime modules without any dependencies to other runtime modules
@@ -7137,6 +7145,13 @@ Returns export type.
 * Returns: {string}
 
 Gets generated code.
+
+#### `getInstalledChunkHandlers()`
+
+* Returns: {string|string[]}
+
+The `[handlerMap, key]` pairs this module installs onto a chunk handler map
+such as `__webpack_require__.f`, or `null` where it cannot name them.
 
 #### `getNumberOfChunks()`
 
@@ -8307,7 +8322,7 @@ Options affecting the normal modules (`NormalModuleFactory`).
 ### Properties
 
 * `defaultRules` {false|""|0|"..."|RuleSetRule[]} An array of rules applied by default for modules.
-* `exprContextCritical` {boolean} Enable warnings for full dynamic dependencies.
+* `exprContextCritical` {boolean} Enable warnings for full dynamic dependencies. Deprecated: This option has moved to 'module.parser.javascript.exprContextCritical'.
 * `exprContextRecursive` {boolean} Enable recursive directory lookup for full dynamic dependencies. Deprecated: This option has moved to 'module.parser.javascript.exprContextRecursive'.
 * `exprContextRegExp` {boolean|RegExp} Sets the default regular expression for full dynamic dependencies. Deprecated: This option has moved to 'module.parser.javascript.exprContextRegExp'.
 * `exprContextRequest` {string} Set the default request for full dynamic dependencies. Deprecated: This option has moved to 'module.parser.javascript.exprContextRequest'.

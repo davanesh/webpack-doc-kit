@@ -6,7 +6,7 @@
 
 * `options` {WebpackOptionsNormalized}
 * `compilerIndex` {number}
-* Returns: {ResolvedOptions}
+* Returns: {ResolvedOptionsDefaults}
 
 ***
 

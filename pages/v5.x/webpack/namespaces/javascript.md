@@ -241,7 +241,7 @@ Processes the provided name.
 
 #### `destructuringAssignmentPropertiesFor(node)`
 
-* `node` {Expression}
+* `node` {ExpressionEstreeIndex}
 * Returns: {Set}
 
 Destructuring assignment properties for.
@@ -280,7 +280,7 @@ Processes the provided declaration.
 #### `enterDestructuringAssignment(pattern, expression)`
 
 * `pattern` {Pattern}
-* `expression` {Expression}
+* `expression` {ExpressionEstreeIndex}
 * Returns: {ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression}
 
 Enter destructuring assignment.
@@ -398,7 +398,7 @@ unrecognized roots (~77% of calls) before paying for the arrays.
 
 #### `getNameForExpression(expression)`
 
-* `expression` {Expression}
+* `expression` {ExpressionEstreeIndex}
 * Returns: {object}
 
 Gets name for expression.
@@ -485,7 +485,7 @@ Checks whether this javascript parser is pure.
 
 #### `isStatementLevelExpression(expr)`
 
-* `expr` {Expression}
+* `expr` {ExpressionEstreeIndex}
 * Returns: {boolean}
 
 Checks whether this javascript parser is statement level expression.
@@ -535,7 +535,7 @@ Parses the provided source and updates the parser state.
 
 #### `parseCalculatedString(expression)`
 
-* `expression` {Expression}
+* `expression` {ExpressionEstreeIndex}
 * Returns: {CalculatedStringResult}
 
 Parses calculated string.
@@ -549,7 +549,7 @@ Parses comment options.
 
 #### `parseString(expression)`
 
-* `expression` {Expression}
+* `expression` {ExpressionEstreeIndex}
 * Returns: {string}
 
 Returns parsed string.

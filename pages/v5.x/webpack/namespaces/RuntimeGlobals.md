@@ -12,12 +12,6 @@
 
 ***
 
-## `analyzableChunkImport`
-
-> **analyzableChunkImport**: {"__webpack_require__.ei"}
-
-***
-
 ## `asyncModule`
 
 > **asyncModule**: {"__webpack_require__.a"}
@@ -255,6 +249,12 @@
 ## `harmonyModuleDecorator`
 
 > **harmonyModuleDecorator**: {"__webpack_require__.hmd"}
+
+***
+
+## `hasChunkPriority`
+
+> **hasChunkPriority**: {"has chunk priority"}
 
 ***
 
