@@ -111,7 +111,7 @@ Returns the export name for a `LAZY_UNTIL_LOCAL`/`LAZY_UNTIL_ID` classification 
 
 #### `getLazyUntil()`
 
-* Returns: {"*"|"local"|"id"|"@"}
+* Returns: {"*"|"@"|"local"|"id"}
 
 Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 
@@ -371,7 +371,7 @@ Returns the export name for a `LAZY_UNTIL_LOCAL`/`LAZY_UNTIL_ID` classification 
 
 #### `getLazyUntil()`
 
-* Returns: {"*"|"local"|"id"|"@"}
+* Returns: {"*"|"@"|"local"|"id"}
 
 Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 
@@ -630,7 +630,7 @@ Returns the export name for a `LAZY_UNTIL_LOCAL`/`LAZY_UNTIL_ID` classification 
 
 #### `getLazyUntil()`
 
-* Returns: {"*"|"local"|"id"|"@"}
+* Returns: {"*"|"@"|"local"|"id"}
 
 Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 
@@ -864,7 +864,7 @@ Returns the export name for a `LAZY_UNTIL_LOCAL`/`LAZY_UNTIL_ID` classification 
 
 #### `getLazyUntil()`
 
-* Returns: {"*"|"local"|"id"|"@"}
+* Returns: {"*"|"@"|"local"|"id"}
 
 Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 
