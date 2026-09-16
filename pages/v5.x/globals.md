@@ -4113,6 +4113,16 @@ Returns the source types available for this module.
 
 Updates the hash with the data contributed by this instance.
 
+#### Static method: `buildErrorMessage(error[, requestShortener])`
+
+* `error` {Error}
+* `requestShortener` {RequestShortener}
+* Returns: {string}
+
+Returns what a module that failed to build says about it in the output.
+The stack it carries is written relative to the context, keeping a
+position only where a second build names the same one.
+
 #### Static method: `byType(map)`
 
 * `map` {object}
@@ -4120,10 +4130,11 @@ Updates the hash with the data contributed by this instance.
 
 Returns generator by type.
 
-#### Static method: `throwBuildErrorCode(error[, parseErrorConstructor])`
+#### Static method: `throwBuildErrorCode(error[, parseErrorConstructor][, requestShortener])`
 
 * `error` {Error}
 * `parseErrorConstructor` {string}
+* `requestShortener` {RequestShortener}
 * Returns: {string}
 
 Returns the statement a module that failed to build throws when executed.
@@ -6008,14 +6019,14 @@ Checks whether this multi stats has warnings.
 
 #### `toJson([options])`
 
-* `options` {boolean|"none"|"summary"|"normal"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
+* `options` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
 * Returns: {StatsCompilation}
 
 Returns json output.
 
 #### `toString([options])`
 
-* `options` {boolean|"none"|"summary"|"normal"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
+* `options` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
 * Returns: {string}
 
 Returns a string representation.
@@ -6440,10 +6451,13 @@ Checks whether this module provides the specified export.
 
 Gets the library identifier.
 
-#### `markModuleAsErrored(error)`
+#### `markModuleAsErrored([error])`
 
-* `error` {Error}
+* `error` {any}
 * Returns: {void}
+
+Marks the module as failed, so what it generates says so. A tap or a
+loader may fail with anything, and what reads the failure expects an error.
 
 #### `nameForCondition()`
 
@@ -7485,14 +7499,14 @@ Checks whether this stats has warnings.
 
 #### `toJson([options])`
 
-* `options` {boolean|"none"|"summary"|"normal"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
+* `options` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
 * Returns: {StatsCompilation}
 
 Returns json output.
 
 #### `toString([options])`
 
-* `options` {boolean|"none"|"summary"|"normal"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
+* `options` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
 * Returns: {string}
 
 Returns a string representation.
@@ -8116,7 +8130,7 @@ Options object as provided by the user.
 * `resolve` {ResolveOptions} Options for the resolver.
 * `resolveLoader` {ResolveOptions} Options for the resolver when resolving loaders.
 * `snapshot` {SnapshotOptionsWebpackOptions} Options affecting how file system snapshots are created and validated.
-* `stats` {boolean|"none"|"summary"|"normal"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions} Stats options object or preset name.
+* `stats` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions} Stats options object or preset name.
 * `target` {string|false|string[]} Environment to build for. An array of environments to build for all of them when possible.
 * `validate` {boolean} Enable validation of webpack configuration. Defaults to true in development mode. In production mode, defaults to true unless futureDefaults is enabled, then defaults to false.
 * `watch` {boolean} Enter watch mode, which rebuilds on file change.
@@ -8275,7 +8289,7 @@ Options for library.
 
 `ContextAdditions` = {object}
 
-* `this` {NormalModuleLoaderContext|LoaderRunnerLoaderContext|LoaderPluginLoaderContext|HotModuleReplacementPluginLoaderContext|ContextAdditions}
+* `this` {NormalModuleLoaderContext|LoaderRunnerMutableContext|LoaderRunnerReadonlyContext|LoaderPluginLoaderContext|HotModuleReplacementPluginLoaderContext|ContextAdditions}
 * `content` {string}
 * `sourceMap` {string|RawSourceMap}
 * `additionalData` {AdditionalData}
@@ -8443,7 +8457,7 @@ Specify options for each parser.
 
 `ContextAdditions` = {object}
 
-* `this` {NormalModuleLoaderContext|LoaderRunnerLoaderContext|LoaderPluginLoaderContext|HotModuleReplacementPluginLoaderContext|ContextAdditions}
+* `this` {NormalModuleLoaderContext|LoaderRunnerMutableContext|LoaderRunnerReadonlyContext|LoaderPluginLoaderContext|HotModuleReplacementPluginLoaderContext|ContextAdditions}
 * `remainingRequest` {string}
 * `previousRequest` {string}
 * `data` {object}
@@ -8478,7 +8492,7 @@ Returns object of arguments.
 
 `ContextAdditions` = {object}
 
-* `this` {NormalModuleLoaderContext|LoaderRunnerLoaderContext|LoaderPluginLoaderContext|HotModuleReplacementPluginLoaderContext|ContextAdditions}
+* `this` {NormalModuleLoaderContext|LoaderRunnerMutableContext|LoaderRunnerReadonlyContext|LoaderPluginLoaderContext|HotModuleReplacementPluginLoaderContext|ContextAdditions}
 * `content` {Buffer}
 * `sourceMap` {string|RawSourceMap}
 * `additionalData` {AdditionalData}
@@ -8617,7 +8631,7 @@ Stats options object.
 * `cached` {boolean} Add information about cached (not built) modules (deprecated: use 'cachedModules' instead).
 * `cachedAssets` {boolean} Show cached assets (setting this to `false` only shows emitted files).
 * `cachedModules` {boolean} Add information about cached (not built) modules.
-* `children` {boolean|"none"|"summary"|"normal"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions|StatsValue[]} Add children information.
+* `children` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions|StatsValue[]} Add children information.
 * `chunkGroupAuxiliary` {boolean} Display auxiliary assets in chunk groups.
 * `chunkGroupChildren` {boolean} Display children of chunk groups.
 * `chunkGroupMaxAssets` {number} Limit of assets displayed in chunk groups.
@@ -8945,7 +8959,7 @@ Plugin instance.
 
 ## Type: `LoaderContext`
 
-> **LoaderContext**\<`OptionsType`\> = {NormalModuleLoaderContext|LoaderRunnerLoaderContext|LoaderPluginLoaderContext|HotModuleReplacementPluginLoaderContext}
+> **LoaderContext**\<`OptionsType`\> = {NormalModuleLoaderContext|LoaderRunnerMutableContext|LoaderRunnerReadonlyContext|LoaderPluginLoaderContext|HotModuleReplacementPluginLoaderContext}
 
 ### Type Parameters
 

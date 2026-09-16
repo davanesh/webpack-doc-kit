@@ -937,6 +937,7 @@
   "externals": "globals.html#webpackoptionsnormalized#externals-2",
   "Generator": "globals.html#generator-4",
   "byType": "globals.html#generator#bytype",
+  "buildErrorMessage": "globals.html#generator#builderrormessage",
   "throwBuildErrorCode": "globals.html#generator#throwbuilderrorcode",
   "getTypesDependOnIncomingConnections": "globals.html#generator#gettypesdependonincomingconnections",
   "getSize": "globals.html#generator#getsize",
