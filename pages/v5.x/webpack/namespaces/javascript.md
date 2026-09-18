@@ -118,10 +118,13 @@ Block pre walk statement.
 
 #### `blockPreWalkStatements(statements)`
 
+> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `blockPreStatement` hook
+
 * `statements` {ClassDeclaration|FunctionDeclaration|ImportDeclaration|ExportNamedDeclaration|ExportDefaultDeclaration|ExportAllDeclaration|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|VariableDeclaration[]}
 * Returns: {void}
 
-Block pre walking iterates the scope for block variable declarations
+Walk every statement of a list to declare what it binds. Only a tap on the
+deprecated `blockPreStatement` hook asks for this.
 
 #### `blockPreWalkVariableDeclaration(statement)`
 
@@ -353,6 +356,14 @@ Evaluate expression.
 
 Extract member expression chain.
 
+#### `getAttachedCommentsStart(statement)`
+
+* `statement` {StatementPathItem}
+* Returns: {number}
+
+Where the comments written for `statement` begin: the run of comments
+before it that whitespace alone separates from it and from each other.
+
 #### `getComments(range)`
 
 * `range` {number|number}
@@ -520,10 +531,13 @@ Module pre walk import declaration.
 
 #### `modulePreWalkStatements(statements)`
 
+> Stability: 0 - Deprecated: TODO webpack 6: remove
+
 * `statements` {ClassDeclaration|FunctionDeclaration|ImportDeclaration|ExportNamedDeclaration|ExportDefaultDeclaration|ExportAllDeclaration|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|VariableDeclaration[]}
 * Returns: {void}
 
-Module pre walking iterates the scope for import entries
+Scan every top-level statement for the program's module declarations.
+The parser records them now, so nothing inside webpack scans for them.
 
 #### `parse(source, state)`
 
@@ -563,12 +577,16 @@ Pre walk assignment expression.
 
 #### `preWalkBlockStatement(statement)`
 
+> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+
 * `statement` {BlockStatement}
 * Returns: {void}
 
 Pre walk block statement.
 
 #### `preWalkCatchClause(catchClause)`
+
+> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
 
 * `catchClause` {CatchClause}
 * Returns: {void}
@@ -577,12 +595,16 @@ Pre walk catch clause.
 
 #### `preWalkDoWhileStatement(statement)`
 
+> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+
 * `statement` {DoWhileStatement}
 * Returns: {void}
 
 Pre walk do while statement.
 
 #### `preWalkForInStatement(statement)`
+
+> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
 
 * `statement` {ForInStatement}
 * Returns: {void}
@@ -591,12 +613,16 @@ Pre walk for in statement.
 
 #### `preWalkForOfStatement(statement)`
 
+> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+
 * `statement` {ForOfStatement}
 * Returns: {void}
 
-Pre walk for of statement.
+Pre walk for of statement. `for await` is reported by the walk, not here.
 
 #### `preWalkForStatement(statement)`
+
+> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
 
 * `statement` {ForStatement}
 * Returns: {void}
@@ -612,12 +638,16 @@ Pre walk function declaration.
 
 #### `preWalkIfStatement(statement)`
 
+> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+
 * `statement` {IfStatement}
 * Returns: {void}
 
 Pre walk if statement.
 
 #### `preWalkLabeledStatement(statement)`
+
+> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
 
 * `statement` {LabeledStatement}
 * Returns: {void}
@@ -633,12 +663,17 @@ Walking iterates the statements and expressions and processes them
 
 #### `preWalkStatements(statements)`
 
+> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+
 * `statements` {ClassDeclaration|FunctionDeclaration|ImportDeclaration|ExportNamedDeclaration|ExportDefaultDeclaration|ExportAllDeclaration|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|VariableDeclaration[]}
 * Returns: {void}
 
-Pre walking iterates the scope for variable declarations
+Walk every statement of a scope to declare what hoists to it. Only a tap
+on the deprecated `preStatement` hook asks for this.
 
 #### `preWalkSwitchCases(switchCases)`
+
+> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
 
 * `switchCases` {SwitchCase[]}
 * Returns: {void}
@@ -647,12 +682,16 @@ Pre walk switch cases.
 
 #### `preWalkSwitchStatement(statement)`
 
+> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+
 * `statement` {SwitchStatement}
 * Returns: {void}
 
 Pre walk switch statement.
 
 #### `preWalkTryStatement(statement)`
+
+> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
 
 * `statement` {TryStatement}
 * Returns: {void}
@@ -675,12 +714,16 @@ Pre walk variable declarator.
 
 #### `preWalkWhileStatement(statement)`
 
+> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+
 * `statement` {WhileStatement}
 * Returns: {void}
 
 Pre walk while statement.
 
 #### `preWalkWithStatement(statement)`
+
+> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
 
 * `statement` {WithStatement}
 * Returns: {void}

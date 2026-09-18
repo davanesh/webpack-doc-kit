@@ -229,6 +229,17 @@ Restore a mark (CSS Syntax §3 "restore a mark") — pop the last mark and
 rewind the cursor to it. The rewound span is re-tokenized on the next read;
 already-fired comments are not re-fired (`_commentHigh`).
 
+#### `skipPreludeLeaves()`
+
+* Returns: {void}
+
+Step over the run of selector-prelude leaves a skip-mode parse drops (CSS
+Syntax §5.4.3's "append to prelude", which skip mode does not do), without
+lexing one token each. Only valid where every leaf up to the next
+`BC_PRELUDE_STOP` code point is dropped whatever it is — which in
+`consumeAQualifiedRule` is once the two tokens the `--foo: {`
+disambiguation reads have both been seen. No-op while a token is cached.
+
 #### `skipWhitespace()`
 
 * Returns: {void}
