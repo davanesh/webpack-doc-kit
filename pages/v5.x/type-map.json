@@ -407,6 +407,7 @@
   "subtractRuntimeCondition": "webpack/namespaces/util/namespaces/runtime.html#subtractruntimecondition",
   "serialization": "webpack/namespaces/util/namespaces/serialization.html",
   "register": "webpack/namespaces/util/namespaces/serialization.html#register",
+  "registerLegacyRequest": "webpack/namespaces/util/namespaces/serialization.html#registerlegacyrequest",
   "registerLoader": "webpack/namespaces/util/namespaces/serialization.html#registerloader",
   "registerNotSerializable": "webpack/namespaces/util/namespaces/serialization.html#registernotserializable",
   "NOT_SERIALIZABLE": "webpack/namespaces/util/namespaces/serialization.html#not_serializable",

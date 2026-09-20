@@ -57,6 +57,17 @@
 
 ***
 
+## `registerLegacyRequest`
+
+> `const` **registerLegacyRequest**: {object}
+
+* `Constructor` {Constructor}
+* `request` {string}
+* `name` {null|string}
+* Returns: {void}
+
+***
+
 ## `registerLoader`
 
 > `const` **registerLoader**: {object}
