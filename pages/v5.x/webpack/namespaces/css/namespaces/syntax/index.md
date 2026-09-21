@@ -258,6 +258,7 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 * `index` {number}
 * `node` {NodeSyntax}
 * `parent` {NodeSyntax}
+* `atKeyword`
 * `blockEnd`
 * `blockStart`
 * `blockToken`
