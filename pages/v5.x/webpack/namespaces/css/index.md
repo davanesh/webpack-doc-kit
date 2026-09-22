@@ -2,6 +2,7 @@
 
 ## Namespaces
 
+- [cssMinify](namespaces/cssMinify.md)
 - [syntax](namespaces/syntax/index.md)
 
 ## Class: `CssModulesPlugin`
@@ -75,3 +76,12 @@ Gets chunk filename template.
 * Returns: {Source}
 
 Renders css module source.
+
+***
+
+## `cssMinify(input[, sourceMap][, minimizerOptions])`
+
+* `input` {object}
+* `sourceMap` {object}
+* `minimizerOptions` {object|CssTransformOptions}
+* Returns: {Promise}

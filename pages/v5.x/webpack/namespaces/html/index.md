@@ -2,6 +2,7 @@
 
 ## Namespaces
 
+- [htmlMinify](namespaces/htmlMinify.md)
 - [syntax](namespaces/syntax/index.md)
 
 ## Class: `HtmlModulesPlugin`
@@ -52,3 +53,21 @@ standard `[contenthash]` recipe.
 Filename template for an extracted HTML page: `output.htmlFilename` for
 initial chunks, `output.htmlChunkFilename` otherwise — the HTML counterpart
 of `CssModulesPlugin.getChunkFilenameTemplate`.
+
+***
+
+## `builtinEmbeddedRenderer`
+
+> `const` **builtinEmbeddedRenderer**: {object}
+
+* `options` {BuiltinEmbeddedRendererOptions}
+* Returns: {object}
+
+***
+
+## `htmlMinify(input[, sourceMap][, minimizerOptions])`
+
+* `input` {object}
+* `sourceMap` {RawSourceMap}
+* `minimizerOptions` {Omit|object}
+* Returns: {Promise}

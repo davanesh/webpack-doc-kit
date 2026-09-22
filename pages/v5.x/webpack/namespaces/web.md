@@ -153,6 +153,13 @@ Processes the provided compilation.
 
 Builds the module using the provided compilation context.
 
+#### `canBeWrappedInConcatenation()`
+
+* Returns: {boolean}
+
+Whether a concatenation may defer this module behind its lazy CommonJS
+accessor. A generator ignoring `ConcatenationScope#isWrapped` answers false.
+
 #### `chunkCondition(chunk, compilation)`
 
 * `chunk` {Chunk}
@@ -497,7 +504,7 @@ Updates the hash with the data contributed by this instance.
 
 #### Static method: `getSourceBasicTypes(module)`
 
-> Stability: 0 - Deprecated: In webpack 6, call getSourceBasicTypes() directly on the module instance instead of using this static method.
+> Stability: 0 - Deprecated: In the next major release, call getSourceBasicTypes() directly on the module instance instead of using this static method.
 
 * `module` {Module}
 * Returns: {ReadonlySet}
@@ -712,6 +719,13 @@ Processes the provided compilation.
 
 Builds the module using the provided compilation context.
 
+#### `canBeWrappedInConcatenation()`
+
+* Returns: {boolean}
+
+Whether a concatenation may defer this module behind its lazy CommonJS
+accessor. A generator ignoring `ConcatenationScope#isWrapped` answers false.
+
 #### `chunkCondition(chunk, compilation)`
 
 * `chunk` {Chunk}
@@ -1056,7 +1070,7 @@ Updates the hash with the data contributed by this instance.
 
 #### Static method: `getSourceBasicTypes(module)`
 
-> Stability: 0 - Deprecated: In webpack 6, call getSourceBasicTypes() directly on the module instance instead of using this static method.
+> Stability: 0 - Deprecated: In the next major release, call getSourceBasicTypes() directly on the module instance instead of using this static method.
 
 * `module` {Module}
 * Returns: {ReadonlySet}

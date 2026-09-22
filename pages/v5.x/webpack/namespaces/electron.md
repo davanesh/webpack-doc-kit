@@ -7,7 +7,7 @@
 #### `new ElectronTargetPlugin([context][, type])`
 
 * `context` {"preload"|"main"|"renderer"}
-* `type` {"asset"|"asset-url"|"css-import"|"module"|"promise"|"script"|"commonjs"|"var"|"this"|"import"|"global"|"jsonp"|"assign"|"amd"|"amd-require"|"umd"|"umd2"|"commonjs2"|"system"|"window"|"self"|"commonjs-static"|"commonjs-module"|"css-url"|"node-commonjs"|"module-import"|"amd-async"}
+* `type` {"asset"|"asset-url"|"css-import"|"module"|"promise"|"import"|"var"|"this"|"commonjs"|"global"|"script"|"window"|"system"|"jsonp"|"assign"|"amd"|"amd-require"|"umd"|"umd2"|"commonjs2"|"self"|"commonjs-static"|"commonjs-module"|"css-url"|"node-commonjs"|"module-import"|"amd-async"}
 * Returns: {ElectronTargetPlugin}
 
 ### Properties

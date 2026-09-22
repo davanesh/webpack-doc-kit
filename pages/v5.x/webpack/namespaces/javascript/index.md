@@ -56,7 +56,7 @@ Updates enabled using the provided compiler.
 
 #### `new JavascriptParser([sourceType][, options])`
 
-* `sourceType` {"module"|"script"|"auto"}
+* `sourceType` {"module"|"auto"|"script"}
 * `options` {object}
 * Returns: {JavascriptParser}
 
@@ -70,10 +70,10 @@ Creates an instance of JavascriptParser.
 * `hooks` {Readonly}
 * `magicCommentContext` {Context}
 * `options` {object}
-* `prevStatement` {Identifier|MetaProperty|SimpleLiteral|RegExpLiteral|BigIntLiteral|ImportExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|LogicalExpression|MemberExpression|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|ClassDeclaration|MaybeNamedClassDeclaration|FunctionDeclaration|MaybeNamedFunctionDeclaration|ImportDeclaration|ExportNamedDeclaration|ExportDefaultDeclaration|ExportAllDeclaration|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|VariableDeclaration}
+* `prevStatement` {ClassDeclaration|MaybeNamedClassDeclaration|ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|FunctionDeclaration|MaybeNamedFunctionDeclaration|ImportDeclaration|ExportNamedDeclaration|ExportDefaultDeclaration|ExportAllDeclaration|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|VariableDeclaration}
 * `scope` {ScopeInfo}
 * `semicolons` {Map}
-* `sourceType` {"module"|"script"|"auto"}
+* `sourceType` {"module"|"auto"|"script"}
 * `state` {JavascriptParserState}
 * `statementPath` {StatementPathItem[]}
 * `ALLOWED_MEMBER_TYPES_ALL` {number}
@@ -122,7 +122,7 @@ Block pre walk statement.
 
 #### `blockPreWalkStatements(statements)`
 
-> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `blockPreStatement` hook
+> Stability: 0 - Deprecated: TODO in the next major release: remove, with the `blockPreStatement` hook
 
 * `statements` {ClassDeclaration|FunctionDeclaration|ImportDeclaration|ExportNamedDeclaration|ExportDefaultDeclaration|ExportAllDeclaration|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|VariableDeclaration[]}
 * Returns: {void}
@@ -147,7 +147,7 @@ Block pre walk variable declaration.
 
 `R`
 * `hookMap` {HookMap}
-* `expr` {Identifier|MetaProperty|SimpleLiteral|RegExpLiteral|BigIntLiteral|ImportExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|LogicalExpression|MemberExpression|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|Super}
+* `expr` {ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|Super}
 * `args` {AsArray}
 * Returns: {R}
 
@@ -163,7 +163,7 @@ Call hooks for expression.
 
 `R`
 * `hookMap` {HookMap}
-* `expr` {Identifier|MetaProperty|SimpleLiteral|RegExpLiteral|BigIntLiteral|ImportExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|LogicalExpression|MemberExpression|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|Super}
+* `expr` {ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|Super}
 * `fallback` {object}
 * `defined` {object}
 * `args` {AsArray}
@@ -288,7 +288,7 @@ Processes the provided declaration.
 
 * `pattern` {Pattern}
 * `expression` {ExpressionEstreeIndex}
-* Returns: {Identifier|MetaProperty|SimpleLiteral|RegExpLiteral|BigIntLiteral|ImportExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|LogicalExpression|MemberExpression|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression}
+* Returns: {ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression}
 
 Enter destructuring assignment.
 
@@ -310,7 +310,7 @@ Enter object pattern.
 
 #### `enterPattern(pattern, onIdent)`
 
-* `pattern` {Identifier|MemberExpression|Property|ObjectPattern|ArrayPattern|RestElement|AssignmentPattern}
+* `pattern` {Property|Identifier|MemberExpression|ObjectPattern|ArrayPattern|RestElement|AssignmentPattern}
 * `onIdent` {object}
 * Returns: {void}
 
@@ -318,7 +318,7 @@ Processes the provided pattern.
 
 #### `enterPatterns(patterns, onIdent)`
 
-* `patterns` {string|Identifier|MemberExpression|Property|ObjectPattern|ArrayPattern|RestElement|AssignmentPattern[]}
+* `patterns` {string|Property|Identifier|MemberExpression|ObjectPattern|ArrayPattern|RestElement|AssignmentPattern[]}
 * `onIdent` {object}
 * Returns: {void}
 
@@ -348,14 +348,14 @@ Evaluated variable.
 
 #### `evaluateExpression(expression)`
 
-* `expression` {Identifier|MetaProperty|SimpleLiteral|RegExpLiteral|BigIntLiteral|ImportExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|LogicalExpression|MemberExpression|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|PrivateIdentifier|SpreadElement|Super}
+* `expression` {ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|PrivateIdentifier|SpreadElement|Super}
 * Returns: {BasicEvaluatedExpression}
 
 Evaluate expression.
 
 #### `extractMemberExpressionChain(expression)`
 
-* `expression` {Identifier|MetaProperty|SimpleLiteral|RegExpLiteral|BigIntLiteral|ImportExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|LogicalExpression|MemberExpression|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|Super}
+* `expression` {ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|Super}
 * Returns: {object}
 
 Extract member expression chain.
@@ -404,7 +404,7 @@ Offsets can only be mapped while parsing — callbacks deferred past the
 
 #### `getMemberExpressionInfo(expression, allowedTypes)`
 
-* `expression` {Identifier|MetaProperty|SimpleLiteral|RegExpLiteral|BigIntLiteral|ImportExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|LogicalExpression|MemberExpression|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|Super}
+* `expression` {ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|Super}
 * `allowedTypes` {number}
 * Returns: {CallExpressionInfo|ExpressionExpressionInfo}
 
@@ -412,8 +412,8 @@ Gets member expression info.
 
 #### `getMemberExpressionRoot(expression)`
 
-* `expression` {Identifier|MetaProperty|SimpleLiteral|RegExpLiteral|BigIntLiteral|ImportExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|LogicalExpression|MemberExpression|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|Super}
-* Returns: {Identifier|MetaProperty|SimpleLiteral|RegExpLiteral|BigIntLiteral|ImportExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|LogicalExpression|MemberExpression|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|Super}
+* `expression` {ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|Super}
+* Returns: {ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|Super}
 
 Finds the root object of a member expression chain without allocating the
 member arrays. The traversal/break logic must stay in sync with
@@ -436,7 +436,7 @@ Gets name info from variable.
 
 #### `getRenameIdentifier(expr)`
 
-* `expr` {Identifier|MetaProperty|SimpleLiteral|RegExpLiteral|BigIntLiteral|ImportExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|LogicalExpression|MemberExpression|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|SpreadElement}
+* `expr` {ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|SpreadElement}
 * Returns: {string|VariableInfo}
 
 Gets rename identifier.
@@ -486,7 +486,7 @@ Processes the provided has thi.
 
 > Stability: 0 - Deprecated
 
-* `params` {string|Identifier|MemberExpression|Property|ObjectPattern|ArrayPattern|RestElement|AssignmentPattern[]}
+* `params` {string|Property|Identifier|MemberExpression|ObjectPattern|ArrayPattern|RestElement|AssignmentPattern[]}
 * `fn` {object}
 * Returns: {void}
 
@@ -501,7 +501,7 @@ Checks whether this javascript parser is asi position.
 
 #### `isPure(expr, commentsStartPos)`
 
-* `expr` {Identifier|MetaProperty|SimpleLiteral|RegExpLiteral|BigIntLiteral|ImportExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|LogicalExpression|MemberExpression|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|PrivateIdentifier|ClassDeclaration|MaybeNamedClassDeclaration|FunctionDeclaration|MaybeNamedFunctionDeclaration|VariableDeclaration}
+* `expr` {ClassDeclaration|MaybeNamedClassDeclaration|ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|FunctionDeclaration|MaybeNamedFunctionDeclaration|PrivateIdentifier|VariableDeclaration}
 * `commentsStartPos` {number}
 * Returns: {boolean}
 
@@ -544,7 +544,7 @@ Module pre walk import declaration.
 
 #### `modulePreWalkStatements(statements)`
 
-> Stability: 0 - Deprecated: TODO webpack 6: remove
+> Stability: 0 - Deprecated: TODO in the next major release: remove
 
 * `statements` {ClassDeclaration|FunctionDeclaration|ImportDeclaration|ExportNamedDeclaration|ExportDefaultDeclaration|ExportAllDeclaration|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|VariableDeclaration[]}
 * Returns: {void}
@@ -590,7 +590,7 @@ Pre walk assignment expression.
 
 #### `preWalkBlockStatement(statement)`
 
-> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+> Stability: 0 - Deprecated: TODO in the next major release: remove, with the `preStatement` hook
 
 * `statement` {BlockStatement}
 * Returns: {void}
@@ -599,7 +599,7 @@ Pre walk block statement.
 
 #### `preWalkCatchClause(catchClause)`
 
-> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+> Stability: 0 - Deprecated: TODO in the next major release: remove, with the `preStatement` hook
 
 * `catchClause` {CatchClause}
 * Returns: {void}
@@ -608,7 +608,7 @@ Pre walk catch clause.
 
 #### `preWalkDoWhileStatement(statement)`
 
-> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+> Stability: 0 - Deprecated: TODO in the next major release: remove, with the `preStatement` hook
 
 * `statement` {DoWhileStatement}
 * Returns: {void}
@@ -617,7 +617,7 @@ Pre walk do while statement.
 
 #### `preWalkForInStatement(statement)`
 
-> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+> Stability: 0 - Deprecated: TODO in the next major release: remove, with the `preStatement` hook
 
 * `statement` {ForInStatement}
 * Returns: {void}
@@ -626,7 +626,7 @@ Pre walk for in statement.
 
 #### `preWalkForOfStatement(statement)`
 
-> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+> Stability: 0 - Deprecated: TODO in the next major release: remove, with the `preStatement` hook
 
 * `statement` {ForOfStatement}
 * Returns: {void}
@@ -635,7 +635,7 @@ Pre walk for of statement. `for await` is reported by the walk, not here.
 
 #### `preWalkForStatement(statement)`
 
-> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+> Stability: 0 - Deprecated: TODO in the next major release: remove, with the `preStatement` hook
 
 * `statement` {ForStatement}
 * Returns: {void}
@@ -651,7 +651,7 @@ Pre walk function declaration.
 
 #### `preWalkIfStatement(statement)`
 
-> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+> Stability: 0 - Deprecated: TODO in the next major release: remove, with the `preStatement` hook
 
 * `statement` {IfStatement}
 * Returns: {void}
@@ -660,7 +660,7 @@ Pre walk if statement.
 
 #### `preWalkLabeledStatement(statement)`
 
-> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+> Stability: 0 - Deprecated: TODO in the next major release: remove, with the `preStatement` hook
 
 * `statement` {LabeledStatement}
 * Returns: {void}
@@ -676,7 +676,7 @@ Walking iterates the statements and expressions and processes them
 
 #### `preWalkStatements(statements)`
 
-> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+> Stability: 0 - Deprecated: TODO in the next major release: remove, with the `preStatement` hook
 
 * `statements` {ClassDeclaration|FunctionDeclaration|ImportDeclaration|ExportNamedDeclaration|ExportDefaultDeclaration|ExportAllDeclaration|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|VariableDeclaration[]}
 * Returns: {void}
@@ -686,7 +686,7 @@ on the deprecated `preStatement` hook asks for this.
 
 #### `preWalkSwitchCases(switchCases)`
 
-> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+> Stability: 0 - Deprecated: TODO in the next major release: remove, with the `preStatement` hook
 
 * `switchCases` {SwitchCase[]}
 * Returns: {void}
@@ -695,7 +695,7 @@ Pre walk switch cases.
 
 #### `preWalkSwitchStatement(statement)`
 
-> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+> Stability: 0 - Deprecated: TODO in the next major release: remove, with the `preStatement` hook
 
 * `statement` {SwitchStatement}
 * Returns: {void}
@@ -704,7 +704,7 @@ Pre walk switch statement.
 
 #### `preWalkTryStatement(statement)`
 
-> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+> Stability: 0 - Deprecated: TODO in the next major release: remove, with the `preStatement` hook
 
 * `statement` {TryStatement}
 * Returns: {void}
@@ -727,7 +727,7 @@ Pre walk variable declarator.
 
 #### `preWalkWhileStatement(statement)`
 
-> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+> Stability: 0 - Deprecated: TODO in the next major release: remove, with the `preStatement` hook
 
 * `statement` {WhileStatement}
 * Returns: {void}
@@ -736,7 +736,7 @@ Pre walk while statement.
 
 #### `preWalkWithStatement(statement)`
 
-> Stability: 0 - Deprecated: TODO webpack 6: remove, with the `preStatement` hook
+> Stability: 0 - Deprecated: TODO in the next major release: remove, with the `preStatement` hook
 
 * `statement` {WithStatement}
 * Returns: {void}
@@ -873,7 +873,7 @@ Walk chain expression.
 
 #### `walkClass(classy)`
 
-* `classy` {ClassExpression|ClassDeclaration|MaybeNamedClassDeclaration}
+* `classy` {ClassDeclaration|MaybeNamedClassDeclaration|ClassExpression}
 * Returns: {void}
 
 Processes the provided classy.
@@ -922,14 +922,14 @@ Walk export named declaration.
 
 #### `walkExpression(expression)`
 
-* `expression` {Identifier|MetaProperty|SimpleLiteral|RegExpLiteral|BigIntLiteral|ImportExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|LogicalExpression|MemberExpression|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|PrivateIdentifier|SpreadElement|Super}
+* `expression` {ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|PrivateIdentifier|SpreadElement|Super}
 * Returns: {void}
 
 Processes the provided expression.
 
 #### `walkExpressions(expressions)`
 
-* `expressions` {Identifier|MetaProperty|SimpleLiteral|RegExpLiteral|BigIntLiteral|ImportExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|LogicalExpression|MemberExpression|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|SpreadElement[]}
+* `expressions` {ClassExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ConditionalExpression|FunctionExpression|ImportExpression|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UnaryExpression|UpdateExpression|YieldExpression|SpreadElement[]}
 * Returns: {void}
 
 Processes the provided expression.

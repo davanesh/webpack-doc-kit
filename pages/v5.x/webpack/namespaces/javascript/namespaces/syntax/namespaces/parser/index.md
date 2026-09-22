@@ -365,7 +365,7 @@ was already declared there.
 
 #### `getToken()`
 
-* Returns: {TokenSyntaxParser}
+* Returns: {TokenSyntaxParserClass}
 
 #### `getTokenFromCode(code)`
 
@@ -1454,7 +1454,7 @@ A token as `options.onToken` receives one.
 #### `new Token([p])`
 
 * `p` {any}
-* Returns: {TokenSyntaxParser}
+* Returns: {TokenSyntaxParserClass}
 
 ### Properties
 
@@ -1811,7 +1811,7 @@ was already declared there.
 
 #### `getToken()`
 
-* Returns: {TokenSyntaxParser}
+* Returns: {TokenSyntaxParserClass}
 
 #### `getTokenFromCode(code)`
 

@@ -3692,6 +3692,9 @@ Builds the module using the provided compilation context.
 
 * Returns: {boolean}
 
+Whether a concatenation may defer this module behind its lazy CommonJS
+accessor. A generator ignoring `ConcatenationScope#isWrapped` answers false.
+
 #### `chunkCondition(chunk, compilation)`
 
 * `chunk` {Chunk}
@@ -4024,7 +4027,7 @@ Updates the hash with the data contributed by this instance.
 
 #### Static method: `getSourceBasicTypes(module)`
 
-> Stability: 0 - Deprecated: In webpack 6, call getSourceBasicTypes() directly on the module instance instead of using this static method.
+> Stability: 0 - Deprecated: In the next major release, call getSourceBasicTypes() directly on the module instance instead of using this static method.
 
 * `module` {Module}
 * Returns: {ReadonlySet}
@@ -4039,7 +4042,7 @@ Gets source basic types.
 
 #### `new ExternalsPlugin(type, externals)`
 
-* `type` {"asset"|"asset-url"|"css-import"|"module"|"promise"|"script"|"commonjs"|"var"|"this"|"import"|"global"|"jsonp"|"assign"|"amd"|"amd-require"|"umd"|"umd2"|"commonjs2"|"system"|"window"|"self"|"commonjs-static"|"commonjs-module"|"css-url"|"node-commonjs"|"module-import"|"amd-async"|object}
+* `type` {"asset"|"asset-url"|"css-import"|"module"|"promise"|"import"|"var"|"this"|"commonjs"|"global"|"script"|"window"|"system"|"jsonp"|"assign"|"amd"|"amd-require"|"umd"|"umd2"|"commonjs2"|"self"|"commonjs-static"|"commonjs-module"|"css-url"|"node-commonjs"|"module-import"|"amd-async"|object}
 * `externals` {Externals}
 * Returns: {ExternalsPlugin}
 
@@ -4048,7 +4051,7 @@ Creates an instance of ExternalsPlugin.
 ### Properties
 
 * `externals` {Externals}
-* `type` {"asset"|"asset-url"|"css-import"|"module"|"promise"|"script"|"commonjs"|"var"|"this"|"import"|"global"|"jsonp"|"assign"|"amd"|"amd-require"|"umd"|"umd2"|"commonjs2"|"system"|"window"|"self"|"commonjs-static"|"commonjs-module"|"css-url"|"node-commonjs"|"module-import"|"amd-async"|object}
+* `type` {"asset"|"asset-url"|"css-import"|"module"|"promise"|"import"|"var"|"this"|"commonjs"|"global"|"script"|"window"|"system"|"jsonp"|"assign"|"amd"|"amd-require"|"umd"|"umd2"|"commonjs2"|"self"|"commonjs-static"|"commonjs-module"|"css-url"|"node-commonjs"|"module-import"|"amd-async"|object}
 
 ### Methods
 
@@ -4985,6 +4988,13 @@ Adds the provided warning to the module.
 
 Builds the module using the provided compilation context.
 
+#### `canBeWrappedInConcatenation()`
+
+* Returns: {boolean}
+
+Whether a concatenation may defer this module behind its lazy CommonJS
+accessor. A generator ignoring `ConcatenationScope#isWrapped` answers false.
+
 #### `chunkCondition(chunk, compilation)`
 
 * `chunk` {Chunk}
@@ -5302,7 +5312,7 @@ Updates the hash with the data contributed by this instance.
 
 #### Static method: `getSourceBasicTypes(module)`
 
-> Stability: 0 - Deprecated: In webpack 6, call getSourceBasicTypes() directly on the module instance instead of using this static method.
+> Stability: 0 - Deprecated: In the next major release, call getSourceBasicTypes() directly on the module instance instead of using this static method.
 
 * `module` {Module}
 * Returns: {ReadonlySet}
@@ -6020,14 +6030,14 @@ Checks whether this multi stats has warnings.
 
 #### `toJson([options])`
 
-* `options` {boolean|"normal"|"summary"|"none"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
+* `options` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
 * Returns: {StatsCompilation}
 
 Returns json output.
 
 #### `toString([options])`
 
-* `options` {boolean|"normal"|"summary"|"none"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
+* `options` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
 * Returns: {string}
 
 Returns a string representation.
@@ -6204,6 +6214,13 @@ Adds the provided warning to the module.
 * Returns: {void}
 
 Builds the module using the provided compilation context.
+
+#### `canBeWrappedInConcatenation()`
+
+* Returns: {boolean}
+
+Whether a concatenation may defer this module behind its lazy CommonJS
+accessor. A generator ignoring `ConcatenationScope#isWrapped` answers false.
 
 #### `chunkCondition(chunk, compilation)`
 
@@ -6581,7 +6598,7 @@ Updates the hash with the data contributed by this instance.
 
 #### Static method: `getSourceBasicTypes(module)`
 
-> Stability: 0 - Deprecated: In webpack 6, call getSourceBasicTypes() directly on the module instance instead of using this static method.
+> Stability: 0 - Deprecated: In the next major release, call getSourceBasicTypes() directly on the module instance instead of using this static method.
 
 * `module` {Module}
 * Returns: {ReadonlySet}
@@ -6717,7 +6734,7 @@ Creates an instance of ProgressPlugin.
 * `handler` {object}
 * `modulesCount` {number}
 * `options` {ProgressPluginOptions}
-* `percentBy` {"entries"|"modules"|"dependencies"}
+* `percentBy` {"entries"|"dependencies"|"modules"}
 * `phaseTimings` {boolean}
 * `profile` {boolean}
 * `progressBar` {false|"auto"|Required}
@@ -7082,6 +7099,13 @@ Processes the provided compilation.
 
 Builds the module using the provided compilation context.
 
+#### `canBeWrappedInConcatenation()`
+
+* Returns: {boolean}
+
+Whether a concatenation may defer this module behind its lazy CommonJS
+accessor. A generator ignoring `ConcatenationScope#isWrapped` answers false.
+
 #### `chunkCondition(chunk, compilation)`
 
 * `chunk` {Chunk}
@@ -7426,7 +7450,7 @@ Updates the hash with the data contributed by this instance.
 
 #### Static method: `getSourceBasicTypes(module)`
 
-> Stability: 0 - Deprecated: In webpack 6, call getSourceBasicTypes() directly on the module instance instead of using this static method.
+> Stability: 0 - Deprecated: In the next major release, call getSourceBasicTypes() directly on the module instance instead of using this static method.
 
 * `module` {Module}
 * Returns: {ReadonlySet}
@@ -7500,14 +7524,14 @@ Checks whether this stats has warnings.
 
 #### `toJson([options])`
 
-* `options` {boolean|"normal"|"summary"|"none"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
+* `options` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
 * Returns: {StatsCompilation}
 
 Returns json output.
 
 #### `toString([options])`
 
-* `options` {boolean|"normal"|"summary"|"none"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
+* `options` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
 * Returns: {string}
 
 Returns a string representation.
@@ -8111,7 +8135,7 @@ Options object as provided by the user.
 * `extends` {string|string[]} Extend configuration from another configuration (only works when using webpack-cli).
 * `externals` {string|RegExp|ExternalItemObjectKnown|ExternalItemObjectUnknown|object|object|ExternalItem[]} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 * `externalsPresets` {ExternalsPresets} Enable presets of externals for specific targets.
-* `externalsType` {"asset"|"asset-url"|"css-import"|"module"|"promise"|"script"|"commonjs"|"var"|"this"|"import"|"global"|"jsonp"|"assign"|"amd"|"amd-require"|"umd"|"umd2"|"commonjs2"|"system"|"window"|"self"|"commonjs-static"|"commonjs-module"|"css-url"|"node-commonjs"|"module-import"|"amd-async"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+* `externalsType` {"asset"|"asset-url"|"css-import"|"module"|"promise"|"import"|"var"|"this"|"commonjs"|"global"|"script"|"window"|"system"|"jsonp"|"assign"|"amd"|"amd-require"|"umd"|"umd2"|"commonjs2"|"self"|"commonjs-static"|"commonjs-module"|"css-url"|"node-commonjs"|"module-import"|"amd-async"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 * `ignoreWarnings` {RegExp|object|object[]} Ignore specific warnings.
 * `infrastructureLogging` {InfrastructureLogging} Options for infrastructure level logging.
 * `loader` {Loader} Custom values available in the loader context.
@@ -8131,7 +8155,7 @@ Options object as provided by the user.
 * `resolve` {ResolveOptions} Options for the resolver.
 * `resolveLoader` {ResolveOptions} Options for the resolver when resolving loaders.
 * `snapshot` {SnapshotOptionsWebpackOptions} Options affecting how file system snapshots are created and validated.
-* `stats` {boolean|"normal"|"summary"|"none"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions} Stats options object or preset name.
+* `stats` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions} Stats options object or preset name.
 * `target` {string|false|string[]} Environment to build for. An array of environments to build for all of them when possible.
 * `validate` {boolean} Enable validation of webpack configuration. Defaults to true in development mode. In production mode, defaults to true unless futureDefaults is enabled, then defaults to false.
 * `watch` {boolean} Enter watch mode, which rebuilds on file change.
@@ -8270,6 +8294,7 @@ Options for library.
 
 * `amdContainer` {string} Add a container for define/require functions in the AMD module.
 * `auxiliaryComment` {string|LibraryCustomUmdCommentObject} Add a comment in the UMD wrapper.
+* `entryExports` {"last"|"all"} Which modules of an entry the library exposes the exports of: only the last one, or all of them, where a name more than one module binds differently is left out, as 'export *' does.
 * `export` {string|string[]} Specify which export should be exposed as library.
 * `name` {string|string[]|LibraryCustomUmdObject} The name of the library (some types allow unnamed libraries too).
 * `type` {string} Type of library (types included by default are 'var', 'module', 'assign', 'assign-properties', 'this', 'window', 'self', 'global', 'commonjs', 'commonjs2', 'commonjs-module', 'commonjs-static', 'amd', 'amd-require', 'umd', 'umd2', 'jsonp', 'system', but others might be added by plugins).
@@ -8533,7 +8558,7 @@ Returns object of arguments.
 * `fileDependencies` {LazySet}
 * `ignoredModule` {Module}
 * `missingDependencies` {LazySet}
-* `phase` {"defer"|"source"|"evaluation"}
+* `phase` {"source"|"defer"|"evaluation"}
 * `request` {string}
 * `resolveOptions` {ResolveOptions}
 
@@ -8632,7 +8657,7 @@ Stats options object.
 * `cached` {boolean} Add information about cached (not built) modules (deprecated: use 'cachedModules' instead).
 * `cachedAssets` {boolean} Show cached assets (setting this to `false` only shows emitted files).
 * `cachedModules` {boolean} Add information about cached (not built) modules.
-* `children` {boolean|"normal"|"summary"|"none"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions|StatsValue[]} Add children information.
+* `children` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions|StatsValue[]} Add children information.
 * `chunkGroupAuxiliary` {boolean} Display auxiliary assets in chunk groups.
 * `chunkGroupChildren` {boolean} Display children of chunk groups.
 * `chunkGroupMaxAssets` {number} Limit of assets displayed in chunk groups.
@@ -8727,7 +8752,7 @@ Normalized webpack options object.
 * `experiments` {ExperimentsNormalized} Enables/Disables experiments (experimental features with relax SemVer compatibility).
 * `externals` {Externals} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 * `externalsPresets` {ExternalsPresets} Enable presets of externals for specific targets.
-* `externalsType` {"asset"|"asset-url"|"css-import"|"module"|"promise"|"script"|"commonjs"|"var"|"this"|"import"|"global"|"jsonp"|"assign"|"amd"|"amd-require"|"umd"|"umd2"|"commonjs2"|"system"|"window"|"self"|"commonjs-static"|"commonjs-module"|"css-url"|"node-commonjs"|"module-import"|"amd-async"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+* `externalsType` {"asset"|"asset-url"|"css-import"|"module"|"promise"|"import"|"var"|"this"|"commonjs"|"global"|"script"|"window"|"system"|"jsonp"|"assign"|"amd"|"amd-require"|"umd"|"umd2"|"commonjs2"|"self"|"commonjs-static"|"commonjs-module"|"css-url"|"node-commonjs"|"module-import"|"amd-async"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 * `ignoreWarnings` {object[]} Ignore specific warnings.
 * `infrastructureLogging` {InfrastructureLogging} Options for infrastructure level logging.
 * `loader` {Loader} Custom values available in the loader context.

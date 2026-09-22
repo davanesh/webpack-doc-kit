@@ -4,6 +4,7 @@
 
 - [comparators](namespaces/comparators.md)
 - [compileBooleanMatcher](namespaces/compileBooleanMatcher.md)
+- [dataURL](namespaces/dataURL.md)
 - [runtime](namespaces/runtime.md)
 - [serialization](namespaces/serialization.md)
 

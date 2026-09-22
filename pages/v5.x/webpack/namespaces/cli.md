@@ -2,7 +2,7 @@
 
 ## `createColors`
 
-> **createColors**: {object}
+> `const` **createColors**: {object}
 
 * `__namedParameters` {ColorsOptions}
 * Returns: {Colors}
@@ -11,7 +11,7 @@
 
 ## `getArguments`
 
-> **getArguments**: {object}
+> `const` **getArguments**: {object}
 
 * `schema` {JSONSchema4|object|JSONSchema6|object|JSONSchema7|object}
 * Returns: {Flags}
@@ -20,7 +20,7 @@
 
 ## `isColorSupported`
 
-> **isColorSupported**: {object}
+> `const` **isColorSupported**: {object}
 
 * Returns: {boolean}
 
@@ -28,7 +28,7 @@
 
 ## `processArguments`
 
-> **processArguments**: {object}
+> `const` **processArguments**: {object}
 
 * `args` {Flags}
 * `config` {ObjectConfiguration}
