@@ -3,6 +3,7 @@
 ## Namespaces
 
 - [InnerGraph](namespaces/InnerGraph.md)
+- [OptimizationStages](namespaces/OptimizationStages.md)
 
 ## Class: `AggressiveMergingPlugin`
 
@@ -272,3 +273,9 @@ Creates an instance of SplitChunksPlugin.
 * Returns: {void}
 
 Applies the plugin by registering its hooks on the compiler.
+
+***
+
+## `ConcatenationScope`
+
+Re-exports [ConcatenationScope](../../../globals.md#concatenationscope)

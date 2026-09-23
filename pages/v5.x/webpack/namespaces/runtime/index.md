@@ -1,5 +1,9 @@
 # runtime
 
+## Namespaces
+
+- [RuntimeGlobals](namespaces/RuntimeGlobals.md)
+
 ## Class: `GetChunkFilenameRuntimeModule`
 
 ### Extends
@@ -1032,3 +1036,9 @@ Updates the hash with the data contributed by this instance.
 * Returns: {ReadonlySet}
 
 Gets source basic types.
+
+***
+
+## `RuntimeModule`
+
+Re-exports [RuntimeModule](../../../globals.md#runtimemodule)

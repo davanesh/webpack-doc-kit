@@ -1,12 +1,12 @@
-# cache
+# bun
 
-## Class: `MemoryCachePlugin`
+## Class: `BunTargetPlugin`
 
 ### Constructors
 
-#### `new MemoryCachePlugin()`
+#### `new BunTargetPlugin()`
 
-* Returns: {MemoryCachePlugin}
+* Returns: {BunTargetPlugin}
 
 ### Methods
 
@@ -16,9 +16,3 @@
 * Returns: {void}
 
 Applies the plugin by registering its hooks on the compiler.
-
-***
-
-## `Cache`
-
-Re-exports [Cache](../../globals.md#cache)

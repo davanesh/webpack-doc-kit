@@ -132,6 +132,38 @@ Restores a `LazySet` from serialized item data.
 
 ***
 
+## Class: `RequestShortener`
+
+Shortens absolute or verbose request strings so diagnostics and stats output
+can be rendered relative to a chosen base directory.
+
+### Constructors
+
+#### `new RequestShortener(dir[, associatedObjectForCache])`
+
+* `dir` {string}
+* `associatedObjectForCache` {object}
+* Returns: {RequestShortener}
+
+Binds a context-aware shortening function to the provided directory and
+optional cache owner.
+
+### Properties
+
+* `contextify` {object}
+
+### Methods
+
+#### `shorten([request])`
+
+* `request` {string}
+* Returns: {string}
+
+Returns a request string rewritten relative to the configured directory
+when one is provided.
+
+***
+
 ## `cleverMerge`
 
 > `const` **cleverMerge**: {object}

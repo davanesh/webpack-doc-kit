@@ -2,12 +2,15 @@
 
 ## Namespaces
 
+- [asset](webpack/namespaces/asset.md)
+- [bun](webpack/namespaces/bun.md)
 - [cache](webpack/namespaces/cache.md)
 - [cli](webpack/namespaces/cli.md)
 - [config](webpack/namespaces/config.md)
 - [container](webpack/namespaces/container.md)
 - [css](webpack/namespaces/css/index.md)
 - [debug](webpack/namespaces/debug.md)
+- [deno](webpack/namespaces/deno.md)
 - [dependencies](webpack/namespaces/dependencies.md)
 - [dll](webpack/namespaces/dll.md)
 - [electron](webpack/namespaces/electron.md)
@@ -16,14 +19,15 @@
 - [html](webpack/namespaces/html/index.md)
 - [ids](webpack/namespaces/ids.md)
 - [javascript](webpack/namespaces/javascript/index.md)
+- [json](webpack/namespaces/json.md)
 - [library](webpack/namespaces/library.md)
 - [ModuleFilenameHelpers](webpack/namespaces/ModuleFilenameHelpers.md)
 - [node](webpack/namespaces/node.md)
-- [OptimizationStages](webpack/namespaces/OptimizationStages.md)
+- [~~OptimizationStages~~](webpack/namespaces/OptimizationStages.md)
 - [optimize](webpack/namespaces/optimize/index.md)
 - [prefetch](webpack/namespaces/prefetch.md)
-- [runtime](webpack/namespaces/runtime.md)
-- [RuntimeGlobals](webpack/namespaces/RuntimeGlobals.md)
+- [runtime](webpack/namespaces/runtime/index.md)
+- [~~RuntimeGlobals~~](webpack/namespaces/RuntimeGlobals.md)
 - [sharing](webpack/namespaces/sharing.md)
 - [sources](webpack/namespaces/sources.md)
 - [util](webpack/namespaces/util/index.md)
@@ -7490,6 +7494,32 @@ Applies the plugin by registering its hooks on the compiler.
 
 ***
 
+## Class: `SSRManifestPlugin`
+
+### Constructors
+
+#### `new SSRManifestPlugin([options])`
+
+* `options` {SSRManifestPluginOptions}
+* Returns: {SSRManifestPlugin}
+
+Creates an instance of SSRManifestPlugin.
+
+### Properties
+
+* `options` {SSRManifestPluginOptions}
+
+### Methods
+
+#### `apply(compiler)`
+
+* `compiler` {Compiler}
+* Returns: {void}
+
+Applies the plugin by registering its hooks on the compiler.
+
+***
+
 ## Class: `Stats`
 
 ### Constructors
@@ -9312,10 +9342,16 @@ Plugin instance.
 
 > `const` **validateSchema**: {object}
 
+Validates a value against a JSON schema.
+
 * `schema` {Parameters}
 * `options` {Parameters}
 * `validationConfiguration` {ValidationErrorConfiguration}
 * Returns: {void}
+
+### Deprecated
+
+use `config.validateSchema` — TODO in the next major release: remove
 
 ***
 
@@ -10164,6 +10200,12 @@ Renames and re-exports [EntryPlugin](#entryplugin)
 ## `SourceMapDevToolPlugin`
 
 Re-exports [SourceMapDevToolPlugin](#sourcemapdevtoolplugin)
+
+***
+
+## `SSRManifestPlugin`
+
+Re-exports [SSRManifestPlugin](#ssrmanifestplugin)
 
 ***
 

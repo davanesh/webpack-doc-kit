@@ -1,4 +1,10 @@
-# OptimizationStages
+# ~~OptimizationStages~~
+
+The stage constants the optimization hooks are tapped at.
+
+## Deprecated
+
+use `optimize.OptimizationStages` — TODO in the next major release: remove
 
 ## `STAGE_ADVANCED`
 

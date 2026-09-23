@@ -20,3 +20,15 @@ in the chunk graph.
 
 Registers compilation hooks that emit the runtime modules responsible for
 scheduling chunk prefetch and preload requests.
+
+***
+
+## `AutomaticPrefetchPlugin`
+
+Re-exports [AutomaticPrefetchPlugin](../../globals.md#automaticprefetchplugin)
+
+***
+
+## `PrefetchPlugin`
+
+Re-exports [PrefetchPlugin](../../globals.md#prefetchplugin)

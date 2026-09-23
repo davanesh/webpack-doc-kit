@@ -1,10 +1,4 @@
-# ~~RuntimeGlobals~~
-
-The symbols a runtime module may declare a requirement on.
-
-## Deprecated
-
-use `runtime.RuntimeGlobals` — TODO in the next major release: remove
+# RuntimeGlobals
 
 ## `amdDefine`
 

@@ -1,12 +1,12 @@
-# cache
+# deno
 
-## Class: `MemoryCachePlugin`
+## Class: `DenoTargetPlugin`
 
 ### Constructors
 
-#### `new MemoryCachePlugin()`
+#### `new DenoTargetPlugin()`
 
-* Returns: {MemoryCachePlugin}
+* Returns: {DenoTargetPlugin}
 
 ### Methods
 
@@ -16,9 +16,3 @@
 * Returns: {void}
 
 Applies the plugin by registering its hooks on the compiler.
-
-***
-
-## `Cache`
-
-Re-exports [Cache](../../globals.md#cache)
