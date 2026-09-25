@@ -252,7 +252,7 @@ Returns true if the dependency is a low priority dependency.
 * `sourceOrder` {number}
 * `phase` {0|1|2}
 * `attributes` {ImportAttributes}
-* Returns: {HarmonyImportDependency}
+* Returns: {ESMImportDependency}
 
 Creates an instance of HarmonyImportDependency.
 
