@@ -63,6 +63,15 @@
 
 ***
 
+## `encodeDataURIPayload`
+
+> **encodeDataURIPayload**: {object}
+
+* `text` {string}
+* Returns: {string}
+
+***
+
 ## `languageOfFilename`
 
 > **languageOfFilename**: {object}
@@ -87,6 +96,15 @@
 
 * `uri` {string}
 * Returns: {null|ParsedDataURI}
+
+***
+
+## `readEmbeddedDataURI`
+
+> **readEmbeddedDataURI**: {object}
+
+* `uri` {string}
+* Returns: {null|object}
 
 ***
 
