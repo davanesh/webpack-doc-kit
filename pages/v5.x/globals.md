@@ -21,6 +21,7 @@
 - [javascript](webpack/namespaces/javascript/index.md)
 - [json](webpack/namespaces/json.md)
 - [library](webpack/namespaces/library.md)
+- [module](webpack/namespaces/module.md)
 - [ModuleFilenameHelpers](webpack/namespaces/ModuleFilenameHelpers.md)
 - [node](webpack/namespaces/node.md)
 - [~~OptimizationStages~~](webpack/namespaces/OptimizationStages.md)
@@ -30,6 +31,7 @@
 - [~~RuntimeGlobals~~](webpack/namespaces/RuntimeGlobals.md)
 - [sharing](webpack/namespaces/sharing.md)
 - [sources](webpack/namespaces/sources.md)
+- [template](webpack/namespaces/template.md)
 - [util](webpack/namespaces/util/index.md)
 - [wasm](webpack/namespaces/wasm.md)
 - [web](webpack/namespaces/web.md)
@@ -2650,6 +2652,7 @@ Applies the plugin by registering its hooks on the compiler.
 * `concurrency` {number}
 * `patterns` {CopyPattern[]}
 * `stage` {number}
+* `getCompilationHooks` {object}
 
 ### Methods
 
@@ -2756,6 +2759,7 @@ Applies the plugin by registering its hooks on the compiler.
 `javascript` for anything going through the module wrapper, `asset-url` for a
 bare url embedded into non-javascript output (css, html, a manifest).
 * `type` {string} Returns a display name for the type of dependency.
+* `ESM_CATEGORY` {"esm"}
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `EXPORTS_OBJECT_REFERENCED_MANGLEABLE` {string[][]}
 * `LAZY_UNTIL_FALLBACK` {"*"}
@@ -5326,6 +5330,10 @@ Gets source basic types.
 ***
 
 ## Class: `ModuleFactory`
+
+### Extended by
+
+- {NullFactory}
 
 ### Constructors
 

@@ -31,6 +31,7 @@ Creates an instance of ConstDependency.
 bare url embedded into non-javascript output (css, html, a manifest).
 * `runtimeRequirements` {Set}
 * `type` {string} Returns a display name for the type of dependency.
+* `ESM_CATEGORY` {"esm"}
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `EXPORTS_OBJECT_REFERENCED_MANGLEABLE` {string[][]}
 * `LAZY_UNTIL_FALLBACK` {"*"}
@@ -274,6 +275,7 @@ bare url embedded into non-javascript output (css, html, a manifest).
 * `type` {string} Returns a display name for the type of dependency.
 * `userRequest` {string}
 * `weak` {boolean}
+* `ESM_CATEGORY` {"esm"}
 * `ExportPresenceModes` {object}
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `EXPORTS_OBJECT_REFERENCED_MANGLEABLE` {string[][]}
@@ -550,6 +552,7 @@ bare url embedded into non-javascript output (css, html, a manifest).
 * `type` {string} Returns a display name for the type of dependency.
 * `userRequest` {string}
 * `weak` {boolean}
+* `ESM_CATEGORY` {"esm"}
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `EXPORTS_OBJECT_REFERENCED_MANGLEABLE` {string[][]}
 * `LAZY_UNTIL_FALLBACK` {"*"}
@@ -784,6 +787,7 @@ Returns true if the dependency is a low priority dependency.
 `javascript` for anything going through the module wrapper, `asset-url` for a
 bare url embedded into non-javascript output (css, html, a manifest).
 * `type` {string} Returns a display name for the type of dependency.
+* `ESM_CATEGORY` {"esm"}
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `EXPORTS_OBJECT_REFERENCED_MANGLEABLE` {string[][]}
 * `LAZY_UNTIL_FALLBACK` {"*"}

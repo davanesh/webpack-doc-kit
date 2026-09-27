@@ -190,6 +190,20 @@ when one is provided.
 
 ***
 
+## `makeSerializable`
+
+> `const` **makeSerializable**: {object}
+
+#### T
+
+`T` *extends* {Constructor}
+* `Constructor` {T}
+* `request` {string}
+* `name` {null|string}
+* Returns: {void}
+
+***
+
 ## `compileBooleanMatcher(map)`
 
 * `map` {Record}
