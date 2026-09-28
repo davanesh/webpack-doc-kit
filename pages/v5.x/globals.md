@@ -30,7 +30,7 @@
 - [runtime](webpack/namespaces/runtime/index.md)
 - [~~RuntimeGlobals~~](webpack/namespaces/RuntimeGlobals.md)
 - [sharing](webpack/namespaces/sharing.md)
-- [sources](webpack/namespaces/sources.md)
+- [sources](webpack/namespaces/sources/index.md)
 - [template](webpack/namespaces/template.md)
 - [util](webpack/namespaces/util/index.md)
 - [wasm](webpack/namespaces/wasm.md)

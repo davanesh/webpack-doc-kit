@@ -1,5 +1,9 @@
 # sources
 
+## Namespaces
+
+- [util](namespaces/util/index.md)
+
 ## Class: `CachedSource`
 
 ### Extends
@@ -72,7 +76,7 @@ streamChunks/updateHash on the same instance.
 
 #### `streamChunks(options, onChunk, onSource, onName)`
 
-* `options` {StreamChunksOptions}
+* `options` {OptionsStreamChunks}
 * `onChunk` {object}
 * `onSource` {object}
 * `onName` {object}
@@ -164,19 +168,19 @@ streamChunks/updateHash on the same instance.
 
 #### `new ConcatSource(args)`
 
-* `args` {ConcatSourceChild[]}
+* `args` {Child[]}
 * Returns: {ConcatSource}
 
 ### Methods
 
 #### `add(item)`
 
-* `item` {ConcatSourceChild}
+* `item` {Child}
 * Returns: {void}
 
 #### `addAllSkipOptimizing(items)`
 
-* `items` {ConcatSourceChild[]}
+* `items` {Child[]}
 * Returns: {void}
 
 #### `buffer()`
@@ -227,7 +231,7 @@ streamChunks/updateHash on the same instance.
 
 #### `streamChunks(options, onChunk, onSource, onName)`
 
-* `options` {StreamChunksOptions}
+* `options` {OptionsStreamChunks}
 * `onChunk` {object}
 * `onSource` {object}
 * `onName` {object}
@@ -248,10 +252,11 @@ streamChunks/updateHash on the same instance.
 
 ### Constructors
 
-#### `new OriginalSource(value, name)`
+#### `new OriginalSource(value, name[, scopeBindings])`
 
 * `value` {string|Buffer}
 * `name` {string}
+* `scopeBindings` {Map}
 * Returns: {OriginalSource}
 
 ### Methods
@@ -304,7 +309,7 @@ streamChunks/updateHash on the same instance.
 
 #### `streamChunks(options, onChunk, onSource, _onName)`
 
-* `options` {StreamChunksOptions}
+* `options` {OptionsStreamChunks}
 * `onChunk` {object}
 * `onSource` {object}
 * `_onName` {object}
@@ -385,7 +390,7 @@ streamChunks/updateHash on the same instance.
 
 #### `streamChunks(options, onChunk, onSource, onName)`
 
-* `options` {StreamChunksOptions}
+* `options` {OptionsStreamChunks}
 * `onChunk` {object}
 * `onSource` {object}
 * `onName` {object}
@@ -462,7 +467,7 @@ streamChunks/updateHash on the same instance.
 
 #### `streamChunks(options, onChunk, onSource, onName)`
 
-* `options` {StreamChunksOptions}
+* `options` {OptionsStreamChunks}
 * `onChunk` {object}
 * `onSource` {object}
 * `onName` {object}
@@ -566,7 +571,7 @@ streamChunks/updateHash on the same instance.
 
 #### `streamChunks(options, onChunk, onSource, onName)`
 
-* `options` {StreamChunksOptions}
+* `options` {OptionsStreamChunks}
 * `onChunk` {object}
 * `onSource` {object}
 * `onName` {object}
@@ -782,7 +787,7 @@ streamChunks/updateHash on the same instance.
 
 #### `streamChunks(options, onChunk, onSource, onName)`
 
-* `options` {StreamChunksOptions}
+* `options` {OptionsStreamChunks}
 * `onChunk` {object}
 * `onSource` {object}
 * `onName` {object}
