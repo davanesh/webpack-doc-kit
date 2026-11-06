@@ -79,6 +79,15 @@ Applies the plugin by registering its hooks on the compiler.
 
 ***
 
+## `extractUrlAndGlobal`
+
+> `const` **extractUrlAndGlobal**: {object}
+
+* `urlAndGlobal` {string}
+* Returns: {string[]}
+
+***
+
 ## `scope`
 
 > `const` **scope**: {object}

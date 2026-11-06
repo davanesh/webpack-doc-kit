@@ -13,15 +13,21 @@ The generic visitor coordinator (`util/SourceProcessor`) bound to the CSS
 `grammar`. All configuration is per `process` call. `process(src, { minimize:
 true })` returns `{ code, map }` — the safely-minified serialization (built by
 the same walk that fires visitors) and its source map; without `minimize` it
-just walks and returns `undefined`. Babel-style usage:
+just walks and returns `undefined`. Usage:
 ```
-new SourceProcessor().use({ [NodeType.AtRule]: (path) => {} }).process(source, { skip });
+new CssSourceProcessor().use({ [NodeType.AtRule]: (path) => {} }).process(source, { skip });
 ```
  exposed as `webpack.css.syntax.SourceProcessor`; unstable API
 
 ### Extends
 
-- {SourceProcessorClass}
+- {SourceProcessor}
+
+### Type Parameters
+
+#### TState
+
+`TState` = {unknown}
 
 ### Constructors
 
@@ -29,7 +35,10 @@ new SourceProcessor().use({ [NodeType.AtRule]: (path) => {} }).process(source, {
 
 > Stability: 1 - Experimental
 
-* Returns: {SourceProcessorSyntaxClass_2}
+###### TState
+
+`TState` = {unknown}
+* Returns: {CssSourceProcessor}
 
 **`Experimental`**
 
@@ -48,7 +57,7 @@ new SourceProcessor().use({ [NodeType.AtRule]: (path) => {} }).process(source, {
 > Stability: 1 - Experimental
 
 * `input` {string}
-* `options` {CssProcessOptions|object|object}
+* `options` {CssProcessOptions|RunState|object|object}
 * Returns: {object}
 
 **`Experimental`**
@@ -68,7 +77,7 @@ never re-parses; all configuration is per-call.
 > Stability: 1 - Experimental
 
 * `input` {string}
-* `options` {CssProcessOptions|object}
+* `options` {CssProcessOptions|RunState|object}
 * Returns: {object}
 
 **`Experimental`**
@@ -88,7 +97,7 @@ never re-parses; all configuration is per-call.
 > Stability: 1 - Experimental
 
 * `input` {string}
-* `options` {CssProcessOptions}
+* `options` {CssProcessOptions|RunState}
 * Returns: {undefined}
 
 **`Experimental`**
@@ -108,7 +117,7 @@ never re-parses; all configuration is per-call.
 > Stability: 1 - Experimental
 
 * `input` {string}
-* `options` {Omit|object|object}
+* `options` {Omit|RunState|object|object}
 * Returns: {Promise}
 
 **`Experimental`**
@@ -122,14 +131,44 @@ the async boundary stays at the top rather than on every node.
 This is the shape `process` itself takes once it is async: how the answers
 are waited for is this method's business, so nothing above it changes.
 
-#### `use(map)`
+#### `use(types, bucket)`
+
+##### Call Signature
 
 > Stability: 1 - Experimental
 
-* `map` {VisitorMap}
-* Returns: {SourceProcessorClass}
+###### T
+
+`T` *extends* {number}
+* `types` {T[]}
+* `bucket` {VisitorBucket}
+* Returns: {SourceProcessor}
 
 **`Experimental`**
 
-Register a Babel-style visitor map; calls accumulate per node type.
+Register one bucket for several node types, as a map naming each would;
+its path takes only the parts those types have.
+
+##### Call Signature
+
+> Stability: 1 - Experimental
+
+* `map` {CssVisitorMap}
+* Returns: {SourceProcessor}
+
+**`Experimental`**
+
+Register a visitor map; calls accumulate per node type, and each
+visitor's path takes only its type's parts.
 A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
+
+##### Call Signature
+
+> Stability: 1 - Experimental
+
+* `map` {VisitorMapSourceProcessorObject_1}
+* Returns: {SourceProcessor}
+
+**`Experimental`**
+
+Register a visitor map built at runtime, keyed by any node type.

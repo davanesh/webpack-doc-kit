@@ -29,7 +29,7 @@
 - [prefetch](webpack/namespaces/prefetch.md)
 - [runtime](webpack/namespaces/runtime/index.md)
 - [~~RuntimeGlobals~~](webpack/namespaces/RuntimeGlobals.md)
-- [sharing](webpack/namespaces/sharing.md)
+- [sharing](webpack/namespaces/sharing/index.md)
 - [sources](webpack/namespaces/sources/index.md)
 - [template](webpack/namespaces/template.md)
 - [util](webpack/namespaces/util/index.md)
@@ -60,7 +60,7 @@
 * `dependencies` {Dependency[]}
 * `groupOptions` {GroupOptionsAsyncDependenciesBlock}
 * `loc` {SyntheticDependencyLocation|RealDependencyLocation}
-* `module` {any}
+* `module` {void}
 * `parent` {DependenciesBlock}
 * `request` {string}
 
@@ -87,9 +87,9 @@ Adds the provided dependency to the dependencies block.
 
 Clear dependencies and blocks.
 
-#### `deserialize(__namedParameters)`
+#### `deserialize(context)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
+* `context` {ObjectDeserializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -97,6 +97,12 @@ Restores this instance from the provided deserializer context.
 #### `getRootBlock()`
 
 * Returns: {DependenciesBlock}
+
+#### `isAsyncBlock()`
+
+* Returns: {boolean}
+
+Returns whether this block is an async block, loaded on demand in its own chunk group.
 
 #### `removeDependency(dependency)`
 
@@ -107,7 +113,7 @@ Removes dependency.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -186,7 +192,7 @@ transitions, and shutdown across webpack cache implementations.
 
 #### `new Cache()`
 
-* Returns: {CacheClass}
+* Returns: {Cache}
 
 Initializes the cache lifecycle hooks implemented by cache backends.
 
@@ -522,6 +528,12 @@ Returns the integrated size with another chunk.
 * Returns: {boolean}
 
 Checks whether this chunk is empty.
+
+#### `isHotUpdate()`
+
+* Returns: {boolean}
+
+Returns whether this chunk carries a hot update rather than regular output.
 
 #### `isInGroup(chunkGroup)`
 
@@ -1153,10 +1165,11 @@ Checks whether this chunk graph contains the module.
 
 Checks whether this chunk graph contains the chunk.
 
-#### `integrateChunks(chunkA, chunkB)`
+#### `integrateChunks(chunkA, chunkB[, namedChunks])`
 
 * `chunkA` {Chunk}
 * `chunkB` {Chunk}
+* `namedChunks` {Map}
 * Returns: {void}
 
 Processes the provided chunk a.
@@ -1495,6 +1508,12 @@ Checks whether the provided group is registered as a parent.
 Inserts a chunk directly before another chunk that already belongs to the
 group, preserving the rest of the ordering.
 
+#### `isEntrypoint()`
+
+* Returns: {boolean}
+
+Returns whether this chunk group is an entrypoint, an async one (e.g. a worker) included.
+
 #### `isInitial()`
 
 * Returns: {boolean}
@@ -1641,10 +1660,13 @@ ambiguous lookups where no unique runtime-independent result exists.
 
 #### `getData(module, runtime, key)`
 
+###### K
+
+`K` *extends* {string}
 * `module` {Module}
 * `runtime` {RuntimeSpec}
-* `key` {string}
-* Returns: {any}
+* `key` {K}
+* Returns: {CodeGenValue}
 
 Returns an arbitrary metadata entry recorded during code generation.
 
@@ -1743,7 +1765,7 @@ Needed to detect build cycles.
 * `hints` {Error[]}
 * `hooks` {Readonly}
 * `inputFileSystem` {InputFileSystem}
-* `logger` {WebpackLogger}
+* `logger` {Logger}
 * `logging` {Map}
 * `mainTemplate` {MainTemplate}
 * `missingDependencies` {LazySet}
@@ -1846,6 +1868,9 @@ Adds the provided string to the compilation.
 
 #### `addLazyRuntimeModule(chunk, load, create[, chunkGraph])`
 
+###### T
+
+`T`
 * `chunk` {Chunk}
 * `load` {object}
 * `create` {object}
@@ -1903,7 +1928,7 @@ Processes the provided module.
 
 #### `assignDepths(modules)`
 
-* `modules` {Module[]|Set}
+* `modules` {Set|Module[]}
 * Returns: {void}
 
 Assigns depth values to the provided modules.
@@ -2084,6 +2109,14 @@ Gets asset path with info.
 
 Returns the cache facade instance.
 
+#### `getChunkHashDependencies(chunk)`
+
+* `chunk` {Chunk}
+* Returns: {ReadonlySet}
+
+Returns the chunks whose hashes the output of a chunk reads, as declared through
+`hooks.chunkHashDependencies`; `createHash` hashes them before it.
+
 #### `getDependencyReferencedExports(dependency, runtime)`
 
 * `dependency` {Dependency}
@@ -2099,7 +2132,7 @@ Gets dependency referenced exports.
 #### `getLogger(name)`
 
 * `name` {string|object}
-* Returns: {WebpackLogger}
+* Returns: {Logger}
 
 Returns a logger with that name.
 
@@ -2269,7 +2302,7 @@ Creates an instance of Compiler.
 
 ### Properties
 
-* `cache` {CacheClass}
+* `cache` {Cache}
 * `compilerPath` {string}
 * `context` {string}
 * `contextTimestamps` {Map}
@@ -2371,7 +2404,7 @@ Returns the cache facade instance.
 #### `getInfrastructureLogger(name)`
 
 * `name` {string|object}
-* Returns: {WebpackLogger}
+* Returns: {Logger}
 
 Gets infrastructure logger.
 
@@ -2419,14 +2452,14 @@ Processes the provided run as child callback.
 
 ###### T
 
-`T` *extends* {object|object[]} = {object}
+`T` *extends* {object|object[]}
 * `schema` {JSONSchema4|ExtendedSchema|JSONSchema6|ExtendedSchema|JSONSchema7|ExtendedSchema|object}
 * `value` {T}
-* `options` {ValidationErrorConfiguration}
-* `check` {object}
+* `options` {ValidationErrorConfiguration|PrecompiledCheck}
+* `check` {PrecompiledCheck}
 * Returns: {void}
 
-Schema validation function with optional pre-compiled check
+Validates a value against a schema, skipping the schema when the precompiled check passes
 
 #### `watch(watchOptions, handler)`
 
@@ -2751,9 +2784,12 @@ Applies the plugin by registering its hooks on the compiler.
 ### Properties
 
 * `category` {string} Returns a dependency category, typical categories are "commonjs", "amd", "esm".
-* `disconnect` {any}
+* `disconnect` {void}
+* `forwardId` {string|true} Returns the export name this dependency requests from its target module (lazy barrel optimization).
+* `lazyName` {string} Returns the export name for a `LAZY_LOCAL_EXPORT`/`LAZY_NAMED_REEXPORT` classification (lazy barrel optimization).
+* `lazyRole` {"id"|"local"|"*"|"import"|"@"} Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 * `loc` {DependencyLocation} Returns location.
-* `module` {any}
+* `module` {void}
 * `optional` {boolean}
 * `referencedSourceType` {string} Returns the source type this dependency reads from the module it references:
 `javascript` for anything going through the module wrapper, `asset-url` for a
@@ -2762,18 +2798,21 @@ bare url embedded into non-javascript output (css, html, a manifest).
 * `ESM_CATEGORY` {"esm"}
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `EXPORTS_OBJECT_REFERENCED_MANGLEABLE` {string[][]}
-* `LAZY_UNTIL_FALLBACK` {"*"}
-* `LAZY_UNTIL_ID` {"id"}
-* `LAZY_UNTIL_LOCAL` {"local"}
-* `LAZY_UNTIL_REQUEST` {"@"}
+* `KINDS` {Set}
+* `LAZY_IMPORT_DECLARATION` {"import"}
+* `LAZY_LOCAL_EXPORT` {"local"}
+* `LAZY_NAMED_REEXPORT` {"id"}
+* `LAZY_REEXPORT_SIDE_EFFECT` {"@"}
+* `LAZY_STAR_REEXPORT` {"*"}
 * `NO_EXPORTS_REFERENCED` {string[][]}
 * `TRANSITIVE` {symbol}
 
 ### Methods
 
-#### `canConcatenate(concatenateCommonJsModules)`
+#### `canConcatenate(concatenateCommonJsModules[, module])`
 
 * `concatenateCommonJsModules` {boolean}
+* `module` {Module}
 * Returns: {boolean}
 
 Returns true if this dependency can be concatenated
@@ -2791,9 +2830,9 @@ Could affect referencing module.
 
 Creates an ignored module.
 
-#### `deserialize(__namedParameters)`
+#### `deserialize(context)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
+* `context` {ObjectDeserializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -2824,24 +2863,6 @@ Returns errors.
 * Returns: {ExportsSpec}
 
 Returns the exported names
-
-#### `getForwardId()`
-
-* Returns: {string|true}
-
-Returns the export name this dependency requests from its target module (lazy barrel optimization).
-
-#### `getLazyName()`
-
-* Returns: {string}
-
-Returns the export name for a `LAZY_UNTIL_LOCAL`/`LAZY_UNTIL_ID` classification (lazy barrel optimization).
-
-#### `getLazyUntil()`
-
-* Returns: {"*"|"@"|"local"|"id"}
-
-Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 
 #### `getModuleEvaluationSideEffectsState(moduleGraph)`
 
@@ -2886,25 +2907,22 @@ Returns an identifier to merge equal requests.
 
 Returns warnings.
 
-#### `isLazy()`
+#### `is(kind)`
 
+###### K
+
+`K` *extends* {"css-import"|"url"|"entry"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"worker"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
+* `kind` {K}
 * Returns: {boolean}
 
-Whether the lazy barrel currently defers creating this dependency's target module (lazy barrel optimization).
+Returns whether this dependency is of the given kind; a subclass is every kind its parent is.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
-
-#### `setLazy(value)`
-
-* `value` {boolean}
-* Returns: {void}
-
-Sets whether the lazy barrel defers creating this dependency's target module (lazy barrel optimization).
 
 #### `setLoc(startLine, startColumn, endLine, endColumn)`
 
@@ -2935,10 +2953,11 @@ allocated a copy and stored the index outside the serialized fields.
 
 Updates the hash with the data contributed by this instance.
 
-#### Static method: `canConcatenate(dependency, concatenateCommonJsModules)`
+#### Static method: `canConcatenate(dependency, concatenateCommonJsModules[, module])`
 
 * `dependency` {Dependency}
 * `concatenateCommonJsModules` {boolean}
+* `module` {Module}
 * Returns: {boolean}
 
 Returns true if the dependency can be concatenated (scope hoisting).
@@ -3368,6 +3387,12 @@ Checks whether the provided group is registered as a parent.
 Inserts a chunk directly before another chunk that already belongs to the
 group, preserving the rest of the ordering.
 
+#### `isEntrypoint()`
+
+* Returns: {boolean}
+
+Returns whether this chunk group is an entrypoint, an async one (e.g. a worker) included.
+
 #### `isInitial()`
 
 * Returns: {boolean}
@@ -3471,14 +3496,14 @@ already present.
 
 #### `new EnvironmentPlugin(keys)`
 
-* `keys` {string|string[]|Record[]}
+* `keys` {string|string[]|JsonObjectFs[]}
 * Returns: {EnvironmentPlugin}
 
 Creates an instance of EnvironmentPlugin.
 
 ### Properties
 
-* `defaultValues` {Record}
+* `defaultValues` {JsonObjectFs}
 * `keys` {string[]}
 
 ### Methods
@@ -3586,7 +3611,7 @@ Updates the depth using the provided value.
 * `exportsArgument` {string} Gets exports argument.
 * `externalType` {ExternalsType}
 * `factoryMeta` {FactoryMeta}
-* `hasEqualsChunks` {any}
+* `hasEqualsChunks` {void}
 * `hash` {string} Returns the hash of the module.
 * `id` {string|number} Returns the module id assigned by the chunk graph.
 Updates the module id using the provided value.
@@ -3597,7 +3622,7 @@ Updates the post-order index using the provided value.
 * `interop` {"default"|"esModule"}
 * `issuer` {Module} Returns the issuer.
 Updates the issuer using the provided value.
-* `isUsed` {any}
+* `isUsed` {void}
 * `layer` {string}
 * `moduleArgument` {string} Gets module argument.
 * `needId` {boolean}
@@ -3608,10 +3633,10 @@ Updates the issuer using the provided value.
 * `profile` {ModuleProfile} 
 * `renderedHash` {string} Returns the rendered hash of the module.
 * `request` {ExternalModuleRequest}
-* `resolveOptions` {ResolveOptions}
+* `resolveOptions` {ResolveOptionsWebpackOptions}
 * `sideEffects` {boolean}
 * `type` {string}
-* `used` {any}
+* `used` {void}
 * `usedExports` {boolean|SortableSet} 
 * `userRequest` {string}
 * `useSimpleSourceMap` {boolean}
@@ -3619,6 +3644,7 @@ Updates the issuer using the provided value.
 * `warnings` {any}
 * `getCompilationHooks` {object}
 * `getExternalModuleNodeCommonjsInitFragment` {object}
+* `KINDS` {Set}
 * `ModuleExternalInitFragment` {ModuleExternalInitFragment}
 
 ### Methods
@@ -3736,9 +3762,9 @@ removes all warnings and errors
 
 Generates code and runtime requirements for this module.
 
-#### `deserialize(__namedParameters)`
+#### `deserialize(context)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
+* `context` {ObjectDeserializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -3805,6 +3831,12 @@ narrowed to its entry. An array is a module specifier plus a property path.
 
 * Returns: {DependenciesBlock}
 
+#### `getRootModule()`
+
+* Returns: {Module}
+
+Returns the module this one was built around: itself, or the root of a scope-hoisted concatenation.
+
 #### `getSideEffectsConnectionState(moduleGraph)`
 
 * `moduleGraph` {ModuleGraph}
@@ -3821,6 +3853,12 @@ We only have built-in knowledge about the javascript basic type here; other basi
 added or changed over time by generators and do not need to be handled or detected here.
 Some modules, e.g. RemoteModule, may return non-basic source types like "remote" and "share-init"
 from getSourceTypes(), but their generated output is still JavaScript, i.e. their basic type is JS.
+
+#### `getSourceModules()`
+
+* Returns: {Iterable}
+
+Returns the modules this one was built from: itself, or every module merged by scope hoisting.
 
 #### `getSourceTypes()`
 
@@ -3874,6 +3912,16 @@ Returns the unique identifier used to reference this module.
 
 Invalidates the cached state associated with this value.
 
+#### `is(kind)`
+
+###### K
+
+`K` *extends* {"runtime"|"css"|"html"|"remote"|"consume-shared"|"context"|"normal"|"external"|"concatenated"}
+* `kind` {K}
+* Returns: {boolean}
+
+Returns whether this module is of the given kind; a subclass is every kind its parent is.
+
 #### `isAccessibleInChunk(chunkGraph, chunk[, ignoreChunk])`
 
 * `chunkGraph` {ChunkGraph}
@@ -3891,6 +3939,12 @@ Checks whether this module is accessible in chunk.
 * Returns: {boolean}
 
 Checks whether this module is accessible in chunk group.
+
+#### `isAsyncBlock()`
+
+* Returns: {boolean}
+
+Returns whether this block is an async block, loaded on demand in its own chunk group.
 
 #### `isEntryModule()`
 
@@ -3993,7 +4047,7 @@ restore unsafe cache data
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -4050,7 +4104,7 @@ Gets source basic types.
 
 #### `new ExternalsPlugin(type, externals)`
 
-* `type` {"asset"|"asset-url"|"css-import"|"module"|"promise"|"import"|"this"|"var"|"commonjs"|"global"|"script"|"window"|"system"|"jsonp"|"assign"|"amd"|"amd-require"|"umd"|"umd2"|"commonjs2"|"self"|"commonjs-static"|"commonjs-module"|"css-url"|"node-commonjs"|"module-import"|"amd-async"|object}
+* `type` {"asset"|"asset-url"|"css-import"|"var"|"this"|"import"|"script"|"module"|"commonjs"|"global"|"assign"|"self"|"window"|"system"|"promise"|"css-url"|"jsonp"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"|object}
 * `externals` {Externals}
 * Returns: {ExternalsPlugin}
 
@@ -4059,7 +4113,7 @@ Creates an instance of ExternalsPlugin.
 ### Properties
 
 * `externals` {Externals}
-* `type` {"asset"|"asset-url"|"css-import"|"module"|"promise"|"import"|"this"|"var"|"commonjs"|"global"|"script"|"window"|"system"|"jsonp"|"assign"|"amd"|"amd-require"|"umd"|"umd2"|"commonjs2"|"self"|"commonjs-static"|"commonjs-module"|"css-url"|"node-commonjs"|"module-import"|"amd-async"|object}
+* `type` {"asset"|"asset-url"|"css-import"|"var"|"this"|"import"|"script"|"module"|"commonjs"|"global"|"assign"|"self"|"window"|"system"|"promise"|"css-url"|"jsonp"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"|object}
 
 ### Methods
 
@@ -4074,17 +4128,26 @@ Applies the plugin by registering its hooks on the compiler.
 
 ## Class: `Generator`
 
+### Type Parameters
+
+#### TModule
+
+`TModule` *extends* {NormalModule} = {NormalModule}
+
 ### Constructors
 
 #### `new Generator()`
 
+###### TModule
+
+`TModule` *extends* {NormalModule} = {NormalModule}
 * Returns: {Generator}
 
 ### Methods
 
 #### `generate(module, __namedParameters)`
 
-* `module` {NormalModule}
+* `module` {TModule}
 * `__namedParameters` {GenerateContext}
 * Returns: {Source}
 
@@ -4092,7 +4155,7 @@ Generates generated code for this runtime module.
 
 #### `getConcatenationBailoutReason(module, context)`
 
-* `module` {NormalModule}
+* `module` {TModule}
 * `context` {ConcatenationBailoutReasonContext}
 * Returns: {string}
 
@@ -4100,7 +4163,7 @@ Returns the reason this module cannot be concatenated, when one exists.
 
 #### `getSize(module[, type])`
 
-* `module` {NormalModule}
+* `module` {TModule}
 * `type` {string}
 * Returns: {number}
 
@@ -4108,7 +4171,7 @@ Returns the estimated size for the requested source type.
 
 #### `getTypes(module)`
 
-* `module` {NormalModule}
+* `module` {TModule}
 * Returns: {ReadonlySet}
 
 Returns the source types available for this module.
@@ -4160,6 +4223,10 @@ Returns the statement a module that failed to build throws when executed.
 #### `new HotModuleReplacementPlugin()`
 
 * Returns: {HotModuleReplacementPlugin}
+
+### Properties
+
+* `getCompilationHooks` {object} Returns the hooks a compilation calls while it renders hot updates.
 
 ### Methods
 
@@ -4437,6 +4504,12 @@ Returns the integrated size with another chunk.
 
 Checks whether this chunk is empty.
 
+#### `isHotUpdate()`
+
+* Returns: {boolean}
+
+Returns whether this chunk carries a hot update rather than regular output.
+
 #### `isInGroup(chunkGroup)`
 
 * `chunkGroup` {ChunkGroup}
@@ -4586,17 +4659,20 @@ Creates an instance of InitFragment.
 * `stage` {number}
 * `STAGE_ASYNC_BOUNDARY` {number}
 * `STAGE_ASYNC_DEPENDENCIES` {number}
-* `STAGE_ASYNC_HARMONY_IMPORTS` {number}
+* `STAGE_ASYNC_ESM_IMPORTS` {number}
+* `STAGE_ASYNC_HARMONY_IMPORTS` {number} use `STAGE_ASYNC_ESM_IMPORTS` — TODO in the next major release: remove
 * `STAGE_CONSTANTS` {number}
-* `STAGE_HARMONY_EXPORTS` {number}
-* `STAGE_HARMONY_IMPORTS` {number}
+* `STAGE_ESM_EXPORTS` {number}
+* `STAGE_ESM_IMPORTS` {number}
+* `STAGE_HARMONY_EXPORTS` {number} use `STAGE_ESM_EXPORTS` — TODO in the next major release: remove
+* `STAGE_HARMONY_IMPORTS` {number} use `STAGE_ESM_IMPORTS` — TODO in the next major release: remove
 * `STAGE_PROVIDES` {number}
 
 ### Methods
 
 #### `deserialize(context)`
 
-* `context` {ObjectDeserializerContextObjectMiddlewareObject_2}
+* `context` {ObjectDeserializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -4617,7 +4693,7 @@ Returns the source code that will be included at the end of the module.
 
 #### `serialize(context)`
 
-* `context` {ObjectSerializerContextObjectMiddlewareObject_3}
+* `context` {ObjectSerializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -4783,14 +4859,14 @@ Applies the plugin by registering its hooks on the compiler.
 
 #### `new LoaderOptionsPlugin([options])`
 
-* `options` {LoaderOptionsPluginOptions|MatchObject}
+* `options` {LoaderOptionsPluginOptions|MatchObject|Record}
 * Returns: {LoaderOptionsPlugin}
 
 Creates an instance of LoaderOptionsPlugin.
 
 ### Properties
 
-* `options` {LoaderOptionsPluginOptions|MatchObject}
+* `options` {LoaderOptionsPluginOptions|MatchObject|Record}
 
 ### Methods
 
@@ -4893,7 +4969,7 @@ Updates the depth using the provided value.
 * `errors` {any}
 * `exportsArgument` {string} Gets exports argument.
 * `factoryMeta` {FactoryMeta}
-* `hasEqualsChunks` {any}
+* `hasEqualsChunks` {void}
 * `hash` {string} Returns the hash of the module.
 * `id` {string|number} Returns the module id assigned by the chunk graph.
 Updates the module id using the provided value.
@@ -4903,7 +4979,7 @@ Updates the pre-order index using the provided value.
 Updates the post-order index using the provided value.
 * `issuer` {Module} Returns the issuer.
 Updates the issuer using the provided value.
-* `isUsed` {any}
+* `isUsed` {void}
 * `layer` {string}
 * `moduleArgument` {string} Gets module argument.
 * `needId` {boolean}
@@ -4913,13 +4989,14 @@ Updates the issuer using the provided value.
 * `presentationalDependencies` {Dependency[]}
 * `profile` {ModuleProfile} 
 * `renderedHash` {string} Returns the rendered hash of the module.
-* `resolveOptions` {ResolveOptions}
+* `resolveOptions` {ResolveOptionsWebpackOptions}
 * `type` {string}
-* `used` {any}
+* `used` {void}
 * `usedExports` {boolean|SortableSet} 
 * `useSimpleSourceMap` {boolean}
 * `useSourceMap` {boolean}
 * `warnings` {any}
+* `KINDS` {Set}
 
 ### Methods
 
@@ -5036,9 +5113,9 @@ removes all warnings and errors
 
 Generates code and runtime requirements for this module.
 
-#### `deserialize(__namedParameters)`
+#### `deserialize(context)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
+* `context` {ObjectDeserializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -5098,6 +5175,12 @@ Freshly recomputed source types when they depend on incoming connections, for ch
 
 * Returns: {DependenciesBlock}
 
+#### `getRootModule()`
+
+* Returns: {Module}
+
+Returns the module this one was built around: itself, or the root of a scope-hoisted concatenation.
+
 #### `getSideEffectsConnectionState(moduleGraph)`
 
 * `moduleGraph` {ModuleGraph}
@@ -5114,6 +5197,12 @@ We only have built-in knowledge about the javascript basic type here; other basi
 added or changed over time by generators and do not need to be handled or detected here.
 Some modules, e.g. RemoteModule, may return non-basic source types like "remote" and "share-init"
 from getSourceTypes(), but their generated output is still JavaScript, i.e. their basic type is JS.
+
+#### `getSourceModules()`
+
+* Returns: {Iterable}
+
+Returns the modules this one was built from: itself, or every module merged by scope hoisting.
 
 #### `getSourceTypes()`
 
@@ -5167,6 +5256,16 @@ Returns the unique identifier used to reference this module.
 
 Invalidates the cached state associated with this value.
 
+#### `is(kind)`
+
+###### K
+
+`K` *extends* {"runtime"|"css"|"html"|"remote"|"consume-shared"|"context"|"normal"|"external"|"concatenated"}
+* `kind` {K}
+* Returns: {boolean}
+
+Returns whether this module is of the given kind; a subclass is every kind its parent is.
+
 #### `isAccessibleInChunk(chunkGraph, chunk[, ignoreChunk])`
 
 * `chunkGraph` {ChunkGraph}
@@ -5184,6 +5283,12 @@ Checks whether this module is accessible in chunk.
 * Returns: {boolean}
 
 Checks whether this module is accessible in chunk group.
+
+#### `isAsyncBlock()`
+
+* Returns: {boolean}
+
+Returns whether this block is an async block, loaded on demand in its own chunk group.
 
 #### `isEntryModule()`
 
@@ -5278,7 +5383,7 @@ Removes dependency.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -5381,13 +5486,13 @@ Adds the provided dependency to the module graph.
 * `explanation` {string}
 * Returns: {void}
 
-Adds the provided module to the module graph.
+Adds an explanatory connection without duplicating an existing reason.
 
 #### `cached(fn, args)`
 
 ###### T
 
-`T` *extends* {any[]}
+`T` *extends* {TupleElement[]}
 
 ###### R
 
@@ -5423,13 +5528,13 @@ Copies outgoing module connections.
 
 ###### ARGS
 
-`ARGS` *extends* {any[]}
+`ARGS` *extends* {TupleElement[]}
 
 ###### R
 
 `R`
 * `dependency` {D}
-* `args` {ARGS|unknown}
+* `args` {unknown|object}
 * Returns: {R}
 
 Dependency cache provide.
@@ -5924,6 +6029,118 @@ Updates active using the provided value.
 
 ***
 
+## Class: `ModuleNotFoundError`
+
+### Extends
+
+- {WebpackError}
+
+### Constructors
+
+#### `new ModuleNotFoundError(module, err, loc)`
+
+* `module` {Module}
+* `err` {Error|object}
+* `loc` {DependencyLocation}
+* Returns: {ModuleNotFoundError}
+
+Creates an instance of ModuleNotFoundError.
+
+### Properties
+
+* `chunk` {Chunk}
+* `details` {string}
+* `error` {Error|object}
+* `file` {string}
+* `hideStack` {boolean}
+* `loc` {SyntheticDependencyLocation|RealDependencyLocation}
+* `message` {string}
+* `module` {Module}
+* `name` {string}
+* `stack` {string}
+* `stackTraceLimit` {number} The `Error.stackTraceLimit` property specifies the number of stack frames
+collected by a stack trace (whether generated by `new Error().stack` or
+`Error.captureStackTrace(obj)`).
+The default value is `10` but may be set to any valid JavaScript number. Changes
+will affect any stack trace captured _after_ the value has been changed.
+If set to a non-number value, or set to a negative number, stack traces will
+not capture any frames.
+
+### Methods
+
+#### `deserialize(context)`
+
+* `context` {ObjectDeserializerContextObjectMiddlewareObject_3}
+* Returns: {void}
+
+Restores this instance from the provided deserializer context.
+
+#### `serialize(__namedParameters)`
+
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_4}
+* Returns: {void}
+
+Serializes this instance into the provided serializer context.
+
+#### Static method: `captureStackTrace(targetObject[, constructorOpt])`
+
+* `targetObject` {object}
+* `constructorOpt` {Function}
+* Returns: {void}
+
+Creates a `.stack` property on `targetObject`, which when accessed returns
+a string representing the location in the code at which
+`Error.captureStackTrace()` was called.
+```js
+const myObject = {};
+Error.captureStackTrace(myObject);
+myObject.stack;  // Similar to `new Error().stack`
+```
+The first line of the trace will be prefixed with
+`${myObject.name}: ${myObject.message}`.
+The optional `constructorOpt` argument accepts a function. If given, all frames
+above `constructorOpt`, including `constructorOpt`, will be omitted from the
+generated stack trace.
+The `constructorOpt` argument is useful for hiding implementation
+details of error generation from the user. For instance:
+```js
+function a() {
+  b();
+}
+function b() {
+  c();
+}
+function c() {
+  // Create an error without stack trace to avoid calculating the stack trace twice.
+  const { stackTraceLimit } = Error;
+  Error.stackTraceLimit = 0;
+  const error = new Error();
+  Error.stackTraceLimit = stackTraceLimit;
+  // Capture the stack trace above function b
+  Error.captureStackTrace(error, b); // Neither function c, nor b is included in the stack trace
+  throw error;
+}
+a();
+```
+
+#### Static method: `isWebpackError(value)`
+
+###### T
+
+`T`
+* `value` {T}
+* Returns: {boolean}
+
+Whether an error is a webpack error rather than any other thrown value.
+
+#### Static method: `prepareStackTrace(err, stackTraces)`
+
+* `err` {Error}
+* `stackTraces` {CallSite[]}
+* Returns: {any}
+
+***
+
 ## Class: `MultiCompiler`
 
 ### Constructors
@@ -5962,7 +6179,7 @@ Processes the provided error callback.
 #### `getInfrastructureLogger(name)`
 
 * `name` {string|object}
-* Returns: {WebpackLogger}
+* Returns: {Logger}
 
 Gets infrastructure logger.
 
@@ -6042,14 +6259,14 @@ Checks whether this multi stats has warnings.
 
 #### `toJson([options])`
 
-* `options` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
+* `options` {boolean|"verbose"|"summary"|"none"|"normal"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions}
 * Returns: {StatsCompilation}
 
 Returns json output.
 
 #### `toString([options])`
 
-* `options` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
+* `options` {boolean|"verbose"|"summary"|"none"|"normal"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions}
 * Returns: {string}
 
 Returns a string representation.
@@ -6108,7 +6325,7 @@ Updates the depth using the provided value.
 * `factoryMeta` {FactoryMeta}
 * `generator` {Generator}
 * `generatorOptions` {GeneratorOptions}
-* `hasEqualsChunks` {any}
+* `hasEqualsChunks` {void}
 * `hash` {string} Returns the hash of the module.
 * `hot` {boolean}
 * `id` {string|number} Returns the module id assigned by the chunk graph.
@@ -6119,7 +6336,7 @@ Updates the pre-order index using the provided value.
 Updates the post-order index using the provided value.
 * `issuer` {Module} Returns the issuer.
 Updates the issuer using the provided value.
-* `isUsed` {any}
+* `isUsed` {void}
 * `layer` {string}
 * `loaders` {LoaderItem[]}
 * `matchResource` {string}
@@ -6128,23 +6345,24 @@ Updates the issuer using the provided value.
 * `optimizationBailout` {string|object[]} Gets optimization bailout.
 * `optional` {boolean} 
 * `parent` {DependenciesBlock}
-* `parser` {ParserClass}
+* `parser` {Parser}
 * `parserOptions` {ParserOptionsNormalModule}
 * `presentationalDependencies` {Dependency[]}
 * `profile` {ModuleProfile} 
 * `rawRequest` {string}
 * `renderedHash` {string} Returns the rendered hash of the module.
 * `request` {string}
-* `resolveOptions` {ResolveOptions}
+* `resolveOptions` {ResolveOptionsWebpackOptions}
 * `resource` {string}
 * `resourceResolveData` {ResourceSchemeData|Partial}
 * `type` {string}
-* `used` {any}
+* `used` {void}
 * `usedExports` {boolean|SortableSet} 
 * `userRequest` {string}
 * `useSimpleSourceMap` {boolean}
 * `useSourceMap` {boolean}
 * `warnings` {any}
+* `KINDS` {Set}
 
 ### Methods
 
@@ -6216,6 +6434,9 @@ Adds the provided warning to the module.
 * `content` {string}
 * Returns: {boolean}
 
+An absolute path string is a prefix of `content`; a relative one is a glob
+matched against the resource path, without loaders and query.
+
 #### `build(options, compilation, resolver, fs, callback)`
 
 * `options` {WebpackOptionsNormalizedWithDefaults}
@@ -6284,9 +6505,9 @@ Generates code and runtime requirements for this module.
 * `associatedObjectForCache` {object}
 * Returns: {Source}
 
-#### `deserialize(__namedParameters)`
+#### `deserialize(context)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
+* `context` {ObjectDeserializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -6356,6 +6577,12 @@ Freshly recomputed source types when they depend on incoming connections, for ch
 
 * Returns: {DependenciesBlock}
 
+#### `getRootModule()`
+
+* Returns: {Module}
+
+Returns the module this one was built around: itself, or the root of a scope-hoisted concatenation.
+
 #### `getSideEffectsConnectionState(moduleGraph)`
 
 * `moduleGraph` {ModuleGraph}
@@ -6372,6 +6599,12 @@ We only have built-in knowledge about the javascript basic type here; other basi
 added or changed over time by generators and do not need to be handled or detected here.
 Some modules, e.g. RemoteModule, may return non-basic source types like "remote" and "share-init"
 from getSourceTypes(), but their generated output is still JavaScript, i.e. their basic type is JS.
+
+#### `getSourceModules()`
+
+* Returns: {Iterable}
+
+Returns the modules this one was built from: itself, or every module merged by scope hoisting.
 
 #### `getSourceTypes()`
 
@@ -6425,6 +6658,16 @@ Returns the unique identifier used to reference this module.
 
 Invalidates the cached state associated with this value.
 
+#### `is(kind)`
+
+###### K
+
+`K` *extends* {"runtime"|"css"|"html"|"remote"|"consume-shared"|"context"|"normal"|"external"|"concatenated"}
+* `kind` {K}
+* Returns: {boolean}
+
+Returns whether this module is of the given kind; a subclass is every kind its parent is.
+
 #### `isAccessibleInChunk(chunkGraph, chunk[, ignoreChunk])`
 
 * `chunkGraph` {ChunkGraph}
@@ -6442,6 +6685,12 @@ Checks whether this module is accessible in chunk.
 * Returns: {boolean}
 
 Checks whether this module is accessible in chunk group.
+
+#### `isAsyncBlock()`
+
+* Returns: {boolean}
+
+Returns whether this block is an async block, loaded on demand in its own chunk group.
 
 #### `isEntryModule()`
 
@@ -6483,7 +6732,7 @@ Gets the library identifier.
 
 #### `markModuleAsErrored([error])`
 
-* `error` {any}
+* `error` {unknown}
 * Returns: {void}
 
 Marks the module as failed, so what it generates says so. A tap or a
@@ -6552,14 +6801,14 @@ restore unsafe cache data
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
 
 #### `shouldPreventParsing(noParseRule, request)`
 
-* `noParseRule` {string|RegExp|object|string|RegExp|object[]}
+* `noParseRule` {string|RegExp|string|RegExp|object[]|object}
 * `request` {string}
 * Returns: {boolean}
 
@@ -6600,7 +6849,7 @@ Updates the hash with the data contributed by this instance.
 
 #### Static method: `deserialize(context)`
 
-* `context` {ObjectDeserializerContextObjectMiddlewareObject_2}
+* `context` {ObjectDeserializerContextObjectMiddlewareObject_3}
 * Returns: {NormalModule}
 
 #### Static method: `getCompilationHooks(compilation)`
@@ -6653,11 +6902,20 @@ Applies the plugin by registering its hooks on the compiler.
 
 - {JavascriptParser}
 
+### Type Parameters
+
+#### TModule
+
+`TModule` *extends* {NormalModule} = {NormalModule}
+
 ### Constructors
 
 #### `new Parser()`
 
-* Returns: {ParserClass}
+###### TModule
+
+`TModule` *extends* {NormalModule} = {NormalModule}
+* Returns: {Parser}
 
 ### Methods
 
@@ -6813,7 +7071,7 @@ Applies the plugin by registering its hooks on the compiler.
 
 * `fileSystem` {FileSystem}
 * `hooks` {KnownHooks}
-* `options` {ResolveOptionsResolverFactoryObject1}
+* `options` {ResolveOptionsImport}
 * `pathCache` {PathCacheFunctions}
 
 ### Methods
@@ -6883,32 +7141,32 @@ Applies the plugin by registering its hooks on the compiler.
 
 ##### Call Signature
 
-* `parent` {string|URL_url}
-* `specifier` {string|URL_url}
+* `parent` {string|URL}
+* `specifier` {string|URL}
 * `callback` {object}
 * Returns: {void}
 
 ##### Call Signature
 
-* `parent` {string|URL_url}
-* `specifier` {string|URL_url}
+* `parent` {string|URL}
+* `specifier` {string|URL}
 * `resolveContext` {ResolveContext}
 * `callback` {object}
 * Returns: {void}
 
 ##### Call Signature
 
-* `context` {ContextTypes}
-* `parent` {string|URL_url}
-* `specifier` {string|URL_url}
+* `context` {ContextResolver}
+* `parent` {string|URL}
+* `specifier` {string|URL}
 * `callback` {object}
 * Returns: {void}
 
 ##### Call Signature
 
-* `context` {ContextTypes}
-* `parent` {string|URL_url}
-* `specifier` {string|URL_url}
+* `context` {ContextResolver}
+* `parent` {string|URL}
+* `specifier` {string|URL}
 * `resolveContext` {ResolveContext}
 * `callback` {object}
 * Returns: {void}
@@ -6917,16 +7175,16 @@ Applies the plugin by registering its hooks on the compiler.
 
 ##### Call Signature
 
-* `parent` {string|URL_url}
-* `specifier` {string|URL_url}
+* `parent` {string|URL}
+* `specifier` {string|URL}
 * `resolveContext` {ResolveContext}
 * Returns: {Promise}
 
 ##### Call Signature
 
-* `context` {ContextTypes}
-* `parent` {string|URL_url}
-* `specifier` {string|URL_url}
+* `context` {ContextResolver}
+* `parent` {string|URL}
+* `specifier` {string|URL}
 * `resolveContext` {ResolveContext}
 * Returns: {Promise}
 
@@ -6934,16 +7192,16 @@ Applies the plugin by registering its hooks on the compiler.
 
 ##### Call Signature
 
-* `parent` {string|URL_url}
-* `specifier` {string|URL_url}
+* `parent` {string|URL}
+* `specifier` {string|URL}
 * `resolveContext` {ResolveContext}
 * Returns: {string|false}
 
 ##### Call Signature
 
-* `context` {ContextTypes}
-* `parent` {string|URL_url}
-* `specifier` {string|URL_url}
+* `context` {ContextResolver}
+* `parent` {string|URL}
+* `specifier` {string|URL}
 * `resolveContext` {ResolveContext}
 * Returns: {string|false}
 
@@ -6958,6 +7216,7 @@ Applies the plugin by registering its hooks on the compiler.
 ### Extended by
 
 - {GetChunkFilenameRuntimeModule}
+- {StartupEntrypointRuntimeModule}
 - {JsonpChunkLoadingRuntimeModule}
 - {CssLoadingRuntimeModule}
 - {ModuleChunkLoadingRuntimeModule}
@@ -6992,7 +7251,7 @@ Updates the depth using the provided value.
 * `exportsArgument` {string} Gets exports argument.
 * `factoryMeta` {FactoryMeta}
 * `fullHash` {boolean}
-* `hasEqualsChunks` {any}
+* `hasEqualsChunks` {void}
 * `hash` {string} Returns the hash of the module.
 * `id` {string|number} Returns the module id assigned by the chunk graph.
 Updates the module id using the provided value.
@@ -7002,7 +7261,7 @@ Updates the pre-order index using the provided value.
 Updates the post-order index using the provided value.
 * `issuer` {Module} Returns the issuer.
 Updates the issuer using the provided value.
-* `isUsed` {any}
+* `isUsed` {void}
 * `layer` {string}
 * `moduleArgument` {string} Gets module argument.
 * `name` {string}
@@ -7013,14 +7272,15 @@ Updates the issuer using the provided value.
 * `presentationalDependencies` {Dependency[]}
 * `profile` {ModuleProfile} 
 * `renderedHash` {string} Returns the rendered hash of the module.
-* `resolveOptions` {ResolveOptions}
+* `resolveOptions` {ResolveOptionsWebpackOptions}
 * `stage` {number}
 * `type` {string}
-* `used` {any}
+* `used` {void}
 * `usedExports` {boolean|SortableSet} 
 * `useSimpleSourceMap` {boolean}
 * `useSourceMap` {boolean}
 * `warnings` {any}
+* `KINDS` {Set}
 * `NO_CHUNK_HANDLERS` {string|string[]} The answer a runtime module gives when it installs no chunk handler at all
 * `STAGE_ATTACH` {number} Runtime modules which attach to handlers of other runtime modules
 * `STAGE_BASIC` {number} Runtime modules with simple dependencies on other runtime modules
@@ -7151,9 +7411,9 @@ removes all warnings and errors
 
 Generates code and runtime requirements for this module.
 
-#### `deserialize(__namedParameters)`
+#### `deserialize(context)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
+* `context` {ObjectDeserializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -7232,6 +7492,12 @@ Freshly recomputed source types when they depend on incoming connections, for ch
 
 * Returns: {DependenciesBlock}
 
+#### `getRootModule()`
+
+* Returns: {Module}
+
+Returns the module this one was built around: itself, or the root of a scope-hoisted concatenation.
+
 #### `getSideEffectsConnectionState(moduleGraph)`
 
 * `moduleGraph` {ModuleGraph}
@@ -7248,6 +7514,12 @@ We only have built-in knowledge about the javascript basic type here; other basi
 added or changed over time by generators and do not need to be handled or detected here.
 Some modules, e.g. RemoteModule, may return non-basic source types like "remote" and "share-init"
 from getSourceTypes(), but their generated output is still JavaScript, i.e. their basic type is JS.
+
+#### `getSourceModules()`
+
+* Returns: {Iterable}
+
+Returns the modules this one was built from: itself, or every module merged by scope hoisting.
 
 #### `getSourceTypes()`
 
@@ -7301,6 +7573,16 @@ Returns the unique identifier used to reference this module.
 
 Invalidates the cached state associated with this value.
 
+#### `is(kind)`
+
+###### K
+
+`K` *extends* {"runtime"|"css"|"html"|"remote"|"consume-shared"|"context"|"normal"|"external"|"concatenated"}
+* `kind` {K}
+* Returns: {boolean}
+
+Returns whether this module is of the given kind; a subclass is every kind its parent is.
+
 #### `isAccessibleInChunk(chunkGraph, chunk[, ignoreChunk])`
 
 * `chunkGraph` {ChunkGraph}
@@ -7318,6 +7600,12 @@ Checks whether this module is accessible in chunk.
 * Returns: {boolean}
 
 Checks whether this module is accessible in chunk group.
+
+#### `isAsyncBlock()`
+
+* Returns: {boolean}
+
+Returns whether this block is an async block, loaded on demand in its own chunk group.
 
 #### `isEntryModule()`
 
@@ -7412,10 +7700,17 @@ Removes dependency.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
+
+#### `shouldHotUpdate()`
+
+* Returns: {boolean}
+
+Returns true, if a hot update may re-ship this module to a running runtime.
+False for code that is only valid at the top level of the runtime chunk.
 
 #### `shouldIsolate()`
 
@@ -7562,14 +7857,14 @@ Checks whether this stats has warnings.
 
 #### `toJson([options])`
 
-* `options` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
+* `options` {boolean|"verbose"|"summary"|"none"|"normal"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions}
 * Returns: {StatsCompilation}
 
 Returns json output.
 
 #### `toString([options])`
 
-* `options` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions}
+* `options` {boolean|"verbose"|"summary"|"none"|"normal"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions}
 * Returns: {string}
 
 Returns a string representation.
@@ -7681,6 +7976,13 @@ Returns a commented version of string.
 
 Returns created identifier.
 
+#### Static method: `toLineComment(str)`
+
+* `str` {string}
+* Returns: {string}
+
+Returns a `//` comment of the string that stays on one line.
+
 #### Static method: `toNormalComment(str)`
 
 * `str` {string}
@@ -7788,9 +8090,9 @@ Processes the provided file.
 
 - {Error}
 
-### Indexable
+### Extended by
 
-\[`index`: {number}\]: {object}
+- {ModuleNotFoundError}
 
 ### Constructors
 
@@ -7823,16 +8125,16 @@ not capture any frames.
 
 ### Methods
 
-#### `deserialize(__namedParameters)`
+#### `deserialize(context)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
+* `context` {ObjectDeserializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
@@ -7877,6 +8179,16 @@ function c() {
 }
 a();
 ```
+
+#### Static method: `isWebpackError(value)`
+
+###### T
+
+`T`
+* `value` {T}
+* Returns: {boolean}
+
+Whether an error is a webpack error rather than any other thrown value.
 
 #### Static method: `prepareStackTrace(err, stackTraces)`
 
@@ -8060,9 +8372,41 @@ a();
 
 ***
 
+## Interface: `AdditionalDataKnown`
+
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface AdditionalDataKnown { myField?: MyType } }`.
+
+### Properties
+
+* `webpackAST` {PreparsedAst} the AST webpack should parse instead of the source
+
+***
+
+## Interface: `AllCodeGenerationSchemas`
+
+Defines the all code generation schemas type used by this module.
+A plugin types its own code generation data by declaration merging: `declare module "webpack" { interface AllCodeGenerationSchemas { myField?: MyType } }`.
+
+### Properties
+
+* `assetInfo` {AssetInfo} an asset info for asset modules
+* `chunkInitFragments` {InitFragment[]} chunk init fragments for javascript modules
+* `exportsBindingSource` {string} export definitions left out on demand that read the module's own declarations, to be placed after its body where it is wrapped
+* `exportsFinalName` {Record} final name of each used export of a concatenated module whose definitions were left out on demand
+* `exportsSource` {string} export definitions left out of a javascript module's source on demand (see `KnownMeta.onDemandExports`), to be placed before its body where it is wrapped
+* `externalReexport` {string} native external reexport source and attributes
+* `filename` {string} a filename for asset modules
+* `freeNames` {Set} free identifier names in the rendered source for javascript modules
+* `fullContentHash` {string} a full content hash for asset modules
+* `share-init` {object} share-init for modules federation
+* `topLevelDeclarations` {Set} top level declarations for javascript modules
+* `url` {object} url for asset modules
+
+***
+
 ## Interface: `Argument`
 
-Returns object of arguments.
+Defines the argument type used by this module.
 
 ### Properties
 
@@ -8075,6 +8419,8 @@ Returns object of arguments.
 
 ## Interface: `Asset`
 
+Defines the asset type used by this module.
+
 ### Properties
 
 * `info` {AssetInfo} info about the asset
@@ -8085,7 +8431,7 @@ Returns object of arguments.
 
 ## Interface: `AssetEmittedInfo`
 
-Checks whether this object is sorted.
+Defines the asset emitted info type used by this module.
 
 ### Properties
 
@@ -8147,7 +8493,7 @@ Checks whether this object is sorted.
 
 ## Interface: `ColorsOptions`
 
-Creates a colors from the provided colors option.
+Defines the colors options type used by this module.
 
 ### Properties
 
@@ -8171,9 +8517,9 @@ Options object as provided by the user.
 * `entry` {string|string[]|EntryObject|object} The entry point(s) of the compilation.
 * `experiments` {Experiments} Enables/Disables experiments (experimental features with relax SemVer compatibility).
 * `extends` {string|string[]} Extend configuration from another configuration (only works when using webpack-cli).
-* `externals` {string|RegExp|ExternalItemObjectKnown|ExternalItemObjectUnknown|object|object|ExternalItem[]} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
+* `externals` {string|RegExp|ExternalItemObject|object|object|ExternalItem[]} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 * `externalsPresets` {ExternalsPresets} Enable presets of externals for specific targets.
-* `externalsType` {"asset"|"asset-url"|"css-import"|"module"|"promise"|"import"|"this"|"var"|"commonjs"|"global"|"script"|"window"|"system"|"jsonp"|"assign"|"amd"|"amd-require"|"umd"|"umd2"|"commonjs2"|"self"|"commonjs-static"|"commonjs-module"|"css-url"|"node-commonjs"|"module-import"|"amd-async"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+* `externalsType` {"asset"|"asset-url"|"css-import"|"var"|"this"|"import"|"script"|"module"|"commonjs"|"global"|"assign"|"self"|"window"|"system"|"promise"|"css-url"|"jsonp"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 * `ignoreWarnings` {RegExp|object|object[]} Ignore specific warnings.
 * `infrastructureLogging` {InfrastructureLogging} Options for infrastructure level logging.
 * `loader` {Loader} Custom values available in the loader context.
@@ -8190,10 +8536,10 @@ Options object as provided by the user.
 * `recordsInputPath` {string|false} Store compiler state to a json file.
 * `recordsOutputPath` {string|false} Load compiler state from a json file.
 * `recordsPath` {string|false} Store/Load compiler state from/to a json file. This will result in persistent ids of modules and chunks. An absolute path is expected. `recordsPath` is used for `recordsInputPath` and `recordsOutputPath` if they left undefined.
-* `resolve` {ResolveOptions} Options for the resolver.
-* `resolveLoader` {ResolveOptions} Options for the resolver when resolving loaders.
+* `resolve` {ResolveOptionsWebpackOptions} Options for the resolver.
+* `resolveLoader` {ResolveOptionsWebpackOptions} Options for the resolver when resolving loaders.
 * `snapshot` {SnapshotOptionsWebpackOptions} Options affecting how file system snapshots are created and validated.
-* `stats` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions} Stats options object or preset name.
+* `stats` {boolean|"verbose"|"summary"|"none"|"normal"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions} Stats options object or preset name.
 * `target` {string|false|string[]} Environment to build for. An array of environments to build for all of them when possible.
 * `validate` {boolean} Enable validation of webpack configuration. Defaults to true in development mode. In production mode, defaults to true unless futureDefaults is enabled, then defaults to false.
 * `watch` {boolean} Enter watch mode, which rebuilds on file change.
@@ -8203,8 +8549,6 @@ Options object as provided by the user.
 
 ## Interface: `EntryObject`
 
-Multiple entry bundles are created. The key is the entry name. The value can be a string, an array or an entry description object.
-
 ### Indexable
 
 \[`index`: {string}\]: {string|string[]|EntryDescription}
@@ -8212,6 +8556,8 @@ Multiple entry bundles are created. The key is the entry name. The value can be 
 ***
 
 ## Interface: `ExternalItemFunctionData`
+
+Defines the external item function data type used by this module.
 
 ### Properties
 
@@ -8299,7 +8645,7 @@ Specify options for each generator.
 
 ## Interface: `InputFileSystem`
 
-Returns location of targetPath relative to rootPath.
+Defines the input file system type used by this module.
 
 ### Properties
 
@@ -8324,6 +8670,569 @@ Returns location of targetPath relative to rootPath.
 
 ***
 
+## Interface: `KnownAssetInfo`
+
+Defines the known asset info type used by this module.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownAssetInfo { myField?: MyType } }`.
+
+### Properties
+
+* `chunkhash` {string|string[]} the value(s) of the chunk hash used for this asset
+* `contenthash` {string|string[]} the value(s) of the content hash used for this asset
+* `contenthashDigest` {Record} maps a `[contenthash:<digest>]` value to its digest, so `RealContentHashPlugin` re-encodes the recomputed hash in it
+* `copied` {boolean} true, when the asset was copied from a file by `output.copy`
+* `development` {boolean} true, when asset is only used for development and doesn't count towards user-facing assets
+* `fullhash` {string|string[]} the value(s) of the full hash used for this asset
+* `hotModuleReplacement` {boolean} true, when asset ships data for updating an existing application (HMR)
+* `immutable` {boolean} true, if the asset can be long term cached forever (contains a hash)
+* `javascriptModule` {boolean} true, when asset is javascript and an ESM
+* `manifest` {boolean} true, when file is a manifest
+* `minimized` {boolean} whether the asset is minimized
+* `mode` {number} when set, the file the asset is written to is given these permissions
+* `modulehash` {string|string[]} the value(s) of the module hash used for this asset
+* `related` {Record} object of pointers to other assets, keyed by type of relation (only points from parent to child)
+* `size` {number} size in bytes, only set after asset has been emitted
+* `sourceFilename` {string} when asset was created from a source file (potentially transformed), the original filename relative to compilation context
+* `symlink` {AssetSymlink} when set, the asset is emitted as a symbolic link rather than as its content
+* `timestamps` {AssetTimestamps} when set, the file the asset is written to is stamped with these times
+
+***
+
+## Interface: `KnownBuildInfo`
+
+Defines the build info properties common to all module types.
+Module type specific properties live in the `Known*BuildInfo` typedef of the dedicated module class.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownBuildInfo { myField?: MyType } }`.
+
+### Properties
+
+* `assets` {Record} assets added by loaders or plugins
+* `assetsInfo` {Map}
+* `cacheable` {boolean}
+* `circularKind` {number} CircularKind bit flags from CircularModulesPlugin; unset when the plugin did not run
+* `diagnostics` {BuildDiagnostics} what the build recorded for stats and the performance hints to report
+* `exportsArgument` {string}
+* `isCircular` {boolean} true when the module is in a synchronous circular dependency chain
+* `moduleArgument` {string}
+* `specNamespaceObject` {boolean} the module hands out a spec Module Namespace Exotic Object
+* `strict` {boolean}
+* `topLevelDeclarations` {Set} top level declaration names
+* `usesTopLevelAwaitForOf` {boolean} module uses top-level `for await…of` or `await using`, which can't be lowered to a generator
+
+***
+
+## Interface: `KnownBuildMeta`
+
+Defines the build meta properties common to all module types.
+Module type specific properties live in the `Known*BuildMeta` typedef of the dedicated module class.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownBuildMeta { myField?: MyType } }`.
+
+### Properties
+
+* `async` {boolean}
+* `defaultObject` {false|"redirect-warn"|"redirect"}
+* `exportsType` {"default"|"namespace"|"dynamic"|"flagged"}
+* `needIdInConcatenation` {boolean} true when the module keeps its own id after concatenation into another module, so id assignment and hot module replacement records still track it
+* `sideEffectFree` {boolean}
+
+***
+
+## Interface: `KnownMeta`
+
+Defines the known meta type used by this module.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownMeta { myField?: MyType } }`.
+
+### Properties
+
+* `deferredImportVarMap` {Map}
+* `importVarMap` {Map}
+* `liveBindings` {Map} module-level `let` names a module library declares in the chunk's scope instead
+* `liveSetters` {Map} module-level names a module keeps declared and mirrors to the chunk's scope on each write
+* `onDemandExports` {boolean} generate export definitions on demand
+
+***
+
+## Interface: `KnownNormalizedStatsOptions`
+
+Defines the known normalized stats options type used by this module.
+A plugin types its own stats options by declaration merging: `declare module "webpack" { interface KnownNormalizedStatsOptions { myField?: MyType } }`.
+
+### Properties
+
+* `assetsSort` {string|false}
+* `assetsSpace` {number}
+* `cachedAssets` {boolean}
+* `cachedModules` {boolean}
+* `chunkGroupAuxiliary` {boolean}
+* `chunkGroupChildren` {boolean}
+* `chunkGroupMaxAssets` {number}
+* `chunkGroups` {boolean}
+* `chunkModulesSort` {string|false}
+* `chunkModulesSpace` {number}
+* `chunksSort` {string|false}
+* `context` {string}
+* `dependentModules` {boolean}
+* `entrypoints` {boolean|"auto"}
+* `excludeAssets` {object[]}
+* `excludeModules` {object[]}
+* `groupAssetsByEmitStatus` {boolean}
+* `groupAssetsByExtension` {boolean}
+* `groupAssetsByPath` {boolean}
+* `groupModulesByAttributes` {boolean}
+* `groupModulesByCacheStatus` {boolean}
+* `groupModulesByExtension` {boolean}
+* `groupModulesByLayer` {boolean}
+* `groupModulesByPath` {boolean}
+* `groupModulesByType` {boolean}
+* `ids` {boolean}
+* `logging` {false|"error"|"warn"|"info"|"log"|"verbose"|"none"}
+* `loggingDebug` {object[]}
+* `loggingTrace` {boolean}
+* `modulesSort` {string|false}
+* `modulesSpace` {number}
+* `nestedModulesSort` {string|false}
+* `nestedModulesSpace` {number}
+* `orphanModules` {boolean}
+* `requestShortener` {RequestShortener}
+* `runtimeModules` {boolean}
+* `warningsFilter` {object[]}
+
+***
+
+## Interface: `KnownRecords`
+
+Defines the known records type used by this module.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownRecords { myField?: MyType } }`.
+
+### Properties
+
+* `aggressiveSplits` {SplitData[]}
+* `chunkHashes` {ChunkHashes}
+* `chunkInjectedModuleIds` {ChunkInjectedModuleIds}
+* `chunkModuleHashes` {ChunkModuleHashes}
+* `chunkModuleIds` {ChunkModuleIds}
+* `chunkRetainedDependencyIds` {ChunkRetainedDependencyIds}
+* `chunkRuntime` {ChunkRuntime}
+* `chunks` {RecordsChunks}
+* `chunkSiblingIds` {ChunkSiblingIds}
+* `fullHashChunkModuleHashes` {FullHashChunkModuleHashes}
+* `hash` {string}
+* `hotIndex` {number}
+* `modules` {RecordsModules}
+
+***
+
+## Interface: `KnownStatsAsset`
+
+Defines the known stats asset type used by this module.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsAsset { myField?: MyType } }`.
+
+### Properties
+
+* `auxiliaryChunkIdHints` {string[]}
+* `auxiliaryChunkNames` {string[]}
+* `auxiliaryChunks` {ChunkId[]}
+* `cached` {boolean}
+* `chunkIdHints` {string[]}
+* `chunkNames` {string[]}
+* `chunks` {ChunkId[]}
+* `comparedForEmit` {boolean}
+* `emitted` {boolean}
+* `filteredRelated` {number}
+* `info` {AssetInfo}
+* `isOverSizeLimit` {boolean}
+* `name` {string}
+* `related` {StatsAsset[]}
+* `size` {number}
+* `type` {string}
+
+***
+
+## Interface: `KnownStatsAssetGroup`
+
+A group of assets that `groupResults` creates, listing them in `children` or counting hidden ones in `filteredChildren`.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsAssetGroup { myField?: MyType } }`.
+
+### Properties
+
+* `children` {StatsAsset[]}
+* `filteredChildren` {number}
+* `name` {string}
+* `size` {number}
+* `type` {string}
+
+***
+
+## Interface: `KnownStatsChunk`
+
+Defines the known stats chunk type used by this module.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsChunk { myField?: MyType } }`.
+
+### Properties
+
+* `auxiliaryFiles` {string[]}
+* `children` {ChunkId[]}
+* `childrenByOrder` {Record}
+* `entry` {boolean}
+* `files` {string[]}
+* `filteredModules` {number}
+* `hash` {string}
+* `id` {string|number}
+* `idHints` {string[]}
+* `initial` {boolean}
+* `modules` {StatsModule[]}
+* `names` {string[]}
+* `origins` {StatsChunkOrigin[]}
+* `parents` {ChunkId[]}
+* `reason` {string}
+* `recorded` {boolean}
+* `rendered` {boolean}
+* `runtime` {string[]}
+* `siblings` {ChunkId[]}
+* `size` {number}
+* `sizes` {Record}
+
+***
+
+## Interface: `KnownStatsChunkGroup`
+
+Defines the known stats chunk group type used by this module.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsChunkGroup { myField?: MyType } }`.
+
+### Properties
+
+* `assets` {object[]}
+* `assetsSize` {number}
+* `auxiliaryAssets` {object[]}
+* `auxiliaryAssetsSize` {number}
+* `childAssets` {Record}
+* `children` {Record}
+* `chunks` {ChunkId[]}
+* `filteredAssets` {number}
+* `filteredAuxiliaryAssets` {number}
+* `isOverSizeLimit` {boolean}
+* `name` {string}
+
+***
+
+## Interface: `KnownStatsChunkOrigin`
+
+Defines the known stats chunk origin type used by this module.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsChunkOrigin { myField?: MyType } }`.
+
+### Properties
+
+* `loc` {string}
+* `module` {string}
+* `moduleId` {string|number}
+* `moduleIdentifier` {string}
+* `moduleName` {string}
+* `request` {string}
+
+***
+
+## Interface: `KnownStatsCompilation`
+
+Defines the known stats compilation type used by this module.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsCompilation { myField?: MyType } }`.
+
+### Properties
+
+* `assets` {StatsAsset[]}
+* `assetsByChunkName` {Record}
+* `builtAt` {number}
+* `children` {StatsCompilation[]}
+* `chunks` {StatsChunk[]}
+* `entrypoints` {Record}
+* `env` {StatsJsonValue}
+* `errors` {StatsError[]}
+* `errorsCount` {number}
+* `filteredAssets` {number}
+* `filteredErrorDetailsCount` {number}
+* `filteredModules` {number}
+* `filteredWarningDetailsCount` {number}
+* `hash` {string}
+* `hints` {StatsError[]}
+* `hintsCount` {number}
+* `logging` {Record}
+* `modules` {StatsModule[]}
+* `name` {string}
+* `namedChunkGroups` {Record}
+* `needAdditionalPass` {boolean}
+* `outputPath` {string}
+* `publicPath` {string}
+* `time` {number}
+* `version` {string}
+* `warnings` {StatsError[]}
+* `warningsCount` {number}
+
+***
+
+## Interface: `KnownStatsError`
+
+Defines the known stats error type used by this module.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsError { myField?: MyType } }`.
+
+### Properties
+
+* `cause` {KnownStatsError}
+* `chunkEntry` {boolean}
+* `chunkId` {string|number}
+* `chunkInitial` {boolean}
+* `chunkName` {string}
+* `compilerPath` {string}
+* `details` {string}
+* `errors` {KnownStatsError[]}
+* `file` {string}
+* `loc` {string}
+* `message` {string}
+* `moduleId` {string|number}
+* `moduleIdentifier` {string}
+* `moduleName` {string}
+* `moduleTrace` {StatsModuleTraceItem[]}
+* `stack` {string}
+
+***
+
+## Interface: `KnownStatsFactoryContext`
+
+Defines the known stats factory context type used by this module.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownStatsFactoryContext { myField?: MyType } }`.
+
+### Properties
+
+* `cachedGetErrors` {object}
+* `cachedGetWarnings` {object}
+* `compilation` {Compilation}
+* `compilationAuxiliaryFileToChunks` {Map}
+* `compilationFileToChunks` {Map}
+* `makePathsRelative` {object}
+* `rootModules` {Set}
+* `runtime` {RuntimeSpec}
+* `type` {string}
+
+***
+
+## Interface: `KnownStatsLogging`
+
+Defines the known stats logging type used by this module.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsLogging { myField?: MyType } }`.
+
+### Properties
+
+* `debug` {boolean}
+* `entries` {StatsLoggingEntry[]}
+* `filteredEntries` {number}
+
+***
+
+## Interface: `KnownStatsLoggingEntry`
+
+Defines the known stats logging entry type used by this module.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsLoggingEntry { myField?: MyType } }`.
+
+### Properties
+
+* `args` {any[]}
+* `children` {StatsLoggingEntry[]}
+* `message` {string}
+* `time` {number}
+* `trace` {string[]}
+* `type` {string}
+
+***
+
+## Interface: `KnownStatsModule`
+
+Defines the known stats module type used by this module.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsModule { myField?: MyType } }`.
+
+### Properties
+
+* `assets` {string[]}
+* `buildTimeExecuted` {boolean}
+* `built` {boolean}
+* `cacheable` {boolean}
+* `cached` {boolean}
+* `chunks` {ChunkId[]}
+* `codeGenerated` {boolean}
+* `dependent` {boolean}
+* `depth` {number}
+* `errors` {number}
+* `failed` {boolean}
+* `filteredModules` {number}
+* `id` {string|number}
+* `identifier` {string}
+* `index` {number}
+* `index2` {number}
+* `issuer` {string}
+* `issuerId` {string|number}
+* `issuerName` {string}
+* `issuerPath` {StatsModuleIssuer[]}
+* `layer` {string}
+* `modules` {StatsModule[]}
+* `moduleType` {string}
+* `name` {string}
+* `nameForCondition` {string}
+* `notCacheableReasons` {string[]}
+* `optimizationBailout` {string[]}
+* `optional` {boolean}
+* `orphan` {boolean}
+* `postOrderIndex` {number}
+* `preOrderIndex` {number}
+* `profile` {StatsProfile}
+* `providedExports` {string[]}
+* `reasons` {StatsModuleReason[]}
+* `size` {number}
+* `sizes` {Record}
+* `source` {string|Buffer}
+* `type` {string}
+* `usedExports` {boolean|string[]}
+* `warnings` {number}
+
+***
+
+## Interface: `KnownStatsModuleGroup`
+
+A group of modules that `groupResults` creates, listing them in `children` or counting hidden ones in `filteredChildren`.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsModuleGroup { myField?: MyType } }`.
+
+### Properties
+
+* `children` {StatsModule[]}
+* `filteredChildren` {number}
+* `layer` {string}
+* `moduleType` {string}
+* `name` {string}
+* `size` {number}
+* `sizes` {Record}
+* `type` {string}
+
+***
+
+## Interface: `KnownStatsModuleIssuer`
+
+Defines the known stats module issuer type used by this module.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsModuleIssuer { myField?: MyType } }`.
+
+### Properties
+
+* `id` {string|number}
+* `identifier` {string}
+* `name` {string}
+* `profile` {StatsProfile}
+
+***
+
+## Interface: `KnownStatsModuleReason`
+
+Defines the known stats module reason type used by this module.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsModuleReason { myField?: MyType } }`.
+
+### Properties
+
+* `active` {boolean}
+* `explanation` {string}
+* `loc` {string}
+* `module` {string}
+* `moduleId` {string|number}
+* `moduleIdentifier` {string}
+* `moduleName` {string}
+* `resolvedModule` {string}
+* `resolvedModuleId` {string|number}
+* `resolvedModuleIdentifier` {string}
+* `type` {string}
+* `userRequest` {string}
+
+***
+
+## Interface: `KnownStatsModuleReasonGroup`
+
+A group of reasons from one origin module that `groupResults` creates.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsModuleReasonGroup { myField?: MyType } }`.
+
+### Properties
+
+* `active` {boolean}
+* `children` {StatsModuleReason[]}
+* `module` {string}
+* `type` {string}
+
+***
+
+## Interface: `KnownStatsModuleTraceDependency`
+
+Defines the known stats module trace dependency type used by this module.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsModuleTraceDependency { myField?: MyType } }`.
+
+### Properties
+
+* `loc` {string}
+
+***
+
+## Interface: `KnownStatsModuleTraceItem`
+
+Defines the known stats module trace item type used by this module.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsModuleTraceItem { myField?: MyType } }`.
+
+### Properties
+
+* `dependencies` {StatsModuleTraceDependency[]}
+* `moduleId` {string|number}
+* `moduleIdentifier` {string}
+* `moduleName` {string}
+* `originId` {string|number}
+* `originIdentifier` {string}
+* `originName` {string}
+
+***
+
+## Interface: `KnownStatsPrinterContext`
+
+Defines the known stats printer context type used by this module.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownStatsPrinterContext { myField?: MyType } }`.
+
+### Properties
+
+* `asset` {StatsAsset}
+* `chunk` {StatsChunk}
+* `chunkGroup` {StatsChunkGroup}
+* `chunkGroupKind` {string}
+* `compilation` {StatsCompilation}
+* `error` {StatsError}
+* `logging` {StatsLogging}
+* `module` {StatsModule}
+* `moduleIssuer` {StatsModuleIssuer}
+* `moduleReason` {StatsModuleReason}
+* `moduleTraceDependency` {StatsModuleTraceDependency}
+* `moduleTraceItem` {StatsModuleTraceItem}
+* `profile` {StatsProfile}
+* `timeReference` {number} the compilation's time, which colors other times by their share of it
+* `type` {string}
+
+***
+
+## Interface: `KnownStatsProfile`
+
+Defines the known stats profile type used by this module.
+A plugin types its own stats fields by declaration merging: `declare module "webpack" { interface KnownStatsProfile { myField?: MyType } }`.
+
+### Properties
+
+* `additionalIntegration` {number}
+* `additionalResolving` {number}
+* `building` {number}
+* `dependencies` {number}
+* `factory` {number}
+* `integration` {number}
+* `resolving` {number}
+* `restoring` {number}
+* `storing` {number}
+* `total` {number}
+
+***
+
 ## Interface: `LibraryOptions`
 
 Options for library.
@@ -8332,7 +9241,7 @@ Options for library.
 
 * `amdContainer` {string} Add a container for define/require functions in the AMD module.
 * `auxiliaryComment` {string|LibraryCustomUmdCommentObject} Add a comment in the UMD wrapper.
-* `entryExports` {"last"|"all"} Which modules of an entry the library exposes the exports of: only the last one, or all of them, where a name more than one module binds differently is left out, as 'export *' does.
+* `entryExports` {"all"|"last"} Which modules of an entry the library exposes the exports of: only the last one, or all of them, where a name more than one module binds differently is left out, as 'export *' does.
 * `export` {string|string[]} Specify which export should be exposed as library.
 * `name` {string|string[]|LibraryCustomUmdObject} The name of the library (some types allow unnamed libraries too).
 * `type` {string} Type of library (types included by default are 'var', 'module', 'assign', 'assign-properties', 'this', 'window', 'self', 'global', 'commonjs', 'commonjs2', 'commonjs-module', 'commonjs-static', 'amd', 'amd-require', 'umd', 'umd2', 'jsonp', 'system', but others might be added by plugins).
@@ -8362,6 +9271,9 @@ Options for library.
 ***
 
 ## Interface: `LoaderModule`
+
+The loader-authoring types, re-exported here because this file is what
+`generate-types.js` reads webpack's public type surface from
 
 ### Type Parameters
 
@@ -8405,7 +9317,7 @@ Options affecting the normal modules (`NormalModuleFactory`).
 * `exprContextRegExp` {boolean|RegExp} Sets the default regular expression for full dynamic dependencies. Deprecated: This option has moved to 'module.parser.javascript.exprContextRegExp'.
 * `exprContextRequest` {string} Set the default request for full dynamic dependencies. Deprecated: This option has moved to 'module.parser.javascript.exprContextRequest'.
 * `generator` {GeneratorOptionsByModuleType} Specify options for each generator.
-* `noParse` {string|RegExp|object|string|RegExp|object[]} Don't parse files matching. It's matched against the full resolved request.
+* `noParse` {string|RegExp|string|RegExp|object[]|object} Don't parse files matching. It's matched against the full resolved request.
 * `parser` {ParserOptionsByModuleType} Specify options for each parser.
 * `rules` {false|""|0|"..."|RuleSetRule[]} An array of rules applied for modules.
 * `strictExportPresence` {boolean} Emit errors instead of warnings when imported names don't exist in imported module. Deprecated: This option has moved to 'module.parser.javascript.strictExportPresence'.
@@ -8423,15 +9335,28 @@ Options affecting the normal modules (`NormalModuleFactory`).
 
 ## Interface: `MultiCompilerOptions`
 
+Defines the multi compiler options type used by this module.
+
 ### Properties
 
 * `parallelism` {number} how many Compilers are allows to run at the same time in parallel
+* `plugins` {false|""|0|object|MultiCompilerPluginInstance[]} plugins applied once to the MultiCompiler when it is created
+
+***
+
+## Interface: `MultiCompilerPluginInstance`
+
+A plugin applied to the MultiCompiler itself rather than to each child.
+
+### Properties
+
+* `apply` {object} called once with the MultiCompiler
 
 ***
 
 ## Interface: `OutputFileSystem`
 
-Returns location of targetPath relative to rootPath.
+Defines the output file system type used by this module.
 
 ### Properties
 
@@ -8480,6 +9405,8 @@ Specify options for each parser.
 
 ## Interface: `PathData`
 
+Defines the path data type used by this module.
+
 ### Properties
 
 * `basename` {string}
@@ -8524,14 +9451,14 @@ Specify options for each parser.
 * `this` {NormalModuleLoaderContext|LoaderRunnerMutableContext|LoaderRunnerReadonlyContext|LoaderPluginLoaderContext|HotModuleReplacementPluginLoaderContext|ContextAdditions}
 * `remainingRequest` {string}
 * `previousRequest` {string}
-* `data` {object}
+* `data` {LoaderData}
 * Returns: {string|void|Buffer|Promise}
 
 ***
 
 ## Interface: `Problem`
 
-Returns object of arguments.
+Defines the problem type used by this module.
 
 ### Properties
 
@@ -8566,6 +9493,8 @@ Returns object of arguments.
 
 ## Interface: `RenderManifestOptions`
 
+Defines the render manifest options type used by this module.
+
 ### Properties
 
 * `chunk` {Chunk} the chunk used to render
@@ -8583,6 +9512,8 @@ Returns object of arguments.
 
 ## Interface: `ResolveData`
 
+Defines the resolve data type used by this module.
+
 ### Properties
 
 * `attributes` {ImportAttributes}
@@ -8598,7 +9529,7 @@ Returns object of arguments.
 * `missingDependencies` {LazySet}
 * `phase` {"source"|"defer"|"evaluation"}
 * `request` {string}
-* `resolveOptions` {ResolveOptions}
+* `resolveOptions` {ResolveOptionsWebpackOptions}
 
 ***
 
@@ -8635,7 +9566,7 @@ Options object for resolving requests.
 * `roots` {string[]} A list of directories in which requests that are server-relative URLs (starting with '/') are resolved.
 * `symlinks` {boolean} Enable resolving symlinks to the original location.
 * `tsconfig` {string|boolean|object} TypeScript config for paths mapping. Can be `false` (disabled), `true` (use default `tsconfig.json`), a string path to `tsconfig.json`, or an object with `configFile` and `references` options.
-* `unsafeCache` {boolean|object} Enable caching of successfully resolved requests (cache entries are not revalidated).
+* `unsafeCache` {boolean|UnsafeCache} Enable caching of successfully resolved requests (cache entries are not revalidated).
 * `useSyncFileSystemCalls` {boolean} Use synchronous filesystem calls for the resolver.
 
 ***
@@ -8647,7 +9578,7 @@ A rule description with conditions and effects for modules.
 ### Properties
 
 * `assert` {object} Match on import assertions of the dependency.
-* `compiler` {string|RegExp|RuleSetLogicalConditions|object|RuleSetCondition[]} Match the child compiler name.
+* `compiler` {string|RegExp|RuleSetLogicalConditions|RuleSetCondition[]|object} Match the child compiler name.
 * `dependency` {string|RegExp|RuleSetLogicalConditions|RuleSetCondition[]|object} Match dependency type.
 * `descriptionData` {object} Match values of properties in the description file (usually package.json).
 * `descriptionRelativePath` {string|RegExp|RuleSetLogicalConditions|RuleSetCondition[]|object} Match the path of the module relative to the directory of the description file (usually package.json), i.e. './lib/button.js'. Always uses forward slashes.
@@ -8667,7 +9598,7 @@ A rule description with conditions and effects for modules.
 * `parser` {object} Options for parsing.
 * `phase` {string|RegExp|RuleSetLogicalConditions|RuleSetCondition[]|object} Match the import phase of the dependency.
 * `realResource` {string|RegExp|RuleSetLogicalConditionsAbsolute|RuleSetConditionAbsolute[]|object} Match the real resource path of the module.
-* `resolve` {ResolveOptions} Options for the resolver.
+* `resolve` {ResolveOptionsWebpackOptions} Options for the resolver.
 * `resource` {string|RegExp|RuleSetLogicalConditionsAbsolute|RuleSetConditionAbsolute[]|object} Match the resource path of the module.
 * `resourceFragment` {string|RegExp|RuleSetLogicalConditions|RuleSetCondition[]|object} Match the resource fragment of the module.
 * `resourceQuery` {string|RegExp|RuleSetLogicalConditions|RuleSetCondition[]|object} Match the resource query of the module.
@@ -8678,6 +9609,111 @@ A rule description with conditions and effects for modules.
 * `type` {string} Module type to use for the module.
 * `use` {string|RuleSetUseFunction|string|false|0|RuleSetUseFunction|object[]|object} Modifiers applied to the module when rule is matched.
 * `with` {object} Match on import attributes of the dependency.
+
+***
+
+## Interface: `StatsFactoryExtractKeys`
+
+The `[object, data]` `extract` receives for each object key, which also types that key's `getItemFactory` data and `result` value.
+A plugin types its own keys by declaration merging: `declare module "webpack" { interface StatsFactoryExtractKeys { "myPlugin.data": [MyObject, MyData] } }`.
+
+### Properties
+
+* `asset` {StatsAsset|PreprocessedAsset}
+* `asset$visible` {StatsAsset|PreprocessedAsset}
+* `cause` {StatsError|WebpackError}
+* `chunk` {StatsChunk|Chunk}
+* `chunkGroup` {StatsChunkGroup|ChunkGroupInfoWithName}
+* `chunkOrigin` {StatsChunkOrigin|OriginRecord}
+* `compilation` {StatsCompilation|Compilation}
+* `error` {StatsError|WebpackError}
+* `module` {StatsModule|Module}
+* `module$visible` {StatsModule|Module}
+* `moduleIssuer` {StatsModuleIssuer|Module}
+* `moduleReason` {StatsModuleReason|ModuleGraphConnection}
+* `moduleTraceDependency` {StatsModuleTraceDependency|Dependency}
+* `moduleTraceItem` {StatsModuleTraceItem|ModuleTrace}
+* `profile` {StatsProfile|ModuleProfile}
+* `warning` {StatsError|WebpackError}
+
+***
+
+## Interface: `StatsFactoryGroupKeys`
+
+The group object `groupResults` taps create for each array path of `StatsFactoryItemKeys` they group.
+A plugin types its own groups by declaration merging: `declare module "webpack" { interface StatsFactoryGroupKeys { "myPlugin.items": MyGroup } }`.
+
+### Properties
+
+* `asset.related` {StatsAssetGroup}
+* `chunk.modules` {StatsModuleGroup}
+* `chunk.rootModules` {StatsModuleGroup}
+* `compilation.assets` {StatsAssetGroup}
+* `compilation.modules` {StatsModuleGroup}
+* `module.modules` {StatsModuleGroup}
+* `module.reasons` {StatsModuleReasonGroup}
+
+***
+
+## Interface: `StatsFactoryItemKeys`
+
+The `[item, created item]` of each array path, typing its item hooks (`filter`, `sort`, `filterSorted`) and created item hooks (`sortResults`, `groupResults`, `filterResults`, `merge`); an optional third element is what `merge` makes of the created items, which `result` then gets instead of their array, so a key declaring one must register a `merge` tap returning that type.
+A plugin types its own paths by declaration merging: `declare module "webpack" { interface StatsFactoryItemKeys { "myPlugin.items": [MyItem, MyCreatedItem] } }`.
+
+### Properties
+
+* `asset.related` {PreprocessedAsset|StatsAsset}
+* `chunk.modules` {Module|StatsModule}
+* `chunk.origins` {OriginRecord|StatsChunkOrigin}
+* `chunk.rootModules` {Module|StatsModule}
+* `compilation.assets` {PreprocessedAsset|StatsAsset}
+* `compilation.children` {Compilation|StatsCompilation}
+* `compilation.chunks` {Chunk|StatsChunk}
+* `compilation.entrypoints` {ChunkGroupInfoWithName|StatsChunkGroup|Record}
+* `compilation.errors` {Error|StatsError}
+* `compilation.hints` {Error|StatsError}
+* `compilation.modules` {Module|StatsModule}
+* `compilation.namedChunkGroups` {ChunkGroupInfoWithName|StatsChunkGroup|Record}
+* `compilation.warnings` {Error|StatsError}
+* `error.errors` {Error|StatsError}
+* `module.children` {Module|StatsModule}
+* `module.issuerPath` {Module|StatsModuleIssuer}
+* `module.modules` {Module|StatsModule}
+* `module.reasons` {ModuleGraphConnection|StatsModuleReason}
+* `moduleTrace` {ModuleTrace|StatsModuleTraceItem}
+* `moduleTraceItem.dependencies` {Dependency|StatsModuleTraceDependency}
+* `warning.errors` {Error|StatsError}
+
+***
+
+## Interface: `StatsFactoryItemNameKeys`
+
+The item `getItemName` receives for each `<array path>[]` key: the first element of that path's `StatsFactoryItemKeys` entry.
+A plugin types its own keys by declaration merging: `declare module "webpack" { interface StatsFactoryItemNameKeys { "myPlugin.items[]": MyItem } }`.
+
+### Properties
+
+* `asset.related[]` {PreprocessedAsset}
+* `chunk.modules[]` {Module}
+* `chunk.origins[]` {OriginRecord}
+* `chunk.rootModules[]` {Module}
+* `compilation.assets[]` {PreprocessedAsset}
+* `compilation.children[]` {Compilation}
+* `compilation.chunks[]` {Chunk}
+* `compilation.entrypoints[]` {ChunkGroupInfoWithName}
+* `compilation.errors[]` {Error}
+* `compilation.hints[]` {Error}
+* `compilation.modules[]` {Module}
+* `compilation.namedChunkGroups[]` {ChunkGroupInfoWithName}
+* `compilation.warnings[]` {Error}
+* `error.errors[]` {Error}
+* `module.children[]` {Module}
+* `module.issuerPath[]` {Module}
+* `module.modules[]` {Module}
+* `module.reasons[]` {ModuleGraphConnection}
+* `moduleTrace[]` {ModuleTrace}
+* `moduleTraceItem.dependencies[]` {Dependency}
+* `warning.errors[]` {Error}
 
 ***
 
@@ -8695,7 +9731,7 @@ Stats options object.
 * `cached` {boolean} Add information about cached (not built) modules (deprecated: use 'cachedModules' instead).
 * `cachedAssets` {boolean} Show cached assets (setting this to `false` only shows emitted files).
 * `cachedModules` {boolean} Add information about cached (not built) modules.
-* `children` {boolean|"none"|"normal"|"summary"|"verbose"|"detailed"|"minimal"|"errors-only"|"errors-warnings"|StatsOptions|StatsValue[]} Add children information.
+* `children` {boolean|"verbose"|"summary"|"none"|"normal"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions|StatsValue[]} Add children information.
 * `chunkGroupAuxiliary` {boolean} Display auxiliary assets in chunk groups.
 * `chunkGroupChildren` {boolean} Display children of chunk groups.
 * `chunkGroupMaxAssets` {number} Limit of assets displayed in chunk groups.
@@ -8739,7 +9775,7 @@ Stats options object.
 * `hints` {boolean} Add performance hints reported with 'performance.hints: "stats"'.
 * `hintsCount` {boolean} Add the number of performance hints.
 * `ids` {boolean} Add ids.
-* `logging` {boolean|"error"|"warn"|"info"|"log"|"none"|"verbose"} Add logging output.
+* `logging` {boolean|"error"|"warn"|"info"|"log"|"verbose"|"none"} Add logging output.
 * `loggingDebug` {string|boolean|RegExp|FilterItemTypes[]|object} Include debug logging of specified loggers (i. e. for plugins or loaders). Filters can be Strings, RegExps or Functions.
 * `loggingTrace` {boolean} Add stack traces to logging output.
 * `moduleAssets` {boolean} Add information about assets inside modules.
@@ -8772,6 +9808,97 @@ Stats options object.
 
 ***
 
+## Interface: `StatsPrinterItemKeys`
+
+The item of each array path, which `sortItems` receives the array of.
+A plugin types its own paths by declaration merging: `declare module "webpack" { interface StatsPrinterItemKeys { "myPlugin.items": MyItem } }`.
+
+### Properties
+
+* `asset.children` {StatsAsset}
+* `asset.related` {StatsAsset}
+* `chunk.modules` {StatsModule}
+* `chunk.origins` {StatsChunkOrigin}
+* `compilation.assets` {StatsAsset}
+* `compilation.children` {StatsCompilation}
+* `compilation.chunks` {StatsChunk}
+* `compilation.entrypoints` {StatsChunkGroup}
+* `compilation.errors` {StatsError}
+* `compilation.hints` {StatsError}
+* `compilation.logging` {KnownStatsLogging|Record|object}
+* `compilation.modules` {StatsModule}
+* `compilation.namedChunkGroups` {StatsChunkGroup}
+* `compilation.warnings` {StatsError}
+* `error.errors` {StatsError}
+* `error.moduleTrace` {StatsModuleTraceItem}
+* `loggingEntry.children` {StatsLoggingEntry}
+* `loggingGroup.entries` {StatsLoggingEntry}
+* `module.children` {StatsModule}
+* `module.issuerPath` {StatsModuleIssuer}
+* `module.modules` {StatsModule}
+* `module.reasons` {StatsModuleReason}
+* `moduleReason.children` {StatsModuleReason}
+* `moduleTraceItem.dependencies` {StatsModuleTraceDependency}
+
+***
+
+## Interface: `StatsPrinterItemNameKeys`
+
+The item `getItemName` receives for each `<array path>[]` key: that path's `StatsPrinterItemKeys` entry.
+A plugin types its own keys by declaration merging: `declare module "webpack" { interface StatsPrinterItemNameKeys { "myPlugin.items[]": MyItem } }`.
+
+### Properties
+
+* `asset.children[]` {StatsAsset}
+* `asset.related[]` {StatsAsset}
+* `chunk.modules[]` {StatsModule}
+* `chunk.origins[]` {StatsChunkOrigin}
+* `compilation.assets[]` {StatsAsset}
+* `compilation.children[]` {StatsCompilation}
+* `compilation.chunks[]` {StatsChunk}
+* `compilation.entrypoints[]` {StatsChunkGroup}
+* `compilation.errors[]` {StatsError}
+* `compilation.hints[]` {StatsError}
+* `compilation.logging[]` {KnownStatsLogging|Record|object}
+* `compilation.modules[]` {StatsModule}
+* `compilation.namedChunkGroups[]` {StatsChunkGroup}
+* `compilation.warnings[]` {StatsError}
+* `error.errors[]` {StatsError}
+* `error.moduleTrace[]` {StatsModuleTraceItem}
+* `loggingEntry.children[]` {StatsLoggingEntry}
+* `loggingGroup.entries[]` {StatsLoggingEntry}
+* `module.children[]` {StatsModule}
+* `module.issuerPath[]` {StatsModuleIssuer}
+* `module.modules[]` {StatsModule}
+* `module.reasons[]` {StatsModuleReason}
+* `moduleReason.children[]` {StatsModuleReason}
+* `moduleTraceItem.dependencies[]` {StatsModuleTraceDependency}
+
+***
+
+## Interface: `StatsPrinterPrintKeys`
+
+The value `print` receives for each object key, which also matches same-named fields.
+A plugin types its own keys by declaration merging: `declare module "webpack" { interface StatsPrinterPrintKeys { "myPlugin.data": MyObject } }`.
+
+### Properties
+
+* `asset` {StatsAsset}
+* `chunk` {StatsChunk}
+* `chunkGroup` {StatsChunkGroup}
+* `chunkOrigin` {StatsChunkOrigin}
+* `compilation` {StatsCompilation}
+* `error` {StatsError}
+* `loggingGroup` {KnownStatsLogging|Record|object}
+* `module` {string|StatsModule}
+* `moduleIssuer` {StatsModuleIssuer}
+* `moduleReason` {StatsModuleReason}
+* `moduleTraceDependency` {StatsModuleTraceDependency}
+* `moduleTraceItem` {StatsModuleTraceItem}
+* `profile` {StatsProfile}
+
+***
+
 ## Interface: `WebpackOptionsNormalized`
 
 Normalized webpack options object.
@@ -8790,7 +9917,7 @@ Normalized webpack options object.
 * `experiments` {ExperimentsNormalized} Enables/Disables experiments (experimental features with relax SemVer compatibility).
 * `externals` {Externals} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 * `externalsPresets` {ExternalsPresets} Enable presets of externals for specific targets.
-* `externalsType` {"asset"|"asset-url"|"css-import"|"module"|"promise"|"import"|"this"|"var"|"commonjs"|"global"|"script"|"window"|"system"|"jsonp"|"assign"|"amd"|"amd-require"|"umd"|"umd2"|"commonjs2"|"self"|"commonjs-static"|"commonjs-module"|"css-url"|"node-commonjs"|"module-import"|"amd-async"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+* `externalsType` {"asset"|"asset-url"|"css-import"|"var"|"this"|"import"|"script"|"module"|"commonjs"|"global"|"assign"|"self"|"window"|"system"|"promise"|"css-url"|"jsonp"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 * `ignoreWarnings` {object[]} Ignore specific warnings.
 * `infrastructureLogging` {InfrastructureLogging} Options for infrastructure level logging.
 * `loader` {Loader} Custom values available in the loader context.
@@ -8806,8 +9933,8 @@ Normalized webpack options object.
 * `profile` {boolean} Capture timing information for each module.
 * `recordsInputPath` {string|false} Store compiler state to a json file.
 * `recordsOutputPath` {string|false} Load compiler state from a json file.
-* `resolve` {ResolveOptions} Options for the resolver.
-* `resolveLoader` {ResolveOptions} Options for the resolver when resolving loaders.
+* `resolve` {ResolveOptionsWebpackOptions} Options for the resolver.
+* `resolveLoader` {ResolveOptionsWebpackOptions} Options for the resolver when resolving loaders.
 * `snapshot` {SnapshotOptionsWebpackOptions} Options affecting how file system snapshots are created and validated.
 * `stats` {StatsValue} Stats options object or preset name.
 * `target` {string|false|string[]} Environment to build for. An array of environments to build for all of them when possible.
@@ -8833,31 +9960,31 @@ Plugin instance.
 
 ## Type: `AssetInfo`
 
-> **AssetInfo** = {KnownAssetInfo|Record}
+> **AssetInfo** = {exports.KnownAssetInfo|Record}
 
 ***
 
 ## Type: `AssetModuleBuildInfo`
 
-> **AssetModuleBuildInfo** = {KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownAssetModuleBuildInfo}
+> **AssetModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownAssetModuleBuildInfo}
 
 ***
 
 ## Type: `BuildInfo`
 
-> **BuildInfo** = {KnownBuildInfo|Record}
+> **BuildInfo** = {exports.KnownBuildInfo|Record}
 
 ***
 
 ## Type: `BuildMeta`
 
-> **BuildMeta** = {KnownBuildMeta|Record}
+> **BuildMeta** = {exports.KnownBuildMeta|Record}
 
 ***
 
 ## Type: `ConcatenatedModuleBuildInfo`
 
-> **ConcatenatedModuleBuildInfo** = {KnownBuildInfo|Record|KnownConcatenatedModuleBuildInfo}
+> **ConcatenatedModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownConcatenatedModuleBuildInfo}
 
 ***
 
@@ -8873,19 +10000,19 @@ Plugin instance.
 
 ## Type: `ContextModuleBuildInfo`
 
-> **ContextModuleBuildInfo** = {KnownBuildInfo|Record|KnownContextModuleBuildInfo}
+> **ContextModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownContextModuleBuildInfo}
 
 ***
 
 ## Type: `CssModuleBuildInfo`
 
-> **CssModuleBuildInfo** = {KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownCssModuleBuildInfo}
+> **CssModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownCssModuleBuildInfo}
 
 ***
 
 ## Type: `CssModuleBuildMeta`
 
-> **CssModuleBuildMeta** = {KnownBuildMeta|Record|KnownCssModuleBuildMeta}
+> **CssModuleBuildMeta** = {exports.KnownBuildMeta|Record|KnownCssModuleBuildMeta}
 
 ***
 
@@ -8920,7 +10047,7 @@ Plugin instance.
 
 ## Type: `ExternalItem`
 
-> **ExternalItem** = {string|RegExp|ExternalItemObjectKnown|ExternalItemObjectUnknown|object|object}
+> **ExternalItem** = {string|RegExp|ExternalItemObject|object|object}
 
 ***
 
@@ -8944,7 +10071,7 @@ Plugin instance.
 
 > **ExternalItemFunctionDataGetResolve** = {object}
 
-* `options` {ResolveOptions}
+* `options` {ResolveOptionsWebpackOptions}
 * Returns: {object|object}
 
 ***
@@ -8987,37 +10114,53 @@ Plugin instance.
 
 ## Type: `ExternalModuleBuildInfo`
 
-> **ExternalModuleBuildInfo** = {KnownBuildInfo|Record|KnownExternalModuleBuildInfo}
+> **ExternalModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownExternalModuleBuildInfo}
 
 ***
 
 ## Type: `Externals`
 
-> **Externals** = {string|RegExp|ExternalItemObjectKnown|ExternalItemObjectUnknown|object|object|ExternalItem[]}
+> **Externals** = {string|RegExp|ExternalItemObject|object|object|ExternalItem[]}
 
 ***
 
 ## Type: `HtmlModuleBuildInfo`
 
-> **HtmlModuleBuildInfo** = {KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownHtmlModuleBuildInfo}
+> **HtmlModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownHtmlModuleBuildInfo}
 
 ***
 
 ## Type: `JavascriptModuleBuildInfo`
 
-> **JavascriptModuleBuildInfo** = {KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownJavascriptModuleBuildInfo}
+> **JavascriptModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownJavascriptModuleBuildInfo}
 
 ***
 
 ## Type: `JavascriptModuleBuildMeta`
 
-> **JavascriptModuleBuildMeta** = {KnownBuildMeta|Record|KnownJavascriptModuleBuildMeta}
+> **JavascriptModuleBuildMeta** = {exports.KnownBuildMeta|Record|KnownJavascriptModuleBuildMeta}
+
+***
+
+## Type: `JavascriptParserTag`
+
+> **JavascriptParserTag**\<`T`\> = {symbol|object}
+
+### Type Declaration
+
+* `__tagData` {T}
+
+### Type Parameters
+
+#### T
+
+`T` = {TagData}
 
 ***
 
 ## Type: `JsonModuleBuildInfo`
 
-> **JsonModuleBuildInfo** = {KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownJsonModuleBuildInfo}
+> **JsonModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownJsonModuleBuildInfo}
 
 ***
 
@@ -9054,6 +10197,16 @@ Plugin instance.
 
 ***
 
+## Type: `MultiCompilerPluginFunction`
+
+> **MultiCompilerPluginFunction** = {object}
+
+* `this` {MultiCompiler}
+* `compiler` {MultiCompiler}
+* Returns: {void}
+
+***
+
 ## Type: `MultiConfiguration`
 
 > **MultiConfiguration** = {ReadonlyArray|MultiCompilerOptions}
@@ -9062,25 +10215,31 @@ Plugin instance.
 
 ## Type: `NormalModuleBuildInfo`
 
-> **NormalModuleBuildInfo** = {KnownBuildInfo|Record|KnownNormalModuleBuildInfo}
+> **NormalModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownNormalModuleBuildInfo}
 
 ***
 
 ## Type: `ObjectDeserializerContext`
 
-> **ObjectDeserializerContext** = {ObjectDeserializerContextObjectMiddlewareObject_1}
+> **ObjectDeserializerContext** = {ObjectDeserializerContextObjectMiddlewareObject_2}
 
 ***
 
 ## Type: `ObjectSerializerContext`
 
-> **ObjectSerializerContext** = {ObjectSerializerContextObjectMiddlewareObject_2}
+> **ObjectSerializerContext** = {ObjectSerializerContextObjectMiddlewareObject_3}
 
 ***
 
 ## Type: `ParserState`
 
-> **ParserState** = {ParserStateBase|Record}
+> **ParserState**\<`TModule`\> = {ParserStateBase|Record}
+
+### Type Parameters
+
+#### TModule
+
+`TModule` *extends* {NormalModule} = {NormalModule}
 
 ***
 
@@ -9183,6 +10342,7 @@ Plugin instance.
 * `ident` {string} Unique loader options identifier.
 * `loader` {string} Loader name.
 * `options` {string|object} Loader options.
+* `sourceTest` {string|RegExp|object|RuleSetLogicalConditions|RuleSetCondition[]} Run the loader's normal function only when its current input matches this condition, the same kind of condition 'test' takes. Input that is not valid UTF-8 text always runs it.
 
 ***
 
@@ -9210,96 +10370,115 @@ Plugin instance.
 * `ident` {string} Unique loader options identifier.
 * `loader` {string} Loader name.
 * `options` {string|object} Loader options.
+* `sourceTest` {string|RegExp|object|RuleSetLogicalConditions|RuleSetCondition[]} Run the loader's normal function only when its current input matches this condition, the same kind of condition 'test' takes. Input that is not valid UTF-8 text always runs it.
 
 ***
 
 ## Type: `StatsAsset`
 
-> **StatsAsset** = {KnownStatsAsset|Record}
+> **StatsAsset** = {exports.KnownStatsAsset|Record}
+
+***
+
+## Type: `StatsAssetGroup`
+
+> **StatsAssetGroup** = {exports.KnownStatsAssetGroup|Record}
 
 ***
 
 ## Type: `StatsChunk`
 
-> **StatsChunk** = {KnownStatsChunk|Record}
+> **StatsChunk** = {exports.KnownStatsChunk|Record}
 
 ***
 
 ## Type: `StatsChunkGroup`
 
-> **StatsChunkGroup** = {KnownStatsChunkGroup|Record}
+> **StatsChunkGroup** = {exports.KnownStatsChunkGroup|Record}
 
 ***
 
 ## Type: `StatsChunkOrigin`
 
-> **StatsChunkOrigin** = {KnownStatsChunkOrigin|Record}
+> **StatsChunkOrigin** = {exports.KnownStatsChunkOrigin|Record}
 
 ***
 
 ## Type: `StatsCompilation`
 
-> **StatsCompilation** = {KnownStatsCompilation|Record}
+> **StatsCompilation** = {exports.KnownStatsCompilation|Record}
 
 ***
 
 ## Type: `StatsError`
 
-> **StatsError** = {KnownStatsError|Record}
+> **StatsError** = {exports.KnownStatsError|Record}
 
 ***
 
 ## Type: `StatsLogging`
 
-> **StatsLogging** = {KnownStatsLogging|Record}
+> **StatsLogging** = {exports.KnownStatsLogging|Record}
 
 ***
 
 ## Type: `StatsLoggingEntry`
 
-> **StatsLoggingEntry** = {KnownStatsLoggingEntry|Record}
+> **StatsLoggingEntry** = {exports.KnownStatsLoggingEntry|Record}
 
 ***
 
 ## Type: `StatsModule`
 
-> **StatsModule** = {KnownStatsModule|Record}
+> **StatsModule** = {exports.KnownStatsModule|Record}
+
+***
+
+## Type: `StatsModuleGroup`
+
+> **StatsModuleGroup** = {exports.KnownStatsModuleGroup|Record}
 
 ***
 
 ## Type: `StatsModuleIssuer`
 
-> **StatsModuleIssuer** = {KnownStatsModuleIssuer|Record}
+> **StatsModuleIssuer** = {exports.KnownStatsModuleIssuer|Record}
 
 ***
 
 ## Type: `StatsModuleReason`
 
-> **StatsModuleReason** = {KnownStatsModuleReason|Record}
+> **StatsModuleReason** = {exports.KnownStatsModuleReason|Record}
+
+***
+
+## Type: `StatsModuleReasonGroup`
+
+> **StatsModuleReasonGroup** = {exports.KnownStatsModuleReasonGroup|Record}
 
 ***
 
 ## Type: `StatsModuleTraceDependency`
 
-> **StatsModuleTraceDependency** = {KnownStatsModuleTraceDependency|Record}
+> **StatsModuleTraceDependency** = {exports.KnownStatsModuleTraceDependency|Record}
 
 ***
 
 ## Type: `StatsModuleTraceItem`
 
-> **StatsModuleTraceItem** = {KnownStatsModuleTraceItem|Record}
+> **StatsModuleTraceItem** = {exports.KnownStatsModuleTraceItem|Record}
 
 ***
 
 ## Type: `StatsProfile`
 
-> **StatsProfile** = {KnownStatsProfile|Record}
+> **StatsProfile** = {exports.KnownStatsProfile|Record}
 
 ***
 
 ## Type: `SyncWasmModuleBuildMeta`
 
-> **SyncWasmModuleBuildMeta** = {KnownBuildMeta|Record|KnownSyncWasmModuleBuildMeta}
+> **SyncWasmModuleBuildMeta** = {exports.KnownBuildMeta|Record|KnownSyncWasmModuleBuildMeta}
 
 ***
 
@@ -9401,6 +10580,18 @@ use `config.validateSchema` — TODO in the next major release: remove
 
 ***
 
+## `AdditionalDataKnown`
+
+Re-exports [AdditionalDataKnown](#additionaldataknown)
+
+***
+
+## `AllCodeGenerationSchemas`
+
+Re-exports [AllCodeGenerationSchemas](#allcodegenerationschemas)
+
+***
+
 ## `Argument`
 
 Re-exports [Argument](#argument)
@@ -9421,7 +10612,7 @@ Re-exports [AssetEmittedInfo](#assetemittedinfo)
 
 ## `AssetInfo`
 
-Re-exports [AssetInfo](#assetinfo-1)
+Re-exports [AssetInfo](#assetinfo-2)
 
 ***
 
@@ -9631,7 +10822,7 @@ Re-exports [DynamicEntryPlugin](#dynamicentryplugin)
 
 ## `Entry`
 
-Re-exports [Entry](#entry-4)
+Re-exports [Entry](#entry-5)
 
 ***
 
@@ -9851,9 +11042,165 @@ Re-exports [JavascriptModulesPlugin](#javascriptmodulesplugin)
 
 ***
 
+## `JavascriptParserTag`
+
+Re-exports [JavascriptParserTag](#javascriptparsertag)
+
+***
+
 ## `JsonModuleBuildInfo`
 
 Re-exports [JsonModuleBuildInfo](#jsonmodulebuildinfo)
+
+***
+
+## `KnownAssetInfo`
+
+Re-exports [KnownAssetInfo](#knownassetinfo)
+
+***
+
+## `KnownBuildInfo`
+
+Re-exports [KnownBuildInfo](#knownbuildinfo)
+
+***
+
+## `KnownBuildMeta`
+
+Re-exports [KnownBuildMeta](#knownbuildmeta)
+
+***
+
+## `KnownMeta`
+
+Re-exports [KnownMeta](#knownmeta)
+
+***
+
+## `KnownNormalizedStatsOptions`
+
+Re-exports [KnownNormalizedStatsOptions](#knownnormalizedstatsoptions)
+
+***
+
+## `KnownRecords`
+
+Re-exports [KnownRecords](#knownrecords)
+
+***
+
+## `KnownStatsAsset`
+
+Re-exports [KnownStatsAsset](#knownstatsasset)
+
+***
+
+## `KnownStatsAssetGroup`
+
+Re-exports [KnownStatsAssetGroup](#knownstatsassetgroup)
+
+***
+
+## `KnownStatsChunk`
+
+Re-exports [KnownStatsChunk](#knownstatschunk)
+
+***
+
+## `KnownStatsChunkGroup`
+
+Re-exports [KnownStatsChunkGroup](#knownstatschunkgroup)
+
+***
+
+## `KnownStatsChunkOrigin`
+
+Re-exports [KnownStatsChunkOrigin](#knownstatschunkorigin)
+
+***
+
+## `KnownStatsCompilation`
+
+Re-exports [KnownStatsCompilation](#knownstatscompilation)
+
+***
+
+## `KnownStatsError`
+
+Re-exports [KnownStatsError](#knownstatserror)
+
+***
+
+## `KnownStatsFactoryContext`
+
+Re-exports [KnownStatsFactoryContext](#knownstatsfactorycontext)
+
+***
+
+## `KnownStatsLogging`
+
+Re-exports [KnownStatsLogging](#knownstatslogging)
+
+***
+
+## `KnownStatsLoggingEntry`
+
+Re-exports [KnownStatsLoggingEntry](#knownstatsloggingentry)
+
+***
+
+## `KnownStatsModule`
+
+Re-exports [KnownStatsModule](#knownstatsmodule)
+
+***
+
+## `KnownStatsModuleGroup`
+
+Re-exports [KnownStatsModuleGroup](#knownstatsmodulegroup)
+
+***
+
+## `KnownStatsModuleIssuer`
+
+Re-exports [KnownStatsModuleIssuer](#knownstatsmoduleissuer-1)
+
+***
+
+## `KnownStatsModuleReason`
+
+Re-exports [KnownStatsModuleReason](#knownstatsmodulereason)
+
+***
+
+## `KnownStatsModuleReasonGroup`
+
+Re-exports [KnownStatsModuleReasonGroup](#knownstatsmodulereasongroup)
+
+***
+
+## `KnownStatsModuleTraceDependency`
+
+Re-exports [KnownStatsModuleTraceDependency](#knownstatsmoduletracedependency)
+
+***
+
+## `KnownStatsModuleTraceItem`
+
+Re-exports [KnownStatsModuleTraceItem](#knownstatsmoduletraceitem)
+
+***
+
+## `KnownStatsPrinterContext`
+
+Re-exports [KnownStatsPrinterContext](#knownstatsprintercontext)
+
+***
+
+## `KnownStatsProfile`
+
+Re-exports [KnownStatsProfile](#knownstatsprofile)
 
 ***
 
@@ -9947,6 +11294,12 @@ Re-exports [ModuleGraphConnection](#modulegraphconnection-1)
 
 ***
 
+## `ModuleNotFoundError`
+
+Re-exports [ModuleNotFoundError](#modulenotfounderror)
+
+***
+
 ## `ModuleOptions`
 
 Re-exports [ModuleOptions](#moduleoptions)
@@ -9962,6 +11315,18 @@ Re-exports [MultiCompiler](#multicompiler)
 ## `MultiCompilerOptions`
 
 Re-exports [MultiCompilerOptions](#multicompileroptions-1)
+
+***
+
+## `MultiCompilerPluginFunction`
+
+Re-exports [MultiCompilerPluginFunction](#multicompilerpluginfunction)
+
+***
+
+## `MultiCompilerPluginInstance`
+
+Re-exports [MultiCompilerPluginInstance](#multicompilerplugininstance)
 
 ***
 
@@ -10229,6 +11594,12 @@ Re-exports [StatsAsset](#statsasset)
 
 ***
 
+## `StatsAssetGroup`
+
+Re-exports [StatsAssetGroup](#statsassetgroup)
+
+***
+
 ## `StatsChunk`
 
 Re-exports [StatsChunk](#statschunk)
@@ -10259,6 +11630,30 @@ Re-exports [StatsError](#statserror)
 
 ***
 
+## `StatsFactoryExtractKeys`
+
+Re-exports [StatsFactoryExtractKeys](#statsfactoryextractkeys)
+
+***
+
+## `StatsFactoryGroupKeys`
+
+Re-exports [StatsFactoryGroupKeys](#statsfactorygroupkeys)
+
+***
+
+## `StatsFactoryItemKeys`
+
+Re-exports [StatsFactoryItemKeys](#statsfactoryitemkeys)
+
+***
+
+## `StatsFactoryItemNameKeys`
+
+Re-exports [StatsFactoryItemNameKeys](#statsfactoryitemnamekeys)
+
+***
+
 ## `StatsLogging`
 
 Re-exports [StatsLogging](#statslogging)
@@ -10277,6 +11672,12 @@ Re-exports [StatsModule](#statsmodule)
 
 ***
 
+## `StatsModuleGroup`
+
+Re-exports [StatsModuleGroup](#statsmodulegroup)
+
+***
+
 ## `StatsModuleIssuer`
 
 Re-exports [StatsModuleIssuer](#statsmoduleissuer)
@@ -10286,6 +11687,12 @@ Re-exports [StatsModuleIssuer](#statsmoduleissuer)
 ## `StatsModuleReason`
 
 Re-exports [StatsModuleReason](#statsmodulereason)
+
+***
+
+## `StatsModuleReasonGroup`
+
+Re-exports [StatsModuleReasonGroup](#statsmodulereasongroup)
 
 ***
 
@@ -10304,6 +11711,24 @@ Re-exports [StatsModuleTraceItem](#statsmoduletraceitem)
 ## `StatsOptions`
 
 Re-exports [StatsOptions](#statsoptions)
+
+***
+
+## `StatsPrinterItemKeys`
+
+Re-exports [StatsPrinterItemKeys](#statsprinteritemkeys)
+
+***
+
+## `StatsPrinterItemNameKeys`
+
+Re-exports [StatsPrinterItemNameKeys](#statsprinteritemnamekeys)
+
+***
+
+## `StatsPrinterPrintKeys`
+
+Re-exports [StatsPrinterPrintKeys](#statsprinterprintkeys)
 
 ***
 

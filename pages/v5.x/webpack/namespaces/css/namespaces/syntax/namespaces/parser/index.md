@@ -2,7 +2,11 @@
 
 ## Namespaces
 
+- [Field](namespaces/Field.md)
+- [Flag](namespaces/Flag.md)
 - [NodeType](namespaces/NodeType.md)
+- [Part](namespaces/Part.md)
+- [TokenType](namespaces/TokenType.md)
 
 ## Class: `TokenStream`
 
@@ -124,44 +128,49 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 ### Type Declaration
 
 * `index` {number}
-* `node` {NodeSyntaxParser}
-* `parent` {NodeSyntaxParser}
-* `atKeyword`
-* `blockEnd`
-* `blockStart`
-* `blockToken`
-* `childAt`
+* `node` {number}
+* `parent` {number}
+* `state` {unknown}
+* `child`
 * `childCount`
 * `children`
-* `childRules`
-* `contentEnd`
-* `contentStart`
-* `declarations`
 * `end`
-* `important`
-* `inValue`
+* `endOf`
+* `field`
+* `fieldCount`
+* `fieldNamed`
+* `flag`
 * `loc`
 * `name`
-* `nameEnd`
-* `nameStart`
-* `prelude`
 * `range`
-* `setBlockEnd`
-* `setEnd`
+* `rangeOf`
+* `remove`
+* `replace`
 * `skipChildren`
 * `source`
 * `start`
+* `startOf`
+* `stop`
+* `textOf`
 * `type`
-* `typeFlag`
-* `unescaped`
-* `unescapedName`
 * `value`
+* `within`
 
 ***
 
-## `asciiLowerCaseName`
+## `asciiCaseInsensitiveMatch`
 
-> **asciiLowerCaseName**: {object}
+> **asciiCaseInsensitiveMatch**: {object}
+
+* `s` {string}
+* `lit` {string}
+* Returns: {boolean}
+
+***
+
+## `asciiLowercaseName`
+
+> **asciiLowercaseName**: {object}
 
 * `s` {string}
 * Returns: {string}
@@ -177,126 +186,6 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 ***
 
-## `CC_0`
-
-> **CC\_0**: {number}
-
-***
-
-## `CC_APOSTROPHE`
-
-> **CC\_APOSTROPHE**: {number}
-
-***
-
-## `CC_COMMA`
-
-> **CC\_COMMA**: {number}
-
-***
-
-## `CC_FULL_STOP`
-
-> **CC\_FULL\_STOP**: {number}
-
-***
-
-## `CC_GREATER_THAN_SIGN`
-
-> **CC\_GREATER\_THAN\_SIGN**: {number}
-
-***
-
-## `CC_HYPHEN_MINUS`
-
-> **CC\_HYPHEN\_MINUS**: {number}
-
-***
-
-## `CC_LEFT_PARENTHESIS`
-
-> **CC\_LEFT\_PARENTHESIS**: {number}
-
-***
-
-## `CC_LEFT_SQUARE`
-
-> **CC\_LEFT\_SQUARE**: {number}
-
-***
-
-## `CC_LOW_LINE`
-
-> **CC\_LOW\_LINE**: {number}
-
-***
-
-## `CC_LOWER_D`
-
-> **CC\_LOWER\_D**: {number}
-
-***
-
-## `CC_NUMBER_SIGN`
-
-> **CC\_NUMBER\_SIGN**: {number}
-
-***
-
-## `CC_PLUS_SIGN`
-
-> **CC\_PLUS\_SIGN**: {number}
-
-***
-
-## `CC_QUOTATION_MARK`
-
-> **CC\_QUOTATION\_MARK**: {number}
-
-***
-
-## `CC_REVERSE_SOLIDUS`
-
-> **CC\_REVERSE\_SOLIDUS**: {number}
-
-***
-
-## `CC_RIGHT_PARENTHESIS`
-
-> **CC\_RIGHT\_PARENTHESIS**: {number}
-
-***
-
-## `CC_RIGHT_SQUARE`
-
-> **CC\_RIGHT\_SQUARE**: {number}
-
-***
-
-## `CC_SPACE`
-
-> **CC\_SPACE**: {number}
-
-***
-
-## `CC_TILDE`
-
-> **CC\_TILDE**: {number}
-
-***
-
-## `CC_UPPER_A`
-
-> **CC\_UPPER\_A**: {number}
-
-***
-
-## `CC_UPPER_Z`
-
-> **CC\_UPPER\_Z**: {number}
-
-***
-
 ## `consumeExtraNewline`
 
 > **consumeExtraNewline**: {object}
@@ -308,19 +197,18 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 ***
 
-## `DARK_PROPERTY`
+## `containsSubstitutionFunction`
 
-> **DARK\_PROPERTY**: {"--webpack-dark"}
+> **containsSubstitutionFunction**: {object}
+
+* `text` {string}
+* Returns: {boolean}
 
 ***
 
-## `equalsLowerCase`
+## `DARK_PROPERTY`
 
-> **equalsLowerCase**: {object}
-
-* `s` {string}
-* `lit` {string}
-* Returns: {boolean}
+> **DARK\_PROPERTY**: {"--webpack-dark"}
 
 ***
 
@@ -331,6 +219,15 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 ### Type Declaration
 
 * `bindCache` {BindCache}
+
+***
+
+## `escapeName`
+
+> **escapeName**: {object}
+
+* `name` {string}
+* Returns: {string}
 
 ***
 
@@ -346,6 +243,15 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 ***
 
+## `isAsciiWhitespace`
+
+> **isAsciiWhitespace**: {object}
+
+* `cc` {number}
+* Returns: {boolean}
+
+***
+
 ## `isDashedIdentifier`
 
 > **isDashedIdentifier**: {object}
@@ -355,11 +261,56 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 ***
 
-## `isWhitespace`
+## `isDigit`
 
-> **isWhitespace**: {object}
+> **isDigit**: {object}
 
 * `cc` {number}
+* Returns: {boolean}
+
+***
+
+## `isHexDigit`
+
+> **isHexDigit**: {object}
+
+* `cc` {number}
+* Returns: {boolean}
+
+***
+
+## `isIdentCodePoint`
+
+> **isIdentCodePoint**: {object}
+
+* `cc` {number}
+* Returns: {boolean}
+
+***
+
+## `isIdentStartCodePoint`
+
+> **isIdentStartCodePoint**: {object}
+
+* `cc` {number}
+* Returns: {boolean}
+
+***
+
+## `isLetter`
+
+> **isLetter**: {object}
+
+* `cc` {number}
+* Returns: {boolean}
+
+***
+
+## `isSimpleIdentifier`
+
+> **isSimpleIdentifier**: {object}
+
+* `value` {string}
 * Returns: {boolean}
 
 ***
@@ -373,36 +324,6 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 ## `LIGHT_PROPERTY`
 
 > **LIGHT\_PROPERTY**: {"--webpack-light"}
-
-***
-
-## `LIST_KIND_KEYFRAME`
-
-> **LIST\_KIND\_KEYFRAME**: {1}
-
-***
-
-## `LIST_KIND_NESTED`
-
-> **LIST\_KIND\_NESTED**: {2}
-
-***
-
-## `LIST_KIND_SELECTOR`
-
-> **LIST\_KIND\_SELECTOR**: {0}
-
-***
-
-## `LIST_NO`
-
-> **LIST\_NO**: {2}
-
-***
-
-## `LIST_UNKNOWN`
-
-> **LIST\_UNKNOWN**: {0}
 
 ***
 
@@ -422,7 +343,7 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 * `input` {string|TokenStream}
 * `pos` {number}
-* `options` {ParseOptionsSyntaxParser}
+* `options` {CssParseOptions}
 * Returns: {object}
 
 ***
@@ -433,8 +354,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 * `input` {string|TokenStream}
 * `pos` {number}
-* `options` {ParseOptionsSyntaxParser}
-* Returns: {ComponentValue[][]}
+* `options` {CssParseOptions}
+* Returns: {number[][]}
 
 ***
 
@@ -444,8 +365,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 * `input` {string|TokenStream}
 * `pos` {number}
-* `options` {ParseOptionsSyntaxParser}
-* Returns: {undefined|TokenSyntaxParserObject|FunctionNode|SimpleBlock}
+* `options` {CssParseOptions}
+* Returns: {undefined|number}
 
 ***
 
@@ -455,8 +376,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 * `input` {string|TokenStream}
 * `pos` {number}
-* `options` {ParseOptionsSyntaxParser}
-* Returns: {undefined|DeclarationSyntaxParser}
+* `options` {CssParseOptions}
+* Returns: {undefined|number}
 
 ***
 
@@ -466,8 +387,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 * `input` {string|TokenStream}
 * `pos` {number}
-* `options` {ParseOptionsSyntaxParser}
-* Returns: {ComponentValue[]}
+* `options` {CssParseOptions}
+* Returns: {number[]}
 
 ***
 
@@ -477,8 +398,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 * `input` {string|TokenStream}
 * `pos` {number}
-* `options` {ParseOptionsSyntaxParser}
-* Returns: {undefined|AtRule|QualifiedRule}
+* `options` {CssParseOptions}
+* Returns: {undefined|number}
 
 ***
 
@@ -488,8 +409,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 * `input` {string|TokenStream}
 * `pos` {number}
-* `options` {ParseOptionsSyntaxParser}
-* Returns: {Stylesheet}
+* `options` {CssParseOptions}
+* Returns: {number}
 
 ***
 
@@ -499,8 +420,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 * `input` {string|TokenStream}
 * `pos` {number}
-* `options` {ParseOptionsSyntaxParser}
-* Returns: {RuleSyntaxParser[]}
+* `options` {CssParseOptions}
+* Returns: {number[]}
 
 ***
 
@@ -508,14 +429,14 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **pickTransforms**: {object}
 
-* `options` {object}
+* `options` {CssTransformOptions}
 * Returns: {undefined|CssTransformOptions}
 
 ***
 
-## `rangeEquals`
+## `rangeAsciiCaseInsensitiveMatch`
 
-> **rangeEquals**: {object}
+> **rangeAsciiCaseInsensitiveMatch**: {object}
 
 * `input` {string}
 * `start` {number}
@@ -525,9 +446,9 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 ***
 
-## `rangeEqualsLowerCase`
+## `rangeEquals`
 
-> **rangeEqualsLowerCase**: {object}
+> **rangeEquals**: {object}
 
 * `input` {string}
 * `start` {number}
@@ -558,276 +479,12 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 ***
 
-## `T_AT_RULE`
-
-> **T\_AT\_RULE**: {number}
-
-***
-
-## `T_BAD_STRING`
-
-> **T\_BAD\_STRING**: {number}
-
-***
-
-## `T_COMMA`
-
-> **T\_COMMA**: {number}
-
-***
-
-## `T_COMMENT`
-
-> **T\_COMMENT**: {number}
-
-***
-
-## `T_DECLARATION`
-
-> **T\_DECLARATION**: {number}
-
-***
-
-## `T_DELIM`
-
-> **T\_DELIM**: {number}
-
-***
-
-## `T_DIMENSION`
-
-> **T\_DIMENSION**: {number}
-
-***
-
-## `T_FUNCTION`
-
-> **T\_FUNCTION**: {number}
-
-***
-
-## `T_HASH`
-
-> **T\_HASH**: {number}
-
-***
-
-## `T_IDENT`
-
-> **T\_IDENT**: {number}
-
-***
-
-## `T_NUMBER`
-
-> **T\_NUMBER**: {number}
-
-***
-
-## `T_PERCENTAGE`
-
-> **T\_PERCENTAGE**: {number}
-
-***
-
-## `T_QUALIFIED_RULE`
-
-> **T\_QUALIFIED\_RULE**: {number}
-
-***
-
-## `T_RAW`
-
-> **T\_RAW**: {number}
-
-***
-
-## `T_SIMPLE_BLOCK`
-
-> **T\_SIMPLE\_BLOCK**: {number}
-
-***
-
-## `T_STRING`
-
-> **T\_STRING**: {number}
-
-***
-
-## `T_URL`
-
-> **T\_URL**: {number}
-
-***
-
-## `T_WHITESPACE`
-
-> **T\_WHITESPACE**: {number}
-
-***
-
 ## `toLowerCaseIfNeeded`
 
 > **toLowerCaseIfNeeded**: {object}
 
 * `s` {string}
 * Returns: {string}
-
-***
-
-## `TT_AT_KEYWORD`
-
-> **TT\_AT\_KEYWORD**: {16}
-
-***
-
-## `TT_BAD_STRING_TOKEN`
-
-> **TT\_BAD\_STRING\_TOKEN**: {4}
-
-***
-
-## `TT_BAD_URL_TOKEN`
-
-> **TT\_BAD\_URL\_TOKEN**: {19}
-
-***
-
-## `TT_CDC`
-
-> **TT\_CDC**: {25}
-
-***
-
-## `TT_CDO`
-
-> **TT\_CDO**: {24}
-
-***
-
-## `TT_COLON`
-
-> **TT\_COLON**: {14}
-
-***
-
-## `TT_COMMA`
-
-> **TT\_COMMA**: {13}
-
-***
-
-## `TT_COMMENT`
-
-> **TT\_COMMENT**: {1}
-
-***
-
-## `TT_DELIM`
-
-> **TT\_DELIM**: {6}
-
-***
-
-## `TT_DIMENSION`
-
-> **TT\_DIMENSION**: {23}
-
-***
-
-## `TT_EOF`
-
-> **TT\_EOF**: {26}
-
-***
-
-## `TT_FUNCTION`
-
-> **TT\_FUNCTION**: {17}
-
-***
-
-## `TT_HASH`
-
-> **TT\_HASH**: {5}
-
-***
-
-## `TT_IDENTIFIER`
-
-> **TT\_IDENTIFIER**: {20}
-
-***
-
-## `TT_LEFT_CURLY_BRACKET`
-
-> **TT\_LEFT\_CURLY\_BRACKET**: {9}
-
-***
-
-## `TT_LEFT_PARENTHESIS`
-
-> **TT\_LEFT\_PARENTHESIS**: {7}
-
-***
-
-## `TT_LEFT_SQUARE_BRACKET`
-
-> **TT\_LEFT\_SQUARE\_BRACKET**: {8}
-
-***
-
-## `TT_NUMBER`
-
-> **TT\_NUMBER**: {21}
-
-***
-
-## `TT_PERCENTAGE`
-
-> **TT\_PERCENTAGE**: {22}
-
-***
-
-## `TT_RIGHT_CURLY_BRACKET`
-
-> **TT\_RIGHT\_CURLY\_BRACKET**: {12}
-
-***
-
-## `TT_RIGHT_PARENTHESIS`
-
-> **TT\_RIGHT\_PARENTHESIS**: {10}
-
-***
-
-## `TT_RIGHT_SQUARE_BRACKET`
-
-> **TT\_RIGHT\_SQUARE\_BRACKET**: {11}
-
-***
-
-## `TT_SEMICOLON`
-
-> **TT\_SEMICOLON**: {15}
-
-***
-
-## `TT_STRING`
-
-> **TT\_STRING**: {3}
-
-***
-
-## `TT_URL`
-
-> **TT\_URL**: {18}
-
-***
-
-## `TT_WHITESPACE`
-
-> **TT\_WHITESPACE**: {2}
 
 ***
 

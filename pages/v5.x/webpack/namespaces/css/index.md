@@ -89,11 +89,12 @@ Renders css module source.
 
 ***
 
-## `cssMinify(input[, sourceMap][, minimizerOptions])`
+## `cssMinify(input[, sourceMap][, minimizerOptions][, extractComments])`
 
 * `input` {object}
-* `sourceMap` {object}
+* `sourceMap` {Partial}
 * `minimizerOptions` {object|CssTransformOptions}
+* `extractComments` {string|boolean|RegExp|object|object}
 * Returns: {Promise}
 
 ***

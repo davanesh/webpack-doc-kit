@@ -126,6 +126,12 @@ use `runtime.RuntimeGlobals` — TODO in the next major release: remove
 
 ***
 
+## `deferredModuleNamespaceCache`
+
+> **deferredModuleNamespaceCache**: {"__webpack_require__.zC"}
+
+***
+
 ## `definePropertyGetters`
 
 > **definePropertyGetters**: {"__webpack_require__.d"}
@@ -165,6 +171,12 @@ use `runtime.RuntimeGlobals` — TODO in the next major release: remove
 ## `esmIds`
 
 > **esmIds**: {"__webpack_esm_ids__"}
+
+***
+
+## `esmModuleDecorator`
+
+> **esmModuleDecorator**: {"__webpack_require__.hmd"}
 
 ***
 
@@ -256,6 +268,12 @@ use `runtime.RuntimeGlobals` — TODO in the next major release: remove
 
 > **harmonyModuleDecorator**: {"__webpack_require__.hmd"}
 
+esm module decorator
+
+### Deprecated
+
+use `esmModuleDecorator` — TODO in the next major release: remove
+
 ***
 
 ## `hasChunkPriority`
@@ -300,6 +318,24 @@ use `runtime.RuntimeGlobals` — TODO in the next major release: remove
 
 ***
 
+## `hmrCheckChunkVersions`
+
+> **hmrCheckChunkVersions**: {"__webpack_require__.hmrK"}
+
+***
+
+## `hmrChunkGroups`
+
+> **hmrChunkGroups**: {"__webpack_require__.hmrG"}
+
+***
+
+## `hmrChunkVersions`
+
+> **hmrChunkVersions**: {"__webpack_require__.hmrV"}
+
+***
+
 ## `hmrDownloadManifest`
 
 > **hmrDownloadManifest**: {"__webpack_require__.hmrM"}
@@ -315,6 +351,12 @@ use `runtime.RuntimeGlobals` — TODO in the next major release: remove
 ## `hmrInvalidateModuleHandlers`
 
 > **hmrInvalidateModuleHandlers**: {"__webpack_require__.hmrI"}
+
+***
+
+## `hmrLoadedChunkVersions`
+
+> **hmrLoadedChunkVersions**: {"__webpack_require__.hmrL"}
 
 ***
 
@@ -345,6 +387,12 @@ use `runtime.RuntimeGlobals` — TODO in the next major release: remove
 ## `interceptModuleExecution`
 
 > **interceptModuleExecution**: {"__webpack_require__.i"}
+
+***
+
+## `liveExportSetters`
+
+> **liveExportSetters**: {"__webpack_require__.lE"}
 
 ***
 

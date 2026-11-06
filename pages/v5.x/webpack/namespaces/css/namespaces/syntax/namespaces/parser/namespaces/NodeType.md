@@ -2,166 +2,166 @@
 
 ## `AtKeyword`
 
-> **AtKeyword**: {number}
+> **AtKeyword**: {3}
 
 ***
 
 ## `AtRule`
 
-> **AtRule**: {number}
+> **AtRule**: {24}
 
 ***
 
 ## `BadString`
 
-> **BadString**: {number}
+> **BadString**: {6}
 
 ***
 
 ## `BadUrl`
 
-> **BadUrl**: {number}
+> **BadUrl**: {8}
 
 ***
 
 ## `CDC`
 
-> **CDC**: {number}
+> **CDC**: {21}
 
 ***
 
 ## `CDO`
 
-> **CDO**: {number}
+> **CDO**: {20}
 
 ***
 
 ## `Colon`
 
-> **Colon**: {number}
+> **Colon**: {14}
 
 ***
 
 ## `Comma`
 
-> **Comma**: {number}
+> **Comma**: {16}
 
 ***
 
 ## `Comment`
 
-> **Comment**: {number}
+> **Comment**: {27}
 
 ***
 
 ## `Declaration`
 
-> **Declaration**: {number}
+> **Declaration**: {23}
 
 ***
 
 ## `Delim`
 
-> **Delim**: {number}
+> **Delim**: {9}
 
 ***
 
 ## `Dimension`
 
-> **Dimension**: {number}
+> **Dimension**: {12}
 
 ***
 
 ## `Function`
 
-> **Function**: {number}
+> **Function**: {2}
 
 ***
 
 ## `Hash`
 
-> **Hash**: {number}
+> **Hash**: {4}
 
 ***
 
 ## `Ident`
 
-> **Ident**: {number}
+> **Ident**: {1}
 
 ***
 
 ## `Number`
 
-> **Number**: {number}
+> **Number**: {10}
 
 ***
 
 ## `Percentage`
 
-> **Percentage**: {number}
+> **Percentage**: {11}
 
 ***
 
 ## `QualifiedRule`
 
-> **QualifiedRule**: {number}
+> **QualifiedRule**: {25}
 
 ***
 
 ## `Raw`
 
-> **Raw**: {number}
+> **Raw**: {28}
 
 ***
 
 ## `RightCurlyBracket`
 
-> **RightCurlyBracket**: {number}
+> **RightCurlyBracket**: {19}
 
 ***
 
 ## `RightParenthesis`
 
-> **RightParenthesis**: {number}
+> **RightParenthesis**: {17}
 
 ***
 
 ## `RightSquareBracket`
 
-> **RightSquareBracket**: {number}
+> **RightSquareBracket**: {18}
 
 ***
 
 ## `Semicolon`
 
-> **Semicolon**: {number}
+> **Semicolon**: {15}
 
 ***
 
 ## `SimpleBlock`
 
-> **SimpleBlock**: {number}
+> **SimpleBlock**: {22}
 
 ***
 
 ## `String`
 
-> **String**: {number}
+> **String**: {5}
 
 ***
 
 ## `Stylesheet`
 
-> **Stylesheet**: {number}
+> **Stylesheet**: {26}
 
 ***
 
 ## `Url`
 
-> **Url**: {number}
+> **Url**: {7}
 
 ***
 
 ## `Whitespace`
 
-> **Whitespace**: {number}
+> **Whitespace**: {13}

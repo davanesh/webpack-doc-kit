@@ -1,28 +1,48 @@
 # printer
 
-## `createTerserTree`
+## `createUnicode`
 
-> **createTerserTree**: {object}
+> **createUnicode**: {object}
 
-* `__namedParameters` {any}
 * Returns: {object}
 
 ***
 
 ## `FORMAT_DEFAULTS`
 
-> **FORMAT\_DEFAULTS**: {TerserFormatOptions}
+> **FORMAT\_DEFAULTS**: {any}
 
 ***
 
-## `load`
+## `IGNORED_FORMAT_OPTIONS`
 
-> **load**: {object}
-
-* Returns: {Promise}
+> **IGNORED\_FORMAT\_OPTIONS**: {string[]}
 
 ***
 
-## `PHASES`
+## `prepareMinify`
 
-> **PHASES**: {Phase[]}
+> **prepareMinify**: {object}
+
+* `text` {string}
+* `options` {JavascriptProcessOptions}
+* Returns: {object}
+
+***
+
+## `printer`
+
+> **printer**: {object}
+
+* `path` {object}
+* `writer` {PrintContext}
+* Returns: {string}
+
+***
+
+## `readsMinifyOptions`
+
+> **readsMinifyOptions**: {object}
+
+* `options` {JavascriptProcessOptions}
+* Returns: {boolean}

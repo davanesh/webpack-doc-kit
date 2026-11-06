@@ -5,8 +5,10 @@
 - [comparators](namespaces/comparators.md)
 - [compileBooleanMatcher](namespaces/compileBooleanMatcher.md)
 - [dataURL](namespaces/dataURL.md)
+- [extractComments](namespaces/extractComments.md)
 - [runtime](namespaces/runtime.md)
 - [serialization](namespaces/serialization.md)
+- [SetHelpers](namespaces/SetHelpers.md)
 
 ## Class: `LazySet`
 
@@ -108,7 +110,7 @@ Returns the key iterator, eagerly materializing pending merges first.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Serializes the fully materialized set contents into webpack's object
@@ -125,7 +127,7 @@ Returns the value iterator, eagerly materializing pending merges first.
 ###### T
 
 `T`
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
+* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_3}
 * Returns: {LazySet}
 
 Restores a `LazySet` from serialized item data.
@@ -164,6 +166,135 @@ when one is provided.
 
 ***
 
+## Class: `SortableSet`
+
+A subset of Set that offers sorting functionality
+
+### Extends
+
+- {Set}
+
+### Type Parameters
+
+#### T
+
+`T`
+
+### Constructors
+
+#### `new SortableSet([initialIterable][, defaultSort])`
+
+###### T
+
+`T`
+* `initialIterable` {Iterable}
+* `defaultSort` {SortFunction}
+* Returns: {SortableSet}
+
+Create a new sortable set
+
+### Properties
+
+* `[toStringTag]` {string}
+* `size` {number} 
+* `[species]` {SetConstructor}
+
+### Methods
+
+#### `[iterator]()`
+
+* Returns: {SetIterator}
+
+Iterates over values in the set.
+
+#### `add(value)`
+
+* `value` {T}
+* Returns: {this}
+
+Appends a new element with a specified value to the end of the Set.
+
+#### `clear()`
+
+* Returns: {void}
+
+#### `delete(value)`
+
+* `value` {T}
+* Returns: {boolean} Returns true if an element in the Set existed and has been removed, or false if the element does not exist.
+
+Removes a specified value from the Set.
+
+#### `entries()`
+
+* Returns: {SetIterator}
+
+Returns an iterable of [v,v] pairs for every value `v` in the set.
+
+#### `forEach(callbackfn[, thisArg])`
+
+* `callbackfn` {object}
+* `thisArg` {any}
+* Returns: {void}
+
+Executes a provided function once per each value in the Set object, in insertion order.
+
+#### `getFromCache(fn)`
+
+###### R
+
+`R`
+* `fn` {object}
+* Returns: {R}
+
+Get data from cache
+
+#### `getFromUnorderedCache(fn)`
+
+###### R
+
+`R`
+* `fn` {object}
+* Returns: {R}
+
+Get data from cache (ignoring sorting)
+
+#### `has(value)`
+
+* `value` {T}
+* Returns: {boolean} a boolean indicating whether an element with the specified value exists in the Set or not.
+
+#### `keys()`
+
+* Returns: {SetIterator}
+
+Despite its name, returns an iterable of the values in the set.
+
+#### `sort()`
+
+* Returns: {SortableSet}
+
+#### `sortWith([sortFn])`
+
+* `sortFn` {SortFunction}
+* Returns: {void}
+
+Sort with a comparer function
+
+#### `toJSON()`
+
+* Returns: {T[]}
+
+Returns the raw array.
+
+#### `values()`
+
+* Returns: {SetIterator}
+
+Returns an iterable of values in the set.
+
+***
+
 ## `cleverMerge`
 
 > `const` **cleverMerge**: {object}
@@ -190,15 +321,26 @@ when one is provided.
 
 ***
 
+## `getUndoPath`
+
+> `const` **getUndoPath**: {object}
+
+* `filename` {string}
+* `outputPath` {string}
+* `enforceRelative` {boolean}
+* Returns: {string}
+
+***
+
 ## `makeSerializable`
 
 > `const` **makeSerializable**: {object}
 
 #### T
 
-`T` *extends* {Constructor}
+`T` *extends* {object}
 * `Constructor` {T}
-* `request` {string}
+* `request` {string|string|string|null|string[]}
 * `name` {null|string}
 * Returns: {void}
 

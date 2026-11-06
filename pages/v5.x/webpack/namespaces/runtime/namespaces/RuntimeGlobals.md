@@ -120,6 +120,12 @@
 
 ***
 
+## `deferredModuleNamespaceCache`
+
+> **deferredModuleNamespaceCache**: {"__webpack_require__.zC"}
+
+***
+
 ## `definePropertyGetters`
 
 > **definePropertyGetters**: {"__webpack_require__.d"}
@@ -159,6 +165,12 @@
 ## `esmIds`
 
 > **esmIds**: {"__webpack_esm_ids__"}
+
+***
+
+## `esmModuleDecorator`
+
+> **esmModuleDecorator**: {"__webpack_require__.hmd"}
 
 ***
 
@@ -250,6 +262,12 @@
 
 > **harmonyModuleDecorator**: {"__webpack_require__.hmd"}
 
+esm module decorator
+
+### Deprecated
+
+use `esmModuleDecorator` — TODO in the next major release: remove
+
 ***
 
 ## `hasChunkPriority`
@@ -294,6 +312,24 @@
 
 ***
 
+## `hmrCheckChunkVersions`
+
+> **hmrCheckChunkVersions**: {"__webpack_require__.hmrK"}
+
+***
+
+## `hmrChunkGroups`
+
+> **hmrChunkGroups**: {"__webpack_require__.hmrG"}
+
+***
+
+## `hmrChunkVersions`
+
+> **hmrChunkVersions**: {"__webpack_require__.hmrV"}
+
+***
+
 ## `hmrDownloadManifest`
 
 > **hmrDownloadManifest**: {"__webpack_require__.hmrM"}
@@ -309,6 +345,12 @@
 ## `hmrInvalidateModuleHandlers`
 
 > **hmrInvalidateModuleHandlers**: {"__webpack_require__.hmrI"}
+
+***
+
+## `hmrLoadedChunkVersions`
+
+> **hmrLoadedChunkVersions**: {"__webpack_require__.hmrL"}
 
 ***
 
@@ -339,6 +381,12 @@
 ## `interceptModuleExecution`
 
 > **interceptModuleExecution**: {"__webpack_require__.i"}
+
+***
+
+## `liveExportSetters`
+
+> **liveExportSetters**: {"__webpack_require__.lE"}
 
 ***
 

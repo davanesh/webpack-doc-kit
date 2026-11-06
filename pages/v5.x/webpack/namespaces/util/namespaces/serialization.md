@@ -49,7 +49,10 @@
 
 > `const` **register**: {object}
 
-* `Constructor` {Constructor}
+#### C
+
+`C` *extends* {Constructor}
+* `Constructor` {C}
 * `request` {string}
 * `name` {null|string}
 * `serializer` {ObjectSerializer}

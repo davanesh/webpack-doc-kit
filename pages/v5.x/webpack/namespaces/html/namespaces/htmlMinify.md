@@ -9,6 +9,23 @@
 
 ***
 
+## `formatBanner`
+
+> **formatBanner**: {object}
+
+* `banner` {string}
+* Returns: {string}
+
+***
+
+## `getBannerPosition`
+
+> **getBannerPosition**: {object}
+
+* Returns: {"end"}
+
+***
+
 ## `getEmbeddedTypes`
 
 > **getEmbeddedTypes**: {object}

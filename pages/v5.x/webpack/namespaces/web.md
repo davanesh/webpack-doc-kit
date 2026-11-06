@@ -33,7 +33,7 @@ Updates the depth using the provided value.
 * `exportsArgument` {string} Gets exports argument.
 * `factoryMeta` {FactoryMeta}
 * `fullHash` {boolean}
-* `hasEqualsChunks` {any}
+* `hasEqualsChunks` {void}
 * `hash` {string} Returns the hash of the module.
 * `id` {string|number} Returns the module id assigned by the chunk graph.
 Updates the module id using the provided value.
@@ -43,7 +43,7 @@ Updates the pre-order index using the provided value.
 Updates the post-order index using the provided value.
 * `issuer` {Module} Returns the issuer.
 Updates the issuer using the provided value.
-* `isUsed` {any}
+* `isUsed` {void}
 * `layer` {string}
 * `moduleArgument` {string} Gets module argument.
 * `name` {string}
@@ -54,15 +54,16 @@ Updates the issuer using the provided value.
 * `presentationalDependencies` {Dependency[]}
 * `profile` {ModuleProfile} 
 * `renderedHash` {string} Returns the rendered hash of the module.
-* `resolveOptions` {ResolveOptions}
+* `resolveOptions` {ResolveOptionsWebpackOptions}
 * `stage` {number}
 * `type` {string}
-* `used` {any}
+* `used` {void}
 * `usedExports` {boolean|SortableSet} 
 * `useSimpleSourceMap` {boolean}
 * `useSourceMap` {boolean}
 * `warnings` {any}
 * `getCompilationHooks` {object}
+* `KINDS` {Set}
 * `NO_CHUNK_HANDLERS` {string|string[]} The answer a runtime module gives when it installs no chunk handler at all
 * `STAGE_ATTACH` {number} Runtime modules which attach to handlers of other runtime modules
 * `STAGE_BASIC` {number} Runtime modules with simple dependencies on other runtime modules
@@ -193,9 +194,9 @@ removes all warnings and errors
 
 Generates code and runtime requirements for this module.
 
-#### `deserialize(__namedParameters)`
+#### `deserialize(context)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
+* `context` {ObjectDeserializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -274,6 +275,12 @@ Freshly recomputed source types when they depend on incoming connections, for ch
 
 * Returns: {DependenciesBlock}
 
+#### `getRootModule()`
+
+* Returns: {Module}
+
+Returns the module this one was built around: itself, or the root of a scope-hoisted concatenation.
+
 #### `getSideEffectsConnectionState(moduleGraph)`
 
 * `moduleGraph` {ModuleGraph}
@@ -290,6 +297,12 @@ We only have built-in knowledge about the javascript basic type here; other basi
 added or changed over time by generators and do not need to be handled or detected here.
 Some modules, e.g. RemoteModule, may return non-basic source types like "remote" and "share-init"
 from getSourceTypes(), but their generated output is still JavaScript, i.e. their basic type is JS.
+
+#### `getSourceModules()`
+
+* Returns: {Iterable}
+
+Returns the modules this one was built from: itself, or every module merged by scope hoisting.
 
 #### `getSourceTypes()`
 
@@ -343,6 +356,16 @@ Returns the unique identifier used to reference this module.
 
 Invalidates the cached state associated with this value.
 
+#### `is(kind)`
+
+###### K
+
+`K` *extends* {"runtime"|"css"|"html"|"remote"|"consume-shared"|"context"|"normal"|"external"|"concatenated"}
+* `kind` {K}
+* Returns: {boolean}
+
+Returns whether this module is of the given kind; a subclass is every kind its parent is.
+
 #### `isAccessibleInChunk(chunkGraph, chunk[, ignoreChunk])`
 
 * `chunkGraph` {ChunkGraph}
@@ -360,6 +383,12 @@ Checks whether this module is accessible in chunk.
 * Returns: {boolean}
 
 Checks whether this module is accessible in chunk group.
+
+#### `isAsyncBlock()`
+
+* Returns: {boolean}
+
+Returns whether this block is an async block, loaded on demand in its own chunk group.
 
 #### `isEntryModule()`
 
@@ -454,10 +483,17 @@ Removes dependency.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
+
+#### `shouldHotUpdate()`
+
+* Returns: {boolean}
+
+Returns true, if a hot update may re-ship this module to a running runtime.
+False for code that is only valid at the top level of the runtime chunk.
 
 #### `shouldIsolate()`
 
@@ -599,7 +635,7 @@ Updates the depth using the provided value.
 * `exportsArgument` {string} Gets exports argument.
 * `factoryMeta` {FactoryMeta}
 * `fullHash` {boolean}
-* `hasEqualsChunks` {any}
+* `hasEqualsChunks` {void}
 * `hash` {string} Returns the hash of the module.
 * `id` {string|number} Returns the module id assigned by the chunk graph.
 Updates the module id using the provided value.
@@ -609,7 +645,7 @@ Updates the pre-order index using the provided value.
 Updates the post-order index using the provided value.
 * `issuer` {Module} Returns the issuer.
 Updates the issuer using the provided value.
-* `isUsed` {any}
+* `isUsed` {void}
 * `layer` {string}
 * `moduleArgument` {string} Gets module argument.
 * `name` {string}
@@ -620,15 +656,16 @@ Updates the issuer using the provided value.
 * `presentationalDependencies` {Dependency[]}
 * `profile` {ModuleProfile} 
 * `renderedHash` {string} Returns the rendered hash of the module.
-* `resolveOptions` {ResolveOptions}
+* `resolveOptions` {ResolveOptionsWebpackOptions}
 * `stage` {number}
 * `type` {string}
-* `used` {any}
+* `used` {void}
 * `usedExports` {boolean|SortableSet} 
 * `useSimpleSourceMap` {boolean}
 * `useSourceMap` {boolean}
 * `warnings` {any}
 * `getCompilationHooks` {object}
+* `KINDS` {Set}
 * `NO_CHUNK_HANDLERS` {string|string[]} The answer a runtime module gives when it installs no chunk handler at all
 * `STAGE_ATTACH` {number} Runtime modules which attach to handlers of other runtime modules
 * `STAGE_BASIC` {number} Runtime modules with simple dependencies on other runtime modules
@@ -759,9 +796,9 @@ removes all warnings and errors
 
 Generates code and runtime requirements for this module.
 
-#### `deserialize(__namedParameters)`
+#### `deserialize(context)`
 
-* `__namedParameters` {ObjectDeserializerContextObjectMiddlewareObject_2}
+* `context` {ObjectDeserializerContextObjectMiddlewareObject_3}
 * Returns: {void}
 
 Restores this instance from the provided deserializer context.
@@ -840,6 +877,12 @@ Freshly recomputed source types when they depend on incoming connections, for ch
 
 * Returns: {DependenciesBlock}
 
+#### `getRootModule()`
+
+* Returns: {Module}
+
+Returns the module this one was built around: itself, or the root of a scope-hoisted concatenation.
+
 #### `getSideEffectsConnectionState(moduleGraph)`
 
 * `moduleGraph` {ModuleGraph}
@@ -856,6 +899,12 @@ We only have built-in knowledge about the javascript basic type here; other basi
 added or changed over time by generators and do not need to be handled or detected here.
 Some modules, e.g. RemoteModule, may return non-basic source types like "remote" and "share-init"
 from getSourceTypes(), but their generated output is still JavaScript, i.e. their basic type is JS.
+
+#### `getSourceModules()`
+
+* Returns: {Iterable}
+
+Returns the modules this one was built from: itself, or every module merged by scope hoisting.
 
 #### `getSourceTypes()`
 
@@ -909,6 +958,16 @@ Returns the unique identifier used to reference this module.
 
 Invalidates the cached state associated with this value.
 
+#### `is(kind)`
+
+###### K
+
+`K` *extends* {"runtime"|"css"|"html"|"remote"|"consume-shared"|"context"|"normal"|"external"|"concatenated"}
+* `kind` {K}
+* Returns: {boolean}
+
+Returns whether this module is of the given kind; a subclass is every kind its parent is.
+
 #### `isAccessibleInChunk(chunkGraph, chunk[, ignoreChunk])`
 
 * `chunkGraph` {ChunkGraph}
@@ -926,6 +985,12 @@ Checks whether this module is accessible in chunk.
 * Returns: {boolean}
 
 Checks whether this module is accessible in chunk group.
+
+#### `isAsyncBlock()`
+
+* Returns: {boolean}
+
+Returns whether this block is an async block, loaded on demand in its own chunk group.
 
 #### `isEntryModule()`
 
@@ -1020,10 +1085,17 @@ Removes dependency.
 
 #### `serialize(__namedParameters)`
 
-* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_3}
+* `__namedParameters` {ObjectSerializerContextObjectMiddlewareObject_4}
 * Returns: {void}
 
 Serializes this instance into the provided serializer context.
+
+#### `shouldHotUpdate()`
+
+* Returns: {boolean}
+
+Returns true, if a hot update may re-ship this module to a running runtime.
+False for code that is only valid at the top level of the runtime chunk.
 
 #### `shouldIsolate()`
 

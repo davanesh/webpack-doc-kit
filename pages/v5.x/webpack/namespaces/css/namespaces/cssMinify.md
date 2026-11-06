@@ -9,6 +9,14 @@
 
 ***
 
+## `getBannerPosition`
+
+> **getBannerPosition**: {object}
+
+* Returns: {"end"}
+
+***
+
 ## `getEmbeddedTypes`
 
 > **getEmbeddedTypes**: {object}

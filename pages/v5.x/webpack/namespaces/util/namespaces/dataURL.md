@@ -72,6 +72,12 @@
 
 ***
 
+## `JSON_TYPE`
+
+> **JSON\_TYPE**: {"json"}
+
+***
+
 ## `languageOfFilename`
 
 > **languageOfFilename**: {object}
@@ -105,6 +111,12 @@
 
 * `uri` {string}
 * Returns: {null|object}
+
+***
+
+## `SVG_TYPE`
+
+> **SVG\_TYPE**: {"svg"}
 
 ***
 

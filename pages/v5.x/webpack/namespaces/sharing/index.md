@@ -1,5 +1,9 @@
 # sharing
 
+## Namespaces
+
+- [semver](namespaces/semver.md)
+
 ## Class: `ConsumeSharedPlugin`
 
 ### Constructors

@@ -1,5 +1,11 @@
 # NodeType
 
+## `Attribute`
+
+> **Attribute**: {8}
+
+***
+
 ## `Comment`
 
 > **Comment**: {5}

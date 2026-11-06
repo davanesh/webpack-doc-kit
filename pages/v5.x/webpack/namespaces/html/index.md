@@ -4,6 +4,7 @@
 
 - [htmlMinify](namespaces/htmlMinify.md)
 - [syntax](namespaces/syntax/index.md)
+- [xmlMinify](namespaces/xmlMinify.md)
 
 ## Class: `HtmlModulesPlugin`
 
@@ -65,9 +66,19 @@ of `CssModulesPlugin.getChunkFilenameTemplate`.
 
 ***
 
-## `htmlMinify(input[, sourceMap][, minimizerOptions])`
+## `htmlMinify(input[, sourceMap][, minimizerOptions][, extractComments])`
 
 * `input` {object}
 * `sourceMap` {RawSourceMap}
-* `minimizerOptions` {Omit|object}
+* `minimizerOptions` {Omit|object|HtmlTransformOptions}
+* `extractComments` {string|boolean|RegExp|object|object}
+* Returns: {Promise}
+
+***
+
+## `xmlMinify(input[, sourceMap][, minimizerOptions])`
+
+* `input` {object}
+* `sourceMap` {RawSourceMap}
+* `minimizerOptions` {OptimizationMinimizeXml|object}
 * Returns: {Promise}

@@ -78,6 +78,12 @@
 
 ***
 
+## `onTokenRead`
+
+> **onTokenRead**: {null}
+
+***
+
 ## `onTrailingComma`
 
 > **onTrailingComma**: {null}

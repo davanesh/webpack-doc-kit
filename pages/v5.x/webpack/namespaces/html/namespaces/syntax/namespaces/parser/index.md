@@ -2,7 +2,12 @@
 
 ## Namespaces
 
+- [Field](namespaces/Field.md)
+- [Flag](namespaces/Flag.md)
+- [Namespace](namespaces/Namespace.md)
 - [NodeType](namespaces/NodeType.md)
+- [Part](namespaces/Part.md)
+- [Quote](namespaces/Quote.md)
 
 ## `A`
 
@@ -10,43 +15,41 @@
 
 ### Type Declaration
 
+* `index` {number} Counted along the sibling links when asked, so the walk stores nothing for it.
 * `node` {number}
 * `parent` {number}
-* `attributeAt`
-* `attributeCount`
-* `attributeName`
-* `attributeNameEnd`
-* `attributeNameStart`
-* `attributes`
-* `attributeValue`
-* `attributeValueEnd`
-* `attributeValueStart`
+* `state` {unknown}
+* `child`
+* `childCount`
 * `children`
-* `closeTag`
-* `contentEnd`
-* `data`
-* `doctypeName`
-* `doctypePublicId`
-* `doctypeSystemId`
 * `end`
-* `findAttribute`
-* `firstChild`
-* `nameEnd`
-* `namespace`
-* `nextSibling`
-* `openTag`
-* `parentOf`
-* `piTarget`
-* `selfClosing`
+* `endOf`
+* `field`
+* `fieldCount`
+* `fieldNamed`
+* `flag`
+* `loc`
+* `name`
+* `range`
+* `rangeOf`
 * `skipChildren`
 * `source`
-* `sourceClosed`
-* `sourceSpanAt`
 * `start`
-* `tagEnd`
-* `tagName`
-* `templateContent`
+* `startOf`
+* `stop`
+* `textOf`
 * `type`
+* `value`
+* `within`
+
+***
+
+## `asciiLowercase`
+
+> **asciiLowercase**: {object}
+
+* `value` {string}
+* Returns: {string}
 
 ***
 
@@ -74,48 +77,6 @@
 
 ***
 
-## `CC_APOSTROPHE`
-
-> **CC\_APOSTROPHE**: {39}
-
-***
-
-## `CC_LEFT_SQUARE_BRACKET`
-
-> **CC\_LEFT\_SQUARE\_BRACKET**: {91}
-
-***
-
-## `CC_LF`
-
-> **CC\_LF**: {10}
-
-***
-
-## `CC_NUMBER_SIGN`
-
-> **CC\_NUMBER\_SIGN**: {35}
-
-***
-
-## `CC_QUOTATION_MARK`
-
-> **CC\_QUOTATION\_MARK**: {34}
-
-***
-
-## `CC_RIGHT_SQUARE_BRACKET`
-
-> **CC\_RIGHT\_SQUARE\_BRACKET**: {93}
-
-***
-
-## `CC_SOLIDUS`
-
-> **CC\_SOLIDUS**: {47}
-
-***
-
 ## `collapseWhitespaceRuns`
 
 > **collapseWhitespaceRuns**: {object}
@@ -127,7 +88,25 @@
 
 ## `decodeEntities`
 
-> **decodeEntities**: {_functionSyntaxParser}
+> **decodeEntities**: {_functionSyntaxParserFunction_2}
+
+***
+
+## `decodeXmlAttribute`
+
+> **decodeXmlAttribute**: {object}
+
+* `value` {string}
+* Returns: {string}
+
+***
+
+## `decodeXmlEntities`
+
+> **decodeXmlEntities**: {object}
+
+* `value` {string}
+* Returns: {string}
 
 ***
 
@@ -157,6 +136,25 @@
 
 ***
 
+## `escapeXmlAttribute`
+
+> **escapeXmlAttribute**: {object}
+
+* `value` {string}
+* `quote` {string}
+* Returns: {string}
+
+***
+
+## `escapeXmlText`
+
+> **escapeXmlText**: {object}
+
+* `data` {string}
+* Returns: {string}
+
+***
+
 ## `EVENT_HANDLER`
 
 > **EVENT\_HANDLER**: {"event-handler"}
@@ -166,6 +164,12 @@
 ## `FLAG_FOSTER_REGION`
 
 > **FLAG\_FOSTER\_REGION**: {128}
+
+***
+
+## `FOREIGN_ELEMENT`
+
+> **FOREIGN\_ELEMENT**: {"foreign-element"}
 
 ***
 
@@ -181,9 +185,9 @@
 
 ***
 
-## `isAllWs`
+## `isAllAsciiWhitespace`
 
-> **isAllWs**: {object}
+> **isAllAsciiWhitespace**: {object}
 
 * `s` {string}
 * Returns: {boolean}
@@ -208,6 +212,15 @@
 
 ***
 
+## `isXmlWellFormedText`
+
+> **isXmlWellFormedText**: {object}
+
+* `raw` {string}
+* Returns: {boolean}
+
+***
+
 ## `JSON_TYPE`
 
 > **JSON\_TYPE**: {"json"}
@@ -221,24 +234,6 @@
 * `name` {string}
 * `content` {string}
 * Returns: {string}
-
-***
-
-## `NS_HTML`
-
-> **NS\_HTML**: {0}
-
-***
-
-## `NS_MATHML`
-
-> **NS\_MATHML**: {1}
-
-***
-
-## `NS_SVG`
-
-> **NS\_SVG**: {2}
 
 ***
 
@@ -293,35 +288,26 @@
 
 > **pickTransforms**: {object}
 
-* `options` {object}
+* `options` {HtmlTransformOptions}
 * Returns: {undefined|HtmlTransformOptions}
 
 ***
 
-## `QUOTE_DOUBLE`
+## `startsWithAsciiWhitespace`
 
-> **QUOTE\_DOUBLE**: {1}
-
-***
-
-## `QUOTE_NONE`
-
-> **QUOTE\_NONE**: {0}
-
-***
-
-## `QUOTE_SINGLE`
-
-> **QUOTE\_SINGLE**: {2}
-
-***
-
-## `startsWithWs`
-
-> **startsWithWs**: {object}
+> **startsWithAsciiWhitespace**: {object}
 
 * `s` {string}
 * Returns: {boolean}
+
+***
+
+## `stripAsciiWhitespace`
+
+> **stripAsciiWhitespace**: {object}
+
+* `value` {string}
+* Returns: {string}
 
 ***
 
@@ -334,6 +320,17 @@
 ## `tokenize`
 
 > **tokenize**: {object}
+
+* `input` {string}
+* `pos` {number}
+* `callbacks` {HtmlTokenCallbacks}
+* Returns: {number}
+
+***
+
+## `tokenizeXml`
+
+> **tokenizeXml**: {object}
 
 * `input` {string}
 * `pos` {number}

@@ -56,4 +56,4 @@ Sets the pure condition
 
 ## `topLevelSymbolTag`
 
-> `const` **topLevelSymbolTag**: {symbol}
+> **topLevelSymbolTag**: {Tag}

@@ -28,6 +28,82 @@ parsing an expression or a binding pattern.
 
 ***
 
+## Class: `EstreeView`
+
+ESTree objects read the way a `SyntaxTree` is, `toEstreeObject`'s way back:
+an object takes an id when a read first reaches it, and nothing is copied.
+
+### Constructors
+
+#### `new EstreeView()`
+
+* Returns: {EstreeView}
+
+### Methods
+
+#### `add(object)`
+
+* `object` {NodeEstreeIndex}
+* Returns: {number}
+
+#### `field(i, field, node)`
+
+* `i` {number}
+* `field` {number}
+* `node` {number}
+* Returns: {number}
+
+#### `fieldCount(field, node)`
+
+* `field` {number}
+* `node` {number}
+* Returns: {number}
+
+#### `flag(flag, node)`
+
+* `flag` {number}
+* `node` {number}
+* Returns: {boolean}
+
+#### `name(node)`
+
+* `node` {number}
+* Returns: {string}
+
+#### `object(node)`
+
+* `node` {number}
+* Returns: {NodeEstreeIndex}
+
+#### `reset()`
+
+* Returns: {void}
+
+Forgets every id, for the next read.
+
+#### `start(node)`
+
+* `node` {number}
+* Returns: {number}
+
+#### `textOf(part, node)`
+
+* `part` {number}
+* `node` {number}
+* Returns: {string}
+
+#### `type(node)`
+
+* `node` {number}
+* Returns: {number}
+
+#### `value(node)`
+
+* `node` {number}
+* Returns: {string|number|bigint|boolean|RegExp|object}
+
+***
+
 ## Class: `Label`
 
 A label in scope, and what may jump to it.
@@ -67,7 +143,7 @@ acorn source: https://github.com/acornjs/acorn/blob/8.18.0/acorn/src/state.js
 * `options` {Partial}
 * `input` {string}
 * `startPos` {number}
-* Returns: {ParserSyntaxParser}
+* Returns: {SyntaxParser}
 
 ### Properties
 
@@ -100,6 +176,8 @@ acorn source: https://github.com/acornjs/acorn/blob/8.18.0/acorn/src/state.js
 * `lastTokStartLoc` {Position}
 * `lineStart` {number}
 * `options` {ResolvedOptionsSyntaxParser}
+* `parsing` {boolean} Set by the parse entry points; a parser that only hands out tokens
+keeps its top-level scope and reads its contexts instead.
 * `pos` {number}
 * `potentialArrowAt` {number}
 * `potentialArrowInForAwait` {boolean}
@@ -108,7 +186,7 @@ acorn source: https://github.com/acornjs/acorn/blob/8.18.0/acorn/src/state.js
 * `reservedWords` {RegExp}
 * `reservedWordsStrict` {RegExp}
 * `reservedWordsStrictBind` {RegExp}
-* `scopeStack` {ScopeSyntaxParser[]}
+* `scopeStack` {ParserScope[]}
 * `sourceFile` {string}
 * `start` {number}
 * `startLoc` {Position}
@@ -271,15 +349,15 @@ Report a name that the surrounding code may not use as an identifier.
 
 #### `currentScope()`
 
-* Returns: {ScopeSyntaxParser}
+* Returns: {ParserScope}
 
 #### `currentThisScope()`
 
-* Returns: {ScopeSyntaxParser}
+* Returns: {ParserScope}
 
 #### `currentVarScope()`
 
-* Returns: {ScopeSyntaxParser}
+* Returns: {ParserScope}
 
 #### `declareName(name, bindingType, pos)`
 
@@ -365,7 +443,7 @@ was already declared there.
 
 #### `getToken()`
 
-* Returns: {TokenSyntaxParserClass}
+* Returns: {Token}
 
 #### `getTokenFromCode(code)`
 
@@ -375,6 +453,10 @@ was already declared there.
 #### `inGeneratorContext()`
 
 * Returns: {boolean}
+
+Whether the enclosing function is a generator. A parse reads its scope: a
+method's `*` pushes no `function` context, which only the tokenizer reads.
+The tokenizer alone enters no function scope, so it reads its contexts.
 
 #### `initFunction([node])`
 
@@ -1057,7 +1139,9 @@ acorn source: https://github.com/acornjs/acorn/blob/8.18.0/acorn/src/location.js
 
 * `pos` {number}
 * `message` {string}
-* Returns: {never}
+* Returns: {void}
+
+An error the parse can go on past: `parseProgram` reports it and goes on.
 
 #### `readCodePoint()`
 
@@ -1171,6 +1255,13 @@ count did not match what an escape asked for.
 Read an identifier's text, recording in `containsEsc` whether any of it
 was written as an escape — which stops it reading as a keyword.
 
+#### `rereadYieldContext()`
+
+* Returns: {void}
+
+The token after a function body is read in the body's scope, so a `yield`
+there is classified again in the enclosing one.
+
 #### `semicolon()`
 
 * Returns: {void}
@@ -1217,7 +1308,7 @@ was written as an escape — which stops it reading as a keyword.
 * Returns: {boolean}
 
 Whether a directive prologue starting at `start` opens with `"use strict"`.
-acorn source: https://github.com/acornjs/acorn/blob/8.18.0/acorn/src/parseutil.js
+acorn source: https://github.com/acornjs/acorn/blob/8.19.0/acorn/src/parseutil.js
 
 #### `toAssignable([node][, isBinding][, refDestructuringErrors])`
 
@@ -1280,20 +1371,20 @@ that the named-capture goal symbol was the right one.
 
 * `input` {string}
 * `options` {Partial}
-* Returns: {ProgramSyntaxParser}
+* Returns: {ParsedProgram}
 
 #### Static method: `parseExpressionAt(input, pos[, options])`
 
 * `input` {string}
 * `pos` {number}
 * `options` {Partial}
-* Returns: {ExpressionSyntaxParser}
+* Returns: {ParsedExpression}
 
 #### Static method: `tokenizer(input[, options])`
 
 * `input` {string}
 * `options` {Partial}
-* Returns: {ParserSyntaxParser}
+* Returns: {SyntaxParser}
 
 ***
 
@@ -1305,7 +1396,7 @@ An ESTree node, as this parser builds one.
 
 #### `new ParserNode(parser, pos[, loc])`
 
-* `parser` {ParserSyntaxParser}
+* `parser` {SyntaxParser}
 * `pos` {number}
 * `loc` {Position}
 * Returns: {ParserNode}
@@ -1357,7 +1448,7 @@ The `loc` a node carries when `options.locations` is on.
 
 #### `new ParserSourceLocation(p[, start][, end])`
 
-* `p` {any}
+* `p` {object}
 * `start` {PositionLike}
 * `end` {PositionLike}
 * Returns: {ParserSourceLocation}
@@ -1365,7 +1456,7 @@ The `loc` a node carries when `options.locations` is on.
 ### Properties
 
 * `end` {PositionLike}
-* `source` {any}
+* `source` {string}
 * `start` {PositionLike}
 
 ***
@@ -1406,7 +1497,7 @@ built only once a name goes into it, which most scopes never do.
 #### `new Scope(flags)`
 
 * `flags` {number}
-* Returns: {ScopeSyntaxParser}
+* Returns: {ParserScope}
 
 ### Properties
 
@@ -1416,6 +1507,179 @@ built only once a name goes into it, which most scopes never do.
 * `hoisted` {number|NodeLike[]}
 * `lexical` {Set}
 * `var` {Set}
+
+***
+
+## Class: `SyntaxTree`
+
+A JavaScript syntax tree held as a struct of arrays: a node is an integer
+id from 1, `0` is no node, and it reads as the CSS and HTML paths do.
+
+### Constructors
+
+#### `new SyntaxTree()`
+
+* Returns: {SyntaxTree}
+
+### Methods
+
+#### `add(type, start, end)`
+
+* `type` {number}
+* `start` {number}
+* `end` {number}
+* Returns: {number}
+
+#### `addEstree(root)`
+
+* `root` {EstreeSource}
+* Returns: {number}
+
+Writes a parsed node and everything under it, children before their
+parent in source order, as the parser writes; a child already written
+stands as its id.
+
+#### `addList(items, count)`
+
+* `items` {number[]}
+* `count` {number}
+* Returns: {number}
+
+#### `addNode(type, start, end, flags[, slot0][, slot1][, slot2][, slot3])`
+
+* `type` {number}
+* `start` {number}
+* `end` {number}
+* `flags` {number}
+* `slot0` {number}
+* `slot1` {number}
+* `slot2` {number}
+* `slot3` {number}
+* Returns: {number}
+
+Writes a node from its record, each slot a child node, a list from
+`addList` or a value from `addValue`, `0` or left out for none.
+
+#### `addValue([value])`
+
+* `value` {string|number|bigint|boolean|RegExp|object}
+* Returns: {number}
+
+#### `addValueNode(type, start, end, value)`
+
+* `type` {number}
+* `start` {number}
+* `end` {number}
+* `value` {TreeValue}
+* Returns: {number}
+
+`addNode` for a node whose record is one value, as an identifier's name.
+
+#### `end(node)`
+
+* `node` {number}
+* Returns: {number}
+
+#### `estree(node[, fields])`
+
+* `node` {number}
+* `fields` {string[]}
+* Returns: {Identifier|PrivateIdentifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|VariableDeclarator|Property|ClassBody|Program|SpreadElement|Super|PropertyDefinition|MethodDefinition|TemplateElement|SwitchCase|CatchClause|AssignmentProperty|ClassDeclaration|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|FunctionExpression|ArrowFunctionExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty|FunctionDeclaration|ImportDeclaration|ExportNamedDeclaration|ExportDefaultDeclaration|ExportAllDeclaration|ImportSpecifier|ImportDefaultSpecifier|ImportNamespaceSpecifier|ExportSpecifier|ObjectPattern|ArrayPattern|RestElement|AssignmentPattern|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|VariableDeclaration}
+
+The ESTree object of a node of this tree, as `toEstreeObject` builds it
+for the last parse's.
+
+#### `field(i, field, node)`
+
+* `i` {number}
+* `field` {number}
+* `node` {number}
+* Returns: {number}
+
+#### `fieldCount(field, node)`
+
+* `field` {number}
+* `node` {number}
+* Returns: {number}
+
+#### `flag(flag, node)`
+
+* `flag` {number}
+* `node` {number}
+* Returns: {boolean}
+
+#### `name(node)`
+
+* `node` {number}
+* Returns: {string}
+
+#### `range(node)`
+
+* `node` {number}
+* Returns: {number|number}
+
+#### `release()`
+
+* Returns: {void}
+
+Hands the columns back once nothing reads the tree: the next tree reuses
+small ones, and a large one's ArrayBuffers are freed at once, where they
+would otherwise outlast the parse into the work after it.
+
+#### `reset()`
+
+* Returns: {void}
+
+Forgets every node, keeping the columns for the next tree.
+
+#### `set(node, name[, value])`
+
+* `node` {number}
+* `name` {string}
+* `value` {string|number|bigint|boolean|RegExp|number[]|object}
+* Returns: {void}
+
+Sets one field of a node: a child node, an array of them for a list,
+`0` or null where ESTree has null.
+
+#### `setPart(part, node, text)`
+
+* `part` {number}
+* `node` {number}
+* `text` {string}
+* Returns: {void}
+
+Sets the slot a node's record holds a part in.
+
+#### `setType(node, type)`
+
+* `node` {number}
+* `type` {number}
+* Returns: {void}
+
+Retypes a node whose record the new type reads the same, as an
+expression the parser then reads as a pattern.
+
+#### `start(node)`
+
+* `node` {number}
+* Returns: {number}
+
+#### `textOf(part, node)`
+
+* `part` {number}
+* `node` {number}
+* Returns: {string}
+
+#### `type(node)`
+
+* `node` {number}
+* Returns: {number}
+
+#### `value(node)`
+
+* `node` {number}
+* Returns: {string|number|bigint|boolean|RegExp|object}
 
 ***
 
@@ -1451,18 +1715,18 @@ A token as `options.onToken` receives one.
 
 ### Constructors
 
-#### `new Token([p])`
+#### `new Token(p)`
 
-* `p` {any}
-* Returns: {TokenSyntaxParserClass}
+* `p` {SyntaxParser}
+* Returns: {Token}
 
 ### Properties
 
-* `end` {any}
+* `end` {number}
 * `loc` {ParserSourceLocation}
-* `range` {any[]}
-* `start` {any}
-* `type` {any}
+* `range` {number[]}
+* `start` {number}
+* `type` {TokenType}
 * `value` {any}
 
 ***
@@ -1504,7 +1768,7 @@ tokenizer fast paths, import attributes and import phases (with acorn's
 
 ### Extends
 
-- {ParserSyntaxParser}
+- {SyntaxParser}
 
 ### Constructors
 
@@ -1546,6 +1810,8 @@ tokenizer fast paths, import attributes and import phases (with acorn's
 * `lastTokStartLoc` {Position}
 * `lineStart` {number}
 * `options` {ResolvedOptionsSyntaxParser}
+* `parsing` {boolean} Set by the parse entry points; a parser that only hands out tokens
+keeps its top-level scope and reads its contexts instead.
 * `pos` {number}
 * `potentialArrowAt` {number}
 * `potentialArrowInForAwait` {boolean}
@@ -1554,7 +1820,7 @@ tokenizer fast paths, import attributes and import phases (with acorn's
 * `reservedWords` {RegExp}
 * `reservedWordsStrict` {RegExp}
 * `reservedWordsStrictBind` {RegExp}
-* `scopeStack` {ScopeSyntaxParser[]}
+* `scopeStack` {ParserScope[]}
 * `sourceFile` {string}
 * `start` {number}
 * `startLoc` {Position}
@@ -1717,15 +1983,15 @@ Report a name that the surrounding code may not use as an identifier.
 
 #### `currentScope()`
 
-* Returns: {ScopeSyntaxParser}
+* Returns: {ParserScope}
 
 #### `currentThisScope()`
 
-* Returns: {ScopeSyntaxParser}
+* Returns: {ParserScope}
 
 #### `currentVarScope()`
 
-* Returns: {ScopeSyntaxParser}
+* Returns: {ParserScope}
 
 #### `declareName(name, bindingType, pos)`
 
@@ -1811,7 +2077,7 @@ was already declared there.
 
 #### `getToken()`
 
-* Returns: {TokenSyntaxParserClass}
+* Returns: {Token}
 
 #### `getTokenFromCode(code)`
 
@@ -1821,6 +2087,10 @@ was already declared there.
 #### `inGeneratorContext()`
 
 * Returns: {boolean}
+
+Whether the enclosing function is a generator. A parse reads its scope: a
+method's `*` pushes no `function` context, which only the tokenizer reads.
+The tokenizer alone enters no function scope, so it reads its contexts.
 
 #### `initFunction([node])`
 
@@ -2503,7 +2773,9 @@ acorn source: https://github.com/acornjs/acorn/blob/8.18.0/acorn/src/location.js
 
 * `pos` {number}
 * `message` {string}
-* Returns: {never}
+* Returns: {void}
+
+An error the parse can go on past: `parseProgram` reports it and goes on.
 
 #### `readCodePoint()`
 
@@ -2617,6 +2889,13 @@ count did not match what an escape asked for.
 Read an identifier's text, recording in `containsEsc` whether any of it
 was written as an escape — which stops it reading as a keyword.
 
+#### `rereadYieldContext()`
+
+* Returns: {void}
+
+The token after a function body is read in the body's scope, so a `yield`
+there is classified again in the enclosing one.
+
 #### `semicolon()`
 
 * Returns: {void}
@@ -2663,7 +2942,7 @@ was written as an escape — which stops it reading as a keyword.
 * Returns: {boolean}
 
 Whether a directive prologue starting at `start` opens with `"use strict"`.
-acorn source: https://github.com/acornjs/acorn/blob/8.18.0/acorn/src/parseutil.js
+acorn source: https://github.com/acornjs/acorn/blob/8.19.0/acorn/src/parseutil.js
 
 #### `toAssignable([node][, isBinding][, refDestructuringErrors])`
 
@@ -2728,20 +3007,56 @@ Applies parser plugins, keeping the result typed as this parser.
 
 * `input` {string}
 * `options` {Partial}
-* Returns: {ProgramSyntaxParser}
+* Returns: {ParsedProgram}
 
 #### Static method: `parseExpressionAt(input, pos[, options])`
 
 * `input` {string}
 * `pos` {number}
 * `options` {Partial}
-* Returns: {ExpressionSyntaxParser}
+* Returns: {ParsedExpression}
 
 #### Static method: `tokenizer(input[, options])`
 
 * `input` {string}
 * `options` {Partial}
-* Returns: {ParserSyntaxParser}
+* Returns: {SyntaxParser}
+
+***
+
+## `A`
+
+> **A**: {object}
+
+### Type Declaration
+
+* `index` {number}
+* `node` {number}
+* `parent` {number}
+* `state` {unknown}
+* `ancestor`
+* `child`
+* `childCount`
+* `children`
+* `end`
+* `endOf`
+* `field`
+* `fieldCount`
+* `fieldNamed`
+* `flag`
+* `loc`
+* `name`
+* `range`
+* `rangeOf`
+* `skipChildren`
+* `source`
+* `start`
+* `startOf`
+* `stop`
+* `textOf`
+* `type`
+* `value`
+* `within`
 
 ***
 
@@ -2823,6 +3138,18 @@ Applies parser plugins, keeping the result typed as this parser.
 
 ***
 
+## `Field`
+
+> **Field**: {Readonly}
+
+***
+
+## `Flag`
+
+> **Flag**: {Readonly}
+
+***
+
 ## `functionFlags`
 
 > **functionFlags**: {object}
@@ -2849,6 +3176,18 @@ Applies parser plugins, keeping the result typed as this parser.
 
 * `opts` {null|Partial}
 * Returns: {ResolvedOptionsSyntaxParser}
+
+***
+
+## `grammar`
+
+> **grammar**: {object}
+
+* `input` {string}
+* `visitors` {CompiledVisitorBucket[]}
+* `writer` {undefined|PrintContext}
+* `options` {JavascriptProcessOptions}
+* Returns: {void}
 
 ***
 
@@ -2914,6 +3253,14 @@ Applies parser plugins, keeping the result typed as this parser.
 
 ***
 
+## `isWalkingSyntaxTree`
+
+> **isWalkingSyntaxTree**: {object}
+
+* Returns: {boolean}
+
+***
+
 ## `keywordTypes`
 
 > **keywordTypes**: {Record}
@@ -2961,6 +3308,12 @@ Applies parser plugins, keeping the result typed as this parser.
 
 ***
 
+## `NodeType`
+
+> **NodeType**: {Readonly}
+
+***
+
 ## `nonASCIIwhitespace`
 
 > **nonASCIIwhitespace**: {RegExp}
@@ -2983,7 +3336,27 @@ Applies parser plugins, keeping the result typed as this parser.
 
 * `input` {string}
 * `options` {ParserOptionsSyntaxParser}
-* Returns: {ProgramImport}
+* Returns: {Program}
+
+***
+
+## `parsedTree`
+
+> **parsedTree**: {object}
+
+* Returns: {null|SyntaxTree}
+
+***
+
+## `parseProgram`
+
+> **parseProgram**: {_functionSyntaxParserFunction_1}
+
+***
+
+## `Part`
+
+> **Part**: {Readonly}
 
 ***
 
@@ -2994,6 +3367,15 @@ Applies parser plugins, keeping the result typed as this parser.
 * `lineStarts` {number[]}
 * `offset` {number}
 * Returns: {SourcePosition}
+
+***
+
+## `printEarlyIn`
+
+> **printEarlyIn**: {object}
+
+* `early` {Map}
+* Returns: {void}
 
 ***
 
@@ -3090,6 +3472,38 @@ Applies parser plugins, keeping the result typed as this parser.
 * `str` {string}
 * `isLegacyOctalNumericLiteral` {boolean}
 * Returns: {number}
+
+***
+
+## `takeParsedTree`
+
+> **takeParsedTree**: {object}
+
+* Returns: {null|SyntaxTree}
+
+***
+
+## `toEstreeObject`
+
+> **toEstreeObject**: {object}
+
+* `node` {number}
+* `fields` {string[]}
+* Returns: {null|Program|ImportDeclaration|ExportNamedDeclaration|ExportAllDeclaration|ImportExpressionImport|UnaryExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UpdateExpression|YieldExpression|SpreadElement|PrivateIdentifier|Super|FunctionDeclaration|VariableDeclaration|ClassDeclaration|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|ExportDefaultDeclaration|MethodDefinition|PropertyDefinition|VariableDeclarator|Property|CatchClause|ClassBody|SwitchCase|TemplateElement|AssignmentProperty|ImportSpecifier|ImportDefaultSpecifier|ImportNamespaceSpecifier|ExportSpecifier|ObjectPattern|ArrayPattern|RestElement|AssignmentPattern}
+
+***
+
+## `walkSyntaxTree`
+
+> **walkSyntaxTree**: {object}
+
+* `tree` {SyntaxTree}
+* `program` {number}
+* `input` {string}
+* `visitors` {CompiledVisitorBucket[]}
+* `writer` {PrintContext}
+* `inlined` {Uint8Array}
+* Returns: {void}
 
 ***
 
