@@ -86,6 +86,15 @@
 
 ***
 
+## `declaresUtf8`
+
+> **declaresUtf8**: {object}
+
+* `input` {string}
+* Returns: {boolean}
+
+***
+
 ## `decodeEntities`
 
 > **decodeEntities**: {_functionSyntaxParserFunction_2}

@@ -771,6 +771,7 @@
   "JSON_TYPE": "webpack/namespaces/util/namespaces/dataURL.html#json_type",
   "attributes": "webpack/namespaces/dependencies.html#esmimportdependency#attributes",
   "content": "globals.html#assetemittedinfo#content-1",
+  "declaresUtf8": "webpack/namespaces/html/namespaces/syntax/namespaces/parser/index.html#declaresutf8",
   "mathml": "webpack/namespaces/html/namespaces/syntax/namespaces/parser/namespaces/Flag.html#mathml",
   "svg": "webpack/namespaces/html/namespaces/syntax/namespaces/parser/namespaces/Flag.html#svg",
   "selfClosing": "webpack/namespaces/html/namespaces/syntax/namespaces/parser/namespaces/Flag.html#selfclosing",
