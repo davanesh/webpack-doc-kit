@@ -1510,179 +1510,6 @@ built only once a name goes into it, which most scopes never do.
 
 ***
 
-## Class: `SyntaxTree`
-
-A JavaScript syntax tree held as a struct of arrays: a node is an integer
-id from 1, `0` is no node, and it reads as the CSS and HTML paths do.
-
-### Constructors
-
-#### `new SyntaxTree()`
-
-* Returns: {SyntaxTree}
-
-### Methods
-
-#### `add(type, start, end)`
-
-* `type` {number}
-* `start` {number}
-* `end` {number}
-* Returns: {number}
-
-#### `addEstree(root)`
-
-* `root` {EstreeSource}
-* Returns: {number}
-
-Writes a parsed node and everything under it, children before their
-parent in source order, as the parser writes; a child already written
-stands as its id.
-
-#### `addList(items, count)`
-
-* `items` {number[]}
-* `count` {number}
-* Returns: {number}
-
-#### `addNode(type, start, end, flags[, slot0][, slot1][, slot2][, slot3])`
-
-* `type` {number}
-* `start` {number}
-* `end` {number}
-* `flags` {number}
-* `slot0` {number}
-* `slot1` {number}
-* `slot2` {number}
-* `slot3` {number}
-* Returns: {number}
-
-Writes a node from its record, each slot a child node, a list from
-`addList` or a value from `addValue`, `0` or left out for none.
-
-#### `addValue([value])`
-
-* `value` {string|number|bigint|boolean|RegExp|object}
-* Returns: {number}
-
-#### `addValueNode(type, start, end, value)`
-
-* `type` {number}
-* `start` {number}
-* `end` {number}
-* `value` {TreeValue}
-* Returns: {number}
-
-`addNode` for a node whose record is one value, as an identifier's name.
-
-#### `end(node)`
-
-* `node` {number}
-* Returns: {number}
-
-#### `estree(node[, fields])`
-
-* `node` {number}
-* `fields` {string[]}
-* Returns: {Identifier|PrivateIdentifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|VariableDeclarator|Property|ClassBody|Program|SpreadElement|Super|PropertyDefinition|MethodDefinition|TemplateElement|SwitchCase|CatchClause|AssignmentProperty|ClassDeclaration|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|FunctionExpression|ArrowFunctionExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty|FunctionDeclaration|ImportDeclaration|ExportNamedDeclaration|ExportDefaultDeclaration|ExportAllDeclaration|ImportSpecifier|ImportDefaultSpecifier|ImportNamespaceSpecifier|ExportSpecifier|ObjectPattern|ArrayPattern|RestElement|AssignmentPattern|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|VariableDeclaration}
-
-The ESTree object of a node of this tree, as `toEstreeObject` builds it
-for the last parse's.
-
-#### `field(i, field, node)`
-
-* `i` {number}
-* `field` {number}
-* `node` {number}
-* Returns: {number}
-
-#### `fieldCount(field, node)`
-
-* `field` {number}
-* `node` {number}
-* Returns: {number}
-
-#### `flag(flag, node)`
-
-* `flag` {number}
-* `node` {number}
-* Returns: {boolean}
-
-#### `name(node)`
-
-* `node` {number}
-* Returns: {string}
-
-#### `range(node)`
-
-* `node` {number}
-* Returns: {number|number}
-
-#### `release()`
-
-* Returns: {void}
-
-Hands the columns back once nothing reads the tree: the next tree reuses
-small ones, and a large one's ArrayBuffers are freed at once, where they
-would otherwise outlast the parse into the work after it.
-
-#### `reset()`
-
-* Returns: {void}
-
-Forgets every node, keeping the columns for the next tree.
-
-#### `set(node, name[, value])`
-
-* `node` {number}
-* `name` {string}
-* `value` {string|number|bigint|boolean|RegExp|number[]|object}
-* Returns: {void}
-
-Sets one field of a node: a child node, an array of them for a list,
-`0` or null where ESTree has null.
-
-#### `setPart(part, node, text)`
-
-* `part` {number}
-* `node` {number}
-* `text` {string}
-* Returns: {void}
-
-Sets the slot a node's record holds a part in.
-
-#### `setType(node, type)`
-
-* `node` {number}
-* `type` {number}
-* Returns: {void}
-
-Retypes a node whose record the new type reads the same, as an
-expression the parser then reads as a pattern.
-
-#### `start(node)`
-
-* `node` {number}
-* Returns: {number}
-
-#### `textOf(part, node)`
-
-* `part` {number}
-* `node` {number}
-* Returns: {string}
-
-#### `type(node)`
-
-* `node` {number}
-* Returns: {number}
-
-#### `value(node)`
-
-* `node` {number}
-* Returns: {string|number|bigint|boolean|RegExp|object}
-
-***
-
 ## Class: `TokContext`
 
 A tokenizer context: what kind of brace, paren or template the tokenizer is
@@ -3026,37 +2853,7 @@ Applies parser plugins, keeping the result typed as this parser.
 
 ## `A`
 
-> **A**: {object}
-
-### Type Declaration
-
-* `index` {number}
-* `node` {number}
-* `parent` {number}
-* `state` {unknown}
-* `ancestor`
-* `child`
-* `childCount`
-* `children`
-* `end`
-* `endOf`
-* `field`
-* `fieldCount`
-* `fieldNamed`
-* `flag`
-* `loc`
-* `name`
-* `range`
-* `rangeOf`
-* `skipChildren`
-* `source`
-* `start`
-* `startOf`
-* `stop`
-* `textOf`
-* `type`
-* `value`
-* `within`
+> **A**: {JavascriptSyntaxPath}
 
 ***
 
@@ -3147,6 +2944,16 @@ Applies parser plugins, keeping the result typed as this parser.
 ## `Flag`
 
 > **Flag**: {Readonly}
+
+***
+
+## `fromEstreeObject`
+
+> **fromEstreeObject**: {object}
+
+* `program` {Program}
+* `input` {string}
+* Returns: {number}
 
 ***
 
@@ -3344,7 +3151,7 @@ Applies parser plugins, keeping the result typed as this parser.
 
 > **parsedTree**: {object}
 
-* Returns: {null|SyntaxTree}
+* Returns: {null|ColumnarSyntaxTree}
 
 ***
 
@@ -3375,6 +3182,16 @@ Applies parser plugins, keeping the result typed as this parser.
 > **printEarlyIn**: {object}
 
 * `early` {Map}
+* Returns: {void}
+
+***
+
+## `readParsedTree`
+
+> **readParsedTree**: {object}
+
+* `tree` {ColumnarSyntaxTree}
+* `input` {string}
 * Returns: {void}
 
 ***
@@ -3479,7 +3296,7 @@ Applies parser plugins, keeping the result typed as this parser.
 
 > **takeParsedTree**: {object}
 
-* Returns: {null|SyntaxTree}
+* Returns: {null|ColumnarSyntaxTree}
 
 ***
 
@@ -3497,7 +3314,7 @@ Applies parser plugins, keeping the result typed as this parser.
 
 > **walkSyntaxTree**: {object}
 
-* `tree` {SyntaxTree}
+* `tree` {ColumnarSyntaxTree}
 * `program` {number}
 * `input` {string}
 * `visitors` {CompiledVisitorBucket[]}

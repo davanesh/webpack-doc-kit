@@ -123,38 +123,7 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 ## `A`
 
-> **A**: {object}
-
-### Type Declaration
-
-* `index` {number}
-* `node` {number}
-* `parent` {number}
-* `state` {unknown}
-* `child`
-* `childCount`
-* `children`
-* `end`
-* `endOf`
-* `field`
-* `fieldCount`
-* `fieldNamed`
-* `flag`
-* `loc`
-* `name`
-* `range`
-* `rangeOf`
-* `remove`
-* `replace`
-* `skipChildren`
-* `source`
-* `start`
-* `startOf`
-* `stop`
-* `textOf`
-* `type`
-* `value`
-* `within`
+> **A**: {CssSyntaxPath}
 
 ***
 
@@ -476,6 +445,15 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 * `input` {string}
 * `pos` {number}
 * Returns: {number}
+
+***
+
+## `terminateIdentifier`
+
+> **terminateIdentifier**: {object}
+
+* `identifier` {string}
+* Returns: {string}
 
 ***
 

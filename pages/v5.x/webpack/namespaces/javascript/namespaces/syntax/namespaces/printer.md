@@ -34,7 +34,7 @@
 
 > **printer**: {object}
 
-* `path` {object}
+* `path` {JavascriptSyntaxPath}
 * `writer` {PrintContext}
 * Returns: {string}
 

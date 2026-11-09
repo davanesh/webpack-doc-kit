@@ -11,36 +11,7 @@
 
 ## `A`
 
-> **A**: {object}
-
-### Type Declaration
-
-* `index` {number} Counted along the sibling links when asked, so the walk stores nothing for it.
-* `node` {number}
-* `parent` {number}
-* `state` {unknown}
-* `child`
-* `childCount`
-* `children`
-* `end`
-* `endOf`
-* `field`
-* `fieldCount`
-* `fieldNamed`
-* `flag`
-* `loc`
-* `name`
-* `range`
-* `rangeOf`
-* `skipChildren`
-* `source`
-* `start`
-* `startOf`
-* `stop`
-* `textOf`
-* `type`
-* `value`
-* `within`
+> **A**: {HtmlSyntaxPath}
 
 ***
 

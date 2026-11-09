@@ -16,6 +16,6 @@
 
 > **printer**: {object}
 
-* `path` {object}
+* `path` {HtmlSyntaxPath}
 * `writer` {PrintContext}
 * Returns: {string}

@@ -4,6 +4,6 @@
 
 > **printer**: {object}
 
-* `path` {object}
+* `path` {CssSyntaxPath}
 * `writer` {PrintContext}
 * Returns: {string}

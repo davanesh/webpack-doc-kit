@@ -1254,13 +1254,6 @@ Walk with statement.
 
 Walk yield expression.
 
-#### Static method: `extend(plugins)`
-
-* `plugins` {object[]}
-* Returns: {JavascriptParser}
-
-Returns parser.
-
 #### Static method: `isVariableInfo([value])`
 
 * `value` {string|VariableInfo|ScopeInfo}
