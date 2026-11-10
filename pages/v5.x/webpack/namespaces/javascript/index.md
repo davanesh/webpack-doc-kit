@@ -155,7 +155,7 @@ Block pre walk variable declaration.
 ###### R
 
 `R`
-* `hookMap` {HookMap}
+* `hookMap` {HooksByName}
 * `expr` {Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|Super|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|FunctionExpression|ArrowFunctionExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty}
 * `args` {AsArray}
 * Returns: {R}
@@ -171,7 +171,7 @@ Call hooks for expression.
 ###### R
 
 `R`
-* `hookMap` {HookMap}
+* `hookMap` {HooksByName}
 * `expr` {Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|Super|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|FunctionExpression|ArrowFunctionExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty}
 * `fallback` {object}
 * `defined` {object}
@@ -189,7 +189,7 @@ Call hooks for expression with fallback.
 ###### R
 
 `R`
-* `hookMap` {HookMap}
+* `hookMap` {HooksByName}
 * `info` {ExportedVariableInfo}
 * `args` {AsArray}
 * Returns: {R}
@@ -205,7 +205,7 @@ Call hooks for info.
 ###### R
 
 `R`
-* `hookMap` {HookMap}
+* `hookMap` {HooksByName}
 * `info` {ExportedVariableInfo}
 * `fallback` {object}
 * `defined` {object}
@@ -223,7 +223,7 @@ Call hooks for info with fallback.
 ###### R
 
 `R`
-* `hookMap` {HookMap}
+* `hookMap` {HooksByName}
 * `name` {string}
 * `args` {AsArray}
 * Returns: {R}
@@ -239,7 +239,7 @@ Call hooks for name.
 ###### R
 
 `R`
-* `hookMap` {HookMap}
+* `hookMap` {HooksByName}
 * `name` {string}
 * `fallback` {object}
 * `defined` {object}

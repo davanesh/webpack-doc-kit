@@ -46,6 +46,11 @@ an object takes an id when a read first reaches it, and nothing is copied.
 * `object` {NodeEstreeIndex}
 * Returns: {number}
 
+#### `end(node)`
+
+* `node` {number}
+* Returns: {number}
+
 #### `field(i, field, node)`
 
 * `i` {number}
@@ -65,6 +70,15 @@ an object takes an id when a read first reaches it, and nothing is copied.
 * `node` {number}
 * Returns: {boolean}
 
+#### `markDirective(statement, directive)`
+
+* `statement` {NodeEstreeIndex}
+* `directive` {string}
+* Returns: {void}
+
+Reads a statement as holding a directive its object does not mark, as
+the tree's `setPart` does: another parser may leave `directive` off.
+
 #### `name(node)`
 
 * `node` {number}
@@ -74,6 +88,11 @@ an object takes an id when a read first reaches it, and nothing is copied.
 
 * `node` {number}
 * Returns: {NodeEstreeIndex}
+
+#### `range(node)`
+
+* `node` {number}
+* Returns: {number|number}
 
 #### `reset()`
 
