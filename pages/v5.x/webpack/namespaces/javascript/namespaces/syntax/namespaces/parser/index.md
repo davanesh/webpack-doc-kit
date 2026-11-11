@@ -70,6 +70,11 @@ an object takes an id when a read first reaches it, and nothing is copied.
 * `node` {number}
 * Returns: {boolean}
 
+#### `legacyAssert(node)`
+
+* `node` {number}
+* Returns: {boolean}
+
 #### `markDirective(statement, directive)`
 
 * `statement` {NodeEstreeIndex}
@@ -88,6 +93,16 @@ the tree's `setPart` does: another parser may leave `directive` off.
 
 * `node` {number}
 * Returns: {NodeEstreeIndex}
+
+#### `pushChildren(node, out)`
+
+* `node` {number}
+* `out` {number[]}
+* Returns: {void}
+
+Pushes a node's children, holes left out, for a walk that reaches every
+node without naming each type's fields: every property holding a node,
+so a node type the tree has none for is walked into too.
 
 #### `range(node)`
 
@@ -3093,6 +3108,16 @@ Applies parser plugins, keeping the result typed as this parser.
 
 ***
 
+## `lazyObjectOfSource`
+
+> **lazyObjectOfSource**: {object}
+
+* `source` {LazySource}
+* `node` {number}
+* Returns: {null|Program|ImportDeclaration|ExportNamedDeclaration|ExportAllDeclaration|ImportExpressionImport|UnaryExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UpdateExpression|YieldExpression|SpreadElement|PrivateIdentifier|Super|FunctionDeclaration|VariableDeclaration|ClassDeclaration|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|ExportDefaultDeclaration|MethodDefinition|PropertyDefinition|VariableDeclarator|Property|CatchClause|ClassBody|SwitchCase|TemplateElement|AssignmentProperty|ImportSpecifier|ImportDefaultSpecifier|ImportNamespaceSpecifier|ExportSpecifier|ObjectPattern|ArrayPattern|RestElement|AssignmentPattern}
+
+***
+
 ## `LEGACY_ASSERT_ATTRIBUTES`
 
 > `const` **LEGACY\_ASSERT\_ATTRIBUTES**: {symbol}
@@ -3308,6 +3333,16 @@ Applies parser plugins, keeping the result typed as this parser.
 * `str` {string}
 * `isLegacyOctalNumericLiteral` {boolean}
 * Returns: {number}
+
+***
+
+## `syntaxTreeOfEstree`
+
+> **syntaxTreeOfEstree**: {object}
+
+* `program` {NodeEstreeIndex}
+* `input` {string}
+* Returns: {object}
 
 ***
 

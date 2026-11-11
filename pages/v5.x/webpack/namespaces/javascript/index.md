@@ -71,12 +71,14 @@ Creates an instance of JavascriptParser.
 * `hooks` {Readonly}
 * `magicCommentContext` {Context}
 * `options` {object}
-* `prevStatement` {Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ClassDeclaration|MaybeNamedClassDeclaration|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|FunctionExpression|ArrowFunctionExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty|FunctionDeclaration|MaybeNamedFunctionDeclaration|ImportDeclaration|ExportNamedDeclaration|ExportDefaultDeclaration|ExportAllDeclaration|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|VariableDeclaration}
+* `prevStatement` {Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ClassDeclaration|MaybeNamedClassDeclaration|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|FunctionExpression|ArrowFunctionExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty|FunctionDeclaration|MaybeNamedFunctionDeclaration|ImportDeclaration|ExportNamedDeclaration|ExportDefaultDeclaration|ExportAllDeclaration|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|VariableDeclaration} The statement walked last before the current one, as its object.
 * `scope` {ScopeInfo}
 * `semicolons` {Map}
 * `sourceType` {"script"|"module"|"auto"}
 * `state` {JavascriptParserState}
-* `statementPath` {StatementPathItem[]}
+* `statementDepth` {number} How many statements the walk is in, as `statementPath.length` counts them
+without making their objects: `1` at a top-level statement.
+* `statementPath` {StatementPathItem[]} The statements the walk is in, innermost last, each as its object.
 * `ALLOWED_MEMBER_TYPES_ALL` {number}
 * `ALLOWED_MEMBER_TYPES_CALL_EXPRESSION` {number}
 * `ALLOWED_MEMBER_TYPES_EXPRESSION` {number}
@@ -257,7 +259,7 @@ Processes the provided name.
 
 #### `destructuringAssignmentPropertiesFor(node)`
 
-* `node` {Expression}
+* `node` {number|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|FunctionExpression|ArrowFunctionExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty}
 * Returns: {Set}
 
 Destructuring assignment properties for.
@@ -319,6 +321,16 @@ Enter object pattern.
 
 #### `enterPattern(pattern, onIdent)`
 
+##### Call Signature
+
+* `pattern` {number}
+* `onIdent` {object}
+* Returns: {void}
+
+Processes the provided pattern, by id in the tree walk.
+
+##### Call Signature
+
 * `pattern` {Identifier|Property|MemberExpression|ObjectPattern|ArrayPattern|RestElement|AssignmentPattern}
 * `onIdent` {object}
 * Returns: {void}
@@ -357,7 +369,7 @@ Evaluated variable.
 
 #### `evaluateExpression(expression)`
 
-* `expression` {Identifier|PrivateIdentifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|SpreadElement|Super|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|FunctionExpression|ArrowFunctionExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty}
+* `expression` {number|Identifier|PrivateIdentifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|SpreadElement|Super|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|FunctionExpression|ArrowFunctionExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty}
 * Returns: {BasicEvaluatedExpression}
 
 Evaluate expression.
@@ -371,7 +383,7 @@ Extract member expression chain.
 
 #### `getAttachedCommentsStart(statement)`
 
-* `statement` {StatementPathItem}
+* `statement` {number|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ClassDeclaration|MaybeNamedClassDeclaration|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|FunctionExpression|ArrowFunctionExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty|FunctionDeclaration|MaybeNamedFunctionDeclaration|ImportDeclaration|ExportNamedDeclaration|ExportDefaultDeclaration|ExportAllDeclaration|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|VariableDeclaration}
 * Returns: {number}
 
 Where the comments written for `statement` begin: the run of comments
@@ -402,7 +414,7 @@ Gets free info from variable.
 
 #### `getLocation(node)`
 
-* `node` {object}
+* `node` {number|object}
 * Returns: {DependencyLocation}
 
 Returns the location of a node or comment, computed from its offsets so
@@ -513,7 +525,7 @@ Checks whether this javascript parser is asi position.
 
 #### `isPure(expr, commentsStartPos)`
 
-* `expr` {Identifier|PrivateIdentifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ClassDeclaration|MaybeNamedClassDeclaration|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|FunctionExpression|ArrowFunctionExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty|FunctionDeclaration|MaybeNamedFunctionDeclaration|VariableDeclaration}
+* `expr` {number|Identifier|PrivateIdentifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ClassDeclaration|MaybeNamedClassDeclaration|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|FunctionExpression|ArrowFunctionExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty|FunctionDeclaration|MaybeNamedFunctionDeclaration|VariableDeclaration}
 * `commentsStartPos` {number}
 * Returns: {boolean}
 
@@ -521,7 +533,7 @@ Checks whether this javascript parser is pure.
 
 #### `isStatementLevelExpression(expr)`
 
-* `expr` {Expression}
+* `expr` {number|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|FunctionExpression|ArrowFunctionExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty}
 * Returns: {boolean}
 
 Checks whether this javascript parser is statement level expression.
@@ -563,6 +575,18 @@ Module pre walk import declaration.
 
 Scan every top-level statement for the program's module declarations.
 The parser records them now, so nothing inside webpack scans for them.
+
+#### `nodeOfPath(path, node)`
+
+###### T
+
+`T` *extends* {NodeEstreeIndex} = {Expression}
+* `path` {JavascriptNodeReader}
+* `node` {number}
+* Returns: {T}
+
+The node an id a `{ path: true }` tap got stands for, as the parser's
+methods take it: every parse walks a tree, so it is the id itself.
 
 #### `parse(source, state)`
 
@@ -937,7 +961,7 @@ Walk export named declaration.
 
 #### `walkExpression(expression)`
 
-* `expression` {Identifier|PrivateIdentifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|SpreadElement|Super|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|FunctionExpression|ArrowFunctionExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty}
+* `expression` {number|Identifier|PrivateIdentifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|SpreadElement|Super|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|FunctionExpression|ArrowFunctionExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty}
 * Returns: {void}
 
 Processes the provided expression.
