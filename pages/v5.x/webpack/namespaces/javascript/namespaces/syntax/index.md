@@ -4,6 +4,7 @@
 
 - [parser](namespaces/parser/index.md)
 - [printer](namespaces/printer.md)
+- [scopes](namespaces/scopes.md)
 
 ## Class: `SourceProcessor`
 
@@ -179,6 +180,10 @@ Register a visitor map built at runtime, keyed by any node type.
 
 > `const` **toEstreeObject**: {object}
 
+**`Experimental`**
+
+exposed as `webpack.javascript.syntax.toEstreeObject`; unstable API
+
 * `node` {number}
 * `fields` {string[]}
-* Returns: {null|Program|ImportDeclaration|ExportNamedDeclaration|ExportAllDeclaration|ImportExpressionImport|UnaryExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UpdateExpression|YieldExpression|SpreadElement|PrivateIdentifier|Super|FunctionDeclaration|VariableDeclaration|ClassDeclaration|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|ExportDefaultDeclaration|MethodDefinition|PropertyDefinition|VariableDeclarator|Property|CatchClause|ClassBody|SwitchCase|TemplateElement|AssignmentProperty|ImportSpecifier|ImportDefaultSpecifier|ImportNamespaceSpecifier|ExportSpecifier|ObjectPattern|ArrayPattern|RestElement|AssignmentPattern}
+* Returns: {null|ImportDeclaration|ExportNamedDeclaration|ExportAllDeclaration|ImportExpressionImport|UnaryExpression|ArrayExpression|ArrowFunctionExpression|AssignmentExpression|AwaitExpression|BinaryExpression|SimpleCallExpression|NewExpression|ChainExpression|ClassExpression|ConditionalExpression|FunctionExpression|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|LogicalExpression|MemberExpression|MetaProperty|ObjectExpression|SequenceExpression|TaggedTemplateExpression|TemplateLiteral|ThisExpression|UpdateExpression|YieldExpression|SpreadElement|PrivateIdentifier|Super|FunctionDeclaration|VariableDeclaration|ClassDeclaration|ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|ExportDefaultDeclaration|MethodDefinition|PropertyDefinition|VariableDeclarator|Program|Property|CatchClause|ClassBody|SwitchCase|TemplateElement|AssignmentProperty|ImportSpecifier|ImportDefaultSpecifier|ImportNamespaceSpecifier|ExportSpecifier|ObjectPattern|ArrayPattern|RestElement|AssignmentPattern}

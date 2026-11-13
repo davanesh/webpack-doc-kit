@@ -1,5 +1,9 @@
 # parser
 
+**`Experimental`**
+
+exposed as `webpack.html.syntax.parser`; unstable API
+
 ## Namespaces
 
 - [Field](namespaces/Field.md)
@@ -13,11 +17,15 @@
 
 > **A**: {HtmlSyntaxPath}
 
+**`Experimental`**
+
 ***
 
 ## `asciiLowercase`
 
 > **asciiLowercase**: {object}
+
+**`Experimental`**
 
 * `value` {string}
 * Returns: {string}
@@ -28,6 +36,8 @@
 
 > **baseTag**: {object}
 
+**`Experimental`**
+
 * `base` {string|object}
 * Returns: {string}
 
@@ -37,11 +47,15 @@
 
 > **BLOCK\_CONTENTS**: {"block-contents"}
 
+**`Experimental`**
+
 ***
 
 ## `buildHeadTags`
 
 > **buildHeadTags**: {object}
+
+**`Experimental`**
 
 * `opts` {OutputHtmlOptions}
 * Returns: {string}
@@ -52,6 +66,8 @@
 
 > **collapseWhitespaceRuns**: {object}
 
+**`Experimental`**
+
 * `s` {string}
 * Returns: {string}
 
@@ -60,6 +76,8 @@
 ## `declaresUtf8`
 
 > **declaresUtf8**: {object}
+
+**`Experimental`**
 
 * `input` {string}
 * Returns: {boolean}
@@ -70,11 +88,15 @@
 
 > **decodeEntities**: {_functionSyntaxParserFunction_2}
 
+**`Experimental`**
+
 ***
 
 ## `decodeXmlAttribute`
 
 > **decodeXmlAttribute**: {object}
+
+**`Experimental`**
 
 * `value` {string}
 * Returns: {string}
@@ -85,6 +107,8 @@
 
 > **decodeXmlEntities**: {object}
 
+**`Experimental`**
+
 * `value` {string}
 * Returns: {string}
 
@@ -94,11 +118,15 @@
 
 > **EMBEDDED\_LANGUAGES**: {string[]}
 
+**`Experimental`**
+
 ***
 
 ## `escapeAttribute`
 
 > **escapeAttribute**: {object}
+
+**`Experimental`**
 
 * `s` {string}
 * `delimiter` {number}
@@ -111,6 +139,8 @@
 
 > **escapeText**: {object}
 
+**`Experimental`**
+
 * `s` {string}
 * Returns: {string}
 
@@ -119,6 +149,8 @@
 ## `escapeXmlAttribute`
 
 > **escapeXmlAttribute**: {object}
+
+**`Experimental`**
 
 * `value` {string}
 * `quote` {string}
@@ -130,6 +162,8 @@
 
 > **escapeXmlText**: {object}
 
+**`Experimental`**
+
 * `data` {string}
 * Returns: {string}
 
@@ -139,11 +173,15 @@
 
 > **EVENT\_HANDLER**: {"event-handler"}
 
+**`Experimental`**
+
 ***
 
 ## `FLAG_FOSTER_REGION`
 
 > **FLAG\_FOSTER\_REGION**: {128}
+
+**`Experimental`**
 
 ***
 
@@ -151,11 +189,15 @@
 
 > **FOREIGN\_ELEMENT**: {"foreign-element"}
 
+**`Experimental`**
+
 ***
 
 ## `grammar`
 
 > **grammar**: {object}
+
+**`Experimental`**
 
 * `input` {string}
 * `visitors` {CompiledVisitorBucket[]}
@@ -169,6 +211,8 @@
 
 > **isAllAsciiWhitespace**: {object}
 
+**`Experimental`**
+
 * `s` {string}
 * Returns: {boolean}
 
@@ -177,6 +221,8 @@
 ## `isAsciiAlphanumeric`
 
 > **isAsciiAlphanumeric**: {object}
+
+**`Experimental`**
 
 * `cc` {number}
 * Returns: {boolean}
@@ -187,6 +233,8 @@
 
 > **isAsciiWhitespace**: {object}
 
+**`Experimental`**
+
 * `cc` {number}
 * Returns: {boolean}
 
@@ -195,6 +243,8 @@
 ## `isXmlWellFormedText`
 
 > **isXmlWellFormedText**: {object}
+
+**`Experimental`**
 
 * `raw` {string}
 * Returns: {boolean}
@@ -205,11 +255,15 @@
 
 > **JSON\_TYPE**: {"json"}
 
+**`Experimental`**
+
 ***
 
 ## `metaTag`
 
 > **metaTag**: {object}
+
+**`Experimental`**
 
 * `name` {string}
 * `content` {string}
@@ -221,6 +275,8 @@
 
 > **parseCssUrls**: {object}
 
+**`Experimental`**
+
 * `input` {string}
 * Returns: {string|number|number[]}
 
@@ -229,6 +285,8 @@
 ## `parseHtml`
 
 > **parseHtml**: {object}
+
+**`Experimental`**
 
 * `input` {string}
 * `pos` {number}
@@ -241,6 +299,8 @@
 
 > **parseMsapplicationTask**: {object}
 
+**`Experimental`**
+
 * `input` {string}
 * Returns: {string|number|number[]}
 
@@ -249,6 +309,8 @@
 ## `parseSrc`
 
 > **parseSrc**: {object}
+
+**`Experimental`**
 
 * `input` {string}
 * Returns: {string|number|number[]}
@@ -259,6 +321,8 @@
 
 > **parseSrcset**: {object}
 
+**`Experimental`**
+
 * `input` {string}
 * Returns: {string|number|number[]}
 
@@ -267,6 +331,8 @@
 ## `pickTransforms`
 
 > **pickTransforms**: {object}
+
+**`Experimental`**
 
 * `options` {HtmlTransformOptions}
 * Returns: {undefined|HtmlTransformOptions}
@@ -277,6 +343,8 @@
 
 > **startsWithAsciiWhitespace**: {object}
 
+**`Experimental`**
+
 * `s` {string}
 * Returns: {boolean}
 
@@ -285,6 +353,8 @@
 ## `stripAsciiWhitespace`
 
 > **stripAsciiWhitespace**: {object}
+
+**`Experimental`**
 
 * `value` {string}
 * Returns: {string}
@@ -295,11 +365,15 @@
 
 > **SVG\_TYPE**: {"svg"}
 
+**`Experimental`**
+
 ***
 
 ## `tokenize`
 
 > **tokenize**: {object}
+
+**`Experimental`**
 
 * `input` {string}
 * `pos` {number}
@@ -311,6 +385,8 @@
 ## `tokenizeXml`
 
 > **tokenizeXml**: {object}
+
+**`Experimental`**
 
 * `input` {string}
 * `pos` {number}

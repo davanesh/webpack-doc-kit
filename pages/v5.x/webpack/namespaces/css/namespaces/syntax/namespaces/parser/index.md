@@ -1,5 +1,9 @@
 # parser
 
+**`Experimental`**
+
+exposed as `webpack.css.syntax.parser`; unstable API
+
 ## Namespaces
 
 - [Field](namespaces/Field.md)
@@ -9,6 +13,8 @@
 - [TokenType](namespaces/TokenType.md)
 
 ## Class: `TokenStream`
+
+**`Experimental`**
 
 Position-based view over the lexer — webpack's stand-in for the spec's
 "normalize into a token stream" (CSS Syntax §9). It unifies the lexer and the
@@ -32,22 +38,30 @@ swapping the tokenizer — the per-token `readToken` primitive — for its own.
 
 #### `new TokenStream(input[, pos][, locConverter][, onComment])`
 
+> Stability: 1 - Experimental
+
 * `input` {string}
 * `pos` {number}
 * `locConverter` {LocConverter}
 * `onComment` {object}
 * Returns: {TokenStream}
 
+**`Experimental`**
+
 ### Properties
 
-* `input` {string}
-* `locConverter` {LocConverter}
+* `input` {string} 
+* `locConverter` {LocConverter} 
 
 ### Methods
 
 #### `advance()`
 
+> Stability: 1 - Experimental
+
 * Returns: {void}
+
+**`Experimental`**
 
 Advance past the already-peeked next token, skipping the redundant `next()`
 re-check `consume` / `discard` pay. Precondition: the caller has just called
@@ -58,7 +72,11 @@ both always hold. Callers that can't guarantee a non-EOF cached token use
 
 #### `consume()`
 
+> Stability: 1 - Experimental
+
 * Returns: {MutableToken}
+
+**`Experimental`**
 
 Consume a token (CSS Syntax §3 "consume a token") — return the next token
 and advance the cursor past it. The returned token is valid until the next
@@ -66,26 +84,42 @@ and advance the cursor past it. The returned token is valid until the next
 
 #### `discard()`
 
+> Stability: 1 - Experimental
+
 * Returns: {void}
+
+**`Experimental`**
 
 Discard a token (CSS Syntax §3 "discard a token") — advance the cursor past
 the next token without returning it.
 
 #### `discardMark()`
 
+> Stability: 1 - Experimental
+
 * Returns: {void}
+
+**`Experimental`**
 
 Discard a mark (CSS Syntax §3 "discard a mark") — pop without rewinding.
 
 #### `mark()`
 
+> Stability: 1 - Experimental
+
 * Returns: {void}
+
+**`Experimental`**
 
 Mark (CSS Syntax §3 "mark") — push the current cursor position.
 
 #### `next()`
 
+> Stability: 1 - Experimental
+
 * Returns: {MutableToken}
+
+**`Experimental`**
 
 The next token (CSS Syntax §3 "next token") — the upcoming token without
 consuming it; the `<eof-token>` once the source is exhausted. This is the
@@ -95,7 +129,11 @@ skipped here, firing `onComment` once each.
 
 #### `restoreMark()`
 
+> Stability: 1 - Experimental
+
 * Returns: {void}
+
+**`Experimental`**
 
 Restore a mark (CSS Syntax §3 "restore a mark") — pop the last mark and
 rewind the cursor to it. The rewound span is re-tokenized on the next read;
@@ -103,7 +141,11 @@ already-fired comments are not re-fired (`_commentHigh`).
 
 #### `skipPreludeLeaves()`
 
+> Stability: 1 - Experimental
+
 * Returns: {void}
+
+**`Experimental`**
 
 Step over the run of selector-prelude leaves a skip-mode parse drops (CSS
 Syntax §5.4.3's "append to prelude", which skip mode does not do), without
@@ -114,7 +156,11 @@ disambiguation reads have both been seen. No-op while a token is cached.
 
 #### `skipWhitespace()`
 
+> Stability: 1 - Experimental
+
 * Returns: {void}
+
+**`Experimental`**
 
 Step over the whitespace the next token would be, without tokenizing it —
 for the sites that discard whitespace tokens. No-op while a token is cached.
@@ -125,11 +171,15 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **A**: {CssSyntaxPath}
 
+**`Experimental`**
+
 ***
 
 ## `asciiCaseInsensitiveMatch`
 
 > **asciiCaseInsensitiveMatch**: {object}
+
+**`Experimental`**
 
 * `s` {string}
 * `lit` {string}
@@ -141,6 +191,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **asciiLowercaseName**: {object}
 
+**`Experimental`**
+
 * `s` {string}
 * Returns: {string}
 
@@ -150,6 +202,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **buildSkipSet**: {object}
 
+**`Experimental`**
+
 * `nodeTypes` {number[]}
 * Returns: {Uint8Array}
 
@@ -158,6 +212,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 ## `consumeExtraNewline`
 
 > **consumeExtraNewline**: {object}
+
+**`Experimental`**
 
 * `cc` {number}
 * `input` {string}
@@ -170,6 +226,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **containsSubstitutionFunction**: {object}
 
+**`Experimental`**
+
 * `text` {string}
 * Returns: {boolean}
 
@@ -179,11 +237,15 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **DARK\_PROPERTY**: {"--webpack-dark"}
 
+**`Experimental`**
+
 ***
 
 ## `escapeIdentifier`
 
 > **escapeIdentifier**: {MakeCacheableResult|object}
+
+**`Experimental`**
 
 ### Type Declaration
 
@@ -195,6 +257,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **escapeName**: {object}
 
+**`Experimental`**
+
 * `name` {string}
 * Returns: {string}
 
@@ -203,6 +267,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 ## `grammar`
 
 > **grammar**: {object}
+
+**`Experimental`**
 
 * `input` {string}
 * `visitors` {CompiledVisitorBucket[]}
@@ -216,6 +282,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **isAsciiWhitespace**: {object}
 
+**`Experimental`**
+
 * `cc` {number}
 * Returns: {boolean}
 
@@ -224,6 +292,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 ## `isDashedIdentifier`
 
 > **isDashedIdentifier**: {object}
+
+**`Experimental`**
 
 * `identifier` {string}
 * Returns: {boolean}
@@ -234,6 +304,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **isDigit**: {object}
 
+**`Experimental`**
+
 * `cc` {number}
 * Returns: {boolean}
 
@@ -242,6 +314,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 ## `isHexDigit`
 
 > **isHexDigit**: {object}
+
+**`Experimental`**
 
 * `cc` {number}
 * Returns: {boolean}
@@ -252,6 +326,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **isIdentCodePoint**: {object}
 
+**`Experimental`**
+
 * `cc` {number}
 * Returns: {boolean}
 
@@ -260,6 +336,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 ## `isIdentStartCodePoint`
 
 > **isIdentStartCodePoint**: {object}
+
+**`Experimental`**
 
 * `cc` {number}
 * Returns: {boolean}
@@ -270,6 +348,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **isLetter**: {object}
 
+**`Experimental`**
+
 * `cc` {number}
 * Returns: {boolean}
 
@@ -278,6 +358,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 ## `isSimpleIdentifier`
 
 > **isSimpleIdentifier**: {object}
+
+**`Experimental`**
 
 * `value` {string}
 * Returns: {boolean}
@@ -288,17 +370,23 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **KEYFRAMES\_AT\_RULE\_RE**: {RegExp}
 
+**`Experimental`**
+
 ***
 
 ## `LIGHT_PROPERTY`
 
 > **LIGHT\_PROPERTY**: {"--webpack-light"}
 
+**`Experimental`**
+
 ***
 
 ## `normalizeUrl`
 
 > **normalizeUrl**: {object}
+
+**`Experimental`**
 
 * `str` {string}
 * `isString` {boolean}
@@ -309,6 +397,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 ## `parseABlocksContents`
 
 > **parseABlocksContents**: {object}
+
+**`Experimental`**
 
 * `input` {string|TokenStream}
 * `pos` {number}
@@ -321,6 +411,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **parseACommaSeparatedListOfComponentValues**: {object}
 
+**`Experimental`**
+
 * `input` {string|TokenStream}
 * `pos` {number}
 * `options` {CssParseOptions}
@@ -331,6 +423,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 ## `parseAComponentValue`
 
 > **parseAComponentValue**: {object}
+
+**`Experimental`**
 
 * `input` {string|TokenStream}
 * `pos` {number}
@@ -343,6 +437,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **parseADeclaration**: {object}
 
+**`Experimental`**
+
 * `input` {string|TokenStream}
 * `pos` {number}
 * `options` {CssParseOptions}
@@ -353,6 +449,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 ## `parseAListOfComponentValues`
 
 > **parseAListOfComponentValues**: {object}
+
+**`Experimental`**
 
 * `input` {string|TokenStream}
 * `pos` {number}
@@ -365,6 +463,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **parseARule**: {object}
 
+**`Experimental`**
+
 * `input` {string|TokenStream}
 * `pos` {number}
 * `options` {CssParseOptions}
@@ -375,6 +475,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 ## `parseAStylesheet`
 
 > **parseAStylesheet**: {object}
+
+**`Experimental`**
 
 * `input` {string|TokenStream}
 * `pos` {number}
@@ -387,6 +489,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **parseAStylesheetsContents**: {object}
 
+**`Experimental`**
+
 * `input` {string|TokenStream}
 * `pos` {number}
 * `options` {CssParseOptions}
@@ -398,6 +502,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **pickTransforms**: {object}
 
+**`Experimental`**
+
 * `options` {CssTransformOptions}
 * Returns: {undefined|CssTransformOptions}
 
@@ -406,6 +512,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 ## `rangeAsciiCaseInsensitiveMatch`
 
 > **rangeAsciiCaseInsensitiveMatch**: {object}
+
+**`Experimental`**
 
 * `input` {string}
 * `start` {number}
@@ -419,6 +527,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **rangeEquals**: {object}
 
+**`Experimental`**
+
 * `input` {string}
 * `start` {number}
 * `end` {number}
@@ -431,6 +541,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **readToken**: {object}
 
+**`Experimental`**
+
 * `input` {string}
 * `pos` {number}
 * `out` {MutableToken}
@@ -442,6 +554,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **skipEscape**: {object}
 
+**`Experimental`**
+
 * `input` {string}
 * `pos` {number}
 * Returns: {number}
@@ -452,6 +566,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **terminateIdentifier**: {object}
 
+**`Experimental`**
+
 * `identifier` {string}
 * Returns: {string}
 
@@ -460,6 +576,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 ## `toLowerCaseIfNeeded`
 
 > **toLowerCaseIfNeeded**: {object}
+
+**`Experimental`**
 
 * `s` {string}
 * Returns: {string}
@@ -470,6 +588,8 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 > **unescapeIdentifier**: {MakeCacheableResult|object}
 
+**`Experimental`**
+
 ### Type Declaration
 
 * `bindCache` {BindCache}
@@ -479,3 +599,5 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 ## `VENDOR_PREFIX`
 
 > **VENDOR\_PREFIX**: {RegExp}
+
+**`Experimental`**

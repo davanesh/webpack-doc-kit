@@ -1,8 +1,12 @@
 # tokTypes
 
+**`Experimental`**
+
 ## `arrow`
 
 > **arrow**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -10,11 +14,15 @@
 
 > **assign**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `backQuote`
 
 > **backQuote**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -22,11 +30,15 @@
 
 > **bitShift**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `bitwiseAND`
 
 > **bitwiseAND**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -34,11 +46,15 @@
 
 > **bitwiseOR**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `bitwiseXOR`
 
 > **bitwiseXOR**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -46,11 +62,15 @@
 
 > **braceL**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `braceR`
 
 > **braceR**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -58,11 +78,15 @@
 
 > **bracketL**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `bracketR`
 
 > **bracketR**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -70,11 +94,15 @@
 
 > **coalesce**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `colon`
 
 > **colon**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -82,11 +110,15 @@
 
 > **comma**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `dollarBraceL`
 
 > **dollarBraceL**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -94,11 +126,15 @@
 
 > **dot**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `ellipsis`
 
 > **ellipsis**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -106,11 +142,15 @@
 
 > **eof**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `eq`
 
 > **eq**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -118,11 +158,15 @@
 
 > **equality**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `incDec`
 
 > **incDec**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -130,11 +174,15 @@
 
 > **invalidTemplate**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `logicalAND`
 
 > **logicalAND**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -142,11 +190,15 @@
 
 > **logicalOR**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `modulo`
 
 > **modulo**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -154,11 +206,15 @@
 
 > **name**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `num`
 
 > **num**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -166,11 +222,15 @@
 
 > **parenL**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `parenR`
 
 > **parenR**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -178,11 +238,15 @@
 
 > **plusMin**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `prefix`
 
 > **prefix**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -190,11 +254,15 @@
 
 > **privateId**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `question`
 
 > **question**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -202,11 +270,15 @@
 
 > **questionDot**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `regexp`
 
 > **regexp**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -214,11 +286,15 @@
 
 > **relational**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `semi`
 
 > **semi**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -226,11 +302,15 @@
 
 > **slash**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `star`
 
 > **star**: {TokenType}
+
+**`Experimental`**
 
 ***
 
@@ -238,14 +318,20 @@
 
 > **starstar**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `string`
 
 > **string**: {TokenType}
 
+**`Experimental`**
+
 ***
 
 ## `template`
 
 > **template**: {TokenType}
+
+**`Experimental`**
