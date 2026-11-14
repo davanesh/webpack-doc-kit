@@ -2911,7 +2911,7 @@ Returns warnings.
 
 ###### K
 
-`K` *extends* {"css-import"|"url"|"entry"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"worker"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
+`K` *extends* {"css-import"|"url"|"entry"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"worker"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
 * `kind` {K}
 * Returns: {boolean}
 
