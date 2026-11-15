@@ -54,6 +54,12 @@
 
 ***
 
+## `EMBEDDED_STYLESHEET`
+
+> **EMBEDDED\_STYLESHEET**: {"embedded-stylesheet"}
+
+***
+
 ## `embeddedText`
 
 > **embeddedText**: {object}

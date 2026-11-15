@@ -1662,13 +1662,13 @@ ambiguous lookups where no unique runtime-independent result exists.
 
 ###### K
 
-`K` *extends* {string}
+`K` *extends* {AllCodeGenerationSchemas}
 * `module` {Module}
 * `runtime` {RuntimeSpec}
 * `key` {K}
 * Returns: {CodeGenValue}
 
-Returns an arbitrary metadata entry recorded during code generation.
+Returns a metadata entry recorded during code generation.
 
 #### `getHash(module, runtime)`
 
@@ -2242,10 +2242,11 @@ Removes chunk from dependencies.
 
 Removes reasons of dependency block.
 
-#### `renameAsset(file, newFile)`
+#### `renameAsset(file, newFile[, overwrite])`
 
 * `file` {string}
 * `newFile` {string}
+* `overwrite` {boolean}
 * Returns: {void}
 
 Processes the provided file.
@@ -2911,7 +2912,7 @@ Returns warnings.
 
 ###### K
 
-`K` *extends* {"css-import"|"url"|"entry"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"worker"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
+`K` *extends* {"css-import"|"url"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"entry"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"worker"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
 * `kind` {K}
 * Returns: {boolean}
 
@@ -6346,7 +6347,7 @@ Updates the issuer using the provided value.
 * `optional` {boolean} 
 * `parent` {DependenciesBlock}
 * `parser` {Parser}
-* `parserOptions` {ParserOptionsNormalModule}
+* `parserOptions` {ParserOptions}
 * `presentationalDependencies` {Dependency[]}
 * `profile` {ModuleProfile} 
 * `rawRequest` {string}
@@ -8389,8 +8390,11 @@ A plugin types its own code generation data by declaration merging: `declare mod
 
 ### Properties
 
+* `analyzableBailouts` {string[]} the reasons a module's code is not analyzable, kept beside a cached result so they are reapplied when it is restored
 * `assetInfo` {AssetInfo} an asset info for asset modules
 * `chunkInitFragments` {InitFragment[]} chunk init fragments for javascript modules
+* `contentHash` {string} a content hash for asset modules
+* `cssLocals` {Map} what each class or id name of a CSS module becomes, for an HTML page that names them
 * `exportsBindingSource` {string} export definitions left out on demand that read the module's own declarations, to be placed after its body where it is wrapped
 * `exportsFinalName` {Record} final name of each used export of a concatenated module whose definitions were left out on demand
 * `exportsSource` {string} export definitions left out of a javascript module's source on demand (see `KnownMeta.onDemandExports`), to be placed before its body where it is wrapped
@@ -8398,6 +8402,7 @@ A plugin types its own code generation data by declaration merging: `declare mod
 * `filename` {string} a filename for asset modules
 * `freeNames` {Set} free identifier names in the rendered source for javascript modules
 * `fullContentHash` {string} a full content hash for asset modules
+* `importBindings` {Map} the name each import binding prints as, for source map scopes
 * `share-init` {object} share-init for modules federation
 * `topLevelDeclarations` {Set} top level declarations for javascript modules
 * `url` {object} url for asset modules

@@ -139,6 +139,18 @@ Restore a mark (CSS Syntax §3 "restore a mark") — pop the last mark and
 rewind the cursor to it. The rewound span is re-tokenized on the next read;
 already-fired comments are not re-fired (`_commentHigh`).
 
+#### `rewind(pos)`
+
+> Stability: 1 - Experimental
+
+* `pos` {number}
+* Returns: {void}
+
+**`Experimental`**
+
+Rewind the cursor to `pos`, an offset `_pos` held, as `restoreMark` does
+for a mark the caller kept itself.
+
 #### `skipPreludeLeaves()`
 
 > Stability: 1 - Experimental

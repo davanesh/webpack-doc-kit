@@ -122,6 +122,14 @@ exposed as `webpack.html.syntax.parser`; unstable API
 
 ***
 
+## `EMBEDDED_STYLESHEET`
+
+> **EMBEDDED\_STYLESHEET**: {"embedded-stylesheet"}
+
+**`Experimental`**
+
+***
+
 ## `escapeAttribute`
 
 > **escapeAttribute**: {object}

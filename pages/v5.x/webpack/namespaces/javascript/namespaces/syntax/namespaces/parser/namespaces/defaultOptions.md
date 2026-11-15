@@ -58,14 +58,6 @@
 
 ***
 
-## `directSourceFile`
-
-> **directSourceFile**: {null}
-
-**`Experimental`**
-
-***
-
 ## `ecmaVersion`
 
 > **ecmaVersion**: {null}
@@ -130,14 +122,6 @@
 
 ***
 
-## `program`
-
-> **program**: {null}
-
-**`Experimental`**
-
-***
-
 ## `ranges`
 
 > **ranges**: {boolean}
@@ -157,14 +141,6 @@
 ## `sourceType`
 
 > **sourceType**: {string}
-
-**`Experimental`**
-
-***
-
-## `startLocation`
-
-> **startLocation**: {null}
 
 **`Experimental`**
 
