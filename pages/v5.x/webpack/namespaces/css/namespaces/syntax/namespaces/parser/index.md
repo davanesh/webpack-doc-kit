@@ -16,7 +16,7 @@ exposed as `webpack.css.syntax.parser`; unstable API
 
 **`Experimental`**
 
-Position-based view over the lexer — webpack's stand-in for the spec's
+Position-based view over the lexer - webpack's stand-in for the spec's
 "normalize into a token stream" (CSS Syntax §9). It unifies the lexer and the
 stream in one class: the `readToken` primitive lexes one token (the CSS
 tokenizer), and the spec token-stream operations `next` / `consume` /
@@ -27,12 +27,12 @@ No token buffer is kept: the cursor is a byte offset and the only state is
 the next token (lazily tokenized once and cached until consumed). The
 declaration-vs-qualified-rule backtracking in `consumeABlocksContents`
 rewinds by `mark`ing / `restoreMark`ing that byte offset, which simply
-re-tokenizes the rewound span — comment tokens are filtered here and fire
+re-tokenizes the rewound span - comment tokens are filtered here and fire
 `onComment` once each, tracked by a monotonic high-water mark so a
 re-tokenized span never re-fires them.
 `SourceProcessor` is handed this class (not an instance) and threads it to
 the grammar, so a different language can drive the same visitor machinery by
-swapping the tokenizer — the per-token `readToken` primitive — for its own.
+swapping the tokenizer - the per-token `readToken` primitive - for its own.
 
 ### Constructors
 
@@ -66,7 +66,7 @@ swapping the tokenizer — the per-token `readToken` primitive — for its own.
 Advance past the already-peeked next token, skipping the redundant `next()`
 re-check `consume` / `discard` pay. Precondition: the caller has just called
 `next()` (so `_tok` is the cached next token and `_hasNext` is true) and that
-token is not the `<eof-token>` — the hot "peek, decide, advance" sites where
+token is not the `<eof-token>` - the hot "peek, decide, advance" sites where
 both always hold. Callers that can't guarantee a non-EOF cached token use
 `consume` / `discard` instead.
 
@@ -78,7 +78,7 @@ both always hold. Callers that can't guarantee a non-EOF cached token use
 
 **`Experimental`**
 
-Consume a token (CSS Syntax §3 "consume a token") — return the next token
+Consume a token (CSS Syntax §3 "consume a token") - return the next token
 and advance the cursor past it. The returned token is valid until the next
 `next` re-tokenizes (the reused instance is not cleared by advancing).
 
@@ -90,7 +90,7 @@ and advance the cursor past it. The returned token is valid until the next
 
 **`Experimental`**
 
-Discard a token (CSS Syntax §3 "discard a token") — advance the cursor past
+Discard a token (CSS Syntax §3 "discard a token") - advance the cursor past
 the next token without returning it.
 
 #### `discardMark()`
@@ -101,7 +101,7 @@ the next token without returning it.
 
 **`Experimental`**
 
-Discard a mark (CSS Syntax §3 "discard a mark") — pop without rewinding.
+Discard a mark (CSS Syntax §3 "discard a mark") - pop without rewinding.
 
 #### `mark()`
 
@@ -111,7 +111,7 @@ Discard a mark (CSS Syntax §3 "discard a mark") — pop without rewinding.
 
 **`Experimental`**
 
-Mark (CSS Syntax §3 "mark") — push the current cursor position.
+Mark (CSS Syntax §3 "mark") - push the current cursor position.
 
 #### `next()`
 
@@ -121,7 +121,7 @@ Mark (CSS Syntax §3 "mark") — push the current cursor position.
 
 **`Experimental`**
 
-The next token (CSS Syntax §3 "next token") — the upcoming token without
+The next token (CSS Syntax §3 "next token") - the upcoming token without
 consuming it; the `<eof-token>` once the source is exhausted. This is the
 token the consume algorithms dispatch on (the spec's "process"). Tokenized
 from `_pos` on first use and cached until consumed; comment tokens are
@@ -135,7 +135,7 @@ skipped here, firing `onComment` once each.
 
 **`Experimental`**
 
-Restore a mark (CSS Syntax §3 "restore a mark") — pop the last mark and
+Restore a mark (CSS Syntax §3 "restore a mark") - pop the last mark and
 rewind the cursor to it. The rewound span is re-tokenized on the next read;
 already-fired comments are not re-fired (`_commentHigh`).
 
@@ -162,7 +162,7 @@ for a mark the caller kept itself.
 Step over the run of selector-prelude leaves a skip-mode parse drops (CSS
 Syntax §5.4.3's "append to prelude", which skip mode does not do), without
 lexing one token each. Only valid where every leaf up to the next
-`BC_PRELUDE_STOP` code point is dropped whatever it is — which in
+`BC_PRELUDE_STOP` code point is dropped whatever it is - which in
 `consumeAQualifiedRule` is once the two tokens the `--foo: {`
 disambiguation reads have both been seen. No-op while a token is cached.
 
@@ -174,7 +174,7 @@ disambiguation reads have both been seen. No-op while a token is cached.
 
 **`Experimental`**
 
-Step over the whitespace the next token would be, without tokenizing it —
+Step over the whitespace the next token would be, without tokenizing it -
 for the sites that discard whitespace tokens. No-op while a token is cached.
 
 ***

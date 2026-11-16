@@ -266,7 +266,7 @@ esm module decorator
 
 ### Deprecated
 
-use `esmModuleDecorator` — TODO in the next major release: remove
+use `esmModuleDecorator` - TODO in the next major release: remove
 
 ***
 

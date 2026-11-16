@@ -111,6 +111,15 @@
 
 ***
 
+## `percentDecode`
+
+> **percentDecode**: {object}
+
+* `payload` {string}
+* Returns: {Buffer}
+
+***
+
 ## `readEmbeddedDataURI`
 
 > **readEmbeddedDataURI**: {object}

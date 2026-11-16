@@ -42,7 +42,7 @@ Returns true, when the chunk has html.
 * Returns: {string}
 
 `output.hashFunction`/`hashSalt`/`hashDigest`/`hashDigestLength`
-digest of `content`, with `nonNumericOnlyHash` applied — webpack's
+digest of `content`, with `nonNumericOnlyHash` applied - webpack's
 standard `[contenthash]` recipe.
 
 #### Static method: `getChunkFilenameTemplate(chunk, outputOptions)`
@@ -52,7 +52,7 @@ standard `[contenthash]` recipe.
 * Returns: {ChunkFilenameTemplate}
 
 Filename template for an extracted HTML page: `output.htmlFilename` for
-initial chunks, `output.htmlChunkFilename` otherwise — the HTML counterpart
+initial chunks, `output.htmlChunkFilename` otherwise - the HTML counterpart
 of `CssModulesPlugin.getChunkFilenameTemplate`.
 
 ***

@@ -73,6 +73,17 @@ exposed as `webpack.html.syntax.parser`; unstable API
 
 ***
 
+## `declaredEncoding`
+
+> **declaredEncoding**: {object}
+
+**`Experimental`**
+
+* `input` {string}
+* Returns: {undefined|"utf8"|"other"}
+
+***
+
 ## `declaresUtf8`
 
 > **declaresUtf8**: {object}

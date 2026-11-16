@@ -75,7 +75,7 @@ Gets chunk filename template.
 * `chunkGraph` {ChunkGraph}
 * Returns: {Chunk[]}
 
-The css-carrying chunks of `chunks`, in the order their rules cascade —
+The css-carrying chunks of `chunks`, in the order their rules cascade -
 the order a `<link rel="stylesheet">` per chunk has to be written in.
 
 #### Static method: `renderModule(module, renderContext, hooks)`

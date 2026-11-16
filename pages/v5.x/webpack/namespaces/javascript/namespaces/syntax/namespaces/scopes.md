@@ -63,7 +63,7 @@ resolution loop stay monomorphic.
 * `paramBoundary` {number} For a function scope with parameters, the offset where its body
 starts; `-1` for every other scope. Separates the two regions that
 share this scope, so a reference in the parameter list can be kept
-from resolving to a binding declared in the body — see
+from resolving to a binding declared in the body - see
 `isHiddenBodyBinding`.
 * `type` {ScopeType} 
 * `upper` {Scope} 

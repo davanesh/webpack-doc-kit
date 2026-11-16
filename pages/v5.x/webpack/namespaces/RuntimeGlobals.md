@@ -4,7 +4,7 @@ The symbols a runtime module may declare a requirement on.
 
 ## Deprecated
 
-use `runtime.RuntimeGlobals` — TODO in the next major release: remove
+use `runtime.RuntimeGlobals` - TODO in the next major release: remove
 
 ## `amdDefine`
 
@@ -272,7 +272,7 @@ esm module decorator
 
 ### Deprecated
 
-use `esmModuleDecorator` — TODO in the next major release: remove
+use `esmModuleDecorator` - TODO in the next major release: remove
 
 ***
 

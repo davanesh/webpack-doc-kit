@@ -679,7 +679,7 @@ count did not match what an escape asked for.
 **`Experimental`**
 
 Read an identifier's text, recording in `containsEsc` whether any of it
-was written as an escape — which stops it reading as a keyword.
+was written as an escape - which stops it reading as a keyword.
 
 #### `skipBlockComment()`
 
@@ -2218,7 +2218,7 @@ binds less tightly than the caller is parsing.
 
 **`Experimental`**
 
-Read a `new` expression, whose callee takes subscripts but not a call —
+Read a `new` expression, whose callee takes subscripts but not a call -
 the argument list belongs to the `new` itself.
 
 #### `parseObj(isPattern[, refDestructuringErrors])`
@@ -2346,8 +2346,8 @@ Reads the current token, a private name, as every caller checked.
 
 **`Experimental`**
 
-Read one statement. A statement head that is only a keyword by position —
-`let`, `async`, `using` — is settled by the probes above.
+Read one statement. A statement head that is only a keyword by position -
+`let`, `async`, `using` - is settled by the probes above.
 
 #### `parseSubscript(baseExpr, startPos, startLoc, noCalls, maybeAsyncArrow, optionalChained[, forInit])`
 
@@ -2675,7 +2675,7 @@ count did not match what an escape asked for.
 **`Experimental`**
 
 Read an identifier's text, recording in `containsEsc` whether any of it
-was written as an escape — which stops it reading as a keyword.
+was written as an escape - which stops it reading as a keyword.
 
 #### `semicolon()`
 

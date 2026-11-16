@@ -2912,7 +2912,7 @@ Returns warnings.
 
 ###### K
 
-`K` *extends* {"css-import"|"url"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"entry"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"worker"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
+`K` *extends* {"url"|"css-import"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"entry"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"worker"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
 * `kind` {K}
 * Returns: {boolean}
 
@@ -4661,12 +4661,12 @@ Creates an instance of InitFragment.
 * `STAGE_ASYNC_BOUNDARY` {number}
 * `STAGE_ASYNC_DEPENDENCIES` {number}
 * `STAGE_ASYNC_ESM_IMPORTS` {number}
-* `STAGE_ASYNC_HARMONY_IMPORTS` {number} use `STAGE_ASYNC_ESM_IMPORTS` — TODO in the next major release: remove
+* `STAGE_ASYNC_HARMONY_IMPORTS` {number} use `STAGE_ASYNC_ESM_IMPORTS` - TODO in the next major release: remove
 * `STAGE_CONSTANTS` {number}
 * `STAGE_ESM_EXPORTS` {number}
 * `STAGE_ESM_IMPORTS` {number}
-* `STAGE_HARMONY_EXPORTS` {number} use `STAGE_ESM_EXPORTS` — TODO in the next major release: remove
-* `STAGE_HARMONY_IMPORTS` {number} use `STAGE_ESM_IMPORTS` — TODO in the next major release: remove
+* `STAGE_HARMONY_EXPORTS` {number} use `STAGE_ESM_EXPORTS` - TODO in the next major release: remove
+* `STAGE_HARMONY_IMPORTS` {number} use `STAGE_ESM_IMPORTS` - TODO in the next major release: remove
 * `STAGE_PROVIDES` {number}
 
 ### Methods
@@ -8402,6 +8402,7 @@ A plugin types its own code generation data by declaration merging: `declare mod
 * `filename` {string} a filename for asset modules
 * `freeNames` {Set} free identifier names in the rendered source for javascript modules
 * `fullContentHash` {string} a full content hash for asset modules
+* `htmlPublicPathText` {string} the stand-in for public path placeholder text an HTML module spells itself, put back once its page resolves the placeholders
 * `importBindings` {Map} the name each import binding prints as, for source map scopes
 * `share-init` {object} share-init for modules federation
 * `topLevelDeclarations` {Set} top level declarations for javascript modules
@@ -8512,7 +8513,7 @@ Options object as provided by the user.
 
 ### Properties
 
-* `amd` {false|object} Set the value of `require.amd` and `define.amd`. Or disable AMD support.
+* `amd` {false|JsonObjectFs} Set the value of `require.amd` and `define.amd`. Or disable AMD support.
 * `bail` {boolean} Report the first error as a hard error instead of tolerating it.
 * `cache` {boolean|FileCacheOptions|MemoryCacheOptions} Cache generated modules and chunks to improve performance for multiple incremental builds.
 * `context` {string} The base directory (absolute path!) for resolving the `entry` option. If `output.pathinfo` is set, the included pathinfo is shortened to this directory.
@@ -8722,7 +8723,7 @@ A plugin types its own fields by declaration merging: `declare module "webpack" 
 * `specNamespaceObject` {boolean} the module hands out a spec Module Namespace Exotic Object
 * `strict` {boolean}
 * `topLevelDeclarations` {Set} top level declaration names
-* `usesTopLevelAwaitForOf` {boolean} module uses top-level `for await…of` or `await using`, which can't be lowered to a generator
+* `usesTopLevelAwaitForOf` {boolean} module uses top-level `for await...of` or `await using`, which can't be lowered to a generator
 
 ***
 
@@ -9910,7 +9911,7 @@ Normalized webpack options object.
 
 ### Properties
 
-* `amd` {false|object} Set the value of `require.amd` and `define.amd`. Or disable AMD support.
+* `amd` {false|JsonObjectFs} Set the value of `require.amd` and `define.amd`. Or disable AMD support.
 * `bail` {boolean} Report the first error as a hard error instead of tolerating it.
 * `cache` {CacheOptionsNormalized} Cache generated modules and chunks to improve performance for multiple incremental builds.
 * `context` {string} The base directory (absolute path!) for resolving the `entry` option. If `output.pathinfo` is set, the included pathinfo is shortened to this directory.
@@ -10292,7 +10293,7 @@ Plugin instance.
 
 ## Type: `RenderManifestEntry`
 
-> **RenderManifestEntry** = {RenderManifestEntryTemplated|RenderManifestEntryStatic}
+> **RenderManifestEntry** = {RenderManifestEntryChunkTemplated|RenderManifestEntryStringTemplated|RenderManifestEntryStatic}
 
 ***
 
@@ -10543,7 +10544,7 @@ Validates a value against a JSON schema.
 
 ### Deprecated
 
-use `config.validateSchema` — TODO in the next major release: remove
+use `config.validateSchema` - TODO in the next major release: remove
 
 ***
 

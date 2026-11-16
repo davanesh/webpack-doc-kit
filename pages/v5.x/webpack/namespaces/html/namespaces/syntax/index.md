@@ -60,13 +60,13 @@ new HtmlSourceProcessor().use({ [NodeType.Element]: (path) => {}, [NodeType.Comm
 **`Experimental`**
 
 Parse `input` once and fire the visitors in source order. Asking for output
-— `mode`, the one thing that names it — makes the same walk print, given a
+- `mode`, the one thing that names it - makes the same walk print, given a
 printer supplied at construction: a
 [PrintContext](#printcontext) is created, each node's printer fires into it as the node
 finishes, and the result is returned as `{ code, map }`: the serialized output
 and, for a caller that named its input with `source` / `content`, the
-input->output source map — `map` is `undefined` without one. Asking for
-none of it only walks and returns `undefined`. A single parse — printing
+input->output source map - `map` is `undefined` without one. Asking for
+none of it only walks and returns `undefined`. A single parse - printing
 never re-parses; all configuration is per-call.
 
 ##### Call Signature
@@ -80,13 +80,13 @@ never re-parses; all configuration is per-call.
 **`Experimental`**
 
 Parse `input` once and fire the visitors in source order. Asking for output
-— `mode`, the one thing that names it — makes the same walk print, given a
+- `mode`, the one thing that names it - makes the same walk print, given a
 printer supplied at construction: a
 [PrintContext](#printcontext) is created, each node's printer fires into it as the node
 finishes, and the result is returned as `{ code, map }`: the serialized output
 and, for a caller that named its input with `source` / `content`, the
-input->output source map — `map` is `undefined` without one. Asking for
-none of it only walks and returns `undefined`. A single parse — printing
+input->output source map - `map` is `undefined` without one. Asking for
+none of it only walks and returns `undefined`. A single parse - printing
 never re-parses; all configuration is per-call.
 
 ##### Call Signature
@@ -100,13 +100,13 @@ never re-parses; all configuration is per-call.
 **`Experimental`**
 
 Parse `input` once and fire the visitors in source order. Asking for output
-— `mode`, the one thing that names it — makes the same walk print, given a
+- `mode`, the one thing that names it - makes the same walk print, given a
 printer supplied at construction: a
 [PrintContext](#printcontext) is created, each node's printer fires into it as the node
 finishes, and the result is returned as `{ code, map }`: the serialized output
 and, for a caller that named its input with `source` / `content`, the
-input->output source map — `map` is `undefined` without one. Asking for
-none of it only walks and returns `undefined`. A single parse — printing
+input->output source map - `map` is `undefined` without one. Asking for
+none of it only walks and returns `undefined`. A single parse - printing
 never re-parses; all configuration is per-call.
 
 #### `processAsync(input, options)`
@@ -120,8 +120,8 @@ never re-parses; all configuration is per-call.
 **`Experimental`**
 
 [process](#process), for a caller whose renderer answers asynchronously. Code
-generation is synchronous — a printer returns its node's text, it cannot
-await one — so the walk leaves a marker where each answer goes, they are
+generation is synchronous - a printer returns its node's text, it cannot
+await one - so the walk leaves a marker where each answer goes, they are
 asked for together, and PrintContext.substitute stands each in its
 place before the output and its map are built. One parse either way, and
 the async boundary stays at the top rather than on every node.
