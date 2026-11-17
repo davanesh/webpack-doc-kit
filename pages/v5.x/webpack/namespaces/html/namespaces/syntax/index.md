@@ -24,7 +24,7 @@ new HtmlSourceProcessor().use({ [NodeType.Element]: (path) => {}, [NodeType.Comm
 
 #### TState
 
-`TState` = {unknown}
+`TState` = {undefined}
 
 ### Constructors
 
@@ -34,7 +34,7 @@ new HtmlSourceProcessor().use({ [NodeType.Element]: (path) => {}, [NodeType.Comm
 
 ###### TState
 
-`TState` = {unknown}
+`TState` = {undefined}
 * Returns: {HtmlSourceProcessor}
 
 **`Experimental`**

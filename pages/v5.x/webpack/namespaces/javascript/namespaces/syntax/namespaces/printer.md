@@ -14,14 +14,6 @@ exposed as `webpack.javascript.syntax.printer`; unstable API
 
 ***
 
-## `FORMAT_DEFAULTS`
-
-> **FORMAT\_DEFAULTS**: {any}
-
-**`Experimental`**
-
-***
-
 ## `IGNORED_FORMAT_OPTIONS`
 
 > **IGNORED\_FORMAT\_OPTIONS**: {string[]}

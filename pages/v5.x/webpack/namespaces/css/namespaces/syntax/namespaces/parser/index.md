@@ -286,6 +286,7 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 * `visitors` {CompiledVisitorBucket[]}
 * `writer` {undefined|PrintContext}
 * `options` {CssProcessOptions}
+* `path` {CssSyntaxPath}
 * Returns: {void}
 
 ***

@@ -28,7 +28,7 @@ new JavascriptSourceProcessor().use({ [NodeType.CallExpression]: (path) => {} })
 
 #### TState
 
-`TState` = {unknown}
+`TState` = {undefined}
 
 ### Constructors
 
@@ -38,7 +38,7 @@ new JavascriptSourceProcessor().use({ [NodeType.CallExpression]: (path) => {} })
 
 ###### TState
 
-`TState` = {unknown}
+`TState` = {undefined}
 * Returns: {JavascriptSourceProcessor}
 
 **`Experimental`**

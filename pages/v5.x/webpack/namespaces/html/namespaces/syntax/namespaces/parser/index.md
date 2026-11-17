@@ -43,14 +43,6 @@ exposed as `webpack.html.syntax.parser`; unstable API
 
 ***
 
-## `BLOCK_CONTENTS`
-
-> **BLOCK\_CONTENTS**: {"block-contents"}
-
-**`Experimental`**
-
-***
-
 ## `buildHeadTags`
 
 > **buildHeadTags**: {object}
@@ -125,14 +117,6 @@ exposed as `webpack.html.syntax.parser`; unstable API
 
 ***
 
-## `EMBEDDED_LANGUAGES`
-
-> **EMBEDDED\_LANGUAGES**: {string[]}
-
-**`Experimental`**
-
-***
-
 ## `EMBEDDED_STYLESHEET`
 
 > **EMBEDDED\_STYLESHEET**: {"embedded-stylesheet"}
@@ -188,14 +172,6 @@ exposed as `webpack.html.syntax.parser`; unstable API
 
 ***
 
-## `EVENT_HANDLER`
-
-> **EVENT\_HANDLER**: {"event-handler"}
-
-**`Experimental`**
-
-***
-
 ## `FLAG_FOSTER_REGION`
 
 > **FLAG\_FOSTER\_REGION**: {128}
@@ -222,6 +198,7 @@ exposed as `webpack.html.syntax.parser`; unstable API
 * `visitors` {CompiledVisitorBucket[]}
 * `writer` {undefined|PrintContext}
 * `options` {HtmlProcessOptions}
+* `path` {HtmlSyntaxPath}
 * Returns: {void}
 
 ***
@@ -267,14 +244,6 @@ exposed as `webpack.html.syntax.parser`; unstable API
 
 * `raw` {string}
 * Returns: {boolean}
-
-***
-
-## `JSON_TYPE`
-
-> **JSON\_TYPE**: {"json"}
-
-**`Experimental`**
 
 ***
 
@@ -377,14 +346,6 @@ exposed as `webpack.html.syntax.parser`; unstable API
 
 * `value` {string}
 * Returns: {string}
-
-***
-
-## `SVG_TYPE`
-
-> **SVG\_TYPE**: {"svg"}
-
-**`Experimental`**
 
 ***
 

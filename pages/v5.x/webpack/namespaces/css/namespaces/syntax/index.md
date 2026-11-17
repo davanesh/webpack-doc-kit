@@ -10,9 +10,9 @@
 **`Experimental`**
 
 The generic visitor coordinator (`util/SourceProcessor`) bound to the CSS
-`grammar`. All configuration is per `process` call. `process(src, { minimize:
-true })` returns `{ code, map }` - the safely-minified serialization (built by
-the same walk that fires visitors) and its source map; without `minimize` it
+`grammar`. All configuration is per `process` call. `process(src, { mode:
+"minify" })` returns `{ code, map }` - the safely-minified serialization (built
+by the same walk that fires visitors) and its source map; without `mode` it
 just walks and returns `undefined`. Usage:
 ```
 new CssSourceProcessor().use({ [NodeType.AtRule]: (path) => {} }).process(source, { skip });
@@ -27,7 +27,7 @@ new CssSourceProcessor().use({ [NodeType.AtRule]: (path) => {} }).process(source
 
 #### TState
 
-`TState` = {unknown}
+`TState` = {undefined}
 
 ### Constructors
 
@@ -37,7 +37,7 @@ new CssSourceProcessor().use({ [NodeType.AtRule]: (path) => {} }).process(source
 
 ###### TState
 
-`TState` = {unknown}
+`TState` = {undefined}
 * Returns: {CssSourceProcessor}
 
 **`Experimental`**
