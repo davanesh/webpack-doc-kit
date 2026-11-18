@@ -2653,6 +2653,17 @@ that the named-capture goal symbol was the right one.
 
 ***
 
+## `collectEsmImportSpecifiers`
+
+> **collectEsmImportSpecifiers**: {object}
+
+**`Experimental`**
+
+* `source` {string}
+* Returns: {Map}
+
+***
+
 ## `Field`
 
 > **Field**: {Readonly}
@@ -2904,18 +2915,6 @@ that the named-capture goal symbol was the right one.
 > **STATEMENT\_TYPES\_WITHOUT\_BINDINGS**: {Set}
 
 **`Experimental`**
-
-***
-
-## `stringToNumber`
-
-> **stringToNumber**: {object}
-
-**`Experimental`**
-
-* `str` {string}
-* `isLegacyOctalNumericLiteral` {boolean}
-* Returns: {number}
 
 ***
 
