@@ -4,4 +4,3 @@
 
 - [ids](namespaces/ids.md)
 - [schemes](namespaces/schemes.md)
-- [typescript](namespaces/typescript.md)

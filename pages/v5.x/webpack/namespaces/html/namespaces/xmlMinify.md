@@ -9,6 +9,14 @@
 
 ***
 
+## `getEmbeddedTypes`
+
+> **getEmbeddedTypes**: {object}
+
+* Returns: {string[]}
+
+***
+
 ## `getTypes`
 
 > **getTypes**: {object}
