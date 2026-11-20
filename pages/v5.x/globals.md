@@ -16,6 +16,7 @@
 - [electron](webpack/namespaces/electron.md)
 - [esm](webpack/namespaces/esm.md)
 - [experiments](webpack/namespaces/experiments/index.md)
+- [hmr](webpack/namespaces/hmr.md)
 - [html](webpack/namespaces/html/index.md)
 - [ids](webpack/namespaces/ids.md)
 - [javascript](webpack/namespaces/javascript/index.md)
@@ -620,7 +621,7 @@ Updates the hash with the data contributed by this instance.
 
 ### Constructors
 
-#### `new ChunkGraph(moduleGraph[, hashFunction])`
+#### `new ChunkGraph(moduleGraph, hashFunction)`
 
 * `moduleGraph` {ModuleGraph}
 * `hashFunction` {HashFunction}
@@ -2788,7 +2789,7 @@ Applies the plugin by registering its hooks on the compiler.
 * `disconnect` {void}
 * `forwardId` {string|true} Returns the export name this dependency requests from its target module (lazy barrel optimization).
 * `lazyName` {string} Returns the export name for a `LAZY_LOCAL_EXPORT`/`LAZY_NAMED_REEXPORT` classification (lazy barrel optimization).
-* `lazyRole` {"id"|"local"|"*"|"import"|"@"} Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
+* `lazyRole` {"import"|"id"|"local"|"*"|"@"} Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 * `loc` {DependencyLocation} Returns location.
 * `module` {void}
 * `optional` {boolean}
@@ -2912,7 +2913,7 @@ Returns warnings.
 
 ###### K
 
-`K` *extends* {"url"|"css-import"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"entry"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"worker"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
+`K` *extends* {"url"|"css-import"|"worker"|"entry"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
 * `kind` {K}
 * Returns: {boolean}
 
@@ -4105,7 +4106,7 @@ Gets source basic types.
 
 #### `new ExternalsPlugin(type, externals)`
 
-* `type` {"asset"|"asset-url"|"css-import"|"var"|"this"|"import"|"script"|"module"|"commonjs"|"global"|"assign"|"self"|"window"|"system"|"promise"|"css-url"|"jsonp"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"|object}
+* `type` {"asset"|"asset-url"|"css-import"|"import"|"jsonp"|"var"|"this"|"script"|"module"|"commonjs"|"global"|"assign"|"self"|"window"|"system"|"promise"|"css-url"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"|object}
 * `externals` {Externals}
 * Returns: {ExternalsPlugin}
 
@@ -4114,7 +4115,7 @@ Creates an instance of ExternalsPlugin.
 ### Properties
 
 * `externals` {Externals}
-* `type` {"asset"|"asset-url"|"css-import"|"var"|"this"|"import"|"script"|"module"|"commonjs"|"global"|"assign"|"self"|"window"|"system"|"promise"|"css-url"|"jsonp"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"|object}
+* `type` {"asset"|"asset-url"|"css-import"|"import"|"jsonp"|"var"|"this"|"script"|"module"|"commonjs"|"global"|"assign"|"self"|"window"|"system"|"promise"|"css-url"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"|object}
 
 ### Methods
 
@@ -8525,7 +8526,7 @@ Options object as provided by the user.
 * `extends` {string|string[]} Extend configuration from another configuration (only works when using webpack-cli).
 * `externals` {string|RegExp|ExternalItemObject|object|object|ExternalItem[]} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 * `externalsPresets` {ExternalsPresets} Enable presets of externals for specific targets.
-* `externalsType` {"asset"|"asset-url"|"css-import"|"var"|"this"|"import"|"script"|"module"|"commonjs"|"global"|"assign"|"self"|"window"|"system"|"promise"|"css-url"|"jsonp"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+* `externalsType` {"asset"|"asset-url"|"css-import"|"import"|"jsonp"|"var"|"this"|"script"|"module"|"commonjs"|"global"|"assign"|"self"|"window"|"system"|"promise"|"css-url"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 * `ignoreWarnings` {RegExp|object|object[]} Ignore specific warnings.
 * `infrastructureLogging` {InfrastructureLogging} Options for infrastructure level logging.
 * `loader` {Loader} Custom values available in the loader context.
@@ -8736,7 +8737,7 @@ A plugin types its own fields by declaration merging: `declare module "webpack" 
 ### Properties
 
 * `async` {boolean}
-* `defaultObject` {false|"redirect-warn"|"redirect"}
+* `defaultObject` {false|"redirect"|"redirect-warn"}
 * `exportsType` {"default"|"namespace"|"dynamic"|"flagged"}
 * `needIdInConcatenation` {boolean} true when the module keeps its own id after concatenation into another module, so id assignment and hot module replacement records still track it
 * `sideEffectFree` {boolean}
@@ -8791,7 +8792,7 @@ A plugin types its own stats options by declaration merging: `declare module "we
 * `groupModulesByPath` {boolean}
 * `groupModulesByType` {boolean}
 * `ids` {boolean}
-* `logging` {false|"error"|"warn"|"info"|"log"|"verbose"|"none"}
+* `logging` {false|"log"|"verbose"|"none"|"error"|"warn"|"info"}
 * `loggingDebug` {object[]}
 * `loggingTrace` {boolean}
 * `modulesSort` {string|false}
@@ -9781,7 +9782,7 @@ Stats options object.
 * `hints` {boolean} Add performance hints reported with 'performance.hints: "stats"'.
 * `hintsCount` {boolean} Add the number of performance hints.
 * `ids` {boolean} Add ids.
-* `logging` {boolean|"error"|"warn"|"info"|"log"|"verbose"|"none"} Add logging output.
+* `logging` {boolean|"log"|"verbose"|"none"|"error"|"warn"|"info"} Add logging output.
 * `loggingDebug` {string|boolean|RegExp|FilterItemTypes[]|object} Include debug logging of specified loggers (i. e. for plugins or loaders). Filters can be Strings, RegExps or Functions.
 * `loggingTrace` {boolean} Add stack traces to logging output.
 * `moduleAssets` {boolean} Add information about assets inside modules.
@@ -9923,7 +9924,7 @@ Normalized webpack options object.
 * `experiments` {ExperimentsNormalized} Enables/Disables experiments (experimental features with relax SemVer compatibility).
 * `externals` {Externals} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 * `externalsPresets` {ExternalsPresets} Enable presets of externals for specific targets.
-* `externalsType` {"asset"|"asset-url"|"css-import"|"var"|"this"|"import"|"script"|"module"|"commonjs"|"global"|"assign"|"self"|"window"|"system"|"promise"|"css-url"|"jsonp"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+* `externalsType` {"asset"|"asset-url"|"css-import"|"import"|"jsonp"|"var"|"this"|"script"|"module"|"commonjs"|"global"|"assign"|"self"|"window"|"system"|"promise"|"css-url"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 * `ignoreWarnings` {object[]} Ignore specific warnings.
 * `infrastructureLogging` {InfrastructureLogging} Options for infrastructure level logging.
 * `loader` {Loader} Custom values available in the loader context.
@@ -9953,10 +9954,6 @@ Normalized webpack options object.
 ## Interface: `WebpackPluginInstance`
 
 Plugin instance.
-
-### Indexable
-
-\[`index`: {string}\]: {any}
 
 ### Properties
 
@@ -10304,10 +10301,6 @@ Plugin instance.
 ### Type Declaration
 
 {object}
-
-### Index Signature
-
-\[`index`: {string}\]: {any}
 
 * `apply` {object} The run point of the plugin, required method.
 

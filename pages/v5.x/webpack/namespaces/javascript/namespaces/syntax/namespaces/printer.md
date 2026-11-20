@@ -14,6 +14,16 @@ exposed as `webpack.javascript.syntax.printer`; unstable API
 
 ***
 
+## `getNodePrinter`
+
+> **getNodePrinter**: {object}
+
+**`Experimental`**
+
+* Returns: {object}
+
+***
+
 ## `IGNORED_FORMAT_OPTIONS`
 
 > **IGNORED\_FORMAT\_OPTIONS**: {string[]}

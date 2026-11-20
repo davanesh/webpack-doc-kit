@@ -57,7 +57,7 @@ Updates enabled using the provided compiler.
 
 #### `new JavascriptParser([sourceType][, options])`
 
-* `sourceType` {"script"|"module"|"auto"}
+* `sourceType` {"auto"|"script"|"module"}
 * `options` {object}
 * Returns: {JavascriptParser}
 
@@ -74,7 +74,7 @@ Creates an instance of JavascriptParser.
 * `prevStatement` {ExpressionStatement|BlockStatement|StaticBlock|EmptyStatement|DebuggerStatement|WithStatement|ReturnStatement|LabeledStatement|BreakStatement|ContinueStatement|IfStatement|SwitchStatement|ThrowStatement|TryStatement|WhileStatement|DoWhileStatement|ForStatement|ForInStatement|ForOfStatement|FunctionDeclaration|MaybeNamedFunctionDeclaration|VariableDeclaration|ClassDeclaration|MaybeNamedClassDeclaration|ImportDeclaration|ExportNamedDeclaration|ExportDefaultDeclaration|ExportAllDeclaration|Identifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|FunctionExpression|ArrowFunctionExpression|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty} The statement walked last before the current one, as its object.
 * `scope` {ScopeInfo}
 * `semicolons` {Map}
-* `sourceType` {"script"|"module"|"auto"}
+* `sourceType` {"auto"|"script"|"module"}
 * `state` {JavascriptParserState}
 * `statementDepth` {number} How many statements the walk is in, as `statementPath.length` counts them
 without making their objects: `1` at a top-level statement.

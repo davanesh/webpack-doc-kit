@@ -65,6 +65,17 @@ exposed as `webpack.html.syntax.parser`; unstable API
 
 ***
 
+## `declaredCharset`
+
+> **declaredCharset**: {object}
+
+**`Experimental`**
+
+* `input` {string}
+* Returns: {undefined|string}
+
+***
+
 ## `declaredEncoding`
 
 > **declaredEncoding**: {object}

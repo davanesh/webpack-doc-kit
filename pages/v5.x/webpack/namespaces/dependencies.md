@@ -24,7 +24,7 @@ Creates an instance of ConstDependency.
 * `expression` {string}
 * `forwardId` {string|true} Returns the export name this dependency requests from its target module (lazy barrel optimization).
 * `lazyName` {string} Returns the export name for a `LAZY_LOCAL_EXPORT`/`LAZY_NAMED_REEXPORT` classification (lazy barrel optimization).
-* `lazyRole` {"id"|"local"|"*"|"import"|"@"} Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
+* `lazyRole` {"import"|"id"|"local"|"*"|"@"} Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 * `loc` {DependencyLocation} Returns location.
 * `module` {void}
 * `optional` {boolean}
@@ -151,7 +151,7 @@ Returns warnings.
 
 ###### K
 
-`K` *extends* {"url"|"css-import"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"entry"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"worker"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
+`K` *extends* {"url"|"css-import"|"worker"|"entry"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
 * `kind` {K}
 * Returns: {boolean}
 
@@ -246,7 +246,7 @@ Creates an instance of EntryDependency.
 * `disconnect` {void}
 * `forwardId` {string|true} Returns the export name this dependency requests from its target module (lazy barrel optimization).
 * `lazyName` {string} Returns the export name for a `LAZY_LOCAL_EXPORT`/`LAZY_NAMED_REEXPORT` classification (lazy barrel optimization).
-* `lazyRole` {"id"|"local"|"*"|"import"|"@"} Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
+* `lazyRole` {"import"|"id"|"local"|"*"|"@"} Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 * `loc` {DependencyLocation} Returns location.
 * `module` {void}
 * `optional` {boolean}
@@ -376,7 +376,7 @@ Returns warnings.
 
 ###### K
 
-`K` *extends* {"url"|"css-import"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"entry"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"worker"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
+`K` *extends* {"url"|"css-import"|"worker"|"entry"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
 * `kind` {K}
 * Returns: {boolean}
 
@@ -475,7 +475,7 @@ Creates an instance of ESMImportDependency.
 * `disconnect` {void}
 * `forwardId` {string|true} Returns the export name this dependency requests from its target module (lazy barrel optimization).
 * `lazyName` {string} Returns the export name for a `LAZY_LOCAL_EXPORT`/`LAZY_NAMED_REEXPORT` classification (lazy barrel optimization).
-* `lazyRole` {"id"|"local"|"*"|"import"|"@"} Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
+* `lazyRole` {"import"|"id"|"local"|"*"|"@"} Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 * `loc` {DependencyLocation} Returns location.
 * `module` {void}
 * `optional` {boolean}
@@ -639,7 +639,7 @@ Returns warnings.
 
 ###### K
 
-`K` *extends* {"url"|"css-import"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"entry"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"worker"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
+`K` *extends* {"url"|"css-import"|"worker"|"entry"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
 * `kind` {K}
 * Returns: {boolean}
 
@@ -740,7 +740,7 @@ Creates an instance of ModuleDependency.
 * `disconnect` {void}
 * `forwardId` {string|true} Returns the export name this dependency requests from its target module (lazy barrel optimization).
 * `lazyName` {string} Returns the export name for a `LAZY_LOCAL_EXPORT`/`LAZY_NAMED_REEXPORT` classification (lazy barrel optimization).
-* `lazyRole` {"id"|"local"|"*"|"import"|"@"} Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
+* `lazyRole` {"import"|"id"|"local"|"*"|"@"} Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 * `loc` {DependencyLocation} Returns location.
 * `module` {void}
 * `optional` {boolean}
@@ -870,7 +870,7 @@ Returns warnings.
 
 ###### K
 
-`K` *extends* {"url"|"css-import"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"entry"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"worker"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
+`K` *extends* {"url"|"css-import"|"worker"|"entry"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
 * `kind` {K}
 * Returns: {boolean}
 
@@ -967,7 +967,7 @@ Returns true if the dependency is a low priority dependency.
 * `disconnect` {void}
 * `forwardId` {string|true} Returns the export name this dependency requests from its target module (lazy barrel optimization).
 * `lazyName` {string} Returns the export name for a `LAZY_LOCAL_EXPORT`/`LAZY_NAMED_REEXPORT` classification (lazy barrel optimization).
-* `lazyRole` {"id"|"local"|"*"|"import"|"@"} Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
+* `lazyRole` {"import"|"id"|"local"|"*"|"@"} Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 * `loc` {DependencyLocation} Returns location.
 * `module` {void}
 * `optional` {boolean}
@@ -1092,7 +1092,7 @@ Returns warnings.
 
 ###### K
 
-`K` *extends* {"url"|"css-import"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"entry"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"worker"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
+`K` *extends* {"url"|"css-import"|"worker"|"entry"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
 * `kind` {K}
 * Returns: {boolean}
 
@@ -1190,7 +1190,7 @@ Creates an instance of StaticExportsDependency.
 * `exports` {Exports}
 * `forwardId` {string|true} Returns the export name this dependency requests from its target module (lazy barrel optimization).
 * `lazyName` {string} Returns the export name for a `LAZY_LOCAL_EXPORT`/`LAZY_NAMED_REEXPORT` classification (lazy barrel optimization).
-* `lazyRole` {"id"|"local"|"*"|"import"|"@"} Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
+* `lazyRole` {"import"|"id"|"local"|"*"|"@"} Returns how this dependency may be deferred when its parent module is side-effect-free (lazy barrel optimization).
 * `loc` {DependencyLocation} Returns location.
 * `module` {void}
 * `optional` {boolean}
@@ -1315,7 +1315,7 @@ Returns warnings.
 
 ###### K
 
-`K` *extends* {"url"|"css-import"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"entry"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"worker"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
+`K` *extends* {"url"|"css-import"|"worker"|"entry"|"module-dependency"|"esm-import"|"provided"|"dynamic-import"|"esm-reexport"|"esm-export-specifier"|"esm-live-export"|"esm-side-effect-import"|"context-element"|"esm-bare-side-effect-import"|"esm-import-specifier"|"esm-evaluated-import-specifier"|"esm-compatibility"|"commonjs-require"|"commonjs-export-require"|"css-url"|"html-source"|"html-entry"|"html-inline-style"|"html-css-module"|"webassembly-import"|"webassembly-export-imported"|"sharing-request"|"local-module"|"static-exports"|"loader-import"|"css-icss-import"|"css-icss-export"}
 * `kind` {K}
 * Returns: {boolean}
 
