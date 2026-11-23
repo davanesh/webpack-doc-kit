@@ -3,6 +3,7 @@
 ## Namespaces
 
 - [ChunkHelpers](namespaces/ChunkHelpers.md)
+- [jsMinify](namespaces/jsMinify.md)
 - [syntax](namespaces/syntax/index.md)
 
 ## Class: `EnableChunkLoadingPlugin`
@@ -1289,6 +1290,16 @@ Walk yield expression.
 * Returns: {boolean}
 
 Whether a definition is a variable rather than a free name or a scope.
+
+***
+
+## `jsMinify(input[, sourceMap][, minimizerOptions][, extractComments])`
+
+* `input` {object}
+* `sourceMap` {Partial}
+* `minimizerOptions` {MinifyOptions|object}
+* `extractComments` {string|boolean|RegExp|object|object}
+* Returns: {Promise}
 
 ***
 

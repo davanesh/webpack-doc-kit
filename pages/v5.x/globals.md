@@ -2471,6 +2471,21 @@ Validates a value against a schema, skipping the schema when the precompiled che
 
 Returns a compiler watcher.
 
+#### `worker(workerPath[, options])`
+
+> Stability: 1 - Experimental
+
+###### M
+
+`M` *extends* {WorkerModule} = {WorkerDefaultModule}
+* `workerPath` {string|URL}
+* `options` {WorkerOptions}
+* Returns: {Worker}
+
+**`Experimental`**
+
+Returns a worker bound to `workerPath`. The pool behind it is shared by the compiler and ended on close. Without `experiments.threads`, calls run directly on the main thread unless `options.numWorkers` asks for threads; without `worker_threads`, they always do.
+
 ***
 
 ## Class: `ConcatenationScope`
@@ -8753,6 +8768,8 @@ A plugin types its own fields by declaration merging: `declare module "webpack" 
 
 * `deferredImportVarMap` {Map}
 * `importVarMap` {Map}
+* `linkedBinding` {LinkedBinding} where a module linked across chunks is hoisted (see `optimization.concatenateModules.crossChunkImports`)
+* `linkedScope` {boolean} the module is rendered at its chunk's top level with native exports instead of in the registry
 * `liveBindings` {Map} module-level `let` names a module library declares in the chunk's scope instead
 * `liveSetters` {Map} module-level names a module keeps declared and mirrors to the chunk's scope on each write
 * `onDemandExports` {boolean} generate export definitions on demand
@@ -9376,6 +9393,7 @@ Defines the output file system type used by this module.
 * `readdir` {ReaddirFs}
 * `readFile` {ReadFileFs}
 * `readlink` {ReadlinkFs}
+* `realpath` {RealPathFs}
 * `relative` {object}
 * `rmdir` {object}
 * `stat` {StatFs}
