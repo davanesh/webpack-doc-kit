@@ -8841,6 +8841,7 @@ A plugin types its own fields by declaration merging: `declare module "webpack" 
 * `chunkSiblingIds` {ChunkSiblingIds}
 * `fullHashChunkModuleHashes` {FullHashChunkModuleHashes}
 * `hash` {string}
+* `hotContentHash` {string}
 * `hotIndex` {number}
 * `modules` {RecordsModules}
 

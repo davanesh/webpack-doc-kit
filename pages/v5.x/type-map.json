@@ -109,6 +109,7 @@
   "modules": "webpack/namespaces/experiments/namespaces/schemes.html#virtualurlplugin#modules",
   "hash": "webpack/namespaces/esm.html#modulechunkloadingruntimemodule#hashhash",
   "hotIndex": "globals.html#knownrecords#hotindex",
+  "hotContentHash": "globals.html#knownrecords#hotcontenthash",
   "fullHashChunkModuleHashes": "globals.html#knownrecords#fullhashchunkmodulehashes",
   "chunkModuleHashes": "globals.html#knownrecords#chunkmodulehashes",
   "chunkHashes": "globals.html#knownrecords#chunkhashes",
