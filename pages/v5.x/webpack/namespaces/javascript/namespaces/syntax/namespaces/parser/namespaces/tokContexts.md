@@ -2,80 +2,80 @@
 
 **`Experimental`**
 
-## `b_expr`
+## `bExpr`
 
-> **b\_expr**: {TokContext}
-
-**`Experimental`**
-
-***
-
-## `b_stat`
-
-> **b\_stat**: {TokContext}
+> **bExpr**: {TokContext}
 
 **`Experimental`**
 
 ***
 
-## `b_tmpl`
+## `bStat`
 
-> **b\_tmpl**: {TokContext}
-
-**`Experimental`**
-
-***
-
-## `f_expr`
-
-> **f\_expr**: {TokContext}
+> **bStat**: {TokContext}
 
 **`Experimental`**
 
 ***
 
-## `f_expr_gen`
+## `bTmpl`
 
-> **f\_expr\_gen**: {TokContext}
-
-**`Experimental`**
-
-***
-
-## `f_gen`
-
-> **f\_gen**: {TokContext}
+> **bTmpl**: {TokContext}
 
 **`Experimental`**
 
 ***
 
-## `f_stat`
+## `fExpr`
 
-> **f\_stat**: {TokContext}
-
-**`Experimental`**
-
-***
-
-## `p_expr`
-
-> **p\_expr**: {TokContext}
+> **fExpr**: {TokContext}
 
 **`Experimental`**
 
 ***
 
-## `p_stat`
+## `fExprGen`
 
-> **p\_stat**: {TokContext}
+> **fExprGen**: {TokContext}
 
 **`Experimental`**
 
 ***
 
-## `q_tmpl`
+## `fGen`
 
-> **q\_tmpl**: {TokContext}
+> **fGen**: {TokContext}
+
+**`Experimental`**
+
+***
+
+## `fStat`
+
+> **fStat**: {TokContext}
+
+**`Experimental`**
+
+***
+
+## `pExpr`
+
+> **pExpr**: {TokContext}
+
+**`Experimental`**
+
+***
+
+## `pStat`
+
+> **pStat**: {TokContext}
+
+**`Experimental`**
+
+***
+
+## `qTmpl`
+
+> **qTmpl**: {TokContext}
 
 **`Experimental`**

@@ -3624,11 +3624,9 @@ Creates an instance of ExternalModule.
 * `dependencyMeta` {ImportDependencyMeta|CssImportDependencyMeta|AssetDependencyMeta}
 * `depth` {number} Returns the depth.
 Updates the depth using the provided value.
-* `errors` {any}
 * `exportsArgument` {string} Gets exports argument.
 * `externalType` {ExternalsType}
 * `factoryMeta` {FactoryMeta}
-* `hasEqualsChunks` {void}
 * `hash` {string} Returns the hash of the module.
 * `id` {string|number} Returns the module id assigned by the chunk graph.
 Updates the module id using the provided value.
@@ -3639,7 +3637,6 @@ Updates the post-order index using the provided value.
 * `interop` {"default"|"esModule"}
 * `issuer` {Module} Returns the issuer.
 Updates the issuer using the provided value.
-* `isUsed` {void}
 * `layer` {string}
 * `moduleArgument` {string} Gets module argument.
 * `needId` {boolean}
@@ -3653,12 +3650,10 @@ Updates the issuer using the provided value.
 * `resolveOptions` {ResolveOptionsWebpackOptions}
 * `sideEffects` {boolean}
 * `type` {string}
-* `used` {void}
 * `usedExports` {boolean|SortableSet} 
 * `userRequest` {string}
 * `useSimpleSourceMap` {boolean}
 * `useSourceMap` {boolean}
-* `warnings` {any}
 * `getCompilationHooks` {object}
 * `getExternalModuleNodeCommonjsInitFragment` {object}
 * `KINDS` {Set}
@@ -4983,10 +4978,8 @@ Creates an instance of Module.
 * `dependencies` {Dependency[]}
 * `depth` {number} Returns the depth.
 Updates the depth using the provided value.
-* `errors` {any}
 * `exportsArgument` {string} Gets exports argument.
 * `factoryMeta` {FactoryMeta}
-* `hasEqualsChunks` {void}
 * `hash` {string} Returns the hash of the module.
 * `id` {string|number} Returns the module id assigned by the chunk graph.
 Updates the module id using the provided value.
@@ -4996,7 +4989,6 @@ Updates the pre-order index using the provided value.
 Updates the post-order index using the provided value.
 * `issuer` {Module} Returns the issuer.
 Updates the issuer using the provided value.
-* `isUsed` {void}
 * `layer` {string}
 * `moduleArgument` {string} Gets module argument.
 * `needId` {boolean}
@@ -5008,11 +5000,9 @@ Updates the issuer using the provided value.
 * `renderedHash` {string} Returns the rendered hash of the module.
 * `resolveOptions` {ResolveOptionsWebpackOptions}
 * `type` {string}
-* `used` {void}
 * `usedExports` {boolean|SortableSet} 
 * `useSimpleSourceMap` {boolean}
 * `useSourceMap` {boolean}
-* `warnings` {any}
 * `KINDS` {Set}
 
 ### Methods
@@ -6336,13 +6326,11 @@ Applies the plugin by registering its hooks on the compiler.
 * `depth` {number} Returns the depth.
 Updates the depth using the provided value.
 * `error` {Error}
-* `errors` {any}
 * `exportsArgument` {string} Gets exports argument.
 * `extractSourceMap` {boolean}
 * `factoryMeta` {FactoryMeta}
 * `generator` {Generator}
 * `generatorOptions` {GeneratorOptions}
-* `hasEqualsChunks` {void}
 * `hash` {string} Returns the hash of the module.
 * `hot` {boolean}
 * `id` {string|number} Returns the module id assigned by the chunk graph.
@@ -6353,7 +6341,6 @@ Updates the pre-order index using the provided value.
 Updates the post-order index using the provided value.
 * `issuer` {Module} Returns the issuer.
 Updates the issuer using the provided value.
-* `isUsed` {void}
 * `layer` {string}
 * `loaders` {LoaderItem[]}
 * `matchResource` {string}
@@ -6373,12 +6360,10 @@ Updates the issuer using the provided value.
 * `resource` {string}
 * `resourceResolveData` {ResourceSchemeData|Partial}
 * `type` {string}
-* `used` {void}
 * `usedExports` {boolean|SortableSet} 
 * `userRequest` {string}
 * `useSimpleSourceMap` {boolean}
 * `useSourceMap` {boolean}
-* `warnings` {any}
 * `KINDS` {Set}
 
 ### Methods
@@ -7264,11 +7249,9 @@ Creates an instance of RuntimeModule.
 * `dependentHash` {boolean}
 * `depth` {number} Returns the depth.
 Updates the depth using the provided value.
-* `errors` {any}
 * `exportsArgument` {string} Gets exports argument.
 * `factoryMeta` {FactoryMeta}
 * `fullHash` {boolean}
-* `hasEqualsChunks` {void}
 * `hash` {string} Returns the hash of the module.
 * `id` {string|number} Returns the module id assigned by the chunk graph.
 Updates the module id using the provided value.
@@ -7278,7 +7261,6 @@ Updates the pre-order index using the provided value.
 Updates the post-order index using the provided value.
 * `issuer` {Module} Returns the issuer.
 Updates the issuer using the provided value.
-* `isUsed` {void}
 * `layer` {string}
 * `moduleArgument` {string} Gets module argument.
 * `name` {string}
@@ -7292,11 +7274,9 @@ Updates the issuer using the provided value.
 * `resolveOptions` {ResolveOptionsWebpackOptions}
 * `stage` {number}
 * `type` {string}
-* `used` {void}
 * `usedExports` {boolean|SortableSet} 
 * `useSimpleSourceMap` {boolean}
 * `useSourceMap` {boolean}
-* `warnings` {any}
 * `KINDS` {Set}
 * `NO_CHUNK_HANDLERS` {string|string[]} The answer a runtime module gives when it installs no chunk handler at all
 * `STAGE_ATTACH` {number} Runtime modules which attach to handlers of other runtime modules
@@ -8752,7 +8732,7 @@ A plugin types its own fields by declaration merging: `declare module "webpack" 
 ### Properties
 
 * `async` {boolean}
-* `defaultObject` {false|"redirect"|"redirect-warn"}
+* `defaultObject` {false|"redirect-warn"|"redirect"}
 * `exportsType` {"default"|"namespace"|"dynamic"|"flagged"}
 * `needIdInConcatenation` {boolean} true when the module keeps its own id after concatenation into another module, so id assignment and hot module replacement records still track it
 * `sideEffectFree` {boolean}

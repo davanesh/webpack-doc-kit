@@ -368,7 +368,7 @@ count did not match what an escape asked for.
 
 **`Experimental`**
 
-#### `readToken_caret()`
+#### `readTokenCaret()`
 
 > Stability: 1 - Experimental
 
@@ -376,7 +376,7 @@ count did not match what an escape asked for.
 
 **`Experimental`**
 
-#### `readToken_dot()`
+#### `readTokenDot()`
 
 > Stability: 1 - Experimental
 
@@ -384,16 +384,7 @@ count did not match what an escape asked for.
 
 **`Experimental`**
 
-#### `readToken_eq_excl(code)`
-
-> Stability: 1 - Experimental
-
-* `code` {number}
-* Returns: {void}
-
-**`Experimental`**
-
-#### `readToken_lt_gt(code)`
+#### `readTokenEqExcl(code)`
 
 > Stability: 1 - Experimental
 
@@ -402,7 +393,7 @@ count did not match what an escape asked for.
 
 **`Experimental`**
 
-#### `readToken_mult_modulo_exp(code)`
+#### `readTokenLtGt(code)`
 
 > Stability: 1 - Experimental
 
@@ -411,15 +402,7 @@ count did not match what an escape asked for.
 
 **`Experimental`**
 
-#### `readToken_numberSign()`
-
-> Stability: 1 - Experimental
-
-* Returns: {void}
-
-**`Experimental`**
-
-#### `readToken_pipe_amp(code)`
+#### `readTokenMultModuloExp(code)`
 
 > Stability: 1 - Experimental
 
@@ -428,7 +411,15 @@ count did not match what an escape asked for.
 
 **`Experimental`**
 
-#### `readToken_plus_min(code)`
+#### `readTokenNumberSign()`
+
+> Stability: 1 - Experimental
+
+* Returns: {void}
+
+**`Experimental`**
+
+#### `readTokenPipeAmp(code)`
 
 > Stability: 1 - Experimental
 
@@ -437,7 +428,16 @@ count did not match what an escape asked for.
 
 **`Experimental`**
 
-#### `readToken_question()`
+#### `readTokenPlusMin(code)`
+
+> Stability: 1 - Experimental
+
+* `code` {number}
+* Returns: {void}
+
+**`Experimental`**
+
+#### `readTokenQuestion()`
 
 > Stability: 1 - Experimental
 
@@ -445,7 +445,7 @@ count did not match what an escape asked for.
 
 **`Experimental`**
 
-#### `readToken_slash()`
+#### `readTokenSlash()`
 
 > Stability: 1 - Experimental
 
@@ -2335,7 +2335,7 @@ count did not match what an escape asked for.
 
 **`Experimental`**
 
-#### `readToken_caret()`
+#### `readTokenCaret()`
 
 > Stability: 1 - Experimental
 
@@ -2343,7 +2343,7 @@ count did not match what an escape asked for.
 
 **`Experimental`**
 
-#### `readToken_dot()`
+#### `readTokenDot()`
 
 > Stability: 1 - Experimental
 
@@ -2351,16 +2351,7 @@ count did not match what an escape asked for.
 
 **`Experimental`**
 
-#### `readToken_eq_excl(code)`
-
-> Stability: 1 - Experimental
-
-* `code` {number}
-* Returns: {void}
-
-**`Experimental`**
-
-#### `readToken_lt_gt(code)`
+#### `readTokenEqExcl(code)`
 
 > Stability: 1 - Experimental
 
@@ -2369,7 +2360,7 @@ count did not match what an escape asked for.
 
 **`Experimental`**
 
-#### `readToken_mult_modulo_exp(code)`
+#### `readTokenLtGt(code)`
 
 > Stability: 1 - Experimental
 
@@ -2378,15 +2369,7 @@ count did not match what an escape asked for.
 
 **`Experimental`**
 
-#### `readToken_numberSign()`
-
-> Stability: 1 - Experimental
-
-* Returns: {void}
-
-**`Experimental`**
-
-#### `readToken_pipe_amp(code)`
+#### `readTokenMultModuloExp(code)`
 
 > Stability: 1 - Experimental
 
@@ -2395,7 +2378,15 @@ count did not match what an escape asked for.
 
 **`Experimental`**
 
-#### `readToken_plus_min(code)`
+#### `readTokenNumberSign()`
+
+> Stability: 1 - Experimental
+
+* Returns: {void}
+
+**`Experimental`**
+
+#### `readTokenPipeAmp(code)`
 
 > Stability: 1 - Experimental
 
@@ -2404,7 +2395,16 @@ count did not match what an escape asked for.
 
 **`Experimental`**
 
-#### `readToken_question()`
+#### `readTokenPlusMin(code)`
+
+> Stability: 1 - Experimental
+
+* `code` {number}
+* Returns: {void}
+
+**`Experimental`**
+
+#### `readTokenQuestion()`
 
 > Stability: 1 - Experimental
 
@@ -2412,7 +2412,7 @@ count did not match what an escape asked for.
 
 **`Experimental`**
 
-#### `readToken_slash()`
+#### `readTokenSlash()`
 
 > Stability: 1 - Experimental
 

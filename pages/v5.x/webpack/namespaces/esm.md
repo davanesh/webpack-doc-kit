@@ -31,11 +31,9 @@ Creates an instance of ModuleChunkLoadingRuntimeModule.
 * `dependentHash` {boolean}
 * `depth` {number} Returns the depth.
 Updates the depth using the provided value.
-* `errors` {any}
 * `exportsArgument` {string} Gets exports argument.
 * `factoryMeta` {FactoryMeta}
 * `fullHash` {boolean}
-* `hasEqualsChunks` {void}
 * `hash` {string} Returns the hash of the module.
 * `id` {string|number} Returns the module id assigned by the chunk graph.
 Updates the module id using the provided value.
@@ -45,7 +43,6 @@ Updates the pre-order index using the provided value.
 Updates the post-order index using the provided value.
 * `issuer` {Module} Returns the issuer.
 Updates the issuer using the provided value.
-* `isUsed` {void}
 * `layer` {string}
 * `moduleArgument` {string} Gets module argument.
 * `name` {string}
@@ -59,11 +56,9 @@ Updates the issuer using the provided value.
 * `resolveOptions` {ResolveOptionsWebpackOptions}
 * `stage` {number}
 * `type` {string}
-* `used` {void}
 * `usedExports` {boolean|SortableSet} 
 * `useSimpleSourceMap` {boolean}
 * `useSourceMap` {boolean}
-* `warnings` {any}
 * `getCompilationHooks` {object}
 * `KINDS` {Set}
 * `NO_CHUNK_HANDLERS` {string|string[]} The answer a runtime module gives when it installs no chunk handler at all
