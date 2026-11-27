@@ -180,6 +180,10 @@ A subset of Set that offers sorting functionality
 
 `T`
 
+#### C
+
+`C` = {unknown}
+
 ### Constructors
 
 #### `new SortableSet([initialIterable][, defaultSort])`
@@ -187,6 +191,10 @@ A subset of Set that offers sorting functionality
 ###### T
 
 `T`
+
+###### C
+
+`C` = {unknown}
 * `initialIterable` {Iterable}
 * `defaultSort` {SortFunction}
 * Returns: {SortableSet}

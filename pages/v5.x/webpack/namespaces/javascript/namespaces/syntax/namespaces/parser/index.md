@@ -19,6 +19,10 @@ ships no parser dependency. `WebpackParser` below subclasses it and
 overrides the hot paths.
 acorn source: https://github.com/acornjs/acorn/blob/8.18.0/acorn/src/state.js
 
+### Extends
+
+- {JavascriptTokenizer}
+
 ### Extended by
 
 - {WebpackParser}
@@ -832,7 +836,7 @@ A token as `options.onToken` receives one.
 
 > Stability: 1 - Experimental
 
-* `p` {SyntaxParser}
+* `p` {JavascriptTokenizer}
 * Returns: {Token}
 
 **`Experimental`**

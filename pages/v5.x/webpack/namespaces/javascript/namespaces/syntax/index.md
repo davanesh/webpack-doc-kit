@@ -154,7 +154,7 @@ its path takes only the parts those types have.
 
 > Stability: 1 - Experimental
 
-* `map` {VisitorMapSourceProcessorObject_2}
+* `map` {VisitorMap}
 * Returns: {SourceProcessor}
 
 **`Experimental`**
@@ -167,7 +167,7 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 
 > Stability: 1 - Experimental
 
-* `map` {VisitorMapSourceProcessorObject_1}
+* `map` {VisitorMap}
 * Returns: {SourceProcessor}
 
 **`Experimental`**

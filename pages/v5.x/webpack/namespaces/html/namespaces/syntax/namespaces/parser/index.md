@@ -258,6 +258,20 @@ exposed as `webpack.html.syntax.parser`; unstable API
 
 ***
 
+## `keepTemplateOpenersEscaped`
+
+> **keepTemplateOpenersEscaped**: {object}
+
+**`Experimental`**
+
+* `text` {string}
+* `source` {string}
+* `isAttribute` {boolean}
+* `dropsText` {boolean}
+* Returns: {string}
+
+***
+
 ## `metaTag`
 
 > **metaTag**: {object}

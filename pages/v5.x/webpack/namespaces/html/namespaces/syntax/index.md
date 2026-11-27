@@ -163,7 +163,7 @@ A bucket is a function (= `{ enter }`) or `{ enter?, exit? }`.
 
 > Stability: 1 - Experimental
 
-* `map` {VisitorMapSourceProcessorObject_1}
+* `map` {VisitorMap}
 * Returns: {SourceProcessor}
 
 **`Experimental`**

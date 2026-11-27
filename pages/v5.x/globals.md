@@ -2350,7 +2350,7 @@ Processes the provided error callback.
 
 #### `compile(callback)`
 
-* `callback` {CallbackWebpackFunction_2}
+* `callback` {CallbackWebpack}
 * Returns: {void}
 
 Processes the provided compilation.
@@ -2438,7 +2438,7 @@ Processes the provided error callback.
 
 #### `run(callback)`
 
-* `callback` {CallbackWebpackFunction_2}
+* `callback` {CallbackWebpack}
 * Returns: {void}
 
 Processes the provided stat.
@@ -2466,7 +2466,7 @@ Validates a value against a schema, skipping the schema when the precompiled che
 #### `watch(watchOptions, handler)`
 
 * `watchOptions` {WatchOptions}
-* `handler` {CallbackWebpackFunction_2}
+* `handler` {CallbackWebpack}
 * Returns: {Watching}
 
 Returns a compiler watcher.
@@ -3928,7 +3928,7 @@ Invalidates the cached state associated with this value.
 
 ###### K
 
-`K` *extends* {"runtime"|"css"|"html"|"remote"|"consume-shared"|"context"|"external"|"normal"|"concatenated"}
+`K` *extends* {"runtime"|"css"|"html"|"remote"|"consume-shared"|"context"|"normal"|"external"|"concatenated"}
 * `kind` {K}
 * Returns: {boolean}
 
@@ -4116,7 +4116,7 @@ Gets source basic types.
 
 #### `new ExternalsPlugin(type, externals)`
 
-* `type` {"asset"|"asset-url"|"css-import"|"import"|"jsonp"|"var"|"this"|"script"|"module"|"commonjs"|"global"|"assign"|"self"|"window"|"system"|"promise"|"css-url"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"|object}
+* `type` {"asset"|"asset-url"|"css-import"|"import"|"jsonp"|"var"|"this"|"script"|"module"|"commonjs"|"window"|"system"|"assign"|"self"|"global"|"promise"|"css-url"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"|object}
 * `externals` {Externals}
 * Returns: {ExternalsPlugin}
 
@@ -4125,7 +4125,7 @@ Creates an instance of ExternalsPlugin.
 ### Properties
 
 * `externals` {Externals}
-* `type` {"asset"|"asset-url"|"css-import"|"import"|"jsonp"|"var"|"this"|"script"|"module"|"commonjs"|"global"|"assign"|"self"|"window"|"system"|"promise"|"css-url"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"|object}
+* `type` {"asset"|"asset-url"|"css-import"|"import"|"jsonp"|"var"|"this"|"script"|"module"|"commonjs"|"window"|"system"|"assign"|"self"|"global"|"promise"|"css-url"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"|object}
 
 ### Methods
 
@@ -5267,7 +5267,7 @@ Invalidates the cached state associated with this value.
 
 ###### K
 
-`K` *extends* {"runtime"|"css"|"html"|"remote"|"consume-shared"|"context"|"external"|"normal"|"concatenated"}
+`K` *extends* {"runtime"|"css"|"html"|"remote"|"consume-shared"|"context"|"normal"|"external"|"concatenated"}
 * `kind` {K}
 * Returns: {boolean}
 
@@ -6196,7 +6196,7 @@ Gets infrastructure logger.
 
 #### `run(callback)`
 
-* `callback` {CallbackWebpackFunction_2}
+* `callback` {CallbackWebpack}
 * Returns: {void}
 
 Processes the provided multi stat.
@@ -6207,7 +6207,7 @@ Processes the provided multi stat.
 
 * `compilers` {Compiler[]}
 * `fn` {object}
-* `callback` {CallbackWebpackFunction_2}
+* `callback` {CallbackWebpack}
 * Returns: {void}
 
 Run with dependencies.
@@ -6222,7 +6222,7 @@ Updates dependencies using the provided compiler.
 
 #### `validateDependencies(callback)`
 
-* `callback` {CallbackWebpackFunction_2}
+* `callback` {CallbackWebpack}
 * Returns: {boolean}
 
 Validate dependencies.
@@ -6230,7 +6230,7 @@ Validate dependencies.
 #### `watch(watchOptions, handler)`
 
 * `watchOptions` {WatchOptions|WatchOptions[]}
-* `handler` {CallbackWebpackFunction_2}
+* `handler` {CallbackWebpack}
 * Returns: {MultiWatching}
 
 Returns a compiler watcher.
@@ -6266,14 +6266,14 @@ Checks whether this multi stats has warnings.
 
 #### `toJson([options])`
 
-* `options` {boolean|"verbose"|"summary"|"none"|"normal"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions}
+* `options` {boolean|"summary"|"none"|"normal"|"verbose"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions}
 * Returns: {StatsCompilation}
 
 Returns json output.
 
 #### `toString([options])`
 
-* `options` {boolean|"verbose"|"summary"|"none"|"normal"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions}
+* `options` {boolean|"summary"|"none"|"normal"|"verbose"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions}
 * Returns: {string}
 
 Returns a string representation.
@@ -6664,7 +6664,7 @@ Invalidates the cached state associated with this value.
 
 ###### K
 
-`K` *extends* {"runtime"|"css"|"html"|"remote"|"consume-shared"|"context"|"external"|"normal"|"concatenated"}
+`K` *extends* {"runtime"|"css"|"html"|"remote"|"consume-shared"|"context"|"normal"|"external"|"concatenated"}
 * `kind` {K}
 * Returns: {boolean}
 
@@ -7574,7 +7574,7 @@ Invalidates the cached state associated with this value.
 
 ###### K
 
-`K` *extends* {"runtime"|"css"|"html"|"remote"|"consume-shared"|"context"|"external"|"normal"|"concatenated"}
+`K` *extends* {"runtime"|"css"|"html"|"remote"|"consume-shared"|"context"|"normal"|"external"|"concatenated"}
 * `kind` {K}
 * Returns: {boolean}
 
@@ -7854,14 +7854,14 @@ Checks whether this stats has warnings.
 
 #### `toJson([options])`
 
-* `options` {boolean|"verbose"|"summary"|"none"|"normal"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions}
+* `options` {boolean|"summary"|"none"|"normal"|"verbose"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions}
 * Returns: {StatsCompilation}
 
 Returns json output.
 
 #### `toString([options])`
 
-* `options` {boolean|"verbose"|"summary"|"none"|"normal"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions}
+* `options` {boolean|"summary"|"none"|"normal"|"verbose"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions}
 * Returns: {string}
 
 Returns a string representation.
@@ -8036,7 +8036,7 @@ Applies the plugin by registering its hooks on the compiler.
 * `callbacks` {object[]}
 * `closed` {boolean}
 * `compiler` {Compiler}
-* `handler` {CallbackWebpackFunction_2}
+* `handler` {CallbackWebpack}
 * `invalid` {boolean}
 * `lastWatcherStartTime` {number}
 * `pausedWatcher` {Watcher}
@@ -8398,7 +8398,7 @@ A plugin types its own code generation data by declaration merging: `declare mod
 * `filename` {string} a filename for asset modules
 * `freeNames` {Set} free identifier names in the rendered source for javascript modules
 * `fullContentHash` {string} a full content hash for asset modules
-* `htmlPublicPathText` {string} the stand-in for public path placeholder text an HTML module spells itself, put back once its page resolves the placeholders
+* `htmlMarkerText` {string} the stand-in for marker text an HTML module spells itself, put back once its page resolves the markers
 * `importBindings` {Map} the name each import binding prints as, for source map scopes
 * `share-init` {object} share-init for modules federation
 * `topLevelDeclarations` {Set} top level declarations for javascript modules
@@ -8521,7 +8521,7 @@ Options object as provided by the user.
 * `extends` {string|string[]} Extend configuration from another configuration (only works when using webpack-cli).
 * `externals` {string|RegExp|ExternalItemObject|object|object|ExternalItem[]} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 * `externalsPresets` {ExternalsPresets} Enable presets of externals for specific targets.
-* `externalsType` {"asset"|"asset-url"|"css-import"|"import"|"jsonp"|"var"|"this"|"script"|"module"|"commonjs"|"global"|"assign"|"self"|"window"|"system"|"promise"|"css-url"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+* `externalsType` {"asset"|"asset-url"|"css-import"|"import"|"jsonp"|"var"|"this"|"script"|"module"|"commonjs"|"window"|"system"|"assign"|"self"|"global"|"promise"|"css-url"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 * `ignoreWarnings` {RegExp|object|object[]} Ignore specific warnings.
 * `infrastructureLogging` {InfrastructureLogging} Options for infrastructure level logging.
 * `loader` {Loader} Custom values available in the loader context.
@@ -8541,7 +8541,7 @@ Options object as provided by the user.
 * `resolve` {ResolveOptionsWebpackOptions} Options for the resolver.
 * `resolveLoader` {ResolveOptionsWebpackOptions} Options for the resolver when resolving loaders.
 * `snapshot` {SnapshotOptionsWebpackOptions} Options affecting how file system snapshots are created and validated.
-* `stats` {boolean|"verbose"|"summary"|"none"|"normal"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions} Stats options object or preset name.
+* `stats` {boolean|"summary"|"none"|"normal"|"verbose"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions} Stats options object or preset name.
 * `target` {string|false|string[]} Environment to build for. An array of environments to build for all of them when possible.
 * `validate` {boolean} Enable validation of webpack configuration. Defaults to true in development mode. In production mode, defaults to true unless futureDefaults is enabled, then defaults to false.
 * `watch` {boolean} Enter watch mode, which rebuilds on file change.
@@ -8700,6 +8700,23 @@ A plugin types its own fields by declaration merging: `declare module "webpack" 
 
 ***
 
+## Interface: `KnownAssetModuleBuildInfo`
+
+Defines the build info properties specific to asset modules.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownAssetModuleBuildInfo { myField?: MyType } }`.
+
+### Properties
+
+* `assetInfo` {AssetInfo}
+* `assetResource` {string} the resource this asset is named after, when
+something re-encoded it. Unlike `matchResource` this is serialized, so a
+rename set while building survives the persistent cache
+* `dataUrl` {boolean} whether the asset is inlined as a data url
+* `filename` {string}
+* `fullContentHash` {string}
+
+***
+
 ## Interface: `KnownBuildInfo`
 
 Defines the build info properties common to all module types.
@@ -8736,6 +8753,151 @@ A plugin types its own fields by declaration merging: `declare module "webpack" 
 * `exportsType` {"default"|"namespace"|"dynamic"|"flagged"}
 * `needIdInConcatenation` {boolean} true when the module keeps its own id after concatenation into another module, so id assignment and hot module replacement records still track it
 * `sideEffectFree` {boolean}
+
+***
+
+## Interface: `KnownConcatenatedModuleBuildInfo`
+
+Defines the build info properties specific to concatenated modules.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownConcatenatedModuleBuildInfo { myField?: MyType } }`.
+
+### Properties
+
+* `contextDependencies` {LazySet}
+* `fileDependencies` {LazySet}
+* `inlineExports` {boolean} taken over from the root module
+* `missingDependencies` {LazySet}
+* `needCreateRequire` {boolean} collected from the inner modules
+
+***
+
+## Interface: `KnownContextModuleBuildInfo`
+
+Defines the build info properties specific to context modules.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownContextModuleBuildInfo { myField?: MyType } }`.
+
+### Properties
+
+* `snapshot` {Snapshot}
+
+***
+
+## Interface: `KnownCreateStatsOptionsContext`
+
+Defines the known create stats options context type used by this module.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownCreateStatsOptionsContext { myField?: MyType } }`.
+
+### Properties
+
+* `forToString` {boolean}
+
+***
+
+## Interface: `KnownCssModuleBuildInfo`
+
+Defines the build info properties specific to css modules.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownCssModuleBuildInfo { myField?: MyType } }`.
+
+### Properties
+
+* `charset` {string} charset at-rule
+* `cssData` {CssData}
+* `openAtEnd` {true} the source ends inside a comment, string or block
+
+***
+
+## Interface: `KnownCssModuleBuildMeta`
+
+Defines the build meta properties specific to css modules.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownCssModuleBuildMeta { myField?: MyType } }`.
+
+### Properties
+
+* `isCssModule` {boolean}
+
+***
+
+## Interface: `KnownExternalModuleBuildInfo`
+
+Defines the build info properties specific to external modules.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownExternalModuleBuildInfo { myField?: MyType } }`.
+
+### Properties
+
+* `builtinGetter` {boolean} true when a node core module is read through `process.getBuiltinModule()`
+* `javascriptModule` {boolean} true when emitting an ESM external (`output.module`)
+
+***
+
+## Interface: `KnownHtmlModuleBuildInfo`
+
+Defines the build info properties specific to html modules.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownHtmlModuleBuildInfo { myField?: MyType } }`.
+
+### Properties
+
+* `baseUrlPrefix` {string} `../` per `<base href>` path segment, prepended to the auto-public-path undo path so a relative base doesn't misdirect bundled URLs
+* `encoding` {string} the page's encoding when not UTF-8, which its emitted file is written in (see `documentEncoding`)
+* `htmlEntries` {Record} entries collected from the document, grouped by kind
+
+***
+
+## Interface: `KnownJavascriptModuleBuildInfo`
+
+Defines the build info properties specific to javascript modules.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownJavascriptModuleBuildInfo { myField?: MyType } }`.
+
+### Properties
+
+* `inlineExports` {boolean} whether this module was parsed with `optimization.inlineExports` enabled (gates inlining of its exports)
+* `moduleConcatenationBailout` {string} using in CommonJs
+* `moduleConcatenationRootBailout` {string} what rules the module out as a concatenation root, while it may still be an inner module
+* `needCreateRequire` {boolean} using in APIPlugin
+* `pureFunctions` {Set} names of locally declared functions known to be free of side effects
+* `typeScriptRanges` {number[]} what a TypeScript module's parse skipped, as the syntax parser's `typeRanges`, which its generated code blanks
+* `usingPublicPathOverride` {boolean} module reassigns `__webpack_public_path__` at runtime, using in APIPlugin
+
+***
+
+## Interface: `KnownJavascriptModuleBuildMeta`
+
+Defines the build meta properties specific to javascript modules.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownJavascriptModuleBuildMeta { myField?: MyType } }`.
+
+### Properties
+
+* `strictHarmonyModule` {boolean}
+* `treatAsCommonJs` {boolean}
+
+***
+
+## Interface: `KnownJavascriptParserState`
+
+Defines the known javascript parser state type used by this module.
+The `harmony*` properties forward to their `esm*` namesake.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownJavascriptParserState { myField?: MyType } }`.
+
+### Properties
+
+* `esmNamedExports` {Set}
+* `esmStarExports` {ESMStarExportsList}
+* `guardStack` {GuardFrame[]} the guard frames of the branches being walked, innermost last
+* `harmonyNamedExports` {Set} deprecated, use `esmNamedExports`
+* `harmonyStarExports` {ESMStarExportsList} deprecated, use `esmStarExports`
+* `lastESMImportOrder` {number}
+* `lastHarmonyImportOrder` {number} deprecated, use `lastESMImportOrder`
+* `localModules` {LocalModule[]}
+
+***
+
+## Interface: `KnownJsonModuleBuildInfo`
+
+Defines the build info properties specific to json modules.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownJsonModuleBuildInfo { myField?: MyType } }`.
+
+### Properties
+
+* `jsonData` {JsonData}
 
 ***
 
@@ -8789,7 +8951,7 @@ A plugin types its own stats options by declaration merging: `declare module "we
 * `groupModulesByPath` {boolean}
 * `groupModulesByType` {boolean}
 * `ids` {boolean}
-* `logging` {false|"log"|"verbose"|"none"|"error"|"warn"|"info"}
+* `logging` {false|"none"|"error"|"log"|"verbose"|"warn"|"info"}
 * `loggingDebug` {object[]}
 * `loggingTrace` {boolean}
 * `modulesSort` {string|false}
@@ -8800,6 +8962,39 @@ A plugin types its own stats options by declaration merging: `declare module "we
 * `requestShortener` {RequestShortener}
 * `runtimeModules` {boolean}
 * `warningsFilter` {object[]}
+
+***
+
+## Interface: `KnownNormalModuleBuildInfo`
+
+Defines the build info properties of normal modules (filesystem-backed, loader-processed).
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownNormalModuleBuildInfo { myField?: MyType } }`.
+
+### Properties
+
+* `buildDependencies` {LazySet}
+* `contextDependencies` {LazySet}
+* `fileDependencies` {LazySet}
+* `hash` {string}
+* `missingDependencies` {LazySet}
+* `parsed` {boolean}
+* `resourceIntegrity` {string} using in HttpUriPlugin
+* `snapshot` {Snapshot}
+* `valueDependencies` {Map}
+
+***
+
+## Interface: `KnownParserState`
+
+The fields of every parser's state, besides the module it parses.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownParserState { myField?: MyType } }`.
+
+### Properties
+
+* `compilation` {Compilation}
+* `current` {NormalModule}
+* `options` {WebpackOptionsNormalizedWithDefaults}
+* `source` {string|Buffer}
 
 ***
 
@@ -9015,6 +9210,18 @@ A plugin types its own fields by declaration merging: `declare module "webpack" 
 * `rootModules` {Set}
 * `runtime` {RuntimeSpec}
 * `type` {string}
+
+***
+
+## Interface: `KnownStatsGroup`
+
+The fields of a group that a `groupResults` tap creates for an array path without a `StatsFactoryGroupKeys` entry, besides the `children` it lists.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownStatsGroup { myField?: MyType } }`.
+
+### Properties
+
+* `filteredChildren` {number} how many items it hides instead of listing them
+* `type` {string} what kind of group it is
 
 ***
 
@@ -9235,6 +9442,31 @@ A plugin types its own stats fields by declaration merging: `declare module "web
 * `restoring` {number}
 * `storing` {number}
 * `total` {number}
+
+***
+
+## Interface: `KnownSyncWasmModuleBuildMeta`
+
+Defines the build meta properties specific to sync wasm modules.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownSyncWasmModuleBuildMeta { myField?: MyType } }`.
+
+### Properties
+
+* `jsIncompatibleExports` {Record}
+
+***
+
+## Interface: `KnownUnsafeCacheData`
+
+Defines the known unsafe cache data type used by this module.
+A plugin types its own fields by declaration merging: `declare module "webpack" { interface KnownUnsafeCacheData { myField?: MyType } }`.
+
+### Properties
+
+* `factoryMeta` {FactoryMeta} factory meta
+* `generatorOptions` {GeneratorOptions}
+* `parserOptions` {ParserOptions}
+* `resolveOptions` {ResolveOptionsWebpackOptions} resolve options
 
 ***
 
@@ -9737,7 +9969,7 @@ Stats options object.
 * `cached` {boolean} Add information about cached (not built) modules (deprecated: use 'cachedModules' instead).
 * `cachedAssets` {boolean} Show cached assets (setting this to `false` only shows emitted files).
 * `cachedModules` {boolean} Add information about cached (not built) modules.
-* `children` {boolean|"verbose"|"summary"|"none"|"normal"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions|StatsValue[]} Add children information.
+* `children` {boolean|"summary"|"none"|"normal"|"verbose"|"errors-only"|"errors-warnings"|"minimal"|"detailed"|StatsOptions|StatsValue[]} Add children information.
 * `chunkGroupAuxiliary` {boolean} Display auxiliary assets in chunk groups.
 * `chunkGroupChildren` {boolean} Display children of chunk groups.
 * `chunkGroupMaxAssets` {number} Limit of assets displayed in chunk groups.
@@ -9781,7 +10013,7 @@ Stats options object.
 * `hints` {boolean} Add performance hints reported with 'performance.hints: "stats"'.
 * `hintsCount` {boolean} Add the number of performance hints.
 * `ids` {boolean} Add ids.
-* `logging` {boolean|"log"|"verbose"|"none"|"error"|"warn"|"info"} Add logging output.
+* `logging` {boolean|"none"|"error"|"log"|"verbose"|"warn"|"info"} Add logging output.
 * `loggingDebug` {string|boolean|RegExp|FilterItemTypes[]|object} Include debug logging of specified loggers (i. e. for plugins or loaders). Filters can be Strings, RegExps or Functions.
 * `loggingTrace` {boolean} Add stack traces to logging output.
 * `moduleAssets` {boolean} Add information about assets inside modules.
@@ -9923,7 +10155,7 @@ Normalized webpack options object.
 * `experiments` {ExperimentsNormalized} Enables/Disables experiments (experimental features with relax SemVer compatibility).
 * `externals` {Externals} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 * `externalsPresets` {ExternalsPresets} Enable presets of externals for specific targets.
-* `externalsType` {"asset"|"asset-url"|"css-import"|"import"|"jsonp"|"var"|"this"|"script"|"module"|"commonjs"|"global"|"assign"|"self"|"window"|"system"|"promise"|"css-url"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+* `externalsType` {"asset"|"asset-url"|"css-import"|"import"|"jsonp"|"var"|"this"|"script"|"module"|"commonjs"|"window"|"system"|"assign"|"self"|"global"|"promise"|"css-url"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"amd-async"|"umd"|"umd2"|"module-import"|"node-commonjs"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 * `ignoreWarnings` {object[]} Ignore specific warnings.
 * `infrastructureLogging` {InfrastructureLogging} Options for infrastructure level logging.
 * `loader` {Loader} Custom values available in the loader context.
@@ -9968,7 +10200,7 @@ Plugin instance.
 
 ## Type: `AssetModuleBuildInfo`
 
-> **AssetModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownAssetModuleBuildInfo}
+> **AssetModuleBuildInfo** = {exports.KnownBuildInfo|Record|exports.KnownNormalModuleBuildInfo|exports.KnownAssetModuleBuildInfo}
 
 ***
 
@@ -9986,7 +10218,7 @@ Plugin instance.
 
 ## Type: `ConcatenatedModuleBuildInfo`
 
-> **ConcatenatedModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownConcatenatedModuleBuildInfo}
+> **ConcatenatedModuleBuildInfo** = {exports.KnownBuildInfo|Record|exports.KnownConcatenatedModuleBuildInfo}
 
 ***
 
@@ -10002,19 +10234,19 @@ Plugin instance.
 
 ## Type: `ContextModuleBuildInfo`
 
-> **ContextModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownContextModuleBuildInfo}
+> **ContextModuleBuildInfo** = {exports.KnownBuildInfo|Record|exports.KnownContextModuleBuildInfo}
 
 ***
 
 ## Type: `CssModuleBuildInfo`
 
-> **CssModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownCssModuleBuildInfo}
+> **CssModuleBuildInfo** = {exports.KnownBuildInfo|Record|exports.KnownNormalModuleBuildInfo|exports.KnownCssModuleBuildInfo}
 
 ***
 
 ## Type: `CssModuleBuildMeta`
 
-> **CssModuleBuildMeta** = {exports.KnownBuildMeta|Record|KnownCssModuleBuildMeta}
+> **CssModuleBuildMeta** = {exports.KnownBuildMeta|Record|exports.KnownCssModuleBuildMeta}
 
 ***
 
@@ -10116,7 +10348,7 @@ Plugin instance.
 
 ## Type: `ExternalModuleBuildInfo`
 
-> **ExternalModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownExternalModuleBuildInfo}
+> **ExternalModuleBuildInfo** = {exports.KnownBuildInfo|Record|exports.KnownExternalModuleBuildInfo}
 
 ***
 
@@ -10128,19 +10360,19 @@ Plugin instance.
 
 ## Type: `HtmlModuleBuildInfo`
 
-> **HtmlModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownHtmlModuleBuildInfo}
+> **HtmlModuleBuildInfo** = {exports.KnownBuildInfo|Record|exports.KnownNormalModuleBuildInfo|exports.KnownHtmlModuleBuildInfo}
 
 ***
 
 ## Type: `JavascriptModuleBuildInfo`
 
-> **JavascriptModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownJavascriptModuleBuildInfo}
+> **JavascriptModuleBuildInfo** = {exports.KnownBuildInfo|Record|exports.KnownNormalModuleBuildInfo|exports.KnownJavascriptModuleBuildInfo}
 
 ***
 
 ## Type: `JavascriptModuleBuildMeta`
 
-> **JavascriptModuleBuildMeta** = {exports.KnownBuildMeta|Record|KnownJavascriptModuleBuildMeta}
+> **JavascriptModuleBuildMeta** = {exports.KnownBuildMeta|Record|exports.KnownJavascriptModuleBuildMeta}
 
 ***
 
@@ -10162,7 +10394,7 @@ Plugin instance.
 
 ## Type: `JsonModuleBuildInfo`
 
-> **JsonModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownNormalModuleBuildInfo|KnownJsonModuleBuildInfo}
+> **JsonModuleBuildInfo** = {exports.KnownBuildInfo|Record|exports.KnownNormalModuleBuildInfo|exports.KnownJsonModuleBuildInfo}
 
 ***
 
@@ -10217,7 +10449,7 @@ Plugin instance.
 
 ## Type: `NormalModuleBuildInfo`
 
-> **NormalModuleBuildInfo** = {exports.KnownBuildInfo|Record|KnownNormalModuleBuildInfo}
+> **NormalModuleBuildInfo** = {exports.KnownBuildInfo|Record|exports.KnownNormalModuleBuildInfo}
 
 ***
 
@@ -10235,7 +10467,11 @@ Plugin instance.
 
 ## Type: `ParserState`
 
-> **ParserState**\<`TModule`\> = {ParserStateBase|Record}
+> **ParserState**\<`TModule`\> = {exports.KnownParserState|object|Record}
+
+### Type Declaration
+
+* `module` {TModule}
 
 ### Type Parameters
 
@@ -10476,7 +10712,7 @@ Plugin instance.
 
 ## Type: `SyncWasmModuleBuildMeta`
 
-> **SyncWasmModuleBuildMeta** = {exports.KnownBuildMeta|Record|KnownSyncWasmModuleBuildMeta}
+> **SyncWasmModuleBuildMeta** = {exports.KnownBuildMeta|Record|exports.KnownSyncWasmModuleBuildMeta}
 
 ***
 
@@ -10557,7 +10793,7 @@ use `config.validateSchema` - TODO in the next major release: remove
 ### Call Signature
 
 * `options` {Configuration}
-* `callback` {CallbackWebpackFunction_2}
+* `callback` {CallbackWebpack}
 * Returns: {Compiler}
 
 ### Call Signature
@@ -10568,7 +10804,7 @@ use `config.validateSchema` - TODO in the next major release: remove
 ### Call Signature
 
 * `options` {MultiConfiguration}
-* `callback` {CallbackWebpackFunction_2}
+* `callback` {CallbackWebpack}
 * Returns: {MultiCompiler}
 
 ### Call Signature
@@ -10610,7 +10846,7 @@ Re-exports [AssetEmittedInfo](#assetemittedinfo)
 
 ## `AssetInfo`
 
-Re-exports [AssetInfo](#assetinfo-2)
+Re-exports [AssetInfo](#assetinfo-3)
 
 ***
 
@@ -11058,6 +11294,12 @@ Re-exports [KnownAssetInfo](#knownassetinfo)
 
 ***
 
+## `KnownAssetModuleBuildInfo`
+
+Re-exports [KnownAssetModuleBuildInfo](#knownassetmodulebuildinfo)
+
+***
+
 ## `KnownBuildInfo`
 
 Re-exports [KnownBuildInfo](#knownbuildinfo)
@@ -11070,6 +11312,72 @@ Re-exports [KnownBuildMeta](#knownbuildmeta)
 
 ***
 
+## `KnownConcatenatedModuleBuildInfo`
+
+Re-exports [KnownConcatenatedModuleBuildInfo](#knownconcatenatedmodulebuildinfo)
+
+***
+
+## `KnownContextModuleBuildInfo`
+
+Re-exports [KnownContextModuleBuildInfo](#knowncontextmodulebuildinfo)
+
+***
+
+## `KnownCreateStatsOptionsContext`
+
+Re-exports [KnownCreateStatsOptionsContext](#knowncreatestatsoptionscontext)
+
+***
+
+## `KnownCssModuleBuildInfo`
+
+Re-exports [KnownCssModuleBuildInfo](#knowncssmodulebuildinfo)
+
+***
+
+## `KnownCssModuleBuildMeta`
+
+Re-exports [KnownCssModuleBuildMeta](#knowncssmodulebuildmeta)
+
+***
+
+## `KnownExternalModuleBuildInfo`
+
+Re-exports [KnownExternalModuleBuildInfo](#knownexternalmodulebuildinfo)
+
+***
+
+## `KnownHtmlModuleBuildInfo`
+
+Re-exports [KnownHtmlModuleBuildInfo](#knownhtmlmodulebuildinfo)
+
+***
+
+## `KnownJavascriptModuleBuildInfo`
+
+Re-exports [KnownJavascriptModuleBuildInfo](#knownjavascriptmodulebuildinfo)
+
+***
+
+## `KnownJavascriptModuleBuildMeta`
+
+Re-exports [KnownJavascriptModuleBuildMeta](#knownjavascriptmodulebuildmeta)
+
+***
+
+## `KnownJavascriptParserState`
+
+Re-exports [KnownJavascriptParserState](#knownjavascriptparserstate)
+
+***
+
+## `KnownJsonModuleBuildInfo`
+
+Re-exports [KnownJsonModuleBuildInfo](#knownjsonmodulebuildinfo)
+
+***
+
 ## `KnownMeta`
 
 Re-exports [KnownMeta](#knownmeta)
@@ -11079,6 +11387,18 @@ Re-exports [KnownMeta](#knownmeta)
 ## `KnownNormalizedStatsOptions`
 
 Re-exports [KnownNormalizedStatsOptions](#knownnormalizedstatsoptions)
+
+***
+
+## `KnownNormalModuleBuildInfo`
+
+Re-exports [KnownNormalModuleBuildInfo](#knownnormalmodulebuildinfo)
+
+***
+
+## `KnownParserState`
+
+Re-exports [KnownParserState](#knownparserstate)
 
 ***
 
@@ -11133,6 +11453,12 @@ Re-exports [KnownStatsError](#knownstatserror)
 ## `KnownStatsFactoryContext`
 
 Re-exports [KnownStatsFactoryContext](#knownstatsfactorycontext)
+
+***
+
+## `KnownStatsGroup`
+
+Re-exports [KnownStatsGroup](#knownstatsgroup)
 
 ***
 
@@ -11199,6 +11525,18 @@ Re-exports [KnownStatsPrinterContext](#knownstatsprintercontext)
 ## `KnownStatsProfile`
 
 Re-exports [KnownStatsProfile](#knownstatsprofile)
+
+***
+
+## `KnownSyncWasmModuleBuildMeta`
+
+Re-exports [KnownSyncWasmModuleBuildMeta](#knownsyncwasmmodulebuildmeta)
+
+***
+
+## `KnownUnsafeCacheData`
+
+Re-exports [KnownUnsafeCacheData](#knownunsafecachedata)
 
 ***
 
@@ -11498,7 +11836,7 @@ Re-exports [ResolveData](#resolvedata)
 
 ## `ResolveOptions`
 
-Re-exports [ResolveOptions](#resolveoptions-5)
+Re-exports [ResolveOptions](#resolveoptions-6)
 
 ***
 

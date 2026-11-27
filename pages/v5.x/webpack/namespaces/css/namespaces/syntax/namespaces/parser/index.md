@@ -12,7 +12,7 @@ exposed as `webpack.css.syntax.parser`; unstable API
 - [Part](namespaces/Part.md)
 - [TokenType](namespaces/TokenType.md)
 
-## Class: `TokenStream`
+## Class: `CssTokenizer`
 
 **`Experimental`**
 
@@ -36,7 +36,7 @@ swapping the tokenizer - the per-token `readToken` primitive - for its own.
 
 ### Constructors
 
-#### `new TokenStream(input[, pos][, locConverter][, onComment])`
+#### `new CssTokenizer(input[, pos][, locConverter][, onComment])`
 
 > Stability: 1 - Experimental
 
@@ -44,7 +44,7 @@ swapping the tokenizer - the per-token `readToken` primitive - for its own.
 * `pos` {number}
 * `locConverter` {LocConverter}
 * `onComment` {object}
-* Returns: {TokenStream}
+* Returns: {CssTokenizer}
 
 **`Experimental`**
 
@@ -126,6 +126,21 @@ consuming it; the `<eof-token>` once the source is exhausted. This is the
 token the consume algorithms dispatch on (the spec's "process"). Tokenized
 from `_pos` on first use and cached until consumed; comment tokens are
 skipped here, firing `onComment` once each.
+
+#### `reset(input, pos, locConverter[, onComment])`
+
+> Stability: 1 - Experimental
+
+* `input` {string}
+* `pos` {number}
+* `locConverter` {LocConverter}
+* `onComment` {object}
+* Returns: {CssTokenizer}
+
+**`Experimental`**
+
+Point the stream at a new input, as a fresh one would start. The parse tree
+is its own stream and starts each grammar run this way rather than allocating one.
 
 #### `restoreMark()`
 
@@ -413,7 +428,7 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 **`Experimental`**
 
-* `input` {string|TokenStream}
+* `input` {string|CssTokenizer}
 * `pos` {number}
 * `options` {CssParseOptions}
 * Returns: {object}
@@ -426,7 +441,7 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 **`Experimental`**
 
-* `input` {string|TokenStream}
+* `input` {string|CssTokenizer}
 * `pos` {number}
 * `options` {CssParseOptions}
 * Returns: {number[][]}
@@ -439,7 +454,7 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 **`Experimental`**
 
-* `input` {string|TokenStream}
+* `input` {string|CssTokenizer}
 * `pos` {number}
 * `options` {CssParseOptions}
 * Returns: {undefined|number}
@@ -452,7 +467,7 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 **`Experimental`**
 
-* `input` {string|TokenStream}
+* `input` {string|CssTokenizer}
 * `pos` {number}
 * `options` {CssParseOptions}
 * Returns: {undefined|number}
@@ -465,7 +480,7 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 **`Experimental`**
 
-* `input` {string|TokenStream}
+* `input` {string|CssTokenizer}
 * `pos` {number}
 * `options` {CssParseOptions}
 * Returns: {number[]}
@@ -478,7 +493,7 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 **`Experimental`**
 
-* `input` {string|TokenStream}
+* `input` {string|CssTokenizer}
 * `pos` {number}
 * `options` {CssParseOptions}
 * Returns: {undefined|number}
@@ -491,7 +506,7 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 **`Experimental`**
 
-* `input` {string|TokenStream}
+* `input` {string|CssTokenizer}
 * `pos` {number}
 * `options` {CssParseOptions}
 * Returns: {number}
@@ -504,7 +519,7 @@ for the sites that discard whitespace tokens. No-op while a token is cached.
 
 **`Experimental`**
 
-* `input` {string|TokenStream}
+* `input` {string|CssTokenizer}
 * `pos` {number}
 * `options` {CssParseOptions}
 * Returns: {number[]}

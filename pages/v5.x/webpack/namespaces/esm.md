@@ -357,7 +357,7 @@ Invalidates the cached state associated with this value.
 
 ###### K
 
-`K` *extends* {"runtime"|"css"|"html"|"remote"|"consume-shared"|"context"|"external"|"normal"|"concatenated"}
+`K` *extends* {"runtime"|"css"|"html"|"remote"|"consume-shared"|"context"|"normal"|"external"|"concatenated"}
 * `kind` {K}
 * Returns: {boolean}
 
