@@ -524,6 +524,15 @@ Processes the provided param.
 
 Checks whether this javascript parser is asi position.
 
+#### `isFollowedByContinuableToken(pos)`
+
+* `pos` {number}
+* Returns: {boolean}
+
+Whether the token after an expression ending at `pos` both starts a
+statement and could continue other code put in its place: a bare `yield`
+or a block-bodied arrow function ends a statement before `(`, `[` or `/`.
+
 #### `isPure(expr, commentsStartPos)`
 
 * `expr` {number|FunctionDeclaration|MaybeNamedFunctionDeclaration|VariableDeclaration|ClassDeclaration|MaybeNamedClassDeclaration|Identifier|PrivateIdentifier|SimpleLiteral|RegExpLiteral|BigIntLiteral|FunctionExpression|ArrowFunctionExpression|ClassExpression|MemberExpression|SimpleCallExpression|NewExpression|BinaryExpression|LogicalExpression|AssignmentExpression|AwaitExpression|YieldExpression|UnaryExpression|UpdateExpression|ArrayExpression|ObjectExpression|ThisExpression|ConditionalExpression|TemplateLiteral|TaggedTemplateExpression|SequenceExpression|ChainExpression|ImportExpression|MetaProperty}

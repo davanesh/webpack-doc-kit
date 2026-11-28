@@ -9641,6 +9641,32 @@ Specify options for each parser.
 
 ***
 
+## Interface: `ParsersAndGeneratorsByModuleType`
+
+The parser and generator of each module type, with the options each is created from: `[parser, parser options, generator, generator options]`.
+A plugin types its own module type by declaration merging: `declare module "webpack" { interface ParsersAndGeneratorsByModuleType { "my-type": [MyParser, MyParserOptions, MyGenerator, MyGeneratorOptions] } }`.
+
+### Properties
+
+* `asset` {AssetParser|AssetParserOptions|AssetGenerator|AssetGeneratorOptions}
+* `asset/bytes` {AssetBytesParser|EmptyParserOptions|AssetBytesGenerator|EmptyGeneratorOptions}
+* `asset/inline` {AssetParser|EmptyParserOptions|AssetGenerator|AssetGeneratorOptions}
+* `asset/resource` {AssetParser|EmptyParserOptions|AssetGenerator|AssetGeneratorOptions}
+* `asset/source` {AssetSourceParser|EmptyParserOptions|AssetSourceGenerator|EmptyGeneratorOptions}
+* `css` {CssParser|CssParserOptions|CssGenerator|CssGeneratorOptions}
+* `css/auto` {CssParser|CssModuleParserOptions|CssGenerator|CssModuleGeneratorOptions}
+* `css/global` {CssParser|CssModuleParserOptions|CssGenerator|CssModuleGeneratorOptions}
+* `css/module` {CssParser|CssModuleParserOptions|CssGenerator|CssModuleGeneratorOptions}
+* `html` {HtmlParser|EmptyParserOptions|HtmlGenerator|HtmlGeneratorOptions}
+* `javascript/auto` {JavascriptParser|JavascriptParserOptions|JavascriptGenerator|EmptyGeneratorOptions}
+* `javascript/dynamic` {JavascriptParser|JavascriptParserOptions|JavascriptGenerator|EmptyGeneratorOptions}
+* `javascript/esm` {JavascriptParser|JavascriptParserOptions|JavascriptGenerator|EmptyGeneratorOptions}
+* `json` {JsonParser|JsonParserOptions|JsonGenerator|JsonGeneratorOptions}
+* `webassembly/async` {AsyncWebAssemblyParser|EmptyParserOptions|Generator|EmptyGeneratorOptions}
+* `webassembly/sync` {WebAssemblyParser|EmptyParserOptions|Generator|EmptyGeneratorOptions}
+
+***
+
 ## Interface: `PathData`
 
 Defines the path data type used by this module.
@@ -11741,6 +11767,12 @@ Re-exports [Parser](#parser-1)
 ## `ParserOptionsByModuleTypeKnown`
 
 Re-exports [ParserOptionsByModuleTypeKnown](#parseroptionsbymoduletypeknown)
+
+***
+
+## `ParsersAndGeneratorsByModuleType`
+
+Re-exports [ParsersAndGeneratorsByModuleType](#parsersandgeneratorsbymoduletype)
 
 ***
 

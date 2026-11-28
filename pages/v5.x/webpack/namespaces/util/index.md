@@ -344,10 +344,10 @@ Returns an iterable of values in the set.
 
 > `const` **makeSerializable**: {object}
 
-#### T
+#### C
 
-`T` *extends* {object}
-* `Constructor` {T}
+`C` *extends* {SerializableClassConstructor}
+* `Constructor` {C}
 * `request` {string|string|string|null|string[]}
 * `name` {null|string}
 * Returns: {void}
